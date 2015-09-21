@@ -11,7 +11,6 @@ public class MovingObject : MonoBehaviour
     public float gravityAccel = 3.0f;
     public float defaultGravityAccel = 1.0f;
     public GameObject slippyFloor;
-    public Text score;
 
     private Vector2 velocity;
     private float jumpEndTime = 0.0f;
@@ -91,7 +90,7 @@ public class MovingObject : MonoBehaviour
                 isRotating = false;
             }
         }
-        score.text = "Distance = " + transform.position.x;
+        
     }
 
     public void Jump()

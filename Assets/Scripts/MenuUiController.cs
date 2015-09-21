@@ -15,7 +15,7 @@ public class MenuUiController : MonoBehaviour {
 	//Load Game Scene (not active yet)
 	public void StartGame () 
 	{
-		Application.LoadLevel("Game");
+		Application.LoadLevel("Main");
 	}
 	
     //Load Shop Scene btn

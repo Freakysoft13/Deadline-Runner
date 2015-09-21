@@ -102,6 +102,10 @@ public class MenuUI : MonoBehaviour
             DefaultSpecial.gameObject.SetActive(false);
             PressedSpecial.gameObject.SetActive(true);
             LevelManager.Instance.SetShopID(-1);
+            shieldvaluetxt.gameObject.SetActive(false);
+            mashinevaluetxt.gameObject.SetActive(false);
+            afterlifevaluetxt.gameObject.SetActive(false);
+            bigcrystaltxt.gameObject.SetActive(false);
         }
 
         else
