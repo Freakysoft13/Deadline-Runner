@@ -1,0 +1,131 @@
+
+Knite.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Body
+  rotate: true
+  xy: 365, 342
+  size: 159, 392
+  orig: 161, 394
+  offset: 1, 1
+  index: -1
+Head1
+  rotate: true
+  xy: 759, 306
+  size: 195, 256
+  orig: 197, 258
+  offset: 1, 1
+  index: -1
+Head2
+  rotate: false
+  xy: 557, 33
+  size: 141, 158
+  orig: 143, 160
+  offset: 1, 1
+  index: -1
+Head3
+  rotate: true
+  xy: 759, 163
+  size: 141, 158
+  orig: 143, 160
+  offset: 1, 1
+  index: -1
+Head4_00000
+  rotate: true
+  xy: 396, 49
+  size: 142, 159
+  orig: 143, 160
+  offset: 1, 0
+  index: -1
+Left_Ankle
+  rotate: true
+  xy: 2, 2
+  size: 76, 119
+  orig: 78, 121
+  offset: 1, 1
+  index: -1
+Right_Ankle
+  rotate: true
+  xy: 2, 2
+  size: 76, 119
+  orig: 78, 121
+  offset: 1, 1
+  index: -1
+Left_Fist
+  rotate: true
+  xy: 919, 166
+  size: 138, 96
+  orig: 140, 98
+  offset: 1, 1
+  index: -1
+Left_Hand
+  rotate: false
+  xy: 627, 198
+  size: 38, 70
+  orig: 40, 72
+  offset: 1, 1
+  index: -1
+Riight_Hand
+  rotate: false
+  xy: 627, 198
+  size: 38, 70
+  orig: 40, 72
+  offset: 1, 1
+  index: -1
+Left_Leg
+  rotate: true
+  xy: 2, 80
+  size: 159, 392
+  orig: 161, 394
+  offset: 1, 1
+  index: -1
+Right_Leg
+  rotate: true
+  xy: 2, 80
+  size: 159, 392
+  orig: 161, 394
+  offset: 1, 1
+  index: -1
+Left_Shoulder
+  rotate: true
+  xy: 627, 270
+  size: 70, 130
+  orig: 72, 132
+  offset: 1, 1
+  index: -1
+Riight_Shoulder
+  rotate: true
+  xy: 627, 270
+  size: 70, 130
+  orig: 72, 132
+  offset: 1, 1
+  index: -1
+Left_Toe
+  rotate: false
+  xy: 123, 25
+  size: 110, 53
+  orig: 112, 55
+  offset: 1, 1
+  index: -1
+Right_Toe
+  rotate: false
+  xy: 123, 25
+  size: 110, 53
+  orig: 112, 55
+  offset: 1, 1
+  index: -1
+Riight_Fist
+  rotate: false
+  xy: 396, 193
+  size: 229, 147
+  orig: 231, 149
+  offset: 1, 1
+  index: -1
+Riight_Fist_2
+  rotate: false
+  xy: 2, 241
+  size: 361, 260
+  orig: 369, 269
+  offset: 8, 9
+  index: -1

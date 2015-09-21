@@ -1,0 +1,33 @@
+
+Icon.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Bottom_Gear
+  rotate: false
+  xy: 561, 166
+  size: 54, 54
+  orig: 56, 56
+  offset: 1, 1
+  index: -1
+Dust
+  rotate: true
+  xy: 298, 12
+  size: 208, 261
+  orig: 210, 263
+  offset: 1, 1
+  index: -1
+Opened_Icon
+  rotate: true
+  xy: 2, 2
+  size: 218, 294
+  orig: 251, 331
+  offset: 20, 36
+  index: -1
+Top_Gear
+  rotate: false
+  xy: 561, 126
+  size: 38, 38
+  orig: 40, 40
+  offset: 1, 1
+  index: -1
