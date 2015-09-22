@@ -14,7 +14,7 @@ public class tp : MonoBehaviour {
     public Text Distance_txt;
     //player object for distance meeter
     public GameObject Player;
-    private float dist;
+    public int distance = 8;
 
     AudioSource audios;
     public Image audioOn_img;
@@ -34,9 +34,9 @@ public class tp : MonoBehaviour {
 
     void Start ()
     {
-        ress_ads_btn.gameObject.GetComponent<UnityEngine.UI.Button>().interactable = true;
-        ressurected_with_ads = false;
-        Money_txt.text = LevelManager.Instance.GetMoney().ToString();
+       // ress_ads_btn.gameObject.GetComponent<UnityEngine.UI.Button>().interactable = true;
+        //ressurected_with_ads = false;
+        
 
         audios = GetComponent<AudioSource>();
 
@@ -47,7 +47,7 @@ public class tp : MonoBehaviour {
         fortunewheel.SetActive(false);
         deathpnl.SetActive(false);
 
-        distance_counter();
+        Distance_txt.text = distance.ToString();
 
         audioOff_img.gameObject.SetActive(false);
         audioOn_img.gameObject.SetActive(true);
@@ -58,19 +58,10 @@ public class tp : MonoBehaviour {
 
     void Update()
     {
-        Money_txt.text = LevelManager.Instance.GetMoney().ToString();
+
         distance_counter();
     }
-    //test_btn
-    public void Deathpnl()
-    {
-        deathpnl.SetActive(true);
-        pause_pnl.SetActive(false);
-        blockingmask.SetActive(true);
-        dailyreward.SetActive(false);
-        scoreboard.SetActive(false);
-        fortunewheel.SetActive(false);
-    }
+
     //pause_btn need to be cleaned
     public void Pause()
     {
@@ -127,32 +118,13 @@ public class tp : MonoBehaviour {
         scoreboard.SetActive(false);
         fortunewheel.SetActive(true);
     }
-    //test btn daily reward btn need to be cleared
-    public void Daily()
-    {
-        deathpnl.SetActive(false);
-        pause_pnl.SetActive(false);
-        blockingmask.SetActive(true);
-        dailyreward.SetActive(true);
-        scoreboard.SetActive(false);
-        fortunewheel.SetActive(false);
-    }
-    //test btn can be removed or replaced
-    public void Score()
-    {
-        deathpnl.SetActive(false);
-        pause_pnl.SetActive(false);
-        blockingmask.SetActive(false);
-        dailyreward.SetActive(false);
-        scoreboard.SetActive(true);
-        fortunewheel.SetActive(false);
-    }
 
     // counting distanve for gameobject, gameobject need to be seted in menu
     private void distance_counter()
     {
-        dist = Player.transform.position.x;
-        Distance_txt.text = dist.ToString() + " m";
+        int newdistance;
+        newdistance = distance + 1 * ((int)Player.transform.position.x);
+        Distance_txt.text = newdistance.ToString() + " m";
     }
 
     // test_money mask can be replaced with prefab from shop
