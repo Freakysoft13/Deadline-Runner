@@ -115,6 +115,20 @@ public class ObjectTypesDataHolder
     {
         return crystalNameToTypeDic[type];
     }
+
+    public string GetObjectNameForType(System.Enum type)
+    {
+        if (type is ObstacleType)
+        {
+            return obstacleNameToTypeDic[(ObstacleType)type];
+        }
+        else if (type is CrystalType)
+        {
+            return crystalNameToTypeDic[(CrystalType)type];
+        }
+        return "";
+    }
+
     public enum ObstacleType
     {
         GROUND_SPINNER, AXE
