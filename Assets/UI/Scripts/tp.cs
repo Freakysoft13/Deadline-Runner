@@ -20,7 +20,7 @@ public class tp : MonoBehaviour {
     public Image audioOn_img;
     public Image audioOff_img;
 
-    public Canvas money_mask;
+    public GameObject money_mask;
     public int[] ress_price;
     public Text ress_txt;
     private int priceindex = 0;
