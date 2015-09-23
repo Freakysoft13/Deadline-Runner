@@ -65,6 +65,5 @@ public class GameManager : MonoBehaviour
     public void AddScore(float amt)
     {
         score += amt;
-        print(score);
     }
 }
