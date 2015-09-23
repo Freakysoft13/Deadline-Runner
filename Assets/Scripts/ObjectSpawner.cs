@@ -82,6 +82,7 @@ public abstract class ObjectSpawner : MonoBehaviour
             float prevObjectMinX = collider.bounds.min.x;
             float prevObjectMaxX = collider.bounds.max.x;
             float halfLength = ((prevObjectMaxX - prevObjectMinX) / 2.0f);
+
             if (shouldSyncSpawners)
             {
 
