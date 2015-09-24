@@ -24,9 +24,13 @@ public class MovingObject : MonoBehaviour
     private bool flip = false;
     private float gravityScale = 1.0f;
     private bool isDead = false;
+    public GameObject deathPanel;
+    public GameObject scorePanel;
 
     void Start()
     {
+        scorePanel.SetActive(true);
+        deathPanel.SetActive(false);
         animationController = GetComponent<AnimationController>();
         rigidBody = GetComponent<Rigidbody2D>();
     }
@@ -173,6 +177,9 @@ public class MovingObject : MonoBehaviour
             isDead = true;
             animationController.Die();
             slippyFloor.GetComponent<MaterialChanger>().Swap();
+            deathPanel.SetActive(true);
+            scorePanel.SetActive(false);
+            
         }
     }
 }

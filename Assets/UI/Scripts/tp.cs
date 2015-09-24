@@ -20,7 +20,7 @@ public class tp : MonoBehaviour {
     public Image audioOn_img;
     public Image audioOff_img;
 
-    public Canvas money_mask;
+    public GameObject money_mask;
     public int[] ress_price;
     public Text ress_txt;
     private int priceindex = 0;
@@ -58,7 +58,6 @@ public class tp : MonoBehaviour {
 
     void Update()
     {
-
         distance_counter();
     }
 
@@ -189,6 +188,10 @@ public class tp : MonoBehaviour {
             ress_ads_btn.gameObject.GetComponent<UnityEngine.UI.Button>().interactable = false;
             print("Hi");
         }
+    }
+    public void RestartGameOnDeath()
+    {
+        Application.LoadLevel("Main");
     }
 
     

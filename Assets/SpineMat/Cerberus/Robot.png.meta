@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 0f5ccb5a2ffc03b40b221e516162fed5
-timeCreated: 1437212171
+timeCreated: 1443085864
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
@@ -45,7 +45,7 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 0
-  textureType: 8
+  textureType: 5
   buildTargetSettings: []
   spriteSheet:
     sprites: []
