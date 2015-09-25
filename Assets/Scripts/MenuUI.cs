@@ -668,6 +668,16 @@ public class MenuUI : MonoBehaviour
         LevelManager.Instance.GetOwnedSkins();
     }
     */
+    public void AnimationTextChecker()
+    {
+        if(shieldvaluetxt.gameObject.activeInHierarchy || afterlifevaluetxt.gameObject.activeInHierarchy || mashinevaluetxt.gameObject.activeInHierarchy || bigcrystaltxt.gameObject.activeInHierarchy)
+        {
+            shieldvaluetxt.gameObject.SetActive(false);
+            afterlifevaluetxt.gameObject.SetActive(false);
+            mashinevaluetxt.gameObject.SetActive(false);
+            bigcrystaltxt.gameObject.SetActive(false);
+        }
+    }
   
 }
 
