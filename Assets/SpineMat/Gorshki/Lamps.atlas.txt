@@ -1,0 +1,68 @@
+
+Lamps.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+1
+  rotate: false
+  xy: 415, 80
+  size: 51, 77
+  orig: 67, 95
+  offset: 0, 18
+  index: -1
+2
+  rotate: true
+  xy: 552, 186
+  size: 68, 135
+  orig: 100, 137
+  offset: 11, 0
+  index: -1
+3
+  rotate: true
+  xy: 262, 43
+  size: 114, 151
+  orig: 114, 166
+  offset: 0, 15
+  index: -1
+4
+  rotate: true
+  xy: 689, 189
+  size: 65, 121
+  orig: 89, 121
+  offset: 12, 0
+  index: -1
+5
+  rotate: true
+  xy: 2, 93
+  size: 64, 258
+  orig: 66, 260
+  offset: 1, 1
+  index: -1
+6
+  rotate: true
+  xy: 2, 204
+  size: 50, 548
+  orig: 52, 550
+  offset: 1, 1
+  index: -1
+7
+  rotate: true
+  xy: 2, 159
+  size: 43, 484
+  orig: 45, 486
+  offset: 1, 1
+  index: -1
+8
+  rotate: true
+  xy: 2, 8
+  size: 83, 234
+  orig: 85, 236
+  offset: 1, 1
+  index: -1
+RopePart
+  rotate: true
+  xy: 2, 2
+  size: 4, 18
+  orig: 10, 30
+  offset: 3, 6
+  index: -1
