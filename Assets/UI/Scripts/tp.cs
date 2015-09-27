@@ -15,6 +15,7 @@ public class tp : MonoBehaviour {
     //player object for distance meeter
     public GameObject Player;
     public int distance = 8;
+    public Text CrystalSumm;
 
     AudioSource audios;
     public Image audioOn_img;
@@ -34,9 +35,8 @@ public class tp : MonoBehaviour {
 
     void Start ()
     {
-       // ress_ads_btn.gameObject.GetComponent<UnityEngine.UI.Button>().interactable = true;
+        // ress_ads_btn.gameObject.GetComponent<UnityEngine.UI.Button>().interactable = true;
         //ressurected_with_ads = false;
-        
 
         audios = GetComponent<AudioSource>();
 
@@ -53,12 +53,13 @@ public class tp : MonoBehaviour {
         audioOn_img.gameObject.SetActive(true);
         money_mask.gameObject.SetActive(false);
         print(LevelManager.Instance.GetShopID());
-        
+        CrystalSumm.text = LevelManager.Instance.GetMoney().ToString();
     }
 
     void Update()
     {
         distance_counter();
+        CrystalSumm.text = LevelManager.Instance.GetMoney().ToString();
     }
 
     //pause_btn need to be cleaned
@@ -161,12 +162,14 @@ public class tp : MonoBehaviour {
                 ress_txt.text = ress_price[priceindex].ToString();
             print("b");
             }
-
             else
             {
                 ress_txt.text = ress_price[2].ToString();
             }
             print(priceindex);
+            Player.GetComponent<MovingObject>().isDead = false;
+            deathpnl.SetActive(false);
+            scoreboard.SetActive(true);
         }
         else
         {
@@ -193,6 +196,12 @@ public class tp : MonoBehaviour {
     {
         Application.LoadLevel("Main");
     }
+    public void RessurectWithAds()
+    {
+        //resscode
+        Player.GetComponent<MovingObject>().isDead = false;
+        deathpnl.SetActive(false);
+        scoreboard.SetActive(true);
+    }
 
-    
 }

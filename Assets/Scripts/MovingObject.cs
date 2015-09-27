@@ -23,7 +23,7 @@ public class MovingObject : MonoBehaviour
     private bool jump = false;
     private bool flip = false;
     private float gravityScale = 1.0f;
-    private bool isDead = false;
+    public bool isDead = false;
     public GameObject deathPanel;
     public GameObject scorePanel;
 
