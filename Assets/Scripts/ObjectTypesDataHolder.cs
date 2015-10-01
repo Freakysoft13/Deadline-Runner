@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class ObjectTypesDataHolder
 {
+    private bool isInitialized = false;
 
     private string[] obstacleNames;
     private ObstacleType[] obstacleTypes;
@@ -83,17 +84,20 @@ public class ObjectTypesDataHolder
     }
     
     public void Initialize() {
-        string errorMessage = "{0} Length Is Greater Than {1} Length";
-        CheckConsistency(obstacleNames, obstacleTypes, string.Format(errorMessage, "Obstacle Names", "Obstacle Types"));
-        PopulateDictionary<ObstacleType, string>(obstacleTypes, obstacleNames, obstacleNameToTypeDic);
-        CheckConsistency(parallaxObjectNames, parallaxTypes, string.Format(errorMessage, "Parallax Names", "Parallax Types"));
-        PopulateDictionary<ParallaxObjectType, string>(parallaxTypes, parallaxObjectNames, parallaxNameToTypeDic);
-        CheckConsistency(parallaxObjectNames, parallaxTypes, string.Format(errorMessage, "Decoration Names", "Decoration Types"));
-        PopulateDictionary<DecorationObjectType, string>(decorationTypes, decorationObjectNames, decorationNameToTypeDic);
-        CheckConsistency(crystalObjectNames, crystalTypes, string.Format(errorMessage, "Crystal Names", "Crystal Types"));
-        PopulateDictionary<CrystalType, string>(crystalTypes, crystalObjectNames, crystalNameToTypeDic);
-        CheckConsistency(effectObjectNames, effectTypes, string.Format(errorMessage, "Effect Names", "Effect Types"));
-        PopulateDictionary<EffectType, string>(effectTypes, effectObjectNames, effectNameToTypeDic);
+        if (!isInitialized) {
+            string errorMessage = "{0} Length Is Greater Than {1} Length";
+            CheckConsistency(obstacleNames, obstacleTypes, string.Format(errorMessage, "Obstacle Names", "Obstacle Types"));
+            PopulateDictionary<ObstacleType, string>(obstacleTypes, obstacleNames, obstacleNameToTypeDic);
+            CheckConsistency(parallaxObjectNames, parallaxTypes, string.Format(errorMessage, "Parallax Names", "Parallax Types"));
+            PopulateDictionary<ParallaxObjectType, string>(parallaxTypes, parallaxObjectNames, parallaxNameToTypeDic);
+            CheckConsistency(parallaxObjectNames, parallaxTypes, string.Format(errorMessage, "Decoration Names", "Decoration Types"));
+            PopulateDictionary<DecorationObjectType, string>(decorationTypes, decorationObjectNames, decorationNameToTypeDic);
+            CheckConsistency(crystalObjectNames, crystalTypes, string.Format(errorMessage, "Crystal Names", "Crystal Types"));
+            PopulateDictionary<CrystalType, string>(crystalTypes, crystalObjectNames, crystalNameToTypeDic);
+            CheckConsistency(effectObjectNames, effectTypes, string.Format(errorMessage, "Effect Names", "Effect Types"));
+            PopulateDictionary<EffectType, string>(effectTypes, effectObjectNames, effectNameToTypeDic);
+            isInitialized = true;
+        }
     }
 
     private void CheckConsistency(System.Array arrayOne, System.Array arrayTwo, string errorMessage) {

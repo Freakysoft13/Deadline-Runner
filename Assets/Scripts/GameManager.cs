@@ -19,13 +19,11 @@ public class GameManager : MonoBehaviour
     private float score;
     public int target = 60;
 
-    public static GameManager Instance
-    {
+    public static GameManager Instance {
         get { return instance; }
     }
 
-    void Awake()
-    {
+    void Awake() {
         instance = this;
         objectDecorator = new ObjectDecorator();
         dataHolder = ObjectTypesDataHolder.Instance;
@@ -42,31 +40,25 @@ public class GameManager : MonoBehaviour
         dataHolder.Initialize();
     }
 
-    void Start()
-    {
+    void Start() {
         Application.targetFrameRate = target;
     }
 
-    void Update()
-    {
-        if(target != Application.targetFrameRate)
-        {
+    void Update() {
+        if (target != Application.targetFrameRate) {
             Application.targetFrameRate = target;
         }
     }
 
-    public void SpawnDecorationForObject(GameObject go, ObjectTypesDataHolder.DecorationObjectType type, bool isUpper)
-    {
+    public void SpawnDecorationForObject(GameObject go, ObjectTypesDataHolder.DecorationObjectType type, bool isUpper) {
         objectDecorator.SpawnDecorationForObject(go, type, isUpper);
     }
 
-    public void SpawnParallaxObjectForObject(GameObject go, ObjectTypesDataHolder.ParallaxObjectType type)
-    {
+    public void SpawnParallaxObjectForObject(GameObject go, ObjectTypesDataHolder.ParallaxObjectType type) {
         objectDecorator.SpawnParallaxObjectForObject(go, type);
     }
 
-    public void AddScore(float amt)
-    {
+    public void AddScore(float amt) {
         score += amt;
     }
 
