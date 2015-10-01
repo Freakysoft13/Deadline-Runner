@@ -11,7 +11,7 @@ public class ParallaxMove : MonoBehaviour
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        speed = player.GetComponent<MovingObject>().speed;
+        speed = player.GetComponent<Player>().speed;
     }
 
     void Update()

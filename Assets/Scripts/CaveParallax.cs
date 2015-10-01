@@ -20,7 +20,7 @@ public class CaveParallax : MonoBehaviour
 
     void Update() {
         if (ShouldPerform()) {
-            transform.Translate(Vector3.right * (player.GetComponent<MovingObject>().speed / movementSlowFactor) * Time.deltaTime);
+            transform.Translate(Vector3.right * (player.GetComponent<Player>().speed / movementSlowFactor) * Time.deltaTime);
         }
         else {
             transform.position = startPos;

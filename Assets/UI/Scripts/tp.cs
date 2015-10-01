@@ -52,7 +52,6 @@ public class tp : MonoBehaviour {
         audioOff_img.gameObject.SetActive(false);
         audioOn_img.gameObject.SetActive(true);
         money_mask.gameObject.SetActive(false);
-        print(LevelManager.Instance.GetShopID());
         CrystalSumm.text = LevelManager.Instance.GetMoney().ToString();
     }
 
@@ -167,7 +166,7 @@ public class tp : MonoBehaviour {
                 ress_txt.text = ress_price[2].ToString();
             }
             print(priceindex);
-            Player.GetComponent<MovingObject>().isDead = false;
+            Player.GetComponent<Player>().isDead = false;
             deathpnl.SetActive(false);
             scoreboard.SetActive(true);
         }
@@ -199,7 +198,7 @@ public class tp : MonoBehaviour {
     public void RessurectWithAds()
     {
         //resscode
-        Player.GetComponent<MovingObject>().isDead = false;
+        Player.GetComponent<Player>().isDead = false;
         deathpnl.SetActive(false);
         scoreboard.SetActive(true);
     }

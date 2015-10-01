@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
 
-public class MovingObject : MonoBehaviour
+public class Player : MonoBehaviour
 {
     public float speed = 5.0f;
     public float jumpSpeed = 5.0f;
