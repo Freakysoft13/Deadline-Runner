@@ -95,7 +95,6 @@ public class ObjectPool : MonoBehaviour
             List<GameObject> objects = new List<GameObject>();
             for (int i = 0; i < copiesCount; i++)
             {
-                print(name);
                 GameObject instantiatedObject = GameObject.Instantiate(obj, Vector3.zero, Quaternion.identity) as GameObject;
                 instantiatedObject.name = obj.name;
                 instantiatedObject.SetActive(false);

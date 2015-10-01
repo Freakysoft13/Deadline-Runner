@@ -78,6 +78,9 @@ public abstract class ObjectSpawner : MonoBehaviour
             float startOffset = lastObjectSpawnPos == 0 ? startSpawnDistance : 0;
             float nextPosX = lastObjectSpawnPos + spread + startOffset + currentPadding;
             GameObject objectToSpawn = objectPool.GetObject(ObjectTypesDataHolder.Instance.GetObjectNameForType(objectTypes[objectIndex]));
+            if(objectToSpawn == null) {
+                print(ObjectTypesDataHolder.Instance.GetObjectNameForType(objectTypes[objectIndex]));
+            }
             Collider2D collider = objectToSpawn.GetComponent<Collider2D>();
             float prevObjectMinX = collider.bounds.min.x;
             float prevObjectMaxX = collider.bounds.max.x;

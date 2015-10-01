@@ -149,7 +149,7 @@ public class ObjectTypesDataHolder
 
     public enum EffectType
     {
-        BUFF, DEBUFF
+        BUFF, DEBUFF // in future SLOW_EFFECT, DOUBLE_COINS ... etc
     }
 
     public enum ParallaxObjectType

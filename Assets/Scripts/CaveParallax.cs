@@ -3,10 +3,9 @@ using System.Collections;
 
 public class CaveParallax : MonoBehaviour
 {
-
-    private bool isPlayerNear = false;
     private Transform player;
     private Vector3 startPos;
+    private bool shouldSavePos = true;
 
     public float minDistanceToPlayer = 15.0f;
     public float movementDistance = 2.0f;
@@ -14,16 +13,20 @@ public class CaveParallax : MonoBehaviour
 
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        startPos = transform.position;
     }
 
 
     void Update() {
         if (ShouldPerform()) {
+            if (shouldSavePos) {
+                startPos = transform.localPosition;
+                shouldSavePos = false;
+            }
             transform.Translate(Vector3.right * (player.GetComponent<Player>().speed / movementSlowFactor) * Time.deltaTime);
         }
-        else {
+        else if (!shouldSavePos) {
             transform.position = startPos;
+            shouldSavePos = true;
         }
     }
 
