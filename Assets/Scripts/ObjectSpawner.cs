@@ -22,14 +22,18 @@ public abstract class ObjectSpawner : MonoBehaviour
     protected float lastUpdateTime;
     protected float spread;
 
-    private const string LAST_SPAWN_POS_KEY = "lastSpawnPos";
-    private const string IS_SPAWN_PAUSED_KEY = "isSpawnPaused";
-    private const string PAUSED_BY_SIDE_KEY = "pausedBySide";
+    private string LAST_SPAWN_POS_KEY = "lastSpawnPos";
+    private string IS_SPAWN_PAUSED_KEY = "isSpawnPaused";
+    private string PAUSED_BY_SIDE_KEY = "pausedBySide";
 
     private ObjectPool objectPool;
     
     void Awake()
     {
+        string extraKey = GetObjectTypes()[0].ToString();
+        LAST_SPAWN_POS_KEY += extraKey;
+        IS_SPAWN_PAUSED_KEY += extraKey;
+        PAUSED_BY_SIDE_KEY += extraKey;
         PlayerPrefs.DeleteKey(LAST_SPAWN_POS_KEY);
         PlayerPrefs.DeleteKey(IS_SPAWN_PAUSED_KEY);
         PlayerPrefs.DeleteKey(PAUSED_BY_SIDE_KEY);
@@ -62,11 +66,9 @@ public abstract class ObjectSpawner : MonoBehaviour
         isSpawnPaused = PlayerPrefs.GetInt(IS_SPAWN_PAUSED_KEY, 0) == 1;
         if (isSpawnPaused)
         {
-
             isSpawnPaused = PlayerPrefs.GetInt(IS_SPAWN_PAUSED_KEY, 0) == 1 || side.ToString().Equals(PlayerPrefs.GetString(PAUSED_BY_SIDE_KEY, side.ToString()));
-            if (!(lastObjectSpawnPos - Mathf.Abs(player.position.x) > 5 * startSpawnDistance))
+            if (!(lastObjectSpawnPos - Mathf.Abs(player.position.x) > 3 * startSpawnDistance))
             {
-
                 PlayerPrefs.SetInt(IS_SPAWN_PAUSED_KEY, 0);
             }
         }
@@ -110,9 +112,8 @@ public abstract class ObjectSpawner : MonoBehaviour
             //required padding: if distance between two obstacles is 0 then they should spawn side by side and not one on another.
             lastObjectSpawnPos = nextPosX + halfLength;
             nextPadding = currentPadding;
-            if (lastObjectSpawnPos - Mathf.Abs(player.position.x) > startSpawnDistance)
+            if (lastObjectSpawnPos - Mathf.Abs(player.position.x) > 3 * startSpawnDistance)
             {
-
                 PlayerPrefs.SetString(PAUSED_BY_SIDE_KEY, side.ToString());
                 PlayerPrefs.SetInt(IS_SPAWN_PAUSED_KEY, 1);
             }
