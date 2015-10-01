@@ -72,7 +72,7 @@ public abstract class ObjectSpawner : MonoBehaviour
                 PlayerPrefs.SetInt(IS_SPAWN_PAUSED_KEY, 0);
             }
         }
-        if ((Mathf.Abs(player.position.x - lastXPos) > spread) && !isSpawnPaused)
+        if ((Mathf.Abs(player.position.x - lastXPos) > (spread / 2)) && !isSpawnPaused)
         {
             System.Enum[] objectTypes = GetObjectTypes();
             int objectIndex = Random.Range(0, objectTypes.Length);
@@ -106,8 +106,9 @@ public abstract class ObjectSpawner : MonoBehaviour
 
             objectToSpawn.transform.position = new Vector2(nextPosX, objectToSpawn.GetComponent<SpawnableObject>().yPosition * sideIndicator);
             objectToSpawn.transform.localScale = new Vector3(objectToSpawn.transform.localScale.x, sideIndicator * Mathf.Abs(objectToSpawn.transform.localScale.y), objectToSpawn.transform.localScale.z);
-            spread = Random.Range(minSpread, maxSpread);
+            
             lastXPos = player.position.x;
+            spread = Random.Range(minSpread, maxSpread);
 
             //required padding: if distance between two obstacles is 0 then they should spawn side by side and not one on another.
             lastObjectSpawnPos = nextPosX + halfLength;
