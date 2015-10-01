@@ -10,12 +10,14 @@ public class ObjectPool : MonoBehaviour
     public string[] parallaxObjectsNames;
     public string[] obstaclesNames;
     public string[] crystalNames;
+    public string[] effectNames;
     public int backgroundCopies = 2;
     public int floorCopies = 20;
     public int lightCopies = 4;
     public int parallaxObjectsCopies = 4;
     public int obstaclesCopies = 4;
     public int crystalCopies = 4;
+    public int effectCopies = 4;
 
     private static ObjectPool instance;
 
@@ -32,6 +34,7 @@ public class ObjectPool : MonoBehaviour
     private Dictionary<string, List<GameObject>> parallaxObjectsMap = new Dictionary<string, List<GameObject>>();
     private Dictionary<string, List<GameObject>> obstaclesMap = new Dictionary<string, List<GameObject>>();
     private Dictionary<string, List<GameObject>> crystalsMap = new Dictionary<string, List<GameObject>>();
+    private Dictionary<string, List<GameObject>> effectsMap = new Dictionary<string, List<GameObject>>();
 
     void Awake()
     {
@@ -47,6 +50,7 @@ public class ObjectPool : MonoBehaviour
         PreloadParallaxObjects();
         PreloadObstacles();
         PreloadCyrstals();
+        PreloadEffects();
     }
 
     private void PreloadBackgrounds()
@@ -79,6 +83,10 @@ public class ObjectPool : MonoBehaviour
         PreloadObjects(crystalNames, crystalCopies, crystalsMap);
     }
 
+    private void PreloadEffects() {
+        PreloadObjects(effectNames, effectCopies, effectsMap);
+    }
+
     private void PreloadObjects(string[] prefabNames, int copiesCount, Dictionary<string, List<GameObject>> container)
     {
         foreach (string name in prefabNames)
@@ -87,6 +95,7 @@ public class ObjectPool : MonoBehaviour
             List<GameObject> objects = new List<GameObject>();
             for (int i = 0; i < copiesCount; i++)
             {
+                print(name);
                 GameObject instantiatedObject = GameObject.Instantiate(obj, Vector3.zero, Quaternion.identity) as GameObject;
                 instantiatedObject.name = obj.name;
                 instantiatedObject.SetActive(false);

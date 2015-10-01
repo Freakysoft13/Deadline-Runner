@@ -16,59 +16,73 @@ public class ObjectTypesDataHolder
     private string[] crystalObjectNames;
     private CrystalType[] crystalTypes;
 
-    public string[] ObstacleNames
-    {
+    private string[] effectObjectNames;
+    private EffectType[] effectTypes;
+
+    public string[] ObstacleNames {
         set { obstacleNames = value; }
     }
 
-    public ObstacleType[] ObstacleTypes
-    {
+    public ObstacleType[] ObstacleTypes {
         set { obstacleTypes = value; }
     }
 
-    public string[] ParallaxObjectNames
-    {
+    public string[] ParallaxObjectNames {
         set { parallaxObjectNames = value; }
     }
 
-    public ParallaxObjectType[] ParallaxTypes
-    {
+    public ParallaxObjectType[] ParallaxTypes {
         set { parallaxTypes = value; }
     }
 
-    public string[] DecorationObjectNames
-    {
+    public string[] DecorationObjectNames {
         set { decorationObjectNames = value; }
     }
 
-    public DecorationObjectType[] DecorationTypes
-    {
+    public DecorationObjectType[] DecorationTypes {
         set { decorationTypes = value; }
     }
 
-    public string[] CrystalObjectNames
-    {
+    public string[] CrystalObjectNames {
         set { crystalObjectNames = value; }
     }
 
-    public CrystalType[] CrystalTypes
-    {
+    public CrystalType[] CrystalTypes {
         set { crystalTypes = value; }
+    }
+
+    public string[] EffectObjectNames {
+        get {
+            return effectObjectNames;
+        }
+
+        set {
+            effectObjectNames = value;
+        }
+    }
+
+    public EffectType[] EffectTypes {
+        get {
+            return effectTypes;
+        }
+
+        set {
+            effectTypes = value;
+        }
     }
 
     private Dictionary<ObstacleType, string> obstacleNameToTypeDic = new Dictionary<ObstacleType, string>();
     private Dictionary<CrystalType, string> crystalNameToTypeDic = new Dictionary<CrystalType, string>();
+    private Dictionary<EffectType, string> effectNameToTypeDic = new Dictionary<EffectType, string>();
     private Dictionary<ParallaxObjectType, string> parallaxNameToTypeDic = new Dictionary<ParallaxObjectType, string>();
     private Dictionary<DecorationObjectType, string> decorationNameToTypeDic = new Dictionary<DecorationObjectType, string>();
 
     private static ObjectTypesDataHolder instance = new ObjectTypesDataHolder();
-    public static ObjectTypesDataHolder Instance
-    {
+    public static ObjectTypesDataHolder Instance {
         get { return instance; }
     }
-
-    public void Initialize()
-    {
+    
+    public void Initialize() {
         string errorMessage = "{0} Length Is Greater Than {1} Length";
         CheckConsistency(obstacleNames, obstacleTypes, string.Format(errorMessage, "Obstacle Names", "Obstacle Types"));
         PopulateDictionary<ObstacleType, string>(obstacleTypes, obstacleNames, obstacleNameToTypeDic);
@@ -78,53 +92,47 @@ public class ObjectTypesDataHolder
         PopulateDictionary<DecorationObjectType, string>(decorationTypes, decorationObjectNames, decorationNameToTypeDic);
         CheckConsistency(crystalObjectNames, crystalTypes, string.Format(errorMessage, "Crystal Names", "Crystal Types"));
         PopulateDictionary<CrystalType, string>(crystalTypes, crystalObjectNames, crystalNameToTypeDic);
+        CheckConsistency(effectObjectNames, effectTypes, string.Format(errorMessage, "Effect Names", "Effect Types"));
+        PopulateDictionary<EffectType, string>(effectTypes, effectObjectNames, effectNameToTypeDic);
     }
 
-    private void CheckConsistency(System.Array arrayOne, System.Array arrayTwo, string errorMessage)
-    {
-        if (arrayOne.Length != arrayTwo.Length)
-        {
+    private void CheckConsistency(System.Array arrayOne, System.Array arrayTwo, string errorMessage) {
+        if (arrayOne.Length != arrayTwo.Length) {
             throw new UnityException(errorMessage);
         }
     }
 
-    private void PopulateDictionary<T, V>(T[] keys, V[] values, Dictionary<T, V> dictionary)
-    {
-        for (int i = 0; i < keys.Length; i++)
-        {
+    private void PopulateDictionary<T, V>(T[] keys, V[] values, Dictionary<T, V> dictionary) {
+        for (int i = 0; i < keys.Length; i++) {
             dictionary.Add(keys[i], values[i]);
         }
     }
 
-    public string GetParallaxNameForType(ParallaxObjectType type)
-    {
+    public string GetParallaxNameForType(ParallaxObjectType type) {
         return parallaxNameToTypeDic[type];
     }
 
-    public string GetObstacleNameForType(ObstacleType type)
-    {
+    public string GetObstacleNameForType(ObstacleType type) {
         return obstacleNameToTypeDic[type];
     }
 
-    public string GetDecorationNameForType(DecorationObjectType type)
-    {
+    public string GetDecorationNameForType(DecorationObjectType type) {
         return decorationNameToTypeDic[type];
     }
 
-    public string GetCrystalNameForType(CrystalType type)
-    {
+    public string GetCrystalNameForType(CrystalType type) {
         return crystalNameToTypeDic[type];
     }
 
-    public string GetObjectNameForType(System.Enum type)
-    {
-        if (type is ObstacleType)
-        {
+    public string GetObjectNameForType(System.Enum type) {
+        if (type is ObstacleType) {
             return obstacleNameToTypeDic[(ObstacleType)type];
         }
-        else if (type is CrystalType)
-        {
+        else if (type is CrystalType) {
             return crystalNameToTypeDic[(CrystalType)type];
+        }
+        else if (type is EffectType) {
+            return effectNameToTypeDic[(EffectType)type];
         }
         return "";
     }
@@ -137,6 +145,11 @@ public class ObjectTypesDataHolder
     public enum CrystalType
     {
         RED, GREEN
+    }
+
+    public enum EffectType
+    {
+        BUFF, DEBUFF
     }
 
     public enum ParallaxObjectType

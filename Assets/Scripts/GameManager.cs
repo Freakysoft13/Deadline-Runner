@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +13,8 @@ public class GameManager : MonoBehaviour
     public ObjectTypesDataHolder.ObstacleType[] obstacleTypes;
     public string[] crystalNames;
     public ObjectTypesDataHolder.CrystalType[] crystalTypes;
+    public string[] effectNames;
+    public ObjectTypesDataHolder.EffectType[] effectTypes;
 
     private float score;
     public int target = 60;
@@ -36,6 +37,8 @@ public class GameManager : MonoBehaviour
         dataHolder.DecorationTypes = decorationObjectTypes;
         dataHolder.CrystalObjectNames = crystalNames;
         dataHolder.CrystalTypes = crystalTypes;
+        dataHolder.EffectObjectNames = effectNames;
+        dataHolder.EffectTypes = effectTypes;
         dataHolder.Initialize();
     }
 
