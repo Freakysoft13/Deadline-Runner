@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 
-public class CameraFollow : MonoBehaviour {
+public class CameraFollow : MonoBehaviour
+{
+
+    public Transform target;
+
+    private float xDelta;
 
     /*public Transform trackedObject;
     public float smoothTime = 0.0f;
@@ -17,7 +22,7 @@ public class CameraFollow : MonoBehaviour {
     {
         float xSmoothPos = Mathf.SmoothDamp(transform.position.x, trackedObject.position.x, ref velocity.x, smoothTime);
         transform.position = new Vector3(xSmoothPos - 1.8f * xAhead * Time.deltaTime, 0, -10);
-    }*/
+    }
 
     public float dampTime = 0.15f;
     private Vector3 velocity = Vector3.zero;
@@ -34,7 +39,18 @@ public class CameraFollow : MonoBehaviour {
             destination.y = 0.0f;
             transform.position = Vector3.SmoothDamp(transform.position, destination, ref velocity, dampTime);
         }
-     }
+     }*/
 
+    void Start() {
+        xDelta = Mathf.Abs(transform.position.x - target.position.x);
+    }
+
+    void Update() {
+        if (target) {
+            Vector3 newPos = transform.position;
+            newPos.x = target.position.x + xDelta;
+            transform.position = newPos;
+        }
+    }
 
 }
