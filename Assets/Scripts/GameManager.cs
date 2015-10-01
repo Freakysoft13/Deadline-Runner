@@ -66,4 +66,8 @@ public class GameManager : MonoBehaviour
     {
         score += amt;
     }
+
+    public float GetScore() {
+        return score;
+    }
 }

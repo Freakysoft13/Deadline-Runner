@@ -59,7 +59,7 @@ public class tp : MonoBehaviour {
     void Update()
     {
         distance_counter();
-        CrystalSumm.text = LevelManager.Instance.GetMoney().ToString();
+        CrystalSumm.text = GameManager.Instance.GetScore().ToString();
     }
 
     //pause_btn need to be cleaned
