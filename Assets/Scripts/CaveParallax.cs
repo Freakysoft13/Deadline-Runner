@@ -19,7 +19,7 @@ public class CaveParallax : MonoBehaviour
     void Update() {
         if (ShouldPerform()) {
             if (shouldSavePos) {
-                startPos = transform.localPosition;
+                startPos = transform.position;
                 shouldSavePos = false;
             }
             transform.Translate(Vector3.right * (player.GetComponent<Player>().speed / movementSlowFactor) * Time.deltaTime);
