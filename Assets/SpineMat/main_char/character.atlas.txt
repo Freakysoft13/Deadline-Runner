@@ -1,5 +1,5 @@
 
-BallOne.png
+character.png
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
