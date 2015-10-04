@@ -1,13 +1,17 @@
-﻿public class SlowMovement : Effect {
+﻿namespace Effect
+{
+    public class SlowMovement : Effect
+    {
 
-    private float originalSpeed;
+        private float originalSpeed;
 
-    public override void ApplyEffect(Player player) {
-        originalSpeed = player.speed;
-        player.speed /= 2;
-    }
+        public override void ApplyEffect(Player player) {
+            originalSpeed = player.speed;
+            player.speed /= 2;
+        }
 
-    public override void RemoveEffect(Player player) {
-        player.speed = originalSpeed;
+        public override void RemoveEffect(Player player) {
+            player.speed = originalSpeed;
+        }
     }
 }

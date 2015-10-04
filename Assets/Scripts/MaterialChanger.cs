@@ -1,12 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MaterialChanger : MonoBehaviour {
+public class MaterialChanger : MonoBehaviour
+{
 
     public PhysicsMaterial2D swapMaterial;
+    private PhysicsMaterial2D originalMaterial;
 
-    public void Swap()
-    {
-        GetComponent<BoxCollider2D>().sharedMaterial = swapMaterial;
+    private bool isSwapped = false;
+
+    void Start() {
+        originalMaterial = GetComponent<BoxCollider2D>().sharedMaterial;
+    }
+
+    public void Swap() {
+        GetComponent<BoxCollider2D>().sharedMaterial = isSwapped ? originalMaterial : swapMaterial;
+        isSwapped = !isSwapped;
     }
 }

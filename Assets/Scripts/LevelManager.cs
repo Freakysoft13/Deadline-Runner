@@ -14,7 +14,12 @@ public class LevelManager : MonoBehaviour {
 	public int[] levelsExp;
 	public int maxPowerUpLevel = 6;
 
-	public static LevelManager Instance {
+    public int[] shieldTimers;
+    public int[] crystalValues;
+    public int[] afterLifeTimers;
+    public int[] strangeMachineTimers;
+
+    public static LevelManager Instance {
 		get { return instance;}
 	}
 

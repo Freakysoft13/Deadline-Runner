@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Effect;
 
 public class Player : MonoBehaviour
 {
@@ -21,14 +22,13 @@ public class Player : MonoBehaviour
     private bool jump = false;
     private bool flip = false;
     private float gravityScale = 1.0f;
-    public bool isDead = false;
-    public GameObject deathPanel;
-    public GameObject scorePanel;
+    private bool isDead = false;
+    private bool isShielded = false;
+
+    private float speedAtDeath = 0;
 
     void Start()
     {
-        scorePanel.SetActive(true);
-        deathPanel.SetActive(false);
         animationController = GetComponent<AnimationController>();
         rigidBody = GetComponent<Rigidbody2D>();
     }
@@ -93,6 +93,37 @@ public class Player : MonoBehaviour
             }
         }
         
+    }
+
+    public void ShieldsUp() {
+        isShielded = true;
+    }
+
+    public void ShieldsDown() {
+        isShielded = false;
+    }
+
+    public void Die() {
+        isDead = true;
+        speedAtDeath = speed;
+        speed = 0;
+        animationController.Die();
+        slippyFloor.GetComponent<MaterialChanger>().Swap();
+        GameManager.Instance.PlayerDie();
+    }
+
+    public void Ressurect() {
+        isDead = false;
+        animationController.Fly();
+        slippyFloor.GetComponent<MaterialChanger>().Swap();
+        speed = speedAtDeath;
+        Shield shield = new Shield();
+        shield.duration = 3;
+        shield.PickUpTime = Time.time;
+        EffectManager.Instance.AddEffect(shield);
+        Vector3 pos = transform.position;
+        pos.y = 1;
+        transform.position = pos;
     }
 
     public void Jump()
@@ -170,14 +201,9 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.CompareTag("obstacle") && !isDead)
+        if (collider.CompareTag("obstacle") && !isDead && !isShielded)
         {
-            isDead = true;
-            animationController.Die();
-            slippyFloor.GetComponent<MaterialChanger>().Swap();
-            deathPanel.SetActive(true);
-            scorePanel.SetActive(false);
-            
+            Die();            
         }
     }
 }

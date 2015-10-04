@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public ObjectTypesDataHolder.CrystalType[] crystalTypes;
     public string[] effectNames;
     public ObjectTypesDataHolder.EffectType[] effectTypes;
+    public GameObject deathPanel;
+    public GameObject scorePanel;
 
     private float score;
     public int target = 60;
@@ -64,5 +66,10 @@ public class GameManager : MonoBehaviour
 
     public float GetScore() {
         return score;
+    }
+
+    public void PlayerDie() {
+        scorePanel.SetActive(false);
+        deathPanel.SetActive(true);
     }
 }

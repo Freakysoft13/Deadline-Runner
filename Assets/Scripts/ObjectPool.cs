@@ -21,8 +21,7 @@ public class ObjectPool : MonoBehaviour
 
     private static ObjectPool instance;
 
-    public static ObjectPool Instance
-    {
+    public static ObjectPool Instance {
         get { return instance; }
     }
 
@@ -36,14 +35,12 @@ public class ObjectPool : MonoBehaviour
     private Dictionary<string, List<GameObject>> crystalsMap = new Dictionary<string, List<GameObject>>();
     private Dictionary<string, List<GameObject>> effectsMap = new Dictionary<string, List<GameObject>>();
 
-    void Awake()
-    {
+    void Awake() {
         instance = this;
         PreloadAllObjects();
     }
 
-    private void PreloadAllObjects()
-    {
+    private void PreloadAllObjects() {
         PreloadBackgrounds();
         PreloadFloor();
         PreloadLight();
@@ -53,33 +50,27 @@ public class ObjectPool : MonoBehaviour
         PreloadEffects();
     }
 
-    private void PreloadBackgrounds()
-    {
+    private void PreloadBackgrounds() {
         PreloadObjects(backgroundNames, backgroundCopies, backgroundsMap);
     }
 
-    private void PreloadFloor()
-    {
+    private void PreloadFloor() {
         PreloadObjects(floorNames, floorCopies, floorsMap);
     }
 
-    private void PreloadLight()
-    {
+    private void PreloadLight() {
         PreloadObjects(lightNames, lightCopies, lightsMap);
     }
 
-    private void PreloadParallaxObjects()
-    {
+    private void PreloadParallaxObjects() {
         PreloadObjects(parallaxObjectsNames, parallaxObjectsCopies, parallaxObjectsMap);
     }
 
-    private void PreloadObstacles()
-    {
+    private void PreloadObstacles() {
         PreloadObjects(obstaclesNames, obstaclesCopies, obstaclesMap);
     }
 
-    private void PreloadCyrstals()
-    {
+    private void PreloadCyrstals() {
         PreloadObjects(crystalNames, crystalCopies, crystalsMap);
     }
 
@@ -87,14 +78,11 @@ public class ObjectPool : MonoBehaviour
         PreloadObjects(effectNames, effectCopies, effectsMap);
     }
 
-    private void PreloadObjects(string[] prefabNames, int copiesCount, Dictionary<string, List<GameObject>> container)
-    {
-        foreach (string name in prefabNames)
-        {
+    private void PreloadObjects(string[] prefabNames, int copiesCount, Dictionary<string, List<GameObject>> container) {
+        foreach (string name in prefabNames) {
             GameObject obj = Resources.Load(name) as GameObject;
             List<GameObject> objects = new List<GameObject>();
-            for (int i = 0; i < copiesCount; i++)
-            {
+            for (int i = 0; i < copiesCount; i++) {
                 GameObject instantiatedObject = GameObject.Instantiate(obj, Vector3.zero, Quaternion.identity) as GameObject;
                 instantiatedObject.name = obj.name;
                 instantiatedObject.SetActive(false);
@@ -105,39 +93,29 @@ public class ObjectPool : MonoBehaviour
         allObjectMapsList.Add(container);
     }
 
-    public GameObject GetObject(string type, bool autoActivate)
-    {
-        foreach (Dictionary<string, List<GameObject>> container in allObjectMapsList)
-        {
-            if (container.ContainsKey(type))
-            {
+    public GameObject GetObject(string type, bool autoActivate) {
+        foreach (Dictionary<string, List<GameObject>> container in allObjectMapsList) {
+            if (container.ContainsKey(type)) {
                 return GetObjectByType(type, container, autoActivate);
             }
         }
         return null;
     }
 
-    public GameObject GetObject(string type)
-    {
-        foreach (Dictionary<string, List<GameObject>> container in allObjectMapsList)
-        {
-            if (container.ContainsKey(type))
-            {
+    public GameObject GetObject(string type) {
+        foreach (Dictionary<string, List<GameObject>> container in allObjectMapsList) {
+            if (container.ContainsKey(type)) {
                 return GetObjectByType(type, container, true);
             }
         }
         return null;
     }
 
-    private GameObject GetObjectByType(string type, Dictionary<string, List<GameObject>> container, bool autoActivate)
-    {
+    private GameObject GetObjectByType(string type, Dictionary<string, List<GameObject>> container, bool autoActivate) {
         List<GameObject> objectsForName = container[type];
-        foreach (GameObject obj in objectsForName)
-        {
-            if (!obj.activeSelf)
-            {
-                foreach(Transform t in obj.transform)
-                {
+        foreach (GameObject obj in objectsForName) {
+            if (!obj.activeSelf) {
+                foreach (Transform t in obj.transform) {
                     t.gameObject.SetActive(true);
                 }
                 obj.SetActive(true);
