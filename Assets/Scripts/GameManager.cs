@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     public GameObject deathPanel;
     public GameObject scorePanel;
 
-    private float score;
+    private int score;
     public int target = 60;
 
     public static GameManager Instance {
@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
         objectDecorator.SpawnParallaxObjectForObject(go, type);
     }
 
-    public void AddScore(float amt) {
+    public void AddScore(int amt) {
         score += amt;
     }
 
@@ -71,5 +71,9 @@ public class GameManager : MonoBehaviour
     public void PlayerDie() {
         scorePanel.SetActive(false);
         deathPanel.SetActive(true);
+    }
+
+    public void SaveResult() {
+        LevelManager.Instance.AddMoney(score);
     }
 }

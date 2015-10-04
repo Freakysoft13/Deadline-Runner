@@ -4,7 +4,6 @@ namespace Effect
 {
     public class EffectManager : MonoBehaviour
     {
-
         private List<Effect> effects = new List<Effect>();
         private Player player;
 
@@ -26,10 +25,12 @@ namespace Effect
         }
 
         void Update() {
-            foreach (Effect effect in effects) {
+            for (int i = 0; i < effects.Count; i++) {
+                Effect effect = effects[i];
                 if (effect.PickUpTime != 0 && Mathf.Abs(effect.PickUpTime - Time.time) > effect.duration) {
                     effect.RemoveEffect(player);
                     effect.PickUpTime = 0;
+                    effects.Remove(effect);
                 }
             }
         }

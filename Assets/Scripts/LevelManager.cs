@@ -18,6 +18,7 @@ public class LevelManager : MonoBehaviour {
     public int[] crystalValues;
     public int[] afterLifeTimers;
     public int[] strangeMachineTimers;
+    public SkeletonDataAsset[] skins;
 
     public static LevelManager Instance {
 		get { return instance;}

@@ -5,8 +5,7 @@ namespace Effect
     public class Shield : Effect
     {
         void Start() {
-            type = ObjectTypesDataHolder.EffectType.SHIELD;
-            duration = LevelManager.Instance.shieldTimers[LevelManager.Instance.GetPowerUpLevel(LevelManager.PowerUp.SHIELD)];
+            duration = LevelManager.Instance.shieldTimers[LevelManager.Instance.GetPowerUpLevel(type)];
         }
 
         public override void ApplyEffect(Player player) {

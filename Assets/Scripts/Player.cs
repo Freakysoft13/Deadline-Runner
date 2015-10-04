@@ -27,21 +27,23 @@ public class Player : MonoBehaviour
 
     private float speedAtDeath = 0;
 
-    void Start()
-    {
+    void Start() {
+        LevelManager lm = LevelManager.Instance;
+        LevelManager.Skin skin = lm.GetEquippedSkin();
+        SkeletonDataAsset asset = lm.skins[lm.GetItemIndex<LevelManager.Skin>(skin)];
+        SkeletonAnimation sa = GetComponent<SkeletonAnimation>();
+        sa.skeletonDataAsset = asset;
+        sa.Reset();
         animationController = GetComponent<AnimationController>();
         rigidBody = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
-    {
+    void Update() {
         CheckTouch();
         if (isDead) { velocity.y -= 9.8f * Time.deltaTime * 10.0f * playerFlip * gravityScale; return; }
         velocity.x = speed;
-        if (!isRotating)
-        {
-            if ((Input.GetKeyDown(KeyCode.Space) || jump) && IsGrounded())
-            {
+        if (!isRotating) {
+            if ((Input.GetKeyDown(KeyCode.Space) || jump) && IsGrounded()) {
                 gravityScale = 1.0f;
                 velocity.y = jumpSpeed * playerFlip;
                 jumpEndTime = Time.time + jumpTime;
@@ -49,50 +51,41 @@ public class Player : MonoBehaviour
                 jump = false;
             }
             velocity.y -= 9.8f * Time.deltaTime * playerFlip * gravityScale * defaultGravityAccel;
-            if ((Input.GetKeyDown(KeyCode.Space) || jump) && !IsGrounded())
-            {
+            if ((Input.GetKeyDown(KeyCode.Space) || jump) && !IsGrounded()) {
                 gravityScale = gravityAccel;
                 animationController.MultTimeScale(gravityScale);
                 jump = true;
                 jumpInterrupt = true;
             }
-            if (Time.time > jumpEndTime && !jumpInterrupt)
-            {
+            if (Time.time > jumpEndTime && !jumpInterrupt) {
                 jumpInterrupt = true;
             }
 
-            if (IsGrounded() && jumpInterrupt)
-            {
+            if (IsGrounded() && jumpInterrupt) {
                 gravityScale = 1.0f;
                 animationController.Fly();
             }
 
-            if (jumpInterrupt)
-            {
-                if ((velocity.y > 0 && !isFlipped()) || velocity.y < 0 && isFlipped())
-                {
+            if (jumpInterrupt) {
+                if ((velocity.y > 0 && !isFlipped()) || velocity.y < 0 && isFlipped()) {
                     velocity.y = Mathf.MoveTowards(velocity.y, 0, Time.deltaTime * 100);
                     animationController.FallDown();
                 }
-                else
-                {
+                else {
                     jumpInterrupt = false;
                 }
             }
-            if ((Input.GetKeyDown(KeyCode.AltGr) || flip) && IsGrounded())
-            {
+            if ((Input.GetKeyDown(KeyCode.AltGr) || flip) && IsGrounded()) {
                 Flip();
                 flip = false;
             }
         }
-        else
-        {
-            if (Quaternion.Angle(rotator.rotation, targetRotatorRotation) < Mathf.Epsilon)
-            {
+        else {
+            if (Quaternion.Angle(rotator.rotation, targetRotatorRotation) < Mathf.Epsilon) {
                 isRotating = false;
             }
         }
-        
+
     }
 
     public void ShieldsUp() {
@@ -126,84 +119,66 @@ public class Player : MonoBehaviour
         transform.position = pos;
     }
 
-    public void Jump()
-    {
+    public void Jump() {
         jump = true;
     }
 
-    private void CheckTouch()
-    {
-        if (Input.touchCount == 1)
-        {
+    private void CheckTouch() {
+        if (Input.touchCount == 1 && Time.timeScale == 1) {
             Touch touch = Input.GetTouch(0);
-            if (touch.tapCount > 0)
-            {
-                if (touch.phase == TouchPhase.Began)
-                {
-                    if (touch.position.x < Screen.width / 2)
-                    {
+            if (touch.tapCount > 0) {
+                if (touch.phase == TouchPhase.Began) {
+                    if (touch.position.x < Screen.width / 2) {
                         flip = true;
                     }
-                    else
-                    {
+                    else {
                         jump = true;
                     }
                 }
             }
-            if (isDead && touch.tapCount == 2)
-            {
+            if (isDead && touch.tapCount == 2) {
                 Application.LoadLevel(0);
             }
         }
     }
 
-    private bool IsGrounded()
-    {
+    private bool IsGrounded() {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.5f);
-        foreach (Collider2D col in colliders)
-        {
-            if (col.CompareTag("floor"))
-            {
+        foreach (Collider2D col in colliders) {
+            if (col.CompareTag("floor")) {
                 return true;
             }
         }
         return false;
     }
 
-    private bool isFlipped()
-    {
+    private bool isFlipped() {
         return playerFlip == -1;
     }
 
-    void FixedUpdate()
-    {
+    void FixedUpdate() {
         rigidBody.velocity = velocity;
         transform.localRotation = Quaternion.identity;
         rotator.rotation = Quaternion.Lerp(rotator.rotation, targetRotatorRotation, 100 * Time.deltaTime);
     }
 
-    public void Flip()
-    {
+    public void Flip() {
         velocity.y = 0;
         isRotating = true;
         Vector2 rotation;
         playerFlip *= -1;
-        if (!isFlipped())
-        {
+        if (!isFlipped()) {
             rotation = new Vector2(0, 0);
         }
-        else
-        {
+        else {
             rotation = new Vector2(180, 0);
         }
         targetRotatorRotation = Quaternion.Euler(rotation);
     }
 
-    void OnTriggerEnter2D(Collider2D collider)
-    {
-        if (collider.CompareTag("obstacle") && !isDead && !isShielded)
-        {
-            Die();            
+    void OnTriggerEnter2D(Collider2D collider) {
+        if (collider.CompareTag("obstacle") && !isDead && !isShielded) {
+            Die();
         }
     }
 }

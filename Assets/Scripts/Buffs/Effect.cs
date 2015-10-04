@@ -4,15 +4,11 @@ namespace Effect
 {
     public abstract class Effect : MonoBehaviour
     {
-        public ObjectTypesDataHolder.EffectType type;
+        public LevelManager.PowerUp type;
         public float duration = 1.0f;
 
         private float pickUpTime = 0;
         private Player player;
-
-        void Start() {
-            type = ObjectTypesDataHolder.EffectType.BUFF;
-        }
 
         public float PickUpTime {
             get {

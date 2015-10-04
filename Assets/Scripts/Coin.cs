@@ -2,7 +2,7 @@
 
 public class Coin : MonoBehaviour {
 
-    public float value = 1;
+    public int value = 1;
     public float floatStrength = 0.5f;
 
     private float originalY;

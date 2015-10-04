@@ -153,7 +153,7 @@ public class ObjectTypesDataHolder
 
     public enum EffectType
     {
-        SHIELD, BUFF // in future SLOW_EFFECT, DOUBLE_COINS ... etc
+        SHIELD, GREEN_CRYSTAL // in future SLOW_EFFECT, DOUBLE_COINS ... etc
     }
 
     public enum ParallaxObjectType
