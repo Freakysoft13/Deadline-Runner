@@ -11,6 +11,7 @@ namespace Effect
         }
         public override void ApplyEffect(Player player) {
             GameManager.Instance.AddScore(amt);
+            print("money!");
         }
 
         public override void RemoveEffect(Player player) {

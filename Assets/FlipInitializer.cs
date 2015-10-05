@@ -6,6 +6,5 @@ public class FlipInitializer : MonoBehaviour {
         Vector3 scale = transform.localScale;
         scale.y = WorldFlipper.Instance.flipped;
         transform.localScale = scale;
-        print(scale.y);
     }
 }
