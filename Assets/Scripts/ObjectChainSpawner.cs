@@ -15,7 +15,7 @@ public class ObjectChainSpawner : MonoBehaviour
     protected ObjectPool objectPool;
     protected int storedSelfSpawnChance;
 
-    void Start()
+    protected virtual void Start()
     {
         objectPool = ObjectPool.Instance;
         storedSelfSpawnChance = selfRespawnChace;
