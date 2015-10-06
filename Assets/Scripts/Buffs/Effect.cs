@@ -32,11 +32,11 @@ namespace Effect
         }
 
         public override bool Equals(object obj) {
-            Effect personObj = obj as Effect;
-            if (personObj == null)
+            Effect effect = obj as Effect;
+            if (effect == null)
                 return false;
             else
-                return type == personObj.type;
+                return type == effect.type;
         }
 
         public override int GetHashCode() {
