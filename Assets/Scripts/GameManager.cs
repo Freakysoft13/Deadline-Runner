@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
     public ObjectTypesDataHolder.EffectType[] effectTypes;
     public GameObject deathPanel;
     public GameObject scorePanel;
+    public Text crystalOnRestartScore;
 
     private int score;
     public int target = 60;
@@ -71,6 +73,7 @@ public class GameManager : MonoBehaviour
     public void PlayerDie() {
         scorePanel.SetActive(false);
         deathPanel.SetActive(true);
+        crystalOnRestartScore.text = LevelManager.Instance.GetMoney().ToString();
     }
 
     public void SaveResult() {
