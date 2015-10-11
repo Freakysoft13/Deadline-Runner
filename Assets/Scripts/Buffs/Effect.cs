@@ -42,5 +42,9 @@ namespace Effect
         public override int GetHashCode() {
             return this.type.GetHashCode();
         }
+
+        public override string ToString() {
+            return type.ToString();
+        }
     }
 }

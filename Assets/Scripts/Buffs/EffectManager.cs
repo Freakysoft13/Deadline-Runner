@@ -30,7 +30,7 @@ namespace Effect
                 if (effect.PickUpTime != 0 && Mathf.Abs(effect.PickUpTime - Time.time) > effect.duration) {
                     effect.RemoveEffect(player);
                     effect.PickUpTime = 0;
-                    effects.Remove(effect);
+                    effects.RemoveAt(i);
                 }
             }
         }

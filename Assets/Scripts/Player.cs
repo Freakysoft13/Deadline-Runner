@@ -113,6 +113,7 @@ public class Player : MonoBehaviour
         Shield shield = new Shield();
         shield.duration = 3;
         shield.PickUpTime = Time.time;
+        shield.type = LevelManager.PowerUp.SHIELD;
         EffectManager.Instance.AddEffect(shield);
         Vector3 pos = transform.position;
         pos.y = 1;
