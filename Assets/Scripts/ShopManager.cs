@@ -22,10 +22,10 @@ public class ShopManager : MonoBehaviour {
     public GameObject[] charlist;
     public GameObject[] lockmasklist;
     public int[] charprice;
-    public GameObject MoneyMask;
     private int index = 0;
     public GameObject[] activateBtn;
     public GameObject[] activatedBtn;
+    public GameObject blockingMask;
 
 	void Start () 
 	{
@@ -88,15 +88,20 @@ public class ShopManager : MonoBehaviour {
     }
     public void BuyChar(int index)
     {
-
+        //Add check for owned skins.
         if (LevelManager.Instance.GetMoney() >= charprice[index])
         {
+            LevelManager.Instance.AddMoney(-charprice[index]);
             LevelManager.Skin skin = (LevelManager.Skin)System.Enum.GetValues(typeof(LevelManager.Skin)).GetValue(index);
 
             LevelManager.Instance.BuySkin(skin);
             print(skin);
         }
-        //else
+        else
+        {
+            lockmasklist[index].SetActive(false);
+            blockingMask.SetActive(true);
+        }
     }
     public void LockedChar(int index)
     {
@@ -106,6 +111,13 @@ public class ShopManager : MonoBehaviour {
     public void DeactivateCharMask(int index)
     {
         lockmasklist[index].SetActive(false);
+    }
+
+
+    //call on start and on char button press, check what skins you own and replace buy button with activate button
+    public void SkinChecker()
+    {
+
     }
 
 }

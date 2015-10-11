@@ -678,6 +678,11 @@ public class MenuUI : MonoBehaviour
             bigcrystaltxt.gameObject.SetActive(false);
         }
     }
+
+    public void StartFromBlockingMask()
+    {
+        Application.LoadLevel("Main");
+    }
   
 }
 
