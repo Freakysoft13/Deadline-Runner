@@ -178,5 +178,10 @@ public class tp : MonoBehaviour
         deathpnl.SetActive(false);
         scoreboard.SetActive(true);
     }
+    public void closeRessWindow()
+    {
+        //replase witg result window
+        Application.LoadLevel("StartMenu");
+    }
 
 }
