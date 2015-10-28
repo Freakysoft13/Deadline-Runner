@@ -29,7 +29,10 @@ public class Player : MonoBehaviour
 
     void Start() {
         LevelManager lm = LevelManager.Instance;
+        lm.BuySkin(LevelManager.Skin.WALKING_ARMOR);
+        lm.EquipSkin(LevelManager.Skin.WALKING_ARMOR);
         LevelManager.Skin skin = lm.GetEquippedSkin();
+        print(skin);
         SkeletonDataAsset asset = lm.skins[lm.GetItemIndex<LevelManager.Skin>(skin)];
         SkeletonAnimation sa = GetComponent<SkeletonAnimation>();
         sa.skeletonDataAsset = asset;

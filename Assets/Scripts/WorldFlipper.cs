@@ -15,9 +15,9 @@ public class WorldFlipper : MonoBehaviour {
 
     void Awake() {
         instance = this;
-        if (Random.Range(0, 101) < chance) {
+        /*if (Random.Range(0, 101) < chance) {
             Flip();
-        }
+        }*/
     }
 
 	public void Flip() {
