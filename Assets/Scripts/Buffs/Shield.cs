@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace Effect
+﻿namespace Effect
 {
     public class Shield : Effect
     {
@@ -10,12 +8,10 @@ namespace Effect
 
         public override void ApplyEffect(Player player) {
             player.ShieldsUp();
-            print("shields up");
         }
 
         public override void RemoveEffect(Player player) {
             player.ShieldsDown();
-            print("shields down");
         }
     }
 }

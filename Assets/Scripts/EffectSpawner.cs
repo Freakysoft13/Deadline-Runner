@@ -1,7 +1,8 @@
 ﻿public class EffectSpawner : ObjectSpawner {
 
     public ObjectTypesDataHolder.EffectType[] effectTypes;
-    public int[] obstaclePaddings;
+    public int[] leftPaddings;
+    public int[] rightPaddings;
 
     protected override System.Enum[] GetObjectTypes() {
         System.Enum[] tmpEnum = new System.Enum[effectTypes.Length];
@@ -11,7 +12,11 @@
         return tmpEnum;
     }
 
-    protected override int[] GetObjectPaddings() {
-        return obstaclePaddings;
+    protected override int[] GetObjectLeftPaddings() {
+        return leftPaddings;
+    }
+
+    protected override int[] GetObjectRightPaddings() {
+        return rightPaddings;
     }
 }

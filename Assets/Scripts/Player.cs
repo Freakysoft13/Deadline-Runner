@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     public float defaultGravityAccel = 1.0f;
     public GameObject slippyFloor;
 
+    public LevelManager.Skin skinPicker;
+
     private Vector2 velocity;
     private float jumpEndTime = 0.0f;
     private bool jumpInterrupt = false;
@@ -29,11 +31,11 @@ public class Player : MonoBehaviour
 
     void Start() {
         LevelManager lm = LevelManager.Instance;
-        lm.BuySkin(LevelManager.Skin.WALKING_ARMOR);
-        lm.EquipSkin(LevelManager.Skin.WALKING_ARMOR);
+        lm.BuySkin(skinPicker);
+        lm.EquipSkin(skinPicker);
         LevelManager.Skin skin = lm.GetEquippedSkin();
         print(skin);
-        SkeletonDataAsset asset = lm.skins[lm.GetItemIndex<LevelManager.Skin>(skin)];
+        SkeletonDataAsset asset = lm.skins[lm.GetItemIndex(skin)];
         SkeletonAnimation sa = GetComponent<SkeletonAnimation>();
         sa.skeletonDataAsset = asset;
         sa.Reset();

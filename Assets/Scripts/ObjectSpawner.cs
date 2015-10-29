@@ -76,9 +76,9 @@ public abstract class ObjectSpawner : MonoBehaviour
         {
             System.Enum[] objectTypes = GetObjectTypes();
             int objectIndex = Random.Range(0, objectTypes.Length);
-            int currentPadding = GetObjectPaddings()[objectIndex] + nextPadding;
+            int currentLeft = GetObjectLeftPaddings()[objectIndex] + nextPadding;
             float startOffset = lastObjectSpawnPos == 0 ? startSpawnDistance : 0;
-            float nextPosX = lastObjectSpawnPos + spread + startOffset + currentPadding;
+            float nextPosX = lastObjectSpawnPos + spread + startOffset + currentLeft;
             GameObject objectToSpawn = objectPool.GetObject(ObjectTypesDataHolder.Instance.GetObjectNameForType(objectTypes[objectIndex]));
             if(objectToSpawn == null) {
                 print(ObjectTypesDataHolder.Instance.GetObjectNameForType(objectTypes[objectIndex]));
@@ -94,7 +94,7 @@ public abstract class ObjectSpawner : MonoBehaviour
                 float lastOverallSpawnPos = PlayerPrefs.GetFloat(LAST_SPAWN_POS_KEY, 0);
                 if (AreObjectsOverlapping(nextPosX, 1.4f, objectToSpawn.tag))
                 {
-                    nextPosX = lastOverallSpawnPos + spread + startOffset + currentPadding;
+                    nextPosX = lastOverallSpawnPos + spread + startOffset + currentLeft;
                 }
 
                 if (nextPosX > lastOverallSpawnPos)
@@ -112,7 +112,7 @@ public abstract class ObjectSpawner : MonoBehaviour
 
             //required padding: if distance between two obstacles is 0 then they should spawn side by side and not one on another.
             lastObjectSpawnPos = nextPosX + halfLength;
-            nextPadding = currentPadding;
+            nextPadding = GetObjectRightPaddings()[objectIndex];
             if (lastObjectSpawnPos - Mathf.Abs(player.position.x) > 5 * startSpawnDistance)
             {
                 PlayerPrefs.SetString(PAUSED_BY_SIDE_KEY, side.ToString());
@@ -138,7 +138,8 @@ public abstract class ObjectSpawner : MonoBehaviour
     }
 
     protected abstract System.Enum[] GetObjectTypes();
-    protected abstract int[] GetObjectPaddings();
+    protected abstract int[] GetObjectLeftPaddings();
+    protected abstract int[] GetObjectRightPaddings();
 
     public enum ObstacleSpawnSide
     {
