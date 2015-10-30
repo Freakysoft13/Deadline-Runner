@@ -18,6 +18,8 @@ public abstract class ObjectSpawner : MonoBehaviour
     public float startSpawnDistance = 10.0f;
     public bool shouldSyncSpawners = false;
 
+    public int[] probabilities;
+
     protected float yPos;
     protected float lastUpdateTime;
     protected float spread;
@@ -67,7 +69,7 @@ public abstract class ObjectSpawner : MonoBehaviour
         if (isSpawnPaused)
         {
             isSpawnPaused = PlayerPrefs.GetInt(IS_SPAWN_PAUSED_KEY, 0) == 1 || side.ToString().Equals(PlayerPrefs.GetString(PAUSED_BY_SIDE_KEY, side.ToString()));
-            if (!(lastObjectSpawnPos - Mathf.Abs(player.position.x) > 5 * startSpawnDistance))
+            if (!(lastObjectSpawnPos - Mathf.Abs(player.position.x) > 2 * startSpawnDistance))
             {
                 PlayerPrefs.SetInt(IS_SPAWN_PAUSED_KEY, 0);
             }
@@ -75,7 +77,14 @@ public abstract class ObjectSpawner : MonoBehaviour
         if ((Mathf.Abs(player.position.x - lastXPos) > (spread / 2)) && !isSpawnPaused)
         {
             System.Enum[] objectTypes = GetObjectTypes();
-            int objectIndex = Random.Range(0, objectTypes.Length);
+            int random = Random.Range(0, 100);
+            int objectIndex = 0;
+            for (int i = 0; i < probabilities.Length; i ++) {
+                if(random < probabilities[i]) {
+                    objectIndex = i;
+                    break;
+                }
+            }
             int currentLeft = GetObjectLeftPaddings()[objectIndex] + nextPadding;
             float startOffset = lastObjectSpawnPos == 0 ? startSpawnDistance : 0;
             float nextPosX = lastObjectSpawnPos + spread + startOffset + currentLeft;
@@ -113,7 +122,7 @@ public abstract class ObjectSpawner : MonoBehaviour
             //required padding: if distance between two obstacles is 0 then they should spawn side by side and not one on another.
             lastObjectSpawnPos = nextPosX + halfLength;
             nextPadding = GetObjectRightPaddings()[objectIndex];
-            if (lastObjectSpawnPos - Mathf.Abs(player.position.x) > 5 * startSpawnDistance)
+            if (lastObjectSpawnPos - Mathf.Abs(player.position.x) > 2 * startSpawnDistance)
             {
                 PlayerPrefs.SetString(PAUSED_BY_SIDE_KEY, side.ToString());
                 PlayerPrefs.SetInt(IS_SPAWN_PAUSED_KEY, 1);

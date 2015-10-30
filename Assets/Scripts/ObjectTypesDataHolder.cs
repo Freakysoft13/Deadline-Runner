@@ -143,7 +143,7 @@ public class ObjectTypesDataHolder
 
     public enum ObstacleType
     {
-        GROUND_SPINNER, AXE
+        GROUND_SPINNER, FALLING_OBSTACLE
     }
 
     public enum CrystalType

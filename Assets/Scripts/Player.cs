@@ -34,7 +34,6 @@ public class Player : MonoBehaviour
         lm.BuySkin(skinPicker);
         lm.EquipSkin(skinPicker);
         LevelManager.Skin skin = lm.GetEquippedSkin();
-        print(skin);
         SkeletonDataAsset asset = lm.skins[lm.GetItemIndex(skin)];
         SkeletonAnimation sa = GetComponent<SkeletonAnimation>();
         sa.skeletonDataAsset = asset;
