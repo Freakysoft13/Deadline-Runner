@@ -21,7 +21,7 @@ public class MovingObstacle : MonoBehaviour {
         //velocity.y -= 9.8f * Time.deltaTime * gravityScale * defaultGravityAccel;
     }
     private bool IsGrounded() {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.5f);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 1f);
         foreach (Collider2D col in colliders) {
             if (col.CompareTag("floor")) {
                 return true;
