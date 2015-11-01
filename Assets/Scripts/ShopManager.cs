@@ -86,6 +86,7 @@ public class ShopManager : MonoBehaviour
 
             LevelManager.Instance.BuySkin(skin);
             print(skin);
+            SkinChecker();
         }
         else {
             lockmasklist[index].SetActive(false);
@@ -103,23 +104,30 @@ public class ShopManager : MonoBehaviour
 
     public void ActivateSkin(int index) {
         LevelManager.Instance.EquipSkin(index);
+        SkinChecker();
     }
 
     //call on start and on char button press, check what skins you own and replace buy button with activate button
     public void SkinChecker() {
         LevelManager lm = LevelManager.Instance;
-        for(int i = 0; i < buyBtn.Length; i++) {
+        for(int i = 0; i < buyBtn.Length; i++)
+        {
+            buyBtn[i].SetActive(false);
             if (!lm.HasSkin(i)) {
-                buyBtn[i].SetActive(true);
+               buyBtn[i].SetActive(true);
             }
         }
-        for (int i = 0; i < activatedBtn.Length; i++) {
+        for (int i = 0; i < activatedBtn.Length; i++)
+        {
+            activatedBtn[i].SetActive(false);
             if (i == lm.GetItemIndex(lm.GetEquippedSkin())) {
                 activatedBtn[i].SetActive(true);
             }
         }
-        for (int i = 0; i < activateBtn.Length; i++) {
-            if (!(i == lm.GetItemIndex(lm.GetEquippedSkin()))) {
+        for (int i = 0; i < activateBtn.Length; i++)
+        {
+            activateBtn[i].SetActive(false);
+            if (!(i == lm.GetItemIndex(lm.GetEquippedSkin())) && lm.HasSkin(i)) {
                 activateBtn[i].SetActive(true);
             }
         }
