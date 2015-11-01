@@ -1,6 +1,6 @@
 ﻿public class EffectSpawner : ObjectSpawner {
 
-    public ObjectTypesDataHolder.EffectType[] effectTypes;
+    public LevelManager.PowerUp[] effectTypes;
     public int[] leftPaddings;
     public int[] rightPaddings;
 
