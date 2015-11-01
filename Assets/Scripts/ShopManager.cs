@@ -2,10 +2,11 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class ShopManager : MonoBehaviour {
+public class ShopManager : MonoBehaviour
+{
 
-	public Text money;
-	public ScrollRect pwUpPnl;
+    public Text money;
+    public ScrollRect pwUpPnl;
     public ScrollRect ConsumPnl;
     public ScrollRect SpecialPnl;
     public GameObject rightgm;
@@ -25,33 +26,30 @@ public class ShopManager : MonoBehaviour {
     private int index = 0;
     public GameObject[] activateBtn;
     public GameObject[] activatedBtn;
+    public GameObject[] buyBtn;
     public GameObject blockingMask;
 
-	void Start () 
-	{
+    void Start() {
         money.text = LevelManager.Instance.GetMoney().ToString();
         startRightPosition = rightgm.transform.position;
         startCentrePosition = centregm.transform.position;
         startLeftPosition = leftgm.transform.position;
         index = GetSkinIndex();
         UpdateCharPos();
+        SkinChecker();
     }
-	void Update()
-	{
-		money.text = LevelManager.Instance.GetMoney ().ToString();
-	}
+    void Update() {
+        money.text = LevelManager.Instance.GetMoney().ToString();
+    }
 
-	public void PositionReset () 
-	{
+    public void PositionReset() {
         pwUpPnl.normalizedPosition = Vector2.zero;
         ConsumPnl.normalizedPosition = Vector2.zero;
         SpecialPnl.normalizedPosition = Vector2.zero;
     }
 
-    private void UpdateCharPos()
-    {
-        foreach(GameObject go in charlist)
-        {
+    private void UpdateCharPos() {
+        foreach (GameObject go in charlist) {
             go.transform.position = bottomPos;
         }
         charlist[index].transform.position = startLeftPosition;
@@ -59,65 +57,72 @@ public class ShopManager : MonoBehaviour {
         charlist[index + 2].transform.position = startRightPosition;
     }
 
-    public void next_char()
-    {
-        if(!((index + charCells + 1) >= charlist.Length))
-        {
+    public void next_char() {
+        if (!((index + charCells + 1) >= charlist.Length)) {
             index++;
         }
         UpdateCharPos();
     }
 
-    public void prevChar()
-    {
-        if (!(index == 0))
-        {
+    public void prevChar() {
+        if (!(index == 0)) {
             index--;
         }
         UpdateCharPos();
     }
 
-    private int GetSkinIndex()
-    {
+    private int GetSkinIndex() {
         int index = LevelManager.Instance.GetItemIndex(LevelManager.Instance.GetEquippedSkin());
-        if (index > charlist.Length - charCells)
-        {
+        if (index > charlist.Length - charCells) {
             index -= charCells + ((charlist.Length - 1) - index);
         }
         return index;
     }
-    public void BuyChar(int index)
-    {
+    public void BuyChar(int index) {
         //Add check for owned skins.
-        if (LevelManager.Instance.GetMoney() >= charprice[index])
-        {
+        if (LevelManager.Instance.GetMoney() >= charprice[index]) {
             LevelManager.Instance.AddMoney(-charprice[index]);
             LevelManager.Skin skin = (LevelManager.Skin)System.Enum.GetValues(typeof(LevelManager.Skin)).GetValue(index);
 
             LevelManager.Instance.BuySkin(skin);
             print(skin);
         }
-        else
-        {
+        else {
             lockmasklist[index].SetActive(false);
             blockingMask.SetActive(true);
         }
     }
-    public void LockedChar(int index)
-    {
+    public void LockedChar(int index) {
         lockmasklist[index].SetActive(true);
     }
 
-    public void DeactivateCharMask(int index)
-    {
+    public void DeactivateCharMask(int index) {
         lockmasklist[index].SetActive(false);
     }
 
 
-    //call on start and on char button press, check what skins you own and replace buy button with activate button
-    public void SkinChecker()
-    {
+    public void ActivateSkin(int index) {
+        LevelManager.Instance.EquipSkin(index);
+    }
 
+    //call on start and on char button press, check what skins you own and replace buy button with activate button
+    public void SkinChecker() {
+        LevelManager lm = LevelManager.Instance;
+        for(int i = 0; i < buyBtn.Length; i++) {
+            if (!lm.HasSkin(i)) {
+                buyBtn[i].SetActive(true);
+            }
+        }
+        for (int i = 0; i < activatedBtn.Length; i++) {
+            if (i == lm.GetItemIndex(lm.GetEquippedSkin())) {
+                activatedBtn[i].SetActive(true);
+            }
+        }
+        for (int i = 0; i < activateBtn.Length; i++) {
+            if (!(i == lm.GetItemIndex(lm.GetEquippedSkin()))) {
+                activateBtn[i].SetActive(true);
+            }
+        }
     }
 
 }
