@@ -172,7 +172,7 @@ public class LevelManager : MonoBehaviour
 
     public enum PowerUp
     {
-        SHIELD, HP_BOOST, AFTER_LIFE, TREASURE_HUNTER
+        SHIELD, HP_BOOST, AFTER_LIFE, TREASURE_HUNTER, WIRE
     }
 
     public enum Consumable

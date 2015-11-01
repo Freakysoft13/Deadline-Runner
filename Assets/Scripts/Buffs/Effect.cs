@@ -6,6 +6,7 @@ namespace Effect
     {
         public LevelManager.PowerUp type;
         public float duration = 1.0f;
+        public bool disappearOnPickup = true;
 
         private float pickUpTime = 0;
         private Player player;
@@ -27,7 +28,9 @@ namespace Effect
             if (other.CompareTag("Player")) {
                 PickUpTime = Time.time;
                 EffectManager.Instance.AddEffect(this); // maybe clone?
-                gameObject.SetActive(false);
+                if (disappearOnPickup) {
+                    gameObject.SetActive(false);
+                }
             }
         }
 

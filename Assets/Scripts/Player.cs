@@ -23,11 +23,22 @@ public class Player : MonoBehaviour
     private bool isRotating = false;
     private bool jump = false;
     private bool flip = false;
+    private bool canFlip = true;
     private float gravityScale = 1.0f;
     private bool isDead = false;
     private bool isShielded = false;
 
     private float speedAtDeath = 0;
+
+    public bool CanFlip {
+        get {
+            return canFlip;
+        }
+
+        set {
+            canFlip = value;
+        }
+    }
 
     void Start() {
         LevelManager lm = LevelManager.Instance;
@@ -168,6 +179,7 @@ public class Player : MonoBehaviour
     }
 
     public void Flip() {
+        if(!canFlip) { return; }
         velocity.y = 0;
         isRotating = true;
         Vector2 rotation;

@@ -18,7 +18,7 @@ public class ObjectTypesDataHolder
     private CrystalType[] crystalTypes;
 
     private string[] effectObjectNames;
-    private EffectType[] effectTypes;
+    private LevelManager.PowerUp[] effectTypes;
 
     public string[] ObstacleNames {
         set { obstacleNames = value; }
@@ -62,7 +62,7 @@ public class ObjectTypesDataHolder
         }
     }
 
-    public EffectType[] EffectTypes {
+    public LevelManager.PowerUp[] EffectTypes {
         get {
             return effectTypes;
         }
@@ -74,7 +74,7 @@ public class ObjectTypesDataHolder
 
     private Dictionary<ObstacleType, string> obstacleNameToTypeDic = new Dictionary<ObstacleType, string>();
     private Dictionary<CrystalType, string> crystalNameToTypeDic = new Dictionary<CrystalType, string>();
-    private Dictionary<EffectType, string> effectNameToTypeDic = new Dictionary<EffectType, string>();
+    private Dictionary<LevelManager.PowerUp, string> effectNameToTypeDic = new Dictionary<LevelManager.PowerUp, string>();
     private Dictionary<ParallaxObjectType, string> parallaxNameToTypeDic = new Dictionary<ParallaxObjectType, string>();
     private Dictionary<DecorationObjectType, string> decorationNameToTypeDic = new Dictionary<DecorationObjectType, string>();
 
@@ -95,7 +95,7 @@ public class ObjectTypesDataHolder
             CheckConsistency(crystalObjectNames, crystalTypes, string.Format(errorMessage, "Crystal Names", "Crystal Types"));
             PopulateDictionary<CrystalType, string>(crystalTypes, crystalObjectNames, crystalNameToTypeDic);
             CheckConsistency(effectObjectNames, effectTypes, string.Format(errorMessage, "Effect Names", "Effect Types"));
-            PopulateDictionary<EffectType, string>(effectTypes, effectObjectNames, effectNameToTypeDic);
+            PopulateDictionary<LevelManager.PowerUp, string>(effectTypes, effectObjectNames, effectNameToTypeDic);
             isInitialized = true;
         }
     }
@@ -135,25 +135,20 @@ public class ObjectTypesDataHolder
         else if (type is CrystalType) {
             return crystalNameToTypeDic[(CrystalType)type];
         }
-        else if (type is EffectType) {
-            return effectNameToTypeDic[(EffectType)type];
+        else if (type is LevelManager.PowerUp) {
+            return effectNameToTypeDic[(LevelManager.PowerUp)type];
         }
         return "";
     }
 
     public enum ObstacleType
     {
-        GROUND_SPINNER, FALLING_OBSTACLE
+        GROUND_SPINNER, FALLING_OBSTACLE, WIRE
     }
 
     public enum CrystalType
     {
         RED, GREEN
-    }
-
-    public enum EffectType
-    {
-        SHIELD, GREEN_CRYSTAL // in future SLOW_EFFECT, DOUBLE_COINS ... etc
     }
 
     public enum ParallaxObjectType

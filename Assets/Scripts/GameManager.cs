@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public string[] crystalNames;
     public ObjectTypesDataHolder.CrystalType[] crystalTypes;
     public string[] effectNames;
-    public ObjectTypesDataHolder.EffectType[] effectTypes;
+    public LevelManager.PowerUp[] effectTypes;
     public GameObject deathPanel;
     public GameObject scorePanel;
     public Text crystalOnRestartScore;

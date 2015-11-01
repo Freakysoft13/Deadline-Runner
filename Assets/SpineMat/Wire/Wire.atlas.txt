@@ -1,0 +1,110 @@
+
+Wire.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Black_Wire_1
+  rotate: false
+  xy: 2, 182
+  size: 175, 157
+  orig: 177, 159
+  offset: 1, 1
+  index: -1
+Black_Wire_2
+  rotate: false
+  xy: 476, 293
+  size: 68, 68
+  orig: 70, 70
+  offset: 1, 1
+  index: -1
+Black_Wire_3
+  rotate: false
+  xy: 855, 428
+  size: 92, 81
+  orig: 94, 83
+  offset: 1, 1
+  index: -1
+Layer 16
+  rotate: false
+  xy: 2, 2
+  size: 113, 53
+  orig: 115, 55
+  offset: 1, 1
+  index: -1
+Layer 17
+  rotate: true
+  xy: 338, 363
+  size: 146, 181
+  orig: 148, 183
+  offset: 1, 1
+  index: -1
+Layer 18
+  rotate: false
+  xy: 179, 336
+  size: 157, 173
+  orig: 159, 175
+  offset: 1, 1
+  index: -1
+Layer 19
+  rotate: false
+  xy: 521, 378
+  size: 186, 131
+  orig: 188, 133
+  offset: 1, 1
+  index: -1
+Layer 20
+  rotate: false
+  xy: 2, 57
+  size: 160, 123
+  orig: 162, 125
+  offset: 1, 1
+  index: -1
+Layer 21
+  rotate: false
+  xy: 179, 211
+  size: 157, 123
+  orig: 159, 125
+  offset: 1, 1
+  index: -1
+Layer 22
+  rotate: false
+  xy: 338, 250
+  size: 136, 111
+  orig: 138, 113
+  offset: 1, 1
+  index: -1
+Layer 23
+  rotate: false
+  xy: 709, 407
+  size: 144, 102
+  orig: 146, 104
+  offset: 1, 1
+  index: -1
+Layer 24
+  rotate: true
+  xy: 117, 4
+  size: 51, 47
+  orig: 53, 49
+  offset: 1, 1
+  index: -1
+Layer 25 copy 2
+  rotate: false
+  xy: 179, 201
+  size: 16, 8
+  orig: 18, 10
+  offset: 1, 1
+  index: -1
+Layer 27 copy 2_2
+  rotate: true
+  xy: 949, 427
+  size: 82, 73
+  orig: 82, 73
+  offset: 0, 0
+  index: -1
+Red_Wire_4
+  rotate: false
+  xy: 2, 341
+  size: 175, 168
+  orig: 177, 170
+  offset: 1, 1
+  index: -1
