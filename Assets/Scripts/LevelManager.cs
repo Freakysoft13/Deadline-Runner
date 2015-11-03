@@ -9,6 +9,7 @@ public class LevelManager : MonoBehaviour
     private const string MONEY_KEY = "money";
     private const string ACTIVE_SKIN_KEY = "active_skin";
     private const string SHOP_ID = "shop_id";
+    private const string ACTIVE_CONSUMABLE = "active";
 
     private static LevelManager instance;
 
@@ -74,17 +75,26 @@ public class LevelManager : MonoBehaviour
     }
 
     public void AquireConsumable(Consumable consumable) {
-        PlayerPrefs.SetInt(consumable.ToString(), 1);
+        int amt = PlayerPrefs.GetInt(consumable.ToString(), 0);
+        PlayerPrefs.SetInt(consumable.ToString(), ++amt);
     }
 
     public bool IsConsumableActive(Consumable consumable) {
-        return PlayerPrefs.GetInt(consumable.ToString(), 0) == 1;
+        return PlayerPrefs.GetInt(consumable.ToString() + ACTIVE_CONSUMABLE, 0) == 0;
     }
 
+    public void DeactivateConsumable(Consumable consumable) {
+        PlayerPrefs.SetInt(consumable.ToString() + ACTIVE_CONSUMABLE, 0);
+    }
+    
     public int ActivateConsumable(Consumable consumable) {
-        int isActive = PlayerPrefs.GetInt(consumable.ToString(), 0);
-        PlayerPrefs.SetInt(consumable.ToString(), 0);
-        return isActive;
+        int amt = PlayerPrefs.GetInt(consumable.ToString(), 0);
+        if(amt > 0) {
+            PlayerPrefs.SetInt(consumable.ToString(), --amt);
+            PlayerPrefs.SetInt(consumable.ToString() + ACTIVE_CONSUMABLE, 1);
+            return 1;
+        }
+        return 0;
     }
 
     public void ActivatePassiveSkill(Passive passive) {
@@ -94,6 +104,16 @@ public class LevelManager : MonoBehaviour
                 PlayerPrefs.SetInt(skill.ToString(), 0);
             }
         }
+    }
+
+    public List<Consumable> GetActiveConsumables() {
+        List<Consumable> activeConsumables = new List<Consumable>();
+        foreach (Consumable c in System.Enum.GetValues(typeof(Consumable))) {
+            if(IsConsumableActive(c)) {
+                activeConsumables.Add(c);
+            }
+        }
+        return activeConsumables;
     }
 
     public Passive GetActivePassive() {

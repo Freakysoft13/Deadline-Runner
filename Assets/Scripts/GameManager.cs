@@ -21,10 +21,24 @@ public class GameManager : MonoBehaviour
     public Text crystalOnRestartScore;
 
     private int score;
+    private Player player;
+
+    public int expMultiplier = 1;
+    public int scoreMultiplier = 1;
     public int target = 60;
 
     public static GameManager Instance {
         get { return instance; }
+    }
+
+    public Player Player {
+        get {
+            return player;
+        }
+
+        set {
+            player = value;
+        }
     }
 
     void Awake() {
@@ -42,6 +56,7 @@ public class GameManager : MonoBehaviour
         dataHolder.EffectObjectNames = effectNames;
         dataHolder.EffectTypes = effectTypes;
         dataHolder.Initialize();
+        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
     void Start() {
@@ -63,7 +78,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void AddScore(int amt) {
-        score += amt;
+        score += amt * scoreMultiplier;
     }
 
     public float GetScore() {

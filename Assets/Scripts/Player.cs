@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     public float gravityAccel = 3.0f;
     public float defaultGravityAccel = 1.0f;
     public GameObject slippyFloor;
+    public bool headStart = false;
+    public int headStartDistance = 200;
 
     private Vector2 velocity;
     private float jumpEndTime = 0.0f;
@@ -47,9 +49,22 @@ public class Player : MonoBehaviour
         sa.Reset();
         animationController = GetComponent<AnimationController>();
         rigidBody = GetComponent<Rigidbody2D>();
+        new ConsumablesManager().ApplyActiveConsumables();
     }
 
     void Update() {
+        if(headStart) {
+            if (transform.position.x < headStartDistance) {
+                velocity.x = speed * 10;
+                velocity.y -= 9.8f * Time.deltaTime * playerFlip * gravityScale * defaultGravityAccel;
+                isShielded = true;
+            }
+            else {
+                headStart = false;
+                isShielded = false;
+            }
+            return;
+        }
         CheckTouch();
         if (isDead) { velocity.y -= 9.8f * Time.deltaTime * 10.0f * playerFlip * gravityScale; return; }
         velocity.x = speed;
