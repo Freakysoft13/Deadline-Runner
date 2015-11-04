@@ -60,8 +60,8 @@ public class Player : MonoBehaviour
                 isShielded = true;
             }
             else {
+                GrantImmunity(3);
                 headStart = false;
-                isShielded = false;
             }
             return;
         }
@@ -136,14 +136,18 @@ public class Player : MonoBehaviour
         animationController.Fly();
         slippyFloor.GetComponent<MaterialChanger>().Swap();
         speed = speedAtDeath;
-        Shield shield = new Shield();
-        shield.duration = 3;
-        shield.PickUpTime = Time.time;
-        shield.type = LevelManager.PowerUp.SHIELD;
-        EffectManager.Instance.AddEffect(shield);
         Vector3 pos = transform.position;
         pos.y = 1;
         transform.position = pos;
+        GrantImmunity(3);
+    }
+
+    public void GrantImmunity(int seconds) {
+        Shield shield = new Shield();
+        shield.duration = seconds;
+        shield.PickUpTime = Time.time;
+        shield.type = LevelManager.PowerUp.SHIELD;
+        EffectManager.Instance.AddEffect(shield);
     }
 
     public void Jump() {
