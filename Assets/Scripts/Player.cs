@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     private float gravityScale = 1.0f;
     private bool isDead = false;
     private bool isShielded = false;
+    private bool canMove = true;
 
     private float speedAtDeath = 0;
 
@@ -53,6 +54,7 @@ public class Player : MonoBehaviour
     }
 
     void Update() {
+        if(!canMove) { return; }
         if(headStart) {
             if (transform.position.x < headStartDistance) {
                 velocity.x = speed * 10;
@@ -124,6 +126,7 @@ public class Player : MonoBehaviour
 
     public void Die() {
         isDead = true;
+        canMove = false;
         speedAtDeath = speed;
         speed = 0;
         animationController.Die();
@@ -133,7 +136,12 @@ public class Player : MonoBehaviour
 
     public void Ressurect() {
         isDead = false;
-        animationController.Fly();
+        animationController.Ressurect(OnAnimationComplete);
+        
+    }
+
+    private void OnAnimationComplete() {
+        canMove = true;
         slippyFloor.GetComponent<MaterialChanger>().Swap();
         speed = speedAtDeath;
         Vector3 pos = transform.position;
