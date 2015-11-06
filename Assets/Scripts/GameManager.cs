@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     private int score;
     private Player player;
 
+    public Effect.Shield shieldStub;
     public int expMultiplier = 1;
     public int scoreMultiplier = 1;
     public int target = 60;
@@ -61,6 +62,9 @@ public class GameManager : MonoBehaviour
 
     void Start() {
         Application.targetFrameRate = target;
+        EventManager.Instance.OnPlayerDied += PlayerDie;
+        EventManager.Instance.OnPlayerResurrected += PlayerResurrect;
+        EventManager.Instance.OnBeforePlayerResurrected += BeforePlayerResurrect;
     }
 
     void Update() {
@@ -89,6 +93,21 @@ public class GameManager : MonoBehaviour
         scorePanel.SetActive(false);
         deathPanel.SetActive(true);
         crystalOnRestartScore.text = LevelManager.Instance.GetMoney().ToString();
+        Time.timeScale = 0;
+    }
+
+    public void PlayerResurrect() {
+        scorePanel.SetActive(true);
+        deathPanel.SetActive(false);
+        shieldStub.PickUp();
+    }
+
+    public void BeforePlayerResurrect() {
+        Time.timeScale = 1;
+    }
+
+    public void HeadstartEnd() {
+        shieldStub.PickUp();
     }
 
     public void SaveResult() {

@@ -8,34 +8,31 @@ public class ScrollTexture : MonoBehaviour
 
     private Renderer rend;
     private float startTime = 0;
+    float offset;
 
-    void Start()
-    {
+    void Start() {
         rend = GetComponent<Renderer>();
         startTime = Time.time;
+        EventManager.Instance.OnPlayerDied += OnDisable;
+        EventManager.Instance.OnPlayerResurrected += OnEnable;
     }
 
-    void Update()
-    {
-        if (active)
-        {
-            float offset = (Time.time - startTime) * scrollSpeed;
+    void Update() {
+        if (active) {
+            offset = (Time.time - startTime) * scrollSpeed;
             rend.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
         }
-        else
-        {
-            rend.material.SetTextureOffset("_MainTex", new Vector2(0, 0));
+        else {
+            rend.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
         }
     }
 
-    void OnEnable()
-    {
+    void OnEnable() {
+        active = true;
         startTime = Time.time;
     }
 
-    void OnDisable()
-    {
+    void OnDisable() {
         active = false;
-        startTime = 0;
     }
 }

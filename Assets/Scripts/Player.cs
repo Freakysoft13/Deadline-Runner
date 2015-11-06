@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
     public Transform rotator;
     public float gravityAccel = 3.0f;
     public float defaultGravityAccel = 1.0f;
-    public GameObject slippyFloor;
     public bool headStart = false;
     public int headStartDistance = 200;
 
@@ -50,7 +49,7 @@ public class Player : MonoBehaviour
         sa.Reset();
         animationController = GetComponent<AnimationController>();
         rigidBody = GetComponent<Rigidbody2D>();
-        new ConsumablesManager().ApplyActiveConsumables();
+        //new ConsumablesManager().ApplyActiveConsumables();
     }
 
     void Update() {
@@ -62,13 +61,13 @@ public class Player : MonoBehaviour
                 isShielded = true;
             }
             else {
-                GrantImmunity(3);
                 headStart = false;
+                EventManager.Instance.FireHeadstartEnd();
             }
             return;
         }
         CheckTouch();
-        if (isDead) { velocity.y -= 9.8f * Time.deltaTime * 10.0f * playerFlip * gravityScale; return; }
+        if (isDead) { velocity.y -= 9.8f * Time.deltaTime * playerFlip * gravityScale; return; }
         velocity.x = speed;
         if (!isRotating) {
             if ((Input.GetKeyDown(KeyCode.Space) || jump) && IsGrounded()) {
@@ -125,37 +124,29 @@ public class Player : MonoBehaviour
     }
 
     public void Die() {
+        EventManager.Instance.FireBeforePlayerDied();
         isDead = true;
+        animationController.Die(OnDead);
+    }
+    private void OnDead() {
         canMove = false;
         speedAtDeath = speed;
         speed = 0;
-        animationController.Die();
-        slippyFloor.GetComponent<MaterialChanger>().Swap();
-        GameManager.Instance.PlayerDie();
+        EventManager.Instance.FirePlayerDied();
     }
-
     public void Ressurect() {
-        isDead = false;
-        animationController.Ressurect(OnAnimationComplete);
-        
+        EventManager.Instance.FireBeforePlayerResurrected();
+        animationController.Ressurect(OnResurrected);        
     }
 
-    private void OnAnimationComplete() {
+    private void OnResurrected() {
+        isDead = false;
         canMove = true;
-        slippyFloor.GetComponent<MaterialChanger>().Swap();
         speed = speedAtDeath;
         Vector3 pos = transform.position;
         pos.y = 1;
         transform.position = pos;
-        GrantImmunity(3);
-    }
-
-    public void GrantImmunity(int seconds) {
-        Shield shield = new Shield();
-        shield.duration = seconds;
-        shield.PickUpTime = Time.time;
-        shield.type = LevelManager.PowerUp.SHIELD;
-        EffectManager.Instance.AddEffect(shield);
+        EventManager.Instance.FirePlayerResurrected();
     }
 
     public void Jump() {

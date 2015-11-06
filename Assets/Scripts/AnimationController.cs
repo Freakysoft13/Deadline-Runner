@@ -46,8 +46,9 @@ public class AnimationController : MonoBehaviour {
         skelAnimation.timeScale *= gravitiScale;
     }
 
-    public void Die()
+    public void Die(Action animationEnd)
     {
+        this.animationEnd = animationEnd;
         skelAnimation.loop = false;
         skelAnimation.timeScale = 1;
         skelAnimation.AnimationName = "Death";
@@ -56,7 +57,7 @@ public class AnimationController : MonoBehaviour {
     public void Ressurect(Action animationEnd) {
         this.animationEnd = animationEnd;
         skelAnimation.loop = false;
-        skelAnimation.timeScale = 1;
+        skelAnimation.timeScale = 0.7f;
         skelAnimation.AnimationName = "Resurrection";
     }
 }

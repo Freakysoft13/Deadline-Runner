@@ -26,11 +26,15 @@ namespace Effect
 
         void OnTriggerEnter2D(Collider2D other) {
             if (other.CompareTag("Player")) {
-                PickUpTime = Time.time;
-                EffectManager.Instance.AddEffect(this); // maybe clone?
-                if (disappearOnPickup) {
-                    gameObject.SetActive(false);
-                }
+                PickUp();
+            }
+        }
+
+        public void PickUp() {
+            PickUpTime = Time.time;
+            EffectManager.Instance.AddEffect(this); // maybe clone?
+            if (disappearOnPickup) {
+                gameObject.SetActive(false);
             }
         }
 

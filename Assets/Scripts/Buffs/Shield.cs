@@ -3,7 +3,7 @@
     public class Shield : Effect
     {
         void Start() {
-            duration = LevelManager.Instance.shieldTimers[LevelManager.Instance.GetPowerUpLevel(type)];
+            duration = duration != 0 ? duration : LevelManager.Instance.shieldTimers[LevelManager.Instance.GetPowerUpLevel(type)];
         }
 
         public override void ApplyEffect(Player player) {

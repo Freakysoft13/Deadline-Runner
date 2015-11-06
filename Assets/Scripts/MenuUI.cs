@@ -587,7 +587,7 @@ public class MenuUI : MonoBehaviour
     }
 
     //activate DoubleExp
-    public void ActivateDpubleExp()
+    public void ActivateDoubleExp()
     {
 
         if (LevelManager.Instance.IsConsumableActive(LevelManager.Consumable.DOUBLE_EXP) == false && LevelManager.Instance.GetMoney() >= DoubleExpPrice)
@@ -604,7 +604,7 @@ public class MenuUI : MonoBehaviour
         }
     }
     //activate DoubleCry
-    public void ActivateDpubleCry()
+    public void ActivateDoubleCry()
     {
 
         if (LevelManager.Instance.IsConsumableActive(LevelManager.Consumable.DOUBLE_CRYSTALS) == false && LevelManager.Instance.GetMoney() >= DoubleShardsPrice)
