@@ -67,7 +67,7 @@ public class Player : MonoBehaviour
             return;
         }
         CheckTouch();
-        if (isDead) { velocity.y -= 9.8f * Time.deltaTime * playerFlip * gravityScale; return; }
+        if (isDead) { velocity.y -= 9.8f * Time.deltaTime * playerFlip * 10 * gravityScale; return; }
         velocity.x = speed;
         if (!isRotating) {
             if ((Input.GetKeyDown(KeyCode.Space) || jump) && IsGrounded()) {
@@ -126,12 +126,12 @@ public class Player : MonoBehaviour
     public void Die() {
         EventManager.Instance.FireBeforePlayerDied();
         isDead = true;
+        speedAtDeath = speed;
+        speed = 0;
         animationController.Die(OnDead);
     }
     private void OnDead() {
         canMove = false;
-        speedAtDeath = speed;
-        speed = 0;
         EventManager.Instance.FirePlayerDied();
     }
     public void Ressurect() {

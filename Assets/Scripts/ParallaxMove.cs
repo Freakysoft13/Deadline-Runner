@@ -8,14 +8,13 @@ public class ParallaxMove : MonoBehaviour
     private float speed;
     private Transform player;
 
-    void Awake()
-    {
+    void Awake() {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         speed = player.GetComponent<Player>().speed;
     }
 
-    void Update()
-    {
+    void Update() {
+        speed = player.GetComponent<Player>().speed;
         transform.Translate(Vector2.right * speed * speedScale * Time.deltaTime);
     }
 }

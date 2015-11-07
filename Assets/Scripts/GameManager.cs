@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
         scorePanel.SetActive(false);
         deathPanel.SetActive(true);
         crystalOnRestartScore.text = LevelManager.Instance.GetMoney().ToString();
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
     }
 
     public void PlayerResurrect() {
@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void BeforePlayerResurrect() {
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
     }
 
     public void HeadstartEnd() {
