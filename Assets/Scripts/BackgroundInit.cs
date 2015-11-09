@@ -21,6 +21,7 @@ public class BackgroundInit : MonoBehaviour
             if (chance < parallaxSpawnChances[i])
             {
                 GameManager.Instance.SpawnParallaxObjectForObject(gameObject, parallaxTypes[i]);
+                break;
             }
         }
         chance = Random.Range(0, 100);

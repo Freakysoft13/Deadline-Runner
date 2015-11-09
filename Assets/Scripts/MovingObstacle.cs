@@ -39,7 +39,9 @@ public class MovingObstacle : MonoBehaviour {
     }
 
     void OnDisable() {
+        Animator anim = transform.GetChild(0).GetComponent<Animator>();
         isAnimationTriggered = false;
         velocity.x = 0;
+        anim.SetTrigger("idle");
     }
 }
