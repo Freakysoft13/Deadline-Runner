@@ -7,6 +7,7 @@ public class AnimationController : MonoBehaviour {
 
     public Action animationEnd;
 
+    private const string RUN = "Run";
 
     void Start()
     {
@@ -26,19 +27,24 @@ public class AnimationController : MonoBehaviour {
         skelAnimation.loop = false;
         skelAnimation.timeScale = 1;
         skelAnimation.AnimationName = "Jump_Up";
+        Reset();
     }
 
     public void FallDown()
     {
         skelAnimation.timeScale = 0.5f;
         skelAnimation.AnimationName = "Jump_Down";
+        Reset();
     }
 
-    public void Fly()
+    public void Run()
     {
-        skelAnimation.loop = true;
-        skelAnimation.timeScale = 1;
-        skelAnimation.AnimationName = "Run";
+        if (skelAnimation.AnimationName != RUN) {
+            skelAnimation.loop = true;
+            skelAnimation.timeScale = 1;
+            skelAnimation.AnimationName = RUN;
+            Reset();
+        }
     }
 
     public void MultTimeScale(float gravitiScale)
@@ -52,6 +58,7 @@ public class AnimationController : MonoBehaviour {
         skelAnimation.loop = false;
         skelAnimation.timeScale = 1;
         skelAnimation.AnimationName = "Death";
+        Reset();
     }
 
     public void Ressurect(Action animationEnd) {
@@ -59,5 +66,11 @@ public class AnimationController : MonoBehaviour {
         skelAnimation.loop = false;
         skelAnimation.timeScale = 0.7f;
         skelAnimation.AnimationName = "Resurrection";
+        Reset();
+    }
+
+    private void Reset() {
+        skelAnimation.Reset();
+        skelAnimation.state.Complete += AnimationComplete;
     }
 }

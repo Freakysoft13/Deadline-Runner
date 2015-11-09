@@ -90,7 +90,7 @@ public class Player : MonoBehaviour
 
             if (IsGrounded() && jumpInterrupt) {
                 gravityScale = 1.0f;
-                animationController.Fly();
+                animationController.Run();
             }
 
             if (jumpInterrupt) {
