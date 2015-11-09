@@ -38,7 +38,7 @@ public class MovingObstacle : MonoBehaviour {
         GetComponent<Rigidbody2D>().velocity = velocity;
     }
 
-    void OnDisable() {
+    void OnEnable() {
         Animator anim = transform.GetChild(0).GetComponent<Animator>();
         isAnimationTriggered = false;
         velocity.x = 0;
