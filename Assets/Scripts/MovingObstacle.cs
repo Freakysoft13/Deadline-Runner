@@ -2,35 +2,44 @@
 
 public class MovingObstacle : MonoBehaviour {
 
+    private Transform player;
     private Vector2 velocity;
     private float gravityScale = 1.0f;
+    private bool isAnimationTriggered = false;
 
     public float speed;
     public int direction = -1;
     public float defaultGravityAccel = 1.0f;
 
     void Start () {
-	
+        player = GameObject.FindGameObjectWithTag("Player").transform;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (IsGrounded()) {
+        Animator anim = transform.GetChild(0).GetComponent<Animator>();
+        if (IsPlayerClose()) {
+            if(!isAnimationTriggered) {
+                anim.SetTrigger("fall");
+                isAnimationTriggered = true;
+            }
             velocity.x = direction * speed;
+        } else {
+            velocity.x = 0;
         }
         //velocity.y -= 9.8f * Time.deltaTime * gravityScale * defaultGravityAccel;
     }
-    private bool IsGrounded() {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 1f);
-        foreach (Collider2D col in colliders) {
-            if (col.CompareTag("floor")) {
-                return true;
-            }
-        }
-        return false;
+
+    private bool IsPlayerClose() {
+        return Mathf.Abs(player.position.x - transform.position.x) < 25;
     }
 
     void FixedUpdate() {
         GetComponent<Rigidbody2D>().velocity = velocity;
+    }
+
+    void OnDisable() {
+        isAnimationTriggered = false;
+        velocity.x = 0;
     }
 }

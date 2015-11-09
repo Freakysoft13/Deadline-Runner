@@ -5,154 +5,175 @@ filter: Linear,Linear
 repeat: none
 Black_Eye
   rotate: false
-  xy: 106, 13
+  xy: 685, 159
   size: 22, 22
   orig: 24, 24
   offset: 1, 1
   index: -1
 Body
   rotate: false
-  xy: 346, 132
+  xy: 866, 392
   size: 98, 117
   orig: 111, 127
   offset: 1, 9
   index: -1
 Eye
   rotate: false
-  xy: 130, 13
+  xy: 832, 293
   size: 22, 22
   orig: 24, 24
   offset: 1, 1
   index: -1
+FieldPart1
+  rotate: true
+  xy: 866, 308
+  size: 82, 86
+  orig: 500, 500
+  offset: 209, 207
+  index: -1
+FieldPart2
+  rotate: false
+  xy: 672, 317
+  size: 192, 192
+  orig: 500, 500
+  offset: 155, 155
+  index: -1
+FieldPart3
+  rotate: false
+  xy: 2, 33
+  size: 476, 476
+  orig: 500, 500
+  offset: 15, 12
+  index: -1
 Fire
   rotate: true
-  xy: 909, 230
+  xy: 63, 12
   size: 19, 44
   orig: 35, 51
   offset: 7, 1
   index: -1
 Glow_Eye
   rotate: false
-  xy: 194, 99
+  xy: 480, 145
   size: 150, 150
   orig: 150, 150
   offset: 0, 0
   index: -1
 Head
   rotate: false
-  xy: 2, 37
+  xy: 480, 297
   size: 190, 212
   orig: 192, 214
   offset: 1, 1
   index: -1
 Jetpack
   rotate: false
-  xy: 407, 104
+  xy: 794, 289
   size: 36, 26
   orig: 36, 26
   offset: 0, 0
   index: -1
 Left_Ankle
   rotate: true
-  xy: 446, 184
+  xy: 480, 78
   size: 65, 135
   orig: 67, 137
   offset: 1, 1
   index: -1
 Right_Ankle
   rotate: true
-  xy: 446, 184
+  xy: 480, 78
   size: 65, 135
   orig: 67, 137
   offset: 1, 1
   index: -1
 Left_Fist
-  rotate: true
-  xy: 67, 2
+  rotate: false
+  xy: 759, 278
   size: 33, 37
   orig: 35, 39
   offset: 1, 1
   index: -1
 Right_Fist
-  rotate: true
-  xy: 67, 2
+  rotate: false
+  xy: 759, 278
   size: 33, 37
   orig: 35, 39
   offset: 1, 1
   index: -1
 Left_Hand
   rotate: true
-  xy: 346, 101
+  xy: 2, 2
   size: 29, 59
   orig: 31, 61
   offset: 1, 1
   index: -1
 Left_Leg
-  rotate: true
-  xy: 783, 207
+  rotate: false
+  xy: 685, 248
   size: 42, 67
   orig: 44, 69
   offset: 1, 1
   index: -1
 Right_Leg
-  rotate: true
-  xy: 783, 207
+  rotate: false
+  xy: 685, 248
   size: 42, 67
   orig: 44, 69
   offset: 1, 1
   index: -1
 Left_Leg_Light
-  rotate: false
-  xy: 194, 46
+  rotate: true
+  xy: 632, 151
   size: 144, 51
   orig: 150, 80
   offset: 5, 14
   index: -1
 Right_Left_Light
-  rotate: false
-  xy: 194, 46
+  rotate: true
+  xy: 632, 151
   size: 144, 51
   orig: 150, 80
   offset: 5, 14
   index: -1
 Left_Shoulder
-  rotate: true
-  xy: 2, 3
+  rotate: false
+  xy: 685, 183
   size: 32, 63
   orig: 34, 65
   offset: 1, 1
   index: -1
 Right_Shoulder
-  rotate: true
-  xy: 2, 3
+  rotate: false
+  xy: 685, 183
   size: 32, 63
   orig: 34, 65
   offset: 1, 1
   index: -1
 Left_Toe
-  rotate: false
-  xy: 583, 200
+  rotate: true
+  xy: 966, 386
   size: 123, 49
   orig: 128, 51
   offset: 4, 1
   index: -1
 Light_00000
-  rotate: true
-  xy: 708, 195
+  rotate: false
+  xy: 954, 311
   size: 54, 73
   orig: 100, 100
   offset: 23, 17
   index: -1
 Right_Hand
-  rotate: true
-  xy: 852, 221
+  rotate: false
+  xy: 729, 260
   size: 28, 55
   orig: 31, 61
   offset: 2, 1
   index: -1
 Right_Toe
   rotate: false
-  xy: 446, 133
+  xy: 480, 27
   size: 125, 49
   orig: 128, 51
   offset: 2, 1
