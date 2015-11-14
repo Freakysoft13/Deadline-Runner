@@ -10,6 +10,7 @@ public class tp : MonoBehaviour
     public GameObject scoreboard;
     public GameObject fortunewheel;
     public GameObject deathpnl;
+    public GameObject result_pnl;
 
     public Text Money_txt;
     public Text Distance_txt;
@@ -29,10 +30,7 @@ public class tp : MonoBehaviour
     private bool ressurected_with_ads;
     public GameObject ress_ads_btn;
 
-    public GameObject[] SmallDailyRewardLocked;
-    public GameObject[] SmallDailyRewardUnlocked;
-    public GameObject BigRewardlocked;
-    public GameObject BigRewardUnlocked;
+    public GameObject[] unlockedAncestors;
 
     void Start() {
         // ress_ads_btn.gameObject.GetComponent<UnityEngine.UI.Button>().interactable = true;
@@ -46,6 +44,7 @@ public class tp : MonoBehaviour
         scoreboard.SetActive(true);
         fortunewheel.SetActive(false);
         deathpnl.SetActive(false);
+        result_pnl.SetActive(false);
 
         Distance_txt.text = distance.ToString();
 
@@ -182,6 +181,11 @@ public class tp : MonoBehaviour
     {
         //replase witg result window
         Application.LoadLevel("StartMenu");
+    }
+
+    void Result ()
+    {
+
     }
 
 }
