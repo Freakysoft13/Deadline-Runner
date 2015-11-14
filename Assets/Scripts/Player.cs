@@ -27,6 +27,8 @@ public class Player : MonoBehaviour
     private bool isDead = false;
     private bool isShielded = false;
     private bool canMove = true;
+    private int exp;
+
 
     private float speedAtDeath = 0;
 
@@ -37,6 +39,16 @@ public class Player : MonoBehaviour
 
         set {
             canFlip = value;
+        }
+    }
+
+    public int Exp {
+        get {
+            return exp;
+        }
+
+        set {
+            exp = value;
         }
     }
 
@@ -209,6 +221,7 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider) {
         if (collider.CompareTag("obstacle") && !isDead && !isShielded) {
+            exp = 100;
             Die();
         }
     }

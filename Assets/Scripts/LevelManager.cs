@@ -42,10 +42,10 @@ public class LevelManager : MonoBehaviour
         int expSum = 0;
         int currentExp = GetExp();
         int level = 0;
-        for (int i = 0; i < levelsExp.Length; i++) {
+        for (int i = 1; i < levelsExp.Length; i++) {
             expSum += levelsExp[i];
             if (currentExp >= expSum) {
-                level = i + 1;
+                level = i;
             }
             else {
                 break;
