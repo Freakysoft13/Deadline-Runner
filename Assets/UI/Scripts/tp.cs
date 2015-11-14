@@ -179,13 +179,13 @@ public class tp : MonoBehaviour
     }
     public void closeRessWindow()
     {
-        //replase witg result window
-        Application.LoadLevel("StartMenu");
+        Result();
     }
 
     void Result ()
     {
-
+        scoreboard.SetActive(false);
+        result_pnl.SetActive(true);
     }
 
 }
