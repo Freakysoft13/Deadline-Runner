@@ -12,6 +12,16 @@ public class ResultPanel : MonoBehaviour
     private int levelsAcquired = 0;
     private bool updateUI = false;
 
+    public Text levelUp_txt;
+    public Text level_txt;
+
+
+    void Start(){
+        levelUp_txt.gameObject.SetActive(false);
+        level_txt.text = "Level " + (1 +  LevelManager.Instance.GetLevel());
+        
+    }
+  
     void OnEnable() {
         if(LevelManager.Instance == null || GameManager.Instance == null || GameManager.Instance.Player == null) { return; }
         int currentExp = LevelManager.Instance.GetExp();
@@ -33,6 +43,8 @@ public class ResultPanel : MonoBehaviour
         if (currentLevel >= 0 && currentLevel < 9) {
             targetValue = (currentExp + expEarned - overallLevelExp) / (float)levelsExp[currentLevel + 1];
             updateUI = true;
+            levelUp_txt.gameObject.SetActive(true);
+            level_txt.text = "Level" + (1 + LevelManager.Instance.GetLevel());
         }
     }
 

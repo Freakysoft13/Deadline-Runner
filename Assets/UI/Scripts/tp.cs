@@ -29,6 +29,11 @@ public class tp : MonoBehaviour
     private int priceindex = 0;
     private bool ressurected_with_ads;
     public GameObject ress_ads_btn;
+    public Text Level_txt;
+    public Text levelUp_txt;
+    public Text score_txt;
+    public Text crystal_txt;
+   
 
     public GameObject[] unlockedAncestors;
 
@@ -186,6 +191,11 @@ public class tp : MonoBehaviour
     {
         scoreboard.SetActive(false);
         result_pnl.SetActive(true);
+    }
+
+    public void LoadTree()
+    {
+        Application.LoadLevel("TreeRevorked");
     }
 
 }
