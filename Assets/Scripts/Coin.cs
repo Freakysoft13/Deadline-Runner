@@ -15,7 +15,7 @@ public class Coin : MonoBehaviour {
     void Update()
     {
         transform.position = new Vector2(transform.position.x, originalY + (Mathf.Sin(Time.time + transform.GetSiblingIndex()) * floatStrength));
-    }
+    }           
 
 	void OnTriggerEnter2D(Collider2D col)
     {
