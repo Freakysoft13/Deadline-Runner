@@ -46,7 +46,7 @@ public class AnimationManager : MonoBehaviour
             TriggerStart();
             int level = LevelManager.Instance.GetLevel();
             int ancestorLevel = GetAncestorLevel();
-            if (ancestorLevel < level)
+            if (ancestorLevel <= level)
             {
                 FillCanal(ancestorLevel);
             } else
@@ -103,13 +103,13 @@ public class AnimationManager : MonoBehaviour
     private int GetAncestorLevel()
     {
         int level = LevelManager.Instance.GetLevel();
-        int ancestorLevel = -1;
+        int ancestorLevel = 0;
         for (int i = 0; i < ancestorLevels.Length; i++)
         {
             if(level >= ancestorLevels[i])
             {
                 ancestorLevel = i;
-                if(ancestorLevel > GetLastOpenedAncestor())
+                if(ancestorLevel + 1 > GetLastOpenedAncestor())
                 {
                     break;
                 }
@@ -127,8 +127,7 @@ public class AnimationManager : MonoBehaviour
     }
 
     public void OpenAncestor()
-    {
-       
+    {       
         int index = GetAncestorLevel();
         Animator[] topBottomPanels = ancestors[index].GetComponentsInChildren<Animator>();
         topBottomPanels[0].SetTrigger("Open");

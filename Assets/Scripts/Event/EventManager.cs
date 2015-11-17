@@ -68,4 +68,14 @@ public class EventManager : MonoBehaviour
             OnHeadstartEnd();
         }
     }
+
+    public delegate void LevelUp();
+
+    public LevelUp OnLevelUp;
+
+    public void FireLevelUp() {
+        if (OnLevelUp != null) {
+            OnLevelUp();
+        }
+    }
 }

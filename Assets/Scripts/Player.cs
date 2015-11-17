@@ -12,6 +12,9 @@ public class Player : MonoBehaviour
     public bool headStart = false;
     public int headStartDistance = 200;
 
+    [Header("Speed increse muliplier")]
+    public float speedThreshold = 50;
+
     private Vector2 velocity;
     private float jumpEndTime = 0.0f;
     private bool jumpInterrupt = false;
@@ -80,7 +83,7 @@ public class Player : MonoBehaviour
         }
         CheckTouch();
         if (isDead) { velocity.y -= 9.8f * Time.deltaTime * playerFlip * 10 * gravityScale; return; }
-        velocity.x = speed;
+        velocity.x = speed + speedThreshold * Mathf.Log(transform.position.x + 8) * Time.deltaTime;
         if (!isRotating) {
             if ((Input.GetKeyDown(KeyCode.Space) || jump) && IsGrounded()) {
                 gravityScale = 1.0f;
@@ -221,7 +224,7 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider) {
         if (collider.CompareTag("obstacle") && !isDead && !isShielded) {
-            exp = 100;
+            exp = 250;
             Die();
         }
     }
