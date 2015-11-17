@@ -15,6 +15,11 @@ public class ResultPanel : MonoBehaviour
     public Text levelUp_txt;
     public Text level_txt;
 
+    public Text bestscore;
+    public Text collectedCrystals;
+    public Text UnlockText;
+    public Text Score;
+
 
     void Start() {
         levelUp_txt.gameObject.SetActive(false);
