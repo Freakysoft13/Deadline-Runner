@@ -228,4 +228,8 @@ public class Player : MonoBehaviour
             Die();
         }
     }
+
+    public int GetDistance() {
+        return (int)transform.position.x + 8;
+    }
 }

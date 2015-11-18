@@ -17,6 +17,7 @@ public abstract class ObjectSpawner : MonoBehaviour
     public float maxSpread = 15.0f;
     public float startSpawnDistance = 10.0f;
     public bool shouldSyncSpawners = false;
+    public bool bounceSides = false;
 
     public int[] probabilities;
 
@@ -24,9 +25,11 @@ public abstract class ObjectSpawner : MonoBehaviour
     protected float lastUpdateTime;
     protected float spread;
 
-    private string LAST_SPAWN_POS_KEY = "lastSpawnPos";
-    private string IS_SPAWN_PAUSED_KEY = "isSpawnPaused";
-    private string PAUSED_BY_SIDE_KEY = "pausedBySide";
+    protected bool isUpperPaused = false;
+
+    protected string LAST_SPAWN_POS_KEY = "lastSpawnPos";
+    protected string IS_SPAWN_PAUSED_KEY = "isSpawnPaused";
+    protected string PAUSED_BY_SIDE_KEY = "pausedBySide";
 
     private ObjectPool objectPool;
     
@@ -63,7 +66,7 @@ public abstract class ObjectSpawner : MonoBehaviour
         SpawnObjects();
     }
 
-    protected void SpawnObjects()
+    protected virtual void SpawnObjects()
     {
         isSpawnPaused = PlayerPrefs.GetInt(IS_SPAWN_PAUSED_KEY, 0) == 1;
         if (isSpawnPaused)
@@ -73,6 +76,10 @@ public abstract class ObjectSpawner : MonoBehaviour
             {
                 PlayerPrefs.SetInt(IS_SPAWN_PAUSED_KEY, 0);
             }
+        }
+        if (bounceSides) {
+            if (side.Equals(ObstacleSpawnSide.UPPER) && isUpperPaused) { return; }
+            if (side.Equals(ObstacleSpawnSide.BOTTOM) && !isUpperPaused) { return; }
         }
         if ((Mathf.Abs(player.position.x - lastXPos) > (spread / 2)) && !isSpawnPaused)
         {
@@ -88,6 +95,9 @@ public abstract class ObjectSpawner : MonoBehaviour
             int currentLeft = GetObjectLeftPaddings()[objectIndex] + nextPadding;
             float startOffset = lastObjectSpawnPos == 0 ? startSpawnDistance : 0;
             float nextPosX = lastObjectSpawnPos + spread + startOffset + currentLeft;
+            if(nextPosX < player.position.x) {
+                nextPosX += player.position.x;
+            }
             GameObject objectToSpawn = objectPool.GetObject(ObjectTypesDataHolder.Instance.GetObjectNameForType(objectTypes[objectIndex]));
             if(objectToSpawn == null) {
                 print(ObjectTypesDataHolder.Instance.GetObjectNameForType(objectTypes[objectIndex]));
@@ -99,7 +109,6 @@ public abstract class ObjectSpawner : MonoBehaviour
 
             if (shouldSyncSpawners)
             {
-
                 float lastOverallSpawnPos = PlayerPrefs.GetFloat(LAST_SPAWN_POS_KEY, 0);
                 if (AreObjectsOverlapping(nextPosX, 1.4f, objectToSpawn.tag))
                 {
@@ -108,7 +117,6 @@ public abstract class ObjectSpawner : MonoBehaviour
 
                 if (nextPosX > lastOverallSpawnPos)
                 {
-
                     PlayerPrefs.SetFloat(LAST_SPAWN_POS_KEY, nextPosX);
                 }
             }
