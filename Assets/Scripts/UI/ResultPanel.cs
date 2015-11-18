@@ -22,8 +22,6 @@ public class ResultPanel : MonoBehaviour
 
 
     void Start() {
-        levelUp_txt.gameObject.SetActive(false);
-        level_txt.text = "Level " + (1 + LevelManager.Instance.GetLevel());
         EventManager.Instance.OnLevelUp += delegate () {
             levelUp_txt.gameObject.SetActive(true);
             level_txt.text = "Level " + (1 + LevelManager.Instance.GetLevel());
@@ -32,6 +30,8 @@ public class ResultPanel : MonoBehaviour
 
     void OnEnable() {
         if (LevelManager.Instance == null || GameManager.Instance == null || GameManager.Instance.Player == null) { return; }
+        levelUp_txt.gameObject.SetActive(false);
+        level_txt.text = "Level " + (1 + LevelManager.Instance.GetLevel());
         CalcLevelProgress();
     }
 

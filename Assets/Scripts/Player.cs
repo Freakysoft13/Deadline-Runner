@@ -224,7 +224,7 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider) {
         if (collider.CompareTag("obstacle") && !isDead && !isShielded) {
-            exp = 250;
+            exp = 2500;
             Die();
         }
     }
