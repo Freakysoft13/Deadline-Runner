@@ -39,12 +39,12 @@ public class LevelManager : MonoBehaviour
     }
 
     public int GetLevel() {
-        int expSum = 0;
+        //int expSum = 0;
         int currentExp = GetExp();
         int level = 0;
         for (int i = 1; i < levelsExp.Length; i++) {
-            expSum += levelsExp[i];
-            if (currentExp >= expSum) {
+            //expSum += levelsExp[i];
+            if (currentExp >= levelsExp[i]) {
                 level = i;
             }
             else {
