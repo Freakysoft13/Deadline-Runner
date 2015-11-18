@@ -15,17 +15,14 @@ public class AnimationManager : MonoBehaviour
 
     // що це робить?(і що таке const string)
     private static AnimationManager instance;
-    public static AnimationManager Instance
-    {
+    public static AnimationManager Instance {
         get { return instance; }
     }
-    void Awake()
-    {
+    void Awake() {
         instance = this;
 
         int ancestorLevel = GetLastOpenedAncestor();
-        for (int i = 0; i < ancestorLevel + 1; i++)
-        {
+        for (int i = 0; i < ancestorLevel + 1; i++) {
             //як замутити, шоб не вирубати ан1матор?
             canalImages[i].GetComponent<Animator>().enabled = false;
             canalImages[i].fillAmount = 1.0f;
@@ -34,100 +31,71 @@ public class AnimationManager : MonoBehaviour
         }
     }
 
-    void Start()
-    {
+    void Start() {
         InitiateAncestorLevelCheck();
     }
 
-    private void InitiateAncestorLevelCheck()
-    {
-        if (ShouldPlayNewLevelAnimation())
-        {
+    private void InitiateAncestorLevelCheck() {
+        int level = LevelManager.Instance.GetLevel();
+        int ancestorLevel = GetAncestorLevel();
+        if (ancestorLevel <= level && ancestorLevel != GetLastOpenedAncestor()) {
             TriggerStart();
-            int level = LevelManager.Instance.GetLevel();
-            int ancestorLevel = GetAncestorLevel();
-            if (ancestorLevel <= level)
-            {
-                FillCanal(ancestorLevel);
-            } else
-            {
-                SaveLastEntryLevel(LevelManager.Instance.GetLevel());
-            }
+            FillCanal(ancestorLevel);
+        }
+        else {
+            SaveLastEntryLevel(LevelManager.Instance.GetLevel());
         }
     }
 
-    public void TriggerStart()
-    {
-        for (int i = 0; i < gearAnimators.Length; i++)
-        {
+    public void TriggerStart() {
+        for (int i = 0; i < gearAnimators.Length; i++) {
             gearAnimators[i].SetTrigger("Spin");
         }
     }
 
 
-    public void SpinGear(int index)
-    {
+    public void SpinGear(int index) {
         gearAnimators[index].SetTrigger("Spin");
     }
 
-    private bool ShouldPlayNewLevelAnimation()
-    {
-        int currentLevel = GetAncestorLevel();
-        if (currentLevel > GetLastOpenedAncestor())
-        {
-            return true;
-        }
-        return false;
-    }
-
-    private int GetLastEntryLevel()
-    {
+    private int GetLastEntryLevel() {
         return PlayerPrefs.GetInt(last_level, -1);
     }
 
-    private void SaveLastEntryLevel(int level)
-    {
+    private void SaveLastEntryLevel(int level) {
         PlayerPrefs.SetInt(last_level, level);
     }
 
-    private void SaveOpenedAncestor(int level)
-    {
+    private void SaveOpenedAncestor(int level) {
         PlayerPrefs.SetInt(ancestor_level, level);
     }
 
-    private int GetLastOpenedAncestor()
-    {
+    private int GetLastOpenedAncestor() {
         return PlayerPrefs.GetInt(ancestor_level, -1);
     }
 
-    private int GetAncestorLevel()
-    {
+    private int GetAncestorLevel() {
         int level = LevelManager.Instance.GetLevel();
-        int ancestorLevel = 0;
-        for (int i = 0; i < ancestorLevels.Length; i++)
-        {
-            if(level >= ancestorLevels[i])
-            {
+        int ancestorLevel = int.MaxValue;
+        for (int i = 0; i < ancestorLevels.Length; i++) {
+            if (level >= ancestorLevels[i]) {
                 ancestorLevel = i;
-                if(ancestorLevel + 1 > GetLastOpenedAncestor())
-                {
+                if (ancestorLevel > GetLastOpenedAncestor()) {
                     break;
                 }
-            } else
-            {
+            }
+            else {
                 break;
             }
         }
         return ancestorLevel;
     }
 
-    public void FillCanal(int index)
-    {
+    public void FillCanal(int index) {
         canalImages[index].GetComponent<Animator>().SetTrigger("Fill");
     }
 
-    public void OpenAncestor()
-    {       
+    public void OpenAncestor() {
         int index = GetAncestorLevel();
         Animator[] topBottomPanels = ancestors[index].GetComponentsInChildren<Animator>();
         topBottomPanels[0].SetTrigger("Open");
@@ -141,32 +109,26 @@ public class AnimationManager : MonoBehaviour
         InitiateAncestorLevelCheck();
     }
 
-    private void StopAllGears()
-    {
-        foreach (Animator a in gearAnimators)
-        {
+    private void StopAllGears() {
+        foreach (Animator a in gearAnimators) {
             a.SetTrigger("Stop");
         }
     }
 
-    private void LockAncestor(int index)
-    {
+    private void LockAncestor(int index) {
         int i = 0;
-        foreach(Transform t in ancestors[index].transform.GetChild(0))
-        {
-            if (i == 1 || i == 2)
-            {
+        foreach (Transform t in ancestors[index].transform.GetChild(0)) {
+            if (i == 1 || i == 2) {
                 t.gameObject.SetActive(false);
             }
             i++;
         }
     }
 
-    private int GetAncestorIndex()
-    {
+    private int GetAncestorIndex() {
         int index = LevelManager.Instance.GetItemIndex(LevelManager.Instance.GetActivePassive());
         return index;
     }
 
-    
+
 }

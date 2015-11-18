@@ -26,7 +26,12 @@ public class LevelManager : MonoBehaviour
     }
 
     void Awake() {
-        instance = this;
+        if (instance == null) {
+            instance = this;
+            DontDestroyOnLoad(this);
+        } else {
+            DestroyImmediate(this);
+        }
     }
 
     public void AddExp(int amt) {
