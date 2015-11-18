@@ -55,7 +55,7 @@ public class ResultPanel : MonoBehaviour
     private int overhead = 0;
 
     private void CalcLevelProgress() {
-        int currentExp = LevelManager.Instance.GetExp();
+        int currentExp = LevelManager.Instance.GetExpThisLevel();
         int currentLevel = LevelManager.Instance.GetLevel();
         int expEarned = overhead > 0 ? overhead : GameManager.Instance.Player.Exp;
         int[] levelsExp = LevelManager.Instance.levelsExp;

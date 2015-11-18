@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class LevelManager : MonoBehaviour
 {
-
     private const string EXP_KEY = "exp";
     private const string MONEY_KEY = "money";
     private const string ACTIVE_SKIN_KEY = "active_skin";
@@ -38,6 +37,15 @@ public class LevelManager : MonoBehaviour
         return PlayerPrefs.GetInt(EXP_KEY, 0);
     }
 
+    public int GetExpThisLevel() {
+        int overallExp = GetExp();
+        int expForPrevLevels = 0;
+        for(int i = 0; i < GetLevel() + 1; i ++) {
+            expForPrevLevels += levelsExp[i];
+        }
+        return overallExp - expForPrevLevels;
+    }
+
     public int GetLevel() {
         //int expSum = 0;
         int currentExp = GetExp();
@@ -46,6 +54,7 @@ public class LevelManager : MonoBehaviour
             //expSum += levelsExp[i];
             if (currentExp >= levelsExp[i]) {
                 level = i;
+                currentExp -= levelsExp[i];
             }
             else {
                 break;
