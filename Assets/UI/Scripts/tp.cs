@@ -57,6 +57,8 @@ public class tp : MonoBehaviour
         audioOn_img.gameObject.SetActive(true);
         money_mask.gameObject.SetActive(false);
         CrystalSumm.text = LevelManager.Instance.GetMoney().ToString();
+        EventManager.Instance.OnPlayerDied += PlayerDie;
+        EventManager.Instance.OnPlayerResurrected += PlayerResurrect;
     }
 
     void Update() {
@@ -198,4 +200,17 @@ public class tp : MonoBehaviour
         Application.LoadLevel("TreeRevorked");
     }
 
+    private void PlayerDie() {
+        if (!GameManager.Instance.HasRessurectedThisRun) {
+            deathpnl.SetActive(true);
+        } else {
+            result_pnl.SetActive(true);
+        }
+        scoreboard.SetActive(false);
+    }
+
+    private void PlayerResurrect() {
+        deathpnl.SetActive(false);
+        scoreboard.SetActive(true);
+    }
 }

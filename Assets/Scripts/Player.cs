@@ -222,9 +222,11 @@ public class Player : MonoBehaviour
         targetRotatorRotation = Quaternion.Euler(rotation);
     }
 
+    public int expToDistanceThreshold = 3;
+
     void OnTriggerEnter2D(Collider2D collider) {
         if (collider.CompareTag("obstacle") && !isDead && !isShielded) {
-            exp = 2500;
+            exp = GetDistance() / expToDistanceThreshold;
             Die();
         }
     }

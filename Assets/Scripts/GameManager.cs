@@ -16,12 +16,11 @@ public class GameManager : MonoBehaviour
     public ObjectTypesDataHolder.CrystalType[] crystalTypes;
     public string[] effectNames;
     public LevelManager.PowerUp[] effectTypes;
-    public GameObject deathPanel;
-    public GameObject scorePanel;
     public Text crystalOnRestartScore;
 
     private int score;
     private Player player;
+    private bool hasRessurectedThisRun = false;
 
     public Effect.Shield shieldStub;
     public int expMultiplier = 1;
@@ -39,6 +38,16 @@ public class GameManager : MonoBehaviour
 
         set {
             player = value;
+        }
+    }
+
+    public bool HasRessurectedThisRun {
+        get {
+            return hasRessurectedThisRun;
+        }
+
+        set {
+            hasRessurectedThisRun = value;
         }
     }
 
@@ -85,21 +94,18 @@ public class GameManager : MonoBehaviour
         score += amt * scoreMultiplier;
     }
 
-    public float GetScore() {
+    public int GetScore() {
         return score;
     }
 
     public void PlayerDie() {
-        scorePanel.SetActive(false);
-        deathPanel.SetActive(true);
         crystalOnRestartScore.text = LevelManager.Instance.GetMoney().ToString();
         //Time.timeScale = 0;
     }
 
     public void PlayerResurrect() {
-        scorePanel.SetActive(true);
-        deathPanel.SetActive(false);
         shieldStub.PickUp();
+        hasRessurectedThisRun = true;
     }
 
     public void BeforePlayerResurrect() {

@@ -7,18 +7,25 @@ public class ResultPanel : MonoBehaviour
     public Slider expSlider;
     public float fillWaitTime = 100;
     public float fillPrecision = 0.01f;
+    public float updateDelay = 0.001f;
 
     private float targetValue;
     private int levelsAcquired = 0;
-    private bool updateUI = false;
+    private bool updateExpBar = false;
+    private int expEarnedCounter;
+    private int crystalsCollectedCounter;
+    private int expEarned;
+    private int crystalsCollected;
+    private float lastExpUpdateTime;
+    private float lastCryUpdateTime;
 
     public Text levelUp_txt;
     public Text level_txt;
 
     public Text bestscore;
     public Text collectedCrystals;
-    public Text UnlockText;
-    public Text Score;
+    public Text unlockText;
+    public Text score;
 
 
     void Start() {
@@ -32,16 +39,42 @@ public class ResultPanel : MonoBehaviour
         if (LevelManager.Instance == null || GameManager.Instance == null || GameManager.Instance.Player == null) { return; }
         levelUp_txt.gameObject.SetActive(false);
         level_txt.text = "Level " + (1 + LevelManager.Instance.GetLevel());
+        expEarned = GameManager.Instance.Player.Exp;
+        crystalsCollected = GameManager.Instance.GetScore();
+        int bestScore = LevelManager.Instance.GetBestScore();
+        if (expEarned > bestScore) {
+            bestScore = expEarned;
+            LevelManager.Instance.SaveBestScore(bestScore);
+        }
+        bestscore.text = "Best score: " + bestScore;
         CalcLevelProgress();
     }
 
     void Update() {
-        if (!updateUI) { return; }
+        UpdateExp();
+        UpdateCounters();
+    }
+
+    private void UpdateCounters() {
+        if(expEarnedCounter < expEarned && Mathf.Abs(Time.time - lastExpUpdateTime) > updateDelay) {
+            expEarnedCounter++;
+            score.text = "Score: " + expEarnedCounter;
+            lastExpUpdateTime = Time.time;
+        }
+        if (crystalsCollectedCounter < crystalsCollected && Mathf.Abs(Time.time - lastCryUpdateTime) > updateDelay) {
+            crystalsCollectedCounter++;
+            collectedCrystals.text = "Crystals collected: " + crystalsCollectedCounter;
+            lastCryUpdateTime = Time.time;
+        }
+    }
+
+    private void UpdateExp() {
+        if (!updateExpBar) { return; }
         if (Mathf.Abs(expSlider.value - targetValue) > fillPrecision) {
             expSlider.value += (1.0f / (int)(1 / (fillWaitTime * targetValue))) * Time.deltaTime;
         }
         else {
-            updateUI = false;
+            updateExpBar = false;
             if (Mathf.Abs(expSlider.value - 1) < fillPrecision) {
                 EventManager.Instance.FireLevelUp();
                 expSlider.value = 0;
@@ -73,7 +106,7 @@ public class ResultPanel : MonoBehaviour
             int remainder = expEarned - overhead;
             targetValue = (remainder + currentExp) / (float)expToNextLevel;
             LevelManager.Instance.AddExp(remainder);
-            updateUI = true;
+            updateExpBar = true;
         }
     }
 }

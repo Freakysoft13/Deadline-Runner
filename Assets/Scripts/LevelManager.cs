@@ -9,6 +9,7 @@ public class LevelManager : MonoBehaviour
     private const string ACTIVE_SKIN_KEY = "active_skin";
     private const string SHOP_ID = "shop_id";
     private const string ACTIVE_CONSUMABLE = "active";
+    private const string BEST_SCORE = "best_score";
 
     private static LevelManager instance;
 
@@ -204,6 +205,14 @@ public class LevelManager : MonoBehaviour
 
     public int GetAchievementProgress(Achievement achievement) {
         return PlayerPrefs.GetInt(achievement.ToString(), 0);
+    }
+
+    public int GetBestScore() {
+        return PlayerPrefs.GetInt(BEST_SCORE, 0);
+    }
+
+    public void SaveBestScore(int score) {
+        PlayerPrefs.SetInt(BEST_SCORE, score);
     }
 
     public enum PowerUp
