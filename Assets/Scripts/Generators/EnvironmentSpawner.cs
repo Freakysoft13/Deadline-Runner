@@ -104,11 +104,6 @@ public class EnvironmentSpawner : MonoBehaviour
     private void Spawn(float minSpread, float maxSpread, ref float lastSpawnPointX, System.Enum[] objectsToSpawn, int[] objectsDistribution, float[] objectsPadding, string collisionTag) {
         int rng = Random.Range(0, 100);
         float spread = Random.Range(minSpread, maxSpread);
-        float spawnPointX = lastSpawnPointX == 0 ? startPoint + spread + lastSpawnPointX : spread + lastSpawnPointX;
-        lastSpawnPointX = spawnPointX;
-        if (IsOverlappingWithOtherObjects(spawnPointX, collisionTag)) {
-            return;
-        }
         string objectToSpawnName = "";
         for (int i = 0; i < objectsDistribution.Length; i++) {
             if (rng < objectsDistribution[i]) {
@@ -118,6 +113,11 @@ public class EnvironmentSpawner : MonoBehaviour
                 }
                 break;
             }
+        }
+        float spawnPointX = lastSpawnPointX == 0 ? startPoint + spread + lastSpawnPointX : spread + lastSpawnPointX;
+        lastSpawnPointX = spawnPointX;
+        if (IsOverlappingWithOtherObjects(spawnPointX, collisionTag)) {
+            return;
         }
         SpawnableObject objectToSpawn = pool.GetObject(objectToSpawnName, false).GetComponent<SpawnableObject>();
         RestoreScaleRecursively(objectToSpawn.transform);
@@ -130,7 +130,7 @@ public class EnvironmentSpawner : MonoBehaviour
         objectToSpawn.transform.localScale = modifiedObjectScale;
     }
 
-    private bool IsOverlappingWithOtherObjects( float spawnPointX, string collisionTag) {
+    private bool IsOverlappingWithOtherObjects(float spawnPointX, string collisionTag) {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(new Vector2(spawnPointX, 0), 2f);
         foreach (Collider2D collider in colliders) {
             if (collider.CompareTag(collisionTag)) {

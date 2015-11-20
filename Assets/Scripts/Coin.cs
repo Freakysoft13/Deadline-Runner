@@ -5,7 +5,7 @@ public class Coin : MonoBehaviour
     public int value = 1;
     public float floatStrength = 0.5f;
 
-    void Update() {
+    void FixedUpdate() {
         GetComponent<Rigidbody2D>().MovePosition(new Vector2(transform.position.x, transform.parent.position.y + (Mathf.Sin(Time.time + transform.GetSiblingIndex()) * floatStrength)));
     }
 
