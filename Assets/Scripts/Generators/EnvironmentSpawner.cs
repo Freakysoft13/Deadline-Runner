@@ -51,7 +51,7 @@ public class EnvironmentSpawner : MonoBehaviour
             }
             Spawn(minObstaclesSpread, maxObstaclesSpread, ref lastObstacleSpawnPointX, ConvertObstaclesEnum(), obstaclesDistribution, obstaclesPadding, "obstacle");
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(.2f);
         }
     }
 
