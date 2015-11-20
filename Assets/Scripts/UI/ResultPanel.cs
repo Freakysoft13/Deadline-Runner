@@ -27,6 +27,10 @@ public class ResultPanel : MonoBehaviour
     public Text unlockText;
     public Text score;
 
+    public GameObject[] ancestorsImg;
+    public GameObject lockancestors;
+    public GameObject ancesorButton;
+
 
     void Start() {
         EventManager.Instance.OnLevelUp += delegate () {
