@@ -40,6 +40,9 @@ public class ResultPanel : MonoBehaviour
     }
 
     void OnEnable() {
+        lockancestors.SetActive(true);
+        ancesorButton.SetActive(false);
+        ancestorsImg[LevelManager.Instance.GetLevel()].SetActive(true);
         if (LevelManager.Instance == null || GameManager.Instance == null || GameManager.Instance.Player == null) { return; }
         levelUp_txt.gameObject.SetActive(false);
         level_txt.text = "Level " + (1 + LevelManager.Instance.GetLevel());
