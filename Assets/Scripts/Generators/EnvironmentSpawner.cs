@@ -49,7 +49,8 @@ public class EnvironmentSpawner : MonoBehaviour
             while (lastObstacleSpawnPointX > player.position.x + maxSpawnDistance) {
                 yield return new WaitForSeconds(1f);
             }
-            Spawn(minObstaclesSpread, maxObstaclesSpread, ref lastObstacleSpawnPointX, ConvertObstaclesEnum(), obstaclesDistribution, obstaclesPadding, "obstacle");
+            Spawn(minObstaclesSpread, maxObstaclesSpread, ref lastObstacleSpawnPointX, ConvertObstaclesEnum(),
+                obstaclesDistribution, obstaclesPadding, "obstacle");
 
             yield return new WaitForSeconds(.2f);
         }
@@ -108,7 +109,7 @@ public class EnvironmentSpawner : MonoBehaviour
         for (int i = 0; i < objectsDistribution.Length; i++) {
             if (rng < objectsDistribution[i]) {
                 objectToSpawnName = ObjectTypesDataHolder.Instance.GetObjectNameForType(objectsToSpawn[i]);
-                if (objectsPadding.Length == objectsDistribution.Length) {
+                if (objectsPadding.Length == objectsToSpawn.Length) {
                     spread = spread < objectsPadding[i] ? objectsPadding[i] : spread;
                 }
                 break;

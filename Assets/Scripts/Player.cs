@@ -159,7 +159,7 @@ public class Player : MonoBehaviour
         canMove = true;
         speed = speedAtDeath;
         Vector3 pos = transform.position;
-        pos.y = 1;
+        pos.y = 1 * playerFlip;
         transform.position = pos;
         EventManager.Instance.FirePlayerResurrected();
     }
