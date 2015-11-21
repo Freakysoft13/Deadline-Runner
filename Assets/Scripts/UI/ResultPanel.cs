@@ -36,6 +36,8 @@ public class ResultPanel : MonoBehaviour
         EventManager.Instance.OnLevelUp += delegate () {
             levelUp_txt.gameObject.SetActive(true);
             level_txt.text = "Level " + (1 + LevelManager.Instance.GetLevel());
+            lockancestors.SetActive(false);
+            ancesorButton.SetActive(true);
         };
     }
 
