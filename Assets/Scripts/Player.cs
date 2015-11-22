@@ -55,6 +55,16 @@ public class Player : MonoBehaviour
         }
     }
 
+    public int PlayerFlip {
+        get {
+            return playerFlip;
+        }
+
+        set {
+            playerFlip = value;
+        }
+    }
+
     void Start() {
         LevelManager lm = LevelManager.Instance;
         LevelManager.Skin skin = lm.GetEquippedSkin();
@@ -72,7 +82,7 @@ public class Player : MonoBehaviour
         if(headStart) {
             if (transform.position.x < headStartDistance) {
                 velocity.x = speed * 10;
-                velocity.y -= 9.8f * Time.deltaTime * playerFlip * gravityScale * defaultGravityAccel;
+                velocity.y -= 9.8f * Time.deltaTime * PlayerFlip * gravityScale * defaultGravityAccel;
                 isShielded = true;
             }
             else {
@@ -82,17 +92,17 @@ public class Player : MonoBehaviour
             return;
         }
         CheckTouch();
-        if (isDead) { velocity.y -= 9.8f * Time.deltaTime * playerFlip * 10 * gravityScale; return; }
-        velocity.x = speed + speedThreshold * Mathf.Log(transform.position.x + 8) * Time.deltaTime;
+        if (isDead) { velocity.y -= 9.8f * Time.deltaTime * PlayerFlip * 10 * gravityScale; return; }
+        velocity.x = speed + speedThreshold * Mathf.Exp(GetDistance() / 500) * Time.deltaTime;
         if (!isRotating) {
             if ((Input.GetKeyDown(KeyCode.Space) || jump) && IsGrounded()) {
                 gravityScale = 1.0f;
-                velocity.y = jumpSpeed * playerFlip;
+                velocity.y = jumpSpeed * PlayerFlip;
                 jumpEndTime = Time.time + jumpTime;
                 animationController.JumpUp();
                 jump = false;
             }
-            velocity.y -= 9.8f * Time.deltaTime * playerFlip * gravityScale * defaultGravityAccel;
+            velocity.y -= 9.8f * Time.deltaTime * PlayerFlip * gravityScale * defaultGravityAccel;
             if ((Input.GetKeyDown(KeyCode.Space) || jump) && !IsGrounded()) {
                 gravityScale = gravityAccel;
                 animationController.MultTimeScale(gravityScale);
@@ -159,7 +169,7 @@ public class Player : MonoBehaviour
         canMove = true;
         speed = speedAtDeath;
         Vector3 pos = transform.position;
-        pos.y = 1 * playerFlip;
+        pos.y = 1 * PlayerFlip;
         transform.position = pos;
         EventManager.Instance.FirePlayerResurrected();
     }
@@ -198,7 +208,7 @@ public class Player : MonoBehaviour
     }
 
     private bool isFlipped() {
-        return playerFlip == -1;
+        return PlayerFlip == -1;
     }
 
     void FixedUpdate() {
@@ -212,7 +222,7 @@ public class Player : MonoBehaviour
         velocity.y = 0;
         isRotating = true;
         Vector2 rotation;
-        playerFlip *= -1;
+        PlayerFlip *= -1;
         if (!isFlipped()) {
             rotation = new Vector2(0, 0);
         }
