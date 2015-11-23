@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Effect;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -31,6 +32,8 @@ public class Player : MonoBehaviour
     private bool isShielded = false;
     private bool canMove = true;
     private int exp;
+
+    public RectTransform moonPanel;
 
 
     private float speedAtDeath = 0;
@@ -75,6 +78,7 @@ public class Player : MonoBehaviour
         animationController = GetComponent<AnimationController>();
         rigidBody = GetComponent<Rigidbody2D>();
         //new ConsumablesManager().ApplyActiveConsumables();
+        moonPanel.localPosition = new Vector3(0, -350);
     }
 
     void Update() {
@@ -218,16 +222,18 @@ public class Player : MonoBehaviour
     }
 
     public void Flip() {
-        if(!canFlip) { return; }
+        if (!canFlip) { return; }
         velocity.y = 0;
         isRotating = true;
         Vector2 rotation;
         PlayerFlip *= -1;
         if (!isFlipped()) {
             rotation = new Vector2(0, 0);
+            moonPanel.localPosition = new Vector3(0, -350);
         }
         else {
             rotation = new Vector2(180, 0);
+            moonPanel.localPosition = new Vector3(0, -150);
         }
         targetRotatorRotation = Quaternion.Euler(rotation);
     }
