@@ -38,12 +38,15 @@ public class ResultPanel : MonoBehaviour
             level_txt.text = "Level " + (1 + LevelManager.Instance.GetLevel());
             lockancestors.SetActive(false);
             ancesorButton.SetActive(true);
+            unlockText.gameObject.SetActive(false);
         };
     }
 
     void OnEnable() {
         lockancestors.SetActive(true);
         ancesorButton.SetActive(false);
+        unlockText.gameObject.SetActive(true);
+        unlockText.text = "Unlock on level: " + (LevelManager.Instance.GetLevel() + 2);
         ancestorsImg[LevelManager.Instance.GetLevel()].SetActive(true);
         if (LevelManager.Instance == null || GameManager.Instance == null || GameManager.Instance.Player == null) { return; }
         levelUp_txt.gameObject.SetActive(false);

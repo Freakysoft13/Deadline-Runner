@@ -99,11 +99,12 @@ public class Player : MonoBehaviour
         if (PlayerFlip * transform.position.y > maxJumpHeight || jumpInterrupt) {
             FallDown();
         }
-        if(Input.GetKeyDown(KeyCode.LeftControl)) {
+       /* if(Input.GetKeyDown(KeyCode.LeftControl)) {
             EventManager.Instance.FireHeadstart();
             canMove = false;
             animationController.Idle();
         }
+        */
     }
 
     private bool IsJumpPressed() {
