@@ -59,9 +59,20 @@ public class EventManager : MonoBehaviour
         }
     }
 
+
+    public delegate void Headstart();
+
+    public Headstart OnHeadstart;
+
+    public void FireHeadstart() {
+        if (OnHeadstart != null) {
+            OnHeadstart();
+        }
+    }
+
     public delegate void HeadstartEnd();
 
-    public PlayerDied OnHeadstartEnd;
+    public HeadstartEnd OnHeadstartEnd;
 
     public void FireHeadstartEnd() {
         if (OnHeadstartEnd != null) {
@@ -76,6 +87,16 @@ public class EventManager : MonoBehaviour
     public void FireLevelUp() {
         if (OnLevelUp != null) {
             OnLevelUp();
+        }
+    }
+
+    public delegate void AnimationComplete(string animationName);
+
+    public AnimationComplete OnAnimationComplete;
+
+    public void FireAnimationComplete(string animationName) {
+        if (OnAnimationComplete != null) {
+            OnAnimationComplete(animationName);
         }
     }
 }

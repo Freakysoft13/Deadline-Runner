@@ -5,10 +5,8 @@ public class Player : MonoBehaviour
 {
     public float speed = 5.0f;
     public float jumpSpeed = 5.0f;
-    public float jumpTime = 0.5f;
-    public Transform rotator;
-    public float gravityAccel = 3.0f;
-    public float defaultGravityAccel = 1.0f;
+    private float doubleJumpGravityAccel = 20.0f;
+    public float maxJumpHeight = 4;
     public bool headStart = false;
     public int headStartDistance = 200;
 
@@ -16,14 +14,12 @@ public class Player : MonoBehaviour
     public float speedThreshold = 50;
 
     private Vector2 velocity;
-    private float jumpEndTime = 0.0f;
-    private bool jumpInterrupt = false;
     private AnimationController animationController;
     private Rigidbody2D rigidBody;
     private int playerFlip = 1;
-    private Quaternion targetRotatorRotation = Quaternion.identity;
-    private bool isRotating = false;
-    private bool jump = false;
+    private bool isJumping = false;
+    private bool jumpOnLand = false;
+    private bool jumpInterrupt = false;
     private bool flip = false;
     private bool canFlip = true;
     private float gravityScale = 1.0f;
@@ -31,6 +27,9 @@ public class Player : MonoBehaviour
     private bool isShielded = false;
     private bool canMove = true;
     private int exp;
+
+    private bool jumpTouch = false;
+    private bool flipTouch = false;
 
 
     private float speedAtDeath = 0;
@@ -78,66 +77,68 @@ public class Player : MonoBehaviour
     }
 
     void Update() {
-        if(!canMove) { return; }
-        if(headStart) {
-            if (transform.position.x < headStartDistance) {
-                velocity.x = speed * 10;
-                velocity.y -= 9.8f * Time.deltaTime * PlayerFlip * gravityScale * defaultGravityAccel;
-                isShielded = true;
-            }
-            else {
-                headStart = false;
-                EventManager.Instance.FireHeadstartEnd();
-            }
-            return;
-        }
+        ApplyGravity();
+        if (isDead || !canMove) { Stop(); return; }
+        Go();
         CheckTouch();
-        if (isDead) { velocity.y -= 9.8f * Time.deltaTime * PlayerFlip * 10 * gravityScale; return; }
-        velocity.x = speed + speedThreshold * Mathf.Exp(GetDistance() / 500) * Time.deltaTime;
-        if (!isRotating) {
-            if ((Input.GetKeyDown(KeyCode.Space) || jump) && IsGrounded()) {
-                gravityScale = 1.0f;
-                velocity.y = jumpSpeed * PlayerFlip;
-                jumpEndTime = Time.time + jumpTime;
-                animationController.JumpUp();
-                jump = false;
-            }
-            velocity.y -= 9.8f * Time.deltaTime * PlayerFlip * gravityScale * defaultGravityAccel;
-            if ((Input.GetKeyDown(KeyCode.Space) || jump) && !IsGrounded()) {
-                gravityScale = gravityAccel;
-                animationController.MultTimeScale(gravityScale);
-                jump = true;
-                jumpInterrupt = true;
-            }
-            if (Time.time > jumpEndTime && !jumpInterrupt) {
-                jumpInterrupt = true;
-            }
-
-            if (IsGrounded() && jumpInterrupt) {
-                gravityScale = 1.0f;
-                animationController.Run();
-            }
-
-            if (jumpInterrupt) {
-                if ((velocity.y > 0 && !isFlipped()) || velocity.y < 0 && isFlipped()) {
-                    velocity.y = Mathf.MoveTowards(velocity.y, 0, Time.deltaTime * 100);
-                    animationController.FallDown();
-                }
-                else {
-                    jumpInterrupt = false;
-                }
-            }
-            if ((Input.GetKeyDown(KeyCode.AltGr) || flip) && IsGrounded()) {
-                Flip();
-                flip = false;
-            }
+        if (IsFlipPressed() && IsGrounded()) {
+            Flip();
         }
-        else {
-            if (Quaternion.Angle(rotator.rotation, targetRotatorRotation) < Mathf.Epsilon) {
-                isRotating = false;
-            }
+        if ((IsJumpPressed() || jumpOnLand) && IsGrounded()) {
+            Jump();
         }
+        if (IsJumpPressed() && !IsGrounded()) {
+            jumpInterrupt = true;
+            jumpOnLand = true;
+            gravityScale = doubleJumpGravityAccel;
+        }
+        if (PlayerFlip * transform.position.y > maxJumpHeight || jumpInterrupt) {
+            FallDown();
+        }
+    }
 
+    private bool IsJumpPressed() {
+        bool result = Input.GetKeyDown(KeyCode.Space) || jumpTouch;
+        return result;
+    }
+
+    private bool IsFlipPressed() {
+        bool result = Input.GetKeyDown(KeyCode.AltGr) || flipTouch;
+        return result;
+    }
+
+    public void Go() {
+        velocity.x = speed * Mathf.Exp(GetDistance() / 500);
+        if (IsGrounded() && !isJumping) {
+            gravityScale = 1;
+            animationController.Run();
+        }
+    }
+    public void Stop() {
+        velocity.x = 0;
+    }
+
+    public void Jump() {
+        isJumping = true;
+        jumpOnLand = false;
+        velocity.y = jumpSpeed * PlayerFlip;
+        animationController.JumpUp();
+    }
+    public void FallDown() {
+        isJumping = false;
+        jumpInterrupt = false;
+        if (PlayerFlip * velocity.y > 0) {
+            velocity.y = 0;
+        }
+        animationController.FallDown();
+    }
+
+    public void ApplyGravity() {
+        velocity.y -= 9.8f * Time.deltaTime * PlayerFlip * gravityScale;
+    }
+
+    void FixedUpdate() {
+        rigidBody.velocity = velocity;
     }
 
     public void ShieldsUp() {
@@ -152,42 +153,41 @@ public class Player : MonoBehaviour
         EventManager.Instance.FireBeforePlayerDied();
         isDead = true;
         speedAtDeath = speed;
-        speed = 0;
-        animationController.Die(OnDead);
+        EventManager.Instance.OnAnimationComplete += delegate (string name) {
+            if (name != AnimationController.DEATH) { return; }
+            canMove = false;
+            EventManager.Instance.FirePlayerDied();
+        };
+        animationController.Die();
     }
-    private void OnDead() {
-        canMove = false;
-        EventManager.Instance.FirePlayerDied();
-    }
+
     public void Ressurect() {
         EventManager.Instance.FireBeforePlayerResurrected();
-        animationController.Ressurect(OnResurrected);        
-    }
-
-    private void OnResurrected() {
-        isDead = false;
-        canMove = true;
-        speed = speedAtDeath;
-        Vector3 pos = transform.position;
-        pos.y = 1 * PlayerFlip;
-        transform.position = pos;
-        EventManager.Instance.FirePlayerResurrected();
-    }
-
-    public void Jump() {
-        jump = true;
+        EventManager.Instance.OnAnimationComplete += delegate (string name) {
+            if (name != AnimationController.RESURRECTION) { return; }
+            isDead = false;
+            canMove = true;
+            speed = speedAtDeath;
+            Vector3 pos = transform.position;
+            pos.y = PlayerFlip;
+            transform.position = pos;
+            EventManager.Instance.FirePlayerResurrected();
+        };
+        animationController.Ressurect();
     }
 
     private void CheckTouch() {
+        jumpTouch = false;
+        flipTouch = false;
         if (Input.touchCount == 1 && Time.timeScale == 1) {
             Touch touch = Input.GetTouch(0);
             if (touch.tapCount > 0) {
                 if (touch.phase == TouchPhase.Began) {
                     if (touch.position.x < Screen.width / 2) {
-                        flip = true;
+                        flipTouch = true;
                     }
                     else {
-                        jump = true;
+                        jumpTouch = true;
                     }
                 }
             }
@@ -211,25 +211,16 @@ public class Player : MonoBehaviour
         return PlayerFlip == -1;
     }
 
-    void FixedUpdate() {
-        rigidBody.velocity = velocity;
-        transform.localRotation = Quaternion.identity;
-        rotator.rotation = Quaternion.Lerp(rotator.rotation, targetRotatorRotation, 100 * Time.deltaTime);
-    }
-
     public void Flip() {
-        if(!canFlip) { return; }
-        velocity.y = 0;
-        isRotating = true;
-        Vector2 rotation;
+        if (!canFlip) { return; }
         PlayerFlip *= -1;
-        if (!isFlipped()) {
-            rotation = new Vector2(0, 0);
-        }
-        else {
-            rotation = new Vector2(180, 0);
-        }
-        targetRotatorRotation = Quaternion.Euler(rotation);
+        Vector2 newPosition = transform.position;
+        Vector2 newScale = transform.localScale;
+        newPosition.y = isFlipped() ? -2 : 2;
+        newScale.y = PlayerFlip;
+        transform.position = newPosition;
+        transform.localScale = newScale;
+        velocity.y = 0;
     }
 
     public int expToDistanceThreshold = 3;

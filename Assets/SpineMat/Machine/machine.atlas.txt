@@ -1,0 +1,103 @@
+
+machine.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+BodyGlow
+  rotate: true
+  xy: 760, 337
+  size: 461, 62
+  orig: 463, 64
+  offset: 1, 1
+  index: -1
+FireGlow
+  rotate: false
+  xy: 775, 825
+  size: 246, 189
+  orig: 247, 191
+  offset: 0, 1
+  index: -1
+HeadlightGlow
+  rotate: true
+  xy: 2, 2
+  size: 79, 111
+  orig: 81, 113
+  offset: 1, 1
+  index: -1
+Layer 21 copy 3
+  rotate: false
+  xy: 2, 433
+  size: 585, 365
+  orig: 587, 367
+  offset: 1, 1
+  index: -1
+Layer 23 copy
+  rotate: false
+  xy: 2, 241
+  size: 337, 190
+  orig: 339, 192
+  offset: 1, 1
+  index: -1
+Layer 24 copy 5
+  rotate: false
+  xy: 2, 800
+  size: 771, 214
+  orig: 773, 216
+  offset: 1, 1
+  index: -1
+Layer 25
+  rotate: false
+  xy: 341, 270
+  size: 252, 161
+  orig: 254, 163
+  offset: 1, 1
+  index: -1
+Layer 26
+  rotate: true
+  xy: 824, 607
+  size: 216, 157
+  orig: 218, 159
+  offset: 1, 1
+  index: -1
+Layer 27 copy
+  rotate: false
+  xy: 2, 83
+  size: 259, 156
+  orig: 261, 158
+  offset: 1, 1
+  index: -1
+Layer 28
+  rotate: true
+  xy: 589, 467
+  size: 331, 169
+  orig: 333, 171
+  offset: 1, 1
+  index: -1
+Layer 30
+  rotate: true
+  xy: 263, 89
+  size: 69, 49
+  orig: 71, 51
+  offset: 1, 1
+  index: -1
+Layer 31
+  rotate: false
+  xy: 115, 33
+  size: 97, 48
+  orig: 99, 50
+  offset: 1, 1
+  index: -1
+blade2
+  rotate: false
+  xy: 824, 538
+  size: 78, 67
+  orig: 78, 67
+  offset: 0, 0
+  index: -1
+blade3
+  rotate: true
+  xy: 263, 160
+  size: 79, 68
+  orig: 79, 68
+  offset: 0, 0
+  index: -1

@@ -1,44 +1,43 @@
 ﻿using UnityEngine;
 using System;
 
-public class AnimationController : MonoBehaviour {
+public class AnimationController : MonoBehaviour
+{
 
     private SkeletonAnimation skelAnimation;
 
     public Action animationEnd;
 
-    private const string RUN = "Run";
+    public const string RUN = "Run";
+    public const string DEATH = "Death";
+    public const string RESURRECTION = "Resurrection";
+    public const string JUMP_UP = "Jump_Up";
+    public const string JUMP_DOWN = "Jump_Down";
 
-    void Start()
-    {
+    void Start() {
         skelAnimation = GetComponent<SkeletonAnimation>();
         skelAnimation.state.Complete += AnimationComplete;
     }
 
     private void AnimationComplete(Spine.AnimationState state, int trackIndex, int loopCount) {
-        if (animationEnd != null) {
-            animationEnd.DynamicInvoke();
-            animationEnd = null;
-        }
+        EventManager.Instance.FireAnimationComplete(skelAnimation.AnimationName);
     }
 
-    public void JumpUp()
-    {
+    public void JumpUp() {
         skelAnimation.loop = false;
-        skelAnimation.timeScale = 1;
-        skelAnimation.AnimationName = "Jump_Up";
-        Reset();
-    }
-
-    public void FallDown()
-    {
         skelAnimation.timeScale = 0.5f;
-        skelAnimation.AnimationName = "Jump_Down";
+        skelAnimation.AnimationName = JUMP_UP;
         Reset();
     }
 
-    public void Run()
-    {
+    public void FallDown() {
+        skelAnimation.loop = false;
+        skelAnimation.timeScale = 0.5f;
+        skelAnimation.AnimationName = JUMP_DOWN;
+        Reset();
+    }
+
+    public void Run() {
         if (skelAnimation.AnimationName != RUN) {
             skelAnimation.loop = true;
             skelAnimation.timeScale = 1;
@@ -47,25 +46,21 @@ public class AnimationController : MonoBehaviour {
         }
     }
 
-    public void MultTimeScale(float gravitiScale)
-    {
+    public void MultTimeScale(float gravitiScale) {
         skelAnimation.timeScale *= gravitiScale;
     }
 
-    public void Die(Action animationEnd)
-    {
-        this.animationEnd = animationEnd;
+    public void Die() {
         skelAnimation.loop = false;
         skelAnimation.timeScale = 1;
-        skelAnimation.AnimationName = "Death";
+        skelAnimation.AnimationName = DEATH;
         Reset();
     }
 
-    public void Ressurect(Action animationEnd) {
-        this.animationEnd = animationEnd;
+    public void Ressurect() {
         skelAnimation.loop = false;
         skelAnimation.timeScale = 0.7f;
-        skelAnimation.AnimationName = "Resurrection";
+        skelAnimation.AnimationName = RESURRECTION;
         Reset();
     }
 
