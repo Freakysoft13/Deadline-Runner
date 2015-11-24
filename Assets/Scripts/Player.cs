@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Effect;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -28,8 +29,12 @@ public class Player : MonoBehaviour
     private bool canMove = true;
     private int exp;
 
+<<<<<<< HEAD
     private bool jumpTouch = false;
     private bool flipTouch = false;
+=======
+    public RectTransform moonPanel;
+>>>>>>> 8f081c673d0610d213813532bfd62b75c586d9b4
 
 
     private float speedAtDeath = 0;
@@ -74,6 +79,7 @@ public class Player : MonoBehaviour
         animationController = GetComponent<AnimationController>();
         rigidBody = GetComponent<Rigidbody2D>();
         //new ConsumablesManager().ApplyActiveConsumables();
+        moonPanel.localPosition = new Vector3(0, -350);
     }
 
     void Update() {
@@ -213,6 +219,7 @@ public class Player : MonoBehaviour
 
     public void Flip() {
         if (!canFlip) { return; }
+<<<<<<< HEAD
         PlayerFlip *= -1;
         Vector2 newPosition = transform.position;
         Vector2 newScale = transform.localScale;
@@ -221,6 +228,21 @@ public class Player : MonoBehaviour
         transform.position = newPosition;
         transform.localScale = newScale;
         velocity.y = 0;
+=======
+        velocity.y = 0;
+        isRotating = true;
+        Vector2 rotation;
+        PlayerFlip *= -1;
+        if (!isFlipped()) {
+            rotation = new Vector2(0, 0);
+            moonPanel.localPosition = new Vector3(0, -350);
+        }
+        else {
+            rotation = new Vector2(180, 0);
+            moonPanel.localPosition = new Vector3(0, -150);
+        }
+        targetRotatorRotation = Quaternion.Euler(rotation);
+>>>>>>> 8f081c673d0610d213813532bfd62b75c586d9b4
     }
 
     public int expToDistanceThreshold = 3;
