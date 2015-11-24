@@ -21,7 +21,7 @@ public class CarController : MonoBehaviour {
 	
     private void MoveToPlayer() {
         Player player = GameManager.Instance.Player;
-        float yOffset = 4;
+        float yOffset = 0;
         Vector2 newPos = player.transform.position;
         newPos.y += player.PlayerFlip * yOffset;
         transform.position = newPos;
@@ -31,7 +31,7 @@ public class CarController : MonoBehaviour {
         EventManager.Instance.FireAnimationComplete(skelAnimation.AnimationName);
         switch(skelAnimation.AnimationName) {
             case PREPARE:
-                skelAnimation.AnimationName = START; Reset(); break;
+                skelAnimation.AnimationName = START; skelAnimation.loop = true; Reset(); break;
             case START: skelAnimation.AnimationName = DESTROY; Reset(); break;
             case DESTROY: gameObject.SetActive(false); break;
         }

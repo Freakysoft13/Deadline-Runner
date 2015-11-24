@@ -13,6 +13,7 @@ public class AnimationController : MonoBehaviour
     public const string RESURRECTION = "Resurrection";
     public const string JUMP_UP = "Jump_Up";
     public const string JUMP_DOWN = "Jump_Down";
+    public const string IDLE = "Idle";
 
     void Start() {
         skelAnimation = GetComponent<SkeletonAnimation>();
@@ -61,6 +62,13 @@ public class AnimationController : MonoBehaviour
         skelAnimation.loop = false;
         skelAnimation.timeScale = 0.7f;
         skelAnimation.AnimationName = RESURRECTION;
+        Reset();
+    }
+
+    public void Idle() {
+        skelAnimation.loop = true;
+        skelAnimation.timeScale = 1f;
+        skelAnimation.AnimationName = IDLE;
         Reset();
     }
 

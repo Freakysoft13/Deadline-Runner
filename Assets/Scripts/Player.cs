@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public float maxJumpHeight = 4;
     public bool headStart = false;
     public int headStartDistance = 200;
+    public float gravityMultiplier = 3;
 
     [Header("Speed increse muliplier")]
     public float speedThreshold = 50;
@@ -80,10 +81,10 @@ public class Player : MonoBehaviour
     }
 
     void Update() {
+        CheckTouch();
         ApplyGravity();
         if (isDead || !canMove) { Stop(); return; }
         Go();
-        CheckTouch();
         if (IsFlipPressed() && IsGrounded()) {
             Flip();
         }
@@ -97,6 +98,11 @@ public class Player : MonoBehaviour
         }
         if (PlayerFlip * transform.position.y > maxJumpHeight || jumpInterrupt) {
             FallDown();
+        }
+        if(Input.GetKeyDown(KeyCode.LeftControl)) {
+            EventManager.Instance.FireHeadstart();
+            canMove = false;
+            animationController.Idle();
         }
     }
 
@@ -137,7 +143,7 @@ public class Player : MonoBehaviour
     }
 
     public void ApplyGravity() {
-        velocity.y -= 9.8f * Time.deltaTime * PlayerFlip * gravityScale;
+        velocity.y -= 9.8f * Time.deltaTime * PlayerFlip * gravityScale * gravityMultiplier;
     }
 
     void FixedUpdate() {
@@ -156,6 +162,7 @@ public class Player : MonoBehaviour
         EventManager.Instance.FireBeforePlayerDied();
         isDead = true;
         speedAtDeath = speed;
+        jumpOnLand = false;
         EventManager.Instance.OnAnimationComplete += delegate (string name) {
             if (name != AnimationController.DEATH) { return; }
             canMove = false;
