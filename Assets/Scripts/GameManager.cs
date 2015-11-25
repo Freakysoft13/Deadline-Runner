@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public ObjectTypesDataHolder.CrystalType[] crystalTypes;
     public string[] effectNames;
     public LevelManager.PowerUp[] effectTypes;
-    public Text crystalOnRestartScore;
+   
 
     private int score;
     private Player player;
@@ -99,7 +99,6 @@ public class GameManager : MonoBehaviour
     }
 
     public void PlayerDie() {
-        crystalOnRestartScore.text = LevelManager.Instance.GetMoney().ToString();
         //Time.timeScale = 0;
     }
 
