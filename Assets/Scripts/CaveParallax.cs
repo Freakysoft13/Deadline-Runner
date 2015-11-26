@@ -21,7 +21,7 @@ public class CaveParallax : MonoBehaviour
                 startPos = transform.position;
                 shouldSavePos = false;
             }
-            transform.Translate(Vector3.right * (player.GetComponent<Player>().speed / movementSlowFactor) * Time.deltaTime);
+            transform.Translate(Vector3.right * (player.GetComponent<Player>().GetSpeed() / movementSlowFactor) * Time.deltaTime);
         }
         else if (!shouldSavePos) {
             transform.position = startPos;

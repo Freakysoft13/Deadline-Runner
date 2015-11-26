@@ -34,9 +34,6 @@ public class Player : MonoBehaviour
     private bool flipTouch = false;
     public RectTransform moonPanel;
 
-
-    private float speedAtDeath = 0;
-
     public bool CanFlip {
         get {
             return canFlip;
@@ -151,6 +148,10 @@ public class Player : MonoBehaviour
         rigidBody.velocity = velocity;
     }
 
+    public float GetSpeed() {
+        return rigidBody.velocity.x;
+    }
+
     public void ShieldsUp() {
         isShielded = true;
     }
@@ -162,7 +163,6 @@ public class Player : MonoBehaviour
     public void Die() {
         EventManager.Instance.FireBeforePlayerDied();
         isDead = true;
-        speedAtDeath = speed;
         jumpOnLand = false;
         EventManager.Instance.OnAnimationComplete += delegate (string name) {
             if (name != AnimationController.DEATH) { return; }
@@ -178,7 +178,6 @@ public class Player : MonoBehaviour
             if (name != AnimationController.RESURRECTION) { return; }
             isDead = false;
             canMove = true;
-            speed = speedAtDeath;
             Vector3 pos = transform.position;
             pos.y = PlayerFlip;
             transform.position = pos;
