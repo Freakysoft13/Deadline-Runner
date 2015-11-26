@@ -123,6 +123,9 @@ public class Player : MonoBehaviour
     }
     public void Stop() {
         velocity.x = 0;
+        if (PlayerFlip * velocity.y > 0) {
+            velocity.y = 0;
+        }
     }
 
     public void Jump() {
