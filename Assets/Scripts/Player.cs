@@ -32,6 +32,8 @@ public class Player : MonoBehaviour
     
     private bool jumpTouch = false;
     private bool flipTouch = false;
+    private Collider2D floorCollider;
+
     public RectTransform moonPanel;
 
     public bool CanFlip {
@@ -75,6 +77,7 @@ public class Player : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         //new ConsumablesManager().ApplyActiveConsumables();
         moonPanel.localPosition = new Vector3(0, -350);
+        floorCollider = GameObject.FindGameObjectWithTag("floor").GetComponent<Collider2D>();
     }
 
     void Update() {
@@ -93,15 +96,19 @@ public class Player : MonoBehaviour
             jumpOnLand = true;
             gravityScale = doubleJumpGravityAccel;
         }
-        if (PlayerFlip * transform.position.y > maxJumpHeight || jumpInterrupt) {
+        if (PlayerFlip * transform.position.y > maxJumpHeight || jumpInterrupt || isFalling()) {
             FallDown();
         }
-       /* if(Input.GetKeyDown(KeyCode.LeftControl)) {
-            EventManager.Instance.FireHeadstart();
-            canMove = false;
-            animationController.Idle();
-        }
-        */
+        /* if(Input.GetKeyDown(KeyCode.LeftControl)) {
+             EventManager.Instance.FireHeadstart();
+             canMove = false;
+             animationController.Idle();
+         }
+         */
+    }
+
+    private bool isFalling() {
+        return !IsGrounded() && velocity.y * PlayerFlip < 0;
     }
 
     private bool IsJumpPressed() {
@@ -155,12 +162,16 @@ public class Player : MonoBehaviour
         return rigidBody.velocity.x;
     }
 
+    public GameObject shieldEffect;
+
     public void ShieldsUp() {
         isShielded = true;
+        shieldEffect.SetActive(true);
     }
 
     public void ShieldsDown() {
         isShielded = false;
+        shieldEffect.SetActive(false);
     }
 
     public void Die() {
@@ -211,13 +222,7 @@ public class Player : MonoBehaviour
     }
 
     private bool IsGrounded() {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.5f);
-        foreach (Collider2D col in colliders) {
-            if (col.CompareTag("floor")) {
-                return true;
-            }
-        }
-        return false;
+        return floorCollider.IsTouching(GetComponent<Collider2D>());
     }
 
     private bool isFlipped() {

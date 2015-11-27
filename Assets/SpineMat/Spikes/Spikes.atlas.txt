@@ -1,0 +1,117 @@
+
+Spikes.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Layer 10 copy
+  rotate: true
+  xy: 587, 136
+  size: 52, 179
+  orig: 54, 181
+  offset: 1, 1
+  index: -1
+Layer 10 copy 2
+  rotate: true
+  xy: 2, 2
+  size: 52, 180
+  orig: 54, 182
+  offset: 1, 1
+  index: -1
+Layer 10 copy 3
+  rotate: true
+  xy: 2, 2
+  size: 52, 180
+  orig: 54, 182
+  offset: 1, 1
+  index: -1
+Layer 10 copy 41
+  rotate: true
+  xy: 826, 182
+  size: 52, 177
+  orig: 54, 179
+  offset: 1, 1
+  index: -1
+Layer 10 copy 42
+  rotate: true
+  xy: 826, 182
+  size: 52, 177
+  orig: 54, 179
+  offset: 1, 1
+  index: -1
+Layer 10 copy 43
+  rotate: true
+  xy: 826, 182
+  size: 52, 177
+  orig: 54, 179
+  offset: 1, 1
+  index: -1
+Layer 12 copy
+  rotate: true
+  xy: 587, 58
+  size: 76, 123
+  orig: 78, 125
+  offset: 1, 1
+  index: -1
+Layer 12 copy 2
+  rotate: true
+  xy: 587, 58
+  size: 76, 123
+  orig: 78, 125
+  offset: 1, 1
+  index: -1
+Layer 12
+  rotate: true
+  xy: 587, 58
+  size: 76, 123
+  orig: 78, 125
+  offset: 1, 1
+  index: -1
+Layer 12 copy 3
+  rotate: false
+  xy: 712, 11
+  size: 76, 123
+  orig: 78, 125
+  offset: 1, 1
+  index: -1
+Layer 12 copy 5
+  rotate: false
+  xy: 712, 11
+  size: 76, 123
+  orig: 78, 125
+  offset: 1, 1
+  index: -1
+Layer 12 copy 4
+  rotate: false
+  xy: 712, 11
+  size: 76, 123
+  orig: 78, 125
+  offset: 1, 1
+  index: -1
+Layer 13
+  rotate: false
+  xy: 301, 105
+  size: 284, 129
+  orig: 286, 131
+  offset: 1, 1
+  index: -1
+Layer 6
+  rotate: false
+  xy: 2, 56
+  size: 281, 44
+  orig: 283, 46
+  offset: 1, 1
+  index: -1
+Layer 6 copy
+  rotate: false
+  xy: 587, 190
+  size: 237, 44
+  orig: 239, 46
+  offset: 1, 1
+  index: -1
+Layer 7 copy 3
+  rotate: false
+  xy: 2, 102
+  size: 297, 132
+  orig: 299, 134
+  offset: 1, 1
+  index: -1
