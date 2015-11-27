@@ -81,9 +81,9 @@ public class Player : MonoBehaviour
     }
 
     void Update() {
-        CheckTouch();
         ApplyGravity();
         if (isDead || !canMove) { Stop(); return; }
+        CheckTouch();
         Go();
         if (IsFlipPressed() && IsGrounded()) {
             Flip();
