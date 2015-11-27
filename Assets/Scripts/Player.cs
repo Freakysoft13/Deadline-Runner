@@ -122,10 +122,11 @@ public class Player : MonoBehaviour
     }
 
     public void Go() {
-        velocity.x = speed * Mathf.Exp(GetDistance() / 500);
+        float speedMultiplier = (1 + GetDistance() / 1000.0f);
+        velocity.x = speed * (speedMultiplier);
         if (IsGrounded() && !isJumping) {
             gravityScale = 1;
-            animationController.Run();
+            animationController.Run(speedMultiplier);
         }
     }
     public void Stop() {

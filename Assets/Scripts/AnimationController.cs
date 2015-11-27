@@ -38,10 +38,10 @@ public class AnimationController : MonoBehaviour
         Reset();
     }
 
-    public void Run() {
+    public void Run(float speedScale) {
         if (skelAnimation.AnimationName != RUN) {
             skelAnimation.loop = true;
-            skelAnimation.timeScale = 1;
+            skelAnimation.timeScale = speedScale;
             skelAnimation.AnimationName = RUN;
             Reset();
         }
