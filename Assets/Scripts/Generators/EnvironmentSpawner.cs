@@ -119,23 +119,58 @@ public class EnvironmentSpawner : MonoBehaviour
         }
         float spawnPointX = lastSpawnPointX == 0 ? startPoint + spread + lastSpawnPointX : spread + lastSpawnPointX;
         lastSpawnPointX = spawnPointX;
-        SpawnableObject objectToSpawn = pool.GetObject(objectToSpawnName).GetComponent<SpawnableObject>();
+        SpawnableObject objectToSpawn = pool.GetObject(objectToSpawnName, false).GetComponent<SpawnableObject>();
         RestoreScaleRecursively(objectToSpawn.transform);
         int sideIndicator = side == Side.UPPER ? 1 : -1;
         Vector2 spawnPosition = new Vector2(spawnPointX, sideIndicator * objectToSpawn.yPosition);
+        if (IsOverlappingWith(spawnPosition, collisionTag)) {
+            Vector2 mostSuitableSpawnPos = FindSuitableSpawn(spawnPosition, maxSpread, collisionTag);
+            if (spawnPosition != mostSuitableSpawnPos) {
+                spawnPosition = mostSuitableSpawnPos;
+                lastSpawnPointX = spawnPosition.x;
+            } else {
+                lastSpawnPointX = spawnPosition.x;
+                return;
+            }
+        }
         Vector3 modifiedObjectScale = new Vector3(objectToSpawn.transform.localScale.x,
             sideIndicator * objectToSpawn.transform.localScale.y,
             objectToSpawn.transform.localScale.z);
         objectToSpawn.transform.position = spawnPosition;
         objectToSpawn.transform.localScale = modifiedObjectScale;
-        /*float lastPoint = PlayerPrefs.GetFloat("lastPoint" + collisionTag, -1000);
-        float lastSize = PlayerPrefs.GetFloat("lastSize" + collisionTag, -1000);
-        if (lastPoint + lastSize / 2 > spawnPosition.x - 1) {
-            spawnPosition.x += (lastPoint + lastSize / 2) - (spawnPosition.x - 1);
-            print(((lastPoint + lastSize / 2) - (spawnPosition.x - 1)));
+        objectToSpawn.gameObject.SetActiveRecursively(true);
+    }
+
+    private Vector2 FindSuitableSpawn(Vector2 currentSpawnPos, float maxXSpread, string collisionTag) {
+        Vector2 result = currentSpawnPos;
+        Vector2 searchVector = currentSpawnPos;
+        for (int i = 0; i < maxXSpread; i++) {
+            searchVector.x += i;
+            if (!IsOverlappingWith(searchVector, collisionTag)) {
+                return searchVector;
+            }
         }
-        PlayerPrefs.SetFloat("lastPoint" + collisionTag, spawnPosition.x);
-        PlayerPrefs.SetFloat("lastSize" + collisionTag, 2);*/
+        for (int i = 0; i < maxXSpread; i++) {
+            searchVector.x -= i;
+            if (!IsOverlappingWith(searchVector, collisionTag)) {
+                return searchVector;
+            }
+        }
+        return result;
+    }
+
+    private bool IsOverlappingWith(Vector2 pos, string overlapTag) {
+        Vector2 pointA = new Vector2(pos.x - 2, pos.y - 2);
+        Vector2 pointB = new Vector2(pos.x + 2, pos.y + 2);
+        Vector3 pos3D = new Vector3(pos.x, pos.y, 0);
+        Collider2D[] colliders = Physics2D.OverlapAreaAll(pointA, pointB);
+        foreach (Collider2D col in colliders) {
+            if (col.CompareTag(overlapTag) && pos3D != col.transform.position) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private void RestoreScaleRecursively(Transform t) {
