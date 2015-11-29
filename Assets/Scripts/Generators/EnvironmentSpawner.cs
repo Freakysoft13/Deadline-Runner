@@ -151,6 +151,7 @@ public class EnvironmentSpawner : MonoBehaviour
                 return searchVector;
             }
         }
+        searchVector = currentSpawnPos;
         for (int i = 0; i < backwardShifLength; i++) {
             searchVector.x -= i;
             if (!IsOverlappingWith(searchVector, collisionTag)) {
