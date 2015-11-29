@@ -10,6 +10,7 @@ public class MovingObstacle : MonoBehaviour {
     public float speed;
     public int direction = -1;
     public float defaultGravityAccel = 1.0f;
+    public float distanceToPlayer = 25.0f;
 
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -31,7 +32,7 @@ public class MovingObstacle : MonoBehaviour {
     }
 
     private bool IsPlayerClose() {
-        return Mathf.Abs(player.position.x - transform.position.x) < 25;
+        return Mathf.Abs(player.position.x - transform.position.x) < distanceToPlayer;
     }
 
     void FixedUpdate() {

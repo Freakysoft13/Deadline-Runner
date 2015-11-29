@@ -29,7 +29,9 @@ public class Player : MonoBehaviour
     private bool isShielded = false;
     private bool canMove = true;
     private int exp;
-    
+
+    private bool isInAfterLife = false;
+
     private bool jumpTouch = false;
     private bool flipTouch = false;
     private Collider2D floorCollider;
@@ -67,17 +69,31 @@ public class Player : MonoBehaviour
     }
 
     void Start() {
+        SetActiveSkin();
+        animationController = GetComponent<AnimationController>();
+        rigidBody = GetComponent<Rigidbody2D>();
+        //new ConsumablesManager().ApplyActiveConsumables();
+        moonPanel.localPosition = new Vector3(0, -350);
+        floorCollider = GameObject.FindGameObjectWithTag("floor").GetComponent<Collider2D>();
+    }
+
+    private void SetActiveSkin() {
         LevelManager lm = LevelManager.Instance;
         LevelManager.Skin skin = lm.GetEquippedSkin();
         SkeletonDataAsset asset = lm.skins[lm.GetItemIndex(skin)];
         SkeletonAnimation sa = GetComponent<SkeletonAnimation>();
         sa.skeletonDataAsset = asset;
         sa.Reset();
-        animationController = GetComponent<AnimationController>();
-        rigidBody = GetComponent<Rigidbody2D>();
-        //new ConsumablesManager().ApplyActiveConsumables();
-        moonPanel.localPosition = new Vector3(0, -350);
-        floorCollider = GameObject.FindGameObjectWithTag("floor").GetComponent<Collider2D>();
+    }
+
+    public void AfterLifeStart() {
+        isInAfterLife = true;
+    }
+
+    public void AfterLifeEnd() {
+        SetActiveSkin();
+        isInAfterLife = false;
+        Die();
     }
 
     void Update() {
@@ -176,6 +192,7 @@ public class Player : MonoBehaviour
     }
 
     public void Die() {
+        exp = GetDistance() / expToDistanceThreshold;
         EventManager.Instance.FireBeforePlayerDied();
         isDead = true;
         jumpOnLand = false;
@@ -253,7 +270,7 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider) {
         if (collider.CompareTag("obstacle") && !isDead && !isShielded) {
-            exp = GetDistance() / expToDistanceThreshold;
+            if(isInAfterLife) { return; }
             Die();
         }
     }

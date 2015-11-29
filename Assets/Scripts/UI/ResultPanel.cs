@@ -60,6 +60,7 @@ public class ResultPanel : MonoBehaviour
         }
         bestscore.text = "Best score: " + bestScore;
         CalcLevelProgress();
+        LevelManager.Instance.AddMoney(crystalsCollected);
     }
 
     void Update() {

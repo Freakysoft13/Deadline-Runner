@@ -116,9 +116,9 @@ public class ObjectPool : MonoBehaviour
         foreach (GameObject obj in objectsForName) {
             if (!obj.activeSelf) {
                 foreach (Transform t in obj.transform) {
-                    t.gameObject.SetActive(true);
+                    t.gameObject.SetActive(autoActivate);
                 }
-                obj.SetActive(true);
+                obj.SetActive(autoActivate);
                 return obj;
             }
         }

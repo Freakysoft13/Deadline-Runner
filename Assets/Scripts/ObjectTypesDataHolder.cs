@@ -148,7 +148,7 @@ public class ObjectTypesDataHolder
 
     public enum CrystalType
     {
-        RED, GREEN
+        TWO, THREE, FOUR, FIVE
     }
 
     public enum ParallaxObjectType

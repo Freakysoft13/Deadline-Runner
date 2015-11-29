@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEditor;
 using System.Collections;
 
 public class EnvironmentSpawner : MonoBehaviour
@@ -30,6 +31,7 @@ public class EnvironmentSpawner : MonoBehaviour
     public float[] effectsPadding;
     public float minEffectsSpread;
     public float maxEffectsSpread;
+    private float lastEffectSpawnPointX;
 
     private ObjectPool pool;
     private Transform player;
@@ -69,10 +71,10 @@ public class EnvironmentSpawner : MonoBehaviour
 
     private IEnumerator SpawnEffects() {
         while (true) {
-            while (lastCrystalSpawnPointX > player.position.x + maxSpawnDistance) {
+            while (lastEffectSpawnPointX > player.position.x + maxSpawnDistance) {
                 yield return new WaitForSeconds(1f);
             }
-            Spawn(minEffectsSpread, maxEffectsSpread, ref lastCrystalSpawnPointX, ConvertEffectsEnum(), effectsDistribution, effectsPadding, "crystal");
+            Spawn(minEffectsSpread, maxEffectsSpread, ref lastEffectSpawnPointX, ConvertEffectsEnum(), effectsDistribution, effectsPadding, "crystal");
 
             yield return new WaitForSeconds(1f);
         }
@@ -117,10 +119,7 @@ public class EnvironmentSpawner : MonoBehaviour
         }
         float spawnPointX = lastSpawnPointX == 0 ? startPoint + spread + lastSpawnPointX : spread + lastSpawnPointX;
         lastSpawnPointX = spawnPointX;
-        if (IsOverlappingWithOtherObjects(spawnPointX, collisionTag)) {
-            return;
-        }
-        SpawnableObject objectToSpawn = pool.GetObject(objectToSpawnName, false).GetComponent<SpawnableObject>();
+        SpawnableObject objectToSpawn = pool.GetObject(objectToSpawnName).GetComponent<SpawnableObject>();
         RestoreScaleRecursively(objectToSpawn.transform);
         int sideIndicator = side == Side.UPPER ? 1 : -1;
         Vector2 spawnPosition = new Vector2(spawnPointX, sideIndicator * objectToSpawn.yPosition);
@@ -129,16 +128,14 @@ public class EnvironmentSpawner : MonoBehaviour
             objectToSpawn.transform.localScale.z);
         objectToSpawn.transform.position = spawnPosition;
         objectToSpawn.transform.localScale = modifiedObjectScale;
-    }
-
-    private bool IsOverlappingWithOtherObjects(float spawnPointX, string collisionTag) {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(new Vector2(spawnPointX, 0), 2f);
-        foreach (Collider2D collider in colliders) {
-            if (collider.CompareTag(collisionTag)) {
-                return true;
-            }
+        /*float lastPoint = PlayerPrefs.GetFloat("lastPoint" + collisionTag, -1000);
+        float lastSize = PlayerPrefs.GetFloat("lastSize" + collisionTag, -1000);
+        if (lastPoint + lastSize / 2 > spawnPosition.x - 1) {
+            spawnPosition.x += (lastPoint + lastSize / 2) - (spawnPosition.x - 1);
+            print(((lastPoint + lastSize / 2) - (spawnPosition.x - 1)));
         }
-        return false;
+        PlayerPrefs.SetFloat("lastPoint" + collisionTag, spawnPosition.x);
+        PlayerPrefs.SetFloat("lastSize" + collisionTag, 2);*/
     }
 
     private void RestoreScaleRecursively(Transform t) {
