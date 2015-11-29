@@ -124,11 +124,12 @@ public class EnvironmentSpawner : MonoBehaviour
         int sideIndicator = side == Side.UPPER ? 1 : -1;
         Vector2 spawnPosition = new Vector2(spawnPointX, sideIndicator * objectToSpawn.yPosition);
         if (IsOverlappingWith(spawnPosition, collisionTag)) {
-            Vector2 mostSuitableSpawnPos = FindSuitableSpawn(spawnPosition, maxSpread, collisionTag);
+            Vector2 mostSuitableSpawnPos = FindSuitableSpawn(spawnPosition, maxSpread - spread, spread - minSpread, collisionTag);
             if (spawnPosition != mostSuitableSpawnPos) {
                 spawnPosition = mostSuitableSpawnPos;
                 lastSpawnPointX = spawnPosition.x;
-            } else {
+            }
+            else {
                 lastSpawnPointX = spawnPosition.x;
                 return;
             }
@@ -141,16 +142,16 @@ public class EnvironmentSpawner : MonoBehaviour
         objectToSpawn.gameObject.SetActiveRecursively(true);
     }
 
-    private Vector2 FindSuitableSpawn(Vector2 currentSpawnPos, float maxXSpread, string collisionTag) {
+    private Vector2 FindSuitableSpawn(Vector2 currentSpawnPos, float forwardShifLength, float backwardShifLength, string collisionTag) {
         Vector2 result = currentSpawnPos;
         Vector2 searchVector = currentSpawnPos;
-        for (int i = 0; i < maxXSpread; i++) {
+        for (int i = 0; i < forwardShifLength; i++) {
             searchVector.x += i;
             if (!IsOverlappingWith(searchVector, collisionTag)) {
                 return searchVector;
             }
         }
-        for (int i = 0; i < maxXSpread; i++) {
+        for (int i = 0; i < backwardShifLength; i++) {
             searchVector.x -= i;
             if (!IsOverlappingWith(searchVector, collisionTag)) {
                 return searchVector;
