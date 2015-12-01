@@ -78,8 +78,11 @@ public class Player : MonoBehaviour
     }
 
     private void SetActiveSkin() {
+        SetSkin(LevelManager.Instance.GetEquippedSkin());
+    }
+
+    private void SetSkin(LevelManager.Skin skin) {
         LevelManager lm = LevelManager.Instance;
-        LevelManager.Skin skin = lm.GetEquippedSkin();
         SkeletonDataAsset asset = lm.skins[lm.GetItemIndex(skin)];
         SkeletonAnimation sa = GetComponent<SkeletonAnimation>();
         sa.skeletonDataAsset = asset;
@@ -88,6 +91,7 @@ public class Player : MonoBehaviour
 
     public void AfterLifeStart() {
         isInAfterLife = true;
+        SetSkin(LevelManager.Skin.GHOST);
     }
 
     public void AfterLifeEnd() {
@@ -270,8 +274,7 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider) {
         if (collider.CompareTag("obstacle") && !isDead && !isShielded) {
-            if(isInAfterLife) { return; }
-            Die();
+            GameManager.Instance.ApplyAfterLife();
         }
     }
 

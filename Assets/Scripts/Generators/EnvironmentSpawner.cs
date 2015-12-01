@@ -52,7 +52,7 @@ public class EnvironmentSpawner : MonoBehaviour
                 yield return new WaitForSeconds(1f);
             }
             Spawn(minObstaclesSpread, maxObstaclesSpread, ref lastObstacleSpawnPointX, ConvertObstaclesEnum(),
-                obstaclesDistribution, obstaclesPadding, "obstacle");
+                obstaclesDistribution, obstaclesPadding, new string[] { "obstacle", "crystal" });
 
             yield return new WaitForSeconds(.2f);
         }
@@ -63,7 +63,7 @@ public class EnvironmentSpawner : MonoBehaviour
             while (lastCrystalSpawnPointX > player.position.x + maxSpawnDistance) {
                 yield return new WaitForSeconds(1f);
             }
-            Spawn(minCrystalsSpread, maxCrystalsSpread, ref lastCrystalSpawnPointX, ConvertCrystalsEnum(), crystalDistribution, crystalPadding, "crystal");
+            Spawn(minCrystalsSpread, maxCrystalsSpread, ref lastCrystalSpawnPointX, ConvertCrystalsEnum(), crystalDistribution, crystalPadding, new string[] { "obstacle", "crystal" });
 
             yield return new WaitForSeconds(1f);
         }
@@ -74,7 +74,7 @@ public class EnvironmentSpawner : MonoBehaviour
             while (lastEffectSpawnPointX > player.position.x + maxSpawnDistance) {
                 yield return new WaitForSeconds(1f);
             }
-            Spawn(minEffectsSpread, maxEffectsSpread, ref lastEffectSpawnPointX, ConvertEffectsEnum(), effectsDistribution, effectsPadding, "crystal");
+            Spawn(minEffectsSpread, maxEffectsSpread, ref lastEffectSpawnPointX, ConvertEffectsEnum(), effectsDistribution, effectsPadding, new string[] { "obstacle", "crystal" });
 
             yield return new WaitForSeconds(1f);
         }
@@ -104,7 +104,7 @@ public class EnvironmentSpawner : MonoBehaviour
         return tmpEnum;
     }
 
-    private void Spawn(float minSpread, float maxSpread, ref float lastSpawnPointX, System.Enum[] objectsToSpawn, int[] objectsDistribution, float[] objectsPadding, string collisionTag) {
+    private void Spawn(float minSpread, float maxSpread, ref float lastSpawnPointX, System.Enum[] objectsToSpawn, int[] objectsDistribution, float[] objectsPadding, string[] collisionTags) {
         int rng = Random.Range(0, 100);
         float spread = Random.Range(minSpread, maxSpread);
         string objectToSpawnName = "";
@@ -123,8 +123,8 @@ public class EnvironmentSpawner : MonoBehaviour
         RestoreScaleRecursively(objectToSpawn.transform);
         int sideIndicator = side == Side.UPPER ? 1 : -1;
         Vector2 spawnPosition = new Vector2(spawnPointX, sideIndicator * objectToSpawn.yPosition);
-        if (IsOverlappingWith(spawnPosition, collisionTag)) {
-            Vector2 mostSuitableSpawnPos = FindSuitableSpawn(spawnPosition, maxSpread - spread, spread - minSpread, collisionTag);
+        if (IsOverlappingWith(spawnPosition, collisionTags)) {
+            Vector2 mostSuitableSpawnPos = FindSuitableSpawn(spawnPosition, maxSpread - spread, spread - minSpread, collisionTags);
             if (spawnPosition != mostSuitableSpawnPos) {
                 spawnPosition = mostSuitableSpawnPos;
                 lastSpawnPointX = spawnPosition.x;
@@ -142,33 +142,35 @@ public class EnvironmentSpawner : MonoBehaviour
         objectToSpawn.gameObject.SetActiveRecursively(true);
     }
 
-    private Vector2 FindSuitableSpawn(Vector2 currentSpawnPos, float forwardShifLength, float backwardShifLength, string collisionTag) {
+    private Vector2 FindSuitableSpawn(Vector2 currentSpawnPos, float forwardShifLength, float backwardShifLength, string[] collisionTags) {
         Vector2 result = currentSpawnPos;
         Vector2 searchVector = currentSpawnPos;
         for (int i = 0; i < forwardShifLength; i++) {
             searchVector.x += i;
-            if (!IsOverlappingWith(searchVector, collisionTag)) {
+            if (!IsOverlappingWith(searchVector, collisionTags)) {
                 return searchVector;
             }
         }
         searchVector = currentSpawnPos;
         for (int i = 0; i < backwardShifLength; i++) {
             searchVector.x -= i;
-            if (!IsOverlappingWith(searchVector, collisionTag)) {
+            if (!IsOverlappingWith(searchVector, collisionTags)) {
                 return searchVector;
             }
         }
         return result;
     }
 
-    private bool IsOverlappingWith(Vector2 pos, string overlapTag) {
+    private bool IsOverlappingWith(Vector2 pos, string[] overlapTags) {
         Vector2 pointA = new Vector2(pos.x - 2, pos.y - 2);
         Vector2 pointB = new Vector2(pos.x + 2, pos.y + 2);
         Vector3 pos3D = new Vector3(pos.x, pos.y, 0);
         Collider2D[] colliders = Physics2D.OverlapAreaAll(pointA, pointB);
         foreach (Collider2D col in colliders) {
-            if (col.CompareTag(overlapTag) && pos3D != col.transform.position) {
-                return true;
+            foreach (string tag in overlapTags) {
+                if (col.CompareTag(tag) && pos3D != col.transform.position) {
+                    return true;
+                }
             }
         }
 

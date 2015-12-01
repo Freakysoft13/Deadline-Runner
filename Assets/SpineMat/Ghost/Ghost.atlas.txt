@@ -1,0 +1,61 @@
+
+Ghost.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Body
+  rotate: false
+  xy: 391, 185
+  size: 184, 205
+  orig: 186, 207
+  offset: 1, 1
+  index: -1
+Head
+  rotate: false
+  xy: 2, 2
+  size: 387, 388
+  orig: 389, 390
+  offset: 1, 1
+  index: -1
+Left_Ankle
+  rotate: false
+  xy: 391, 22
+  size: 165, 161
+  orig: 167, 163
+  offset: 1, 1
+  index: -1
+Right_Ankle
+  rotate: false
+  xy: 391, 22
+  size: 165, 161
+  orig: 167, 163
+  offset: 1, 1
+  index: -1
+Left_Leg
+  rotate: false
+  xy: 706, 258
+  size: 150, 132
+  orig: 152, 134
+  offset: 1, 1
+  index: -1
+Right_Leg
+  rotate: false
+  xy: 706, 258
+  size: 150, 132
+  orig: 152, 134
+  offset: 1, 1
+  index: -1
+Left_Toe
+  rotate: false
+  xy: 577, 211
+  size: 127, 179
+  orig: 129, 181
+  offset: 1, 1
+  index: -1
+Right_Toe
+  rotate: false
+  xy: 577, 211
+  size: 127, 179
+  orig: 129, 181
+  offset: 1, 1
+  index: -1

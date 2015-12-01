@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     private bool hasRessurectedThisRun = false;
 
     public Effect.Shield shieldStub;
+    public Effect.AfterLife afterLifeStub;
     public int expMultiplier = 1;
     public int scoreMultiplier = 1;
     public int target = 60;
@@ -100,6 +101,10 @@ public class GameManager : MonoBehaviour
 
     public void PlayerDie() {
         //Time.timeScale = 0;
+    }
+
+    public void ApplyAfterLife() {
+        afterLifeStub.PickUp();
     }
 
     public void PlayerResurrect() {
