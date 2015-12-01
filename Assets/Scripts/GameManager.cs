@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
 
     public Effect.Shield shieldStub;
     public Effect.AfterLife afterLifeStub;
+    public GameObject grayscaleCamera;
+    public GameObject playerCamera;
     public int expMultiplier = 1;
     public int scoreMultiplier = 1;
     public int target = 60;
@@ -101,9 +103,13 @@ public class GameManager : MonoBehaviour
 
     public void PlayerDie() {
         //Time.timeScale = 0;
+        playerCamera.SetActive(false);
+        grayscaleCamera.SetActive(false);
     }
 
     public void ApplyAfterLife() {
+        playerCamera.SetActive(true);
+        grayscaleCamera.SetActive(true);
         afterLifeStub.PickUp();
     }
 
