@@ -15,10 +15,9 @@ public class CameraController : MonoBehaviour
     public float magnitudeX = 0.2f;
     public float magnitudeY = 0.2f;
 
-    private float xDelta;
+    public float xDelta = 2.0f;
 
     void Start() {
-        xDelta = Mathf.Abs(transform.position.x - target.position.x);
         GetComponent<Camera>().orthographicSize = (desiredScreenWidth / Screen.width * Screen.height / 2) / currentPixelToUnits;
     }
 
