@@ -103,13 +103,13 @@ public class GameManager : MonoBehaviour
 
     public void PlayerDie() {
         //Time.timeScale = 0;
-        playerCamera.SetActive(false);
-        grayscaleCamera.SetActive(false);
+        //playerCamera.SetActive(false);
+        //grayscaleCamera.SetActive(false);
     }
 
     public void ApplyAfterLife() {
-        playerCamera.SetActive(true);
-        grayscaleCamera.SetActive(true);
+        //playerCamera.SetActive(true);
+        //grayscaleCamera.SetActive(true);
         afterLifeStub.PickUp();
     }
 
