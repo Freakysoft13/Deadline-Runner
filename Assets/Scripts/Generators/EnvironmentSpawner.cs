@@ -119,7 +119,6 @@ public class EnvironmentSpawner : MonoBehaviour
         float spawnPointX = lastSpawnPointX == 0 ? startPoint + spread + lastSpawnPointX : spread + lastSpawnPointX;
         lastSpawnPointX = spawnPointX;
         SpawnableObject objectToSpawn = pool.GetObject(objectToSpawnName, false).GetComponent<SpawnableObject>();
-        RestoreScaleRecursively(objectToSpawn.transform);
         int sideIndicator = side == Side.UPPER ? 1 : -1;
         Vector2 spawnPosition = new Vector2(spawnPointX, sideIndicator * objectToSpawn.yPosition);
         if (IsOverlappingWith(spawnPosition, collisionTags)) {
@@ -133,11 +132,12 @@ public class EnvironmentSpawner : MonoBehaviour
                 return;
             }
         }
-        Vector3 modifiedObjectScale = new Vector3(objectToSpawn.transform.localScale.x,
-            sideIndicator * objectToSpawn.transform.localScale.y,
-            objectToSpawn.transform.localScale.z);
+        Quaternion rotation = Quaternion.identity;
+        if(side == Side.BOTTOM) {
+            rotation = Quaternion.Euler(0, 180, 180);
+        }
+        objectToSpawn.transform.rotation = rotation;
         objectToSpawn.transform.position = spawnPosition;
-        objectToSpawn.transform.localScale = modifiedObjectScale;
         objectToSpawn.gameObject.SetActiveRecursively(true);
     }
 
@@ -174,14 +174,6 @@ public class EnvironmentSpawner : MonoBehaviour
         }
 
         return false;
-    }
-
-    private void RestoreScaleRecursively(Transform t) {
-        foreach (Transform child in t) {
-            RestoreScaleRecursively(child);
-        }
-        Vector3 restoredScale = new Vector3(Mathf.Abs(t.localScale.x), Mathf.Abs(t.localScale.y), Mathf.Abs(t.localScale.z));
-        t.localScale = restoredScale;
     }
 
     public enum Side

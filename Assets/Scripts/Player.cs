@@ -108,7 +108,7 @@ public class Player : MonoBehaviour
         if (IsFlipPressed() && IsGrounded()) {
             Flip();
         }
-        if ((IsJumpPressed() || jumpOnLand) && IsGrounded()) {
+        if ((IsJumpPressed() || jumpOnLand) && IsGrounded() && !isInAfterLife) {
             Jump();
         }
         if (IsJumpPressed() && !IsGrounded()) {
@@ -273,7 +273,7 @@ public class Player : MonoBehaviour
     public int expToDistanceThreshold = 3;
 
     void OnTriggerEnter2D(Collider2D collider) {
-        if (collider.CompareTag("obstacle") && !isDead && !isShielded) {
+        if (collider.CompareTag("obstacle") && !isDead && !isShielded && !isInAfterLife) {
             GameManager.Instance.ApplyAfterLife();
         }
     }
