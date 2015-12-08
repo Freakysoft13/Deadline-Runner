@@ -117,7 +117,6 @@ public class EnvironmentSpawner : MonoBehaviour
             }
         }
         float spawnPointX = lastSpawnPointX == 0 ? startPoint + spread + lastSpawnPointX : spread + lastSpawnPointX;
-        lastSpawnPointX = spawnPointX;
         SpawnableObject objectToSpawn = pool.GetObject(objectToSpawnName, false).GetComponent<SpawnableObject>();
         int sideIndicator = side == Side.UPPER ? 1 : -1;
         Vector2 spawnPosition = new Vector2(spawnPointX, sideIndicator * objectToSpawn.yPosition);
@@ -125,7 +124,6 @@ public class EnvironmentSpawner : MonoBehaviour
             Vector2 mostSuitableSpawnPos = FindSuitableSpawn(spawnPosition, maxSpread - spread, spread - minSpread, collisionTags);
             if (spawnPosition != mostSuitableSpawnPos) {
                 spawnPosition = mostSuitableSpawnPos;
-                lastSpawnPointX = spawnPosition.x;
             }
             else {
                 lastSpawnPointX = spawnPosition.x;
@@ -139,6 +137,7 @@ public class EnvironmentSpawner : MonoBehaviour
         objectToSpawn.transform.rotation = rotation;
         objectToSpawn.transform.position = spawnPosition;
         objectToSpawn.gameObject.SetActiveRecursively(true);
+        lastSpawnPointX = spawnPosition.x;
     }
 
     private Vector2 FindSuitableSpawn(Vector2 currentSpawnPos, float forwardShifLength, float backwardShifLength, string[] collisionTags) {
