@@ -12,8 +12,8 @@ public class ResultPanel : MonoBehaviour
     private float targetValue;
     private int levelsAcquired = 0;
     private bool updateExpBar = false;
-    private int expEarnedCounter;
-    private int crystalsCollectedCounter;
+    private float expEarnedCounter;
+    private float crystalsCollectedCounter;
     private int expEarned;
     private int crystalsCollected;
     private float lastExpUpdateTime;
@@ -32,8 +32,10 @@ public class ResultPanel : MonoBehaviour
     public GameObject ancesorButton;
 
 
-    void Start() {
-        EventManager.Instance.OnLevelUp += delegate () {
+    void Start()
+    {
+        EventManager.Instance.OnLevelUp += delegate ()
+        {
             levelUp_txt.gameObject.SetActive(true);
             level_txt.text = "Level " + (1 + LevelManager.Instance.GetLevel());
             lockancestors.SetActive(false);
@@ -42,7 +44,8 @@ public class ResultPanel : MonoBehaviour
         };
     }
 
-    void OnEnable() {
+    void OnEnable()
+    {
         lockancestors.SetActive(true);
         ancesorButton.SetActive(false);
         unlockText.gameObject.SetActive(true);
@@ -54,7 +57,8 @@ public class ResultPanel : MonoBehaviour
         expEarned = GameManager.Instance.Player.Exp;
         crystalsCollected = GameManager.Instance.GetScore();
         int bestScore = LevelManager.Instance.GetBestScore();
-        if (expEarned > bestScore) {
+        if (expEarned > bestScore)
+        {
             bestScore = expEarned;
             LevelManager.Instance.SaveBestScore(bestScore);
         }
@@ -63,36 +67,53 @@ public class ResultPanel : MonoBehaviour
         LevelManager.Instance.AddMoney(crystalsCollected);
     }
 
-    void Update() {
+    void Update()
+    {
         UpdateExp();
         UpdateCounters();
     }
 
-    private void UpdateCounters() {
-        if(expEarnedCounter < expEarned && Mathf.Abs(Time.time - lastExpUpdateTime) > updateDelay) {
-            expEarnedCounter++;
-            score.text = "Score: " + expEarnedCounter;
+    private void UpdateCounters()
+    {
+        if (expEarnedCounter < expEarned && Mathf.Abs(Time.time - lastExpUpdateTime) > updateDelay)
+        {
+            float divisor = expEarned / 10.0f;
+            if ((expEarnedCounter + (expEarned / divisor)) <= expEarned)
+            {
+                expEarnedCounter += expEarned / divisor;
+            }
+            else
+            {
+                expEarnedCounter = expEarned;
+            }
+            score.text = "Score: " + (int)expEarnedCounter;
             lastExpUpdateTime = Time.time;
         }
-        if (crystalsCollectedCounter < crystalsCollected && Mathf.Abs(Time.time - lastCryUpdateTime) > updateDelay) {
+        if (crystalsCollectedCounter < crystalsCollected && Mathf.Abs(Time.time - lastCryUpdateTime) > updateDelay)
+        {
             crystalsCollectedCounter++;
             collectedCrystals.text = "Crystals collected: " + crystalsCollectedCounter;
             lastCryUpdateTime = Time.time;
         }
     }
 
-    private void UpdateExp() {
+    private void UpdateExp()
+    {
         if (!updateExpBar) { return; }
-        if (Mathf.Abs(expSlider.value - targetValue) > fillPrecision) {
+        if (Mathf.Abs(expSlider.value - targetValue) > fillPrecision)
+        {
             expSlider.value += (1.0f / (int)(1 / (fillWaitTime * targetValue))) * Time.deltaTime;
         }
-        else {
+        else
+        {
             updateExpBar = false;
-            if (Mathf.Abs(expSlider.value - 1) < fillPrecision) {
+            if (Mathf.Abs(expSlider.value - 1) < fillPrecision)
+            {
                 EventManager.Instance.FireLevelUp();
                 expSlider.value = 0;
             }
-            if (overhead > 0) {
+            if (overhead > 0)
+            {
                 CalcLevelProgress();
             }
         }
@@ -100,20 +121,25 @@ public class ResultPanel : MonoBehaviour
 
     private int overhead = 0;
 
-    private void CalcLevelProgress() {
+    private void CalcLevelProgress()
+    {
         int currentExp = LevelManager.Instance.GetExpThisLevel();
         int currentLevel = LevelManager.Instance.GetLevel();
         int expEarned = overhead > 0 ? overhead : GameManager.Instance.Player.Exp;
         int[] levelsExp = LevelManager.Instance.levelsExp;
-        if (true) { // change to current level < MAX_LEVEL
+        if (true)
+        { // change to current level < MAX_LEVEL
             int expToNextLevel = levelsExp[currentLevel + 1];
-            if (overhead == 0) {
+            if (overhead == 0)
+            {
                 expSlider.value = currentExp / (float)expToNextLevel;
             }
-            if (expEarned + currentExp > expToNextLevel) {
+            if (expEarned + currentExp > expToNextLevel)
+            {
                 overhead = expEarned - (expToNextLevel - currentExp);
             }
-            else {
+            else
+            {
                 overhead = 0;
             }
             int remainder = expEarned - overhead;

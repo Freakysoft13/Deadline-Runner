@@ -281,10 +281,6 @@ public class Player : MonoBehaviour
                     }
                 }
             }
-            if (isDead && touch.tapCount == 2)
-            {
-                Application.LoadLevel(0);
-            }
         }
     }
 
