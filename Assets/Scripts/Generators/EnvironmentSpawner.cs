@@ -64,7 +64,7 @@ public class EnvironmentSpawner : MonoBehaviour
             }
             Spawn(minCrystalsSpread, maxCrystalsSpread, ref lastCrystalSpawnPointX, ConvertCrystalsEnum(), crystalDistribution, crystalPadding, new string[] { "obstacle", "crystal" });
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(.2f);
         }
     }
 
@@ -138,6 +138,7 @@ public class EnvironmentSpawner : MonoBehaviour
         objectToSpawn.transform.position = spawnPosition;
         objectToSpawn.gameObject.SetActiveRecursively(true);
         lastSpawnPointX = spawnPosition.x;
+        print(lastSpawnPointX);
     }
 
     private Vector2 FindSuitableSpawn(Vector2 currentSpawnPos, float forwardShifLength, float backwardShifLength, string[] collisionTags) {
