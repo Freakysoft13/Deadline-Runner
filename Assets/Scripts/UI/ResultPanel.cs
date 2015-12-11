@@ -148,4 +148,11 @@ public class ResultPanel : MonoBehaviour
             updateExpBar = true;
         }
     }
+    //Video Ads for crystals
+    public void CrystalsVideoBtn()
+    {
+        GameManager.Instance.AddScore((GameManager.Instance.GetScore()*2));
+        collectedCrystals.text = "Crystals collected: " + crystalsCollectedCounter * 2;
+        LevelManager.Instance.AddMoney(crystalsCollected);
+    }
 }
