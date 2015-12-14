@@ -24,6 +24,7 @@ public class LevelManager : MonoBehaviour
     public int[] strangeMachineTimers;
     public SkeletonDataAsset[] skins;
 
+
     public static LevelManager Instance
     {
         get { return instance; }
@@ -316,4 +317,12 @@ public class LevelManager : MonoBehaviour
         }
         return 0;
     }
+
+    IEnumerator Fading()
+    {
+        float fadeTime = GameObject.Find("LevelManager").GetComponent<FadeScene>().BeginFade(1);
+        yield return new WaitForSeconds(fadeTime);
+        Application.LoadLevel(1);
+    }
+
 }

@@ -565,19 +565,19 @@ public class MenuUI : MonoBehaviour
 
     public void GetMoneyChest()
     {
-        LevelManager.Instance.AddMoney(27500);
+        LevelManager.Instance.AddMoney(65000);
     }
     public void GetMoneyShards()
     {
-        LevelManager.Instance.AddMoney(1200);
+        LevelManager.Instance.AddMoney(5500);
     }
     public void GetMoneyBag()
     {
-        LevelManager.Instance.AddMoney(6000);
+        LevelManager.Instance.AddMoney(12000);
     }
     public void GetMoneyBigBag()
     {
-        LevelManager.Instance.AddMoney(12500);
+        LevelManager.Instance.AddMoney(31000);
     }
 
 

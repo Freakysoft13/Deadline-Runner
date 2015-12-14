@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class MenuUiController : MonoBehaviour
 {
@@ -9,19 +10,28 @@ public class MenuUiController : MonoBehaviour
     public GameObject[] ancestorText;
     public Image soundOn;
     public Image soundOff;
+    private int index;
 
 
     //timescale factor excluding freeze bug
     void Start()
     {
+        index = LevelManager.Instance.GetSoundCheck();
         SoundBtnRoute();
         IndexChecker();
         Time.timeScale = 1;
     }
+    IEnumerator Fading()
+    {
+        float fadeTime = GameObject.Find("LevelManager").GetComponent<FadeScene>().BeginFade(1);
+        yield return new WaitForSeconds(fadeTime);
+    }
     //Load Game Scene (not active yet)
     public void StartGame()
     {
+        StartCoroutine(Fading());
         Application.LoadLevel("Main");
+        StartCoroutine(Fading());
     }
 
     //Load Shop Scene btn
@@ -70,8 +80,7 @@ public class MenuUiController : MonoBehaviour
         ancestorText[index].SetActive(true);
     }
     public void SoundBtnRoute()
-    {
-        int index = 0;
+    {      
         if (LevelManager.Instance.GetSoundCheck() == index)
         {
             soundOn.gameObject.SetActive(false);
@@ -90,4 +99,5 @@ public class MenuUiController : MonoBehaviour
         }
 
     }
+
 }
