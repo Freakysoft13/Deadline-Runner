@@ -7,6 +7,7 @@ public class EnvironmentSpawner : MonoBehaviour
     public float maxSpawnDistance = 50;
 
     public Side side;
+    public Transform player;
 
     [Header("Obstacles")]
     public ObjectTypesDataHolder.ObstacleType[] obstaclesToSpawn;
@@ -33,12 +34,10 @@ public class EnvironmentSpawner : MonoBehaviour
     private float lastEffectSpawnPointX;
 
     private ObjectPool pool;
-    private Transform player;
     private float startPoint;
 
     void Start() {
         pool = ObjectPool.Instance;
-        player = GameObject.FindGameObjectWithTag("Player").transform;
         startPoint = player.position.x + distanceFromPlayer;
         StartCoroutine(SpawnObstacles());
         StartCoroutine(SpawnCrystals());
@@ -138,7 +137,7 @@ public class EnvironmentSpawner : MonoBehaviour
         objectToSpawn.transform.position = spawnPosition;
         objectToSpawn.gameObject.SetActiveRecursively(true);
         lastSpawnPointX = spawnPosition.x;
-        print(lastSpawnPointX);
+        //print(lastSpawnPointX);
     }
 
     private Vector2 FindSuitableSpawn(Vector2 currentSpawnPos, float forwardShifLength, float backwardShifLength, string[] collisionTags) {

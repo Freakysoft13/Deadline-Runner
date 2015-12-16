@@ -115,21 +115,20 @@ public class LevelManager : MonoBehaviour
 
     public void AquireConsumable(Consumable consumable)
     {
-        int amt = PlayerPrefs.GetInt(consumable.ToString(), 0);
-        PlayerPrefs.SetInt(consumable.ToString(), ++amt);
+        PlayerPrefs.SetInt(consumable.ToString(), 1);
     }
 
     public bool IsConsumableActive(Consumable consumable)
     {
-        return PlayerPrefs.GetInt(consumable.ToString() + ACTIVE_CONSUMABLE, 0) == 0;
+        return PlayerPrefs.GetInt(consumable.ToString(), 0) == 1;
     }
 
     public void DeactivateConsumable(Consumable consumable)
     {
-        PlayerPrefs.SetInt(consumable.ToString() + ACTIVE_CONSUMABLE, 0);
+        PlayerPrefs.SetInt(consumable.ToString(), 0);
     }
 
-    public int ActivateConsumable(Consumable consumable)
+    /*public int ActivateConsumable(Consumable consumable)
     {
         int amt = PlayerPrefs.GetInt(consumable.ToString(), 0);
         if (amt > 0)
@@ -139,7 +138,7 @@ public class LevelManager : MonoBehaviour
             return 1;
         }
         return 0;
-    }
+    }*/
 
     public void ActivatePassiveSkill(Passive passive)
     {
@@ -316,13 +315,6 @@ public class LevelManager : MonoBehaviour
             }
         }
         return 0;
-    }
-
-    IEnumerator Fading()
-    {
-        float fadeTime = GameObject.Find("LevelManager").GetComponent<FadeScene>().BeginFade(1);
-        yield return new WaitForSeconds(fadeTime);
-        Application.LoadLevel(1);
     }
 
 }

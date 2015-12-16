@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using GooglePlayGames;
-using GooglePlayGames.BasicApi;
-using UnityEngine.SocialPlatforms;
+//using GooglePlayGames;
+//using GooglePlayGames.BasicApi;
+//using UnityEngine.SocialPlatforms;
 
-public class GPGController : MonoBehaviour {
+/*public class GPGController : MonoBehaviour {
 
     //achievements string list
     public string achievementNewbie = "CgkIobeXidUMEAIQAQ";
@@ -83,3 +83,4 @@ public class GPGController : MonoBehaviour {
         });
     }
 }
+*/

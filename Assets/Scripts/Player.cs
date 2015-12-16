@@ -82,7 +82,7 @@ public class Player : MonoBehaviour
         SetActiveSkin();
         animationController = GetComponent<AnimationController>();
         rigidBody = GetComponent<Rigidbody2D>();
-        //new ConsumablesManager().ApplyActiveConsumables();
+        new ConsumablesManager().ApplyActiveConsumables();
         moonPanel.localPosition = new Vector3(0, -350);
         floorCollider = GameObject.FindGameObjectWithTag("floor").GetComponent<Collider2D>();
     }
@@ -163,10 +163,12 @@ public class Player : MonoBehaviour
         return result;
     }
 
+    public float maxSpeed = 10;
+
     public void Go()
     {
         float speedMultiplier = (1 + GetDistance() / 1000.0f);
-        velocity.x = speed * (speedMultiplier);
+        velocity.x = Mathf.Clamp(speed * (speedMultiplier), velocity.x, maxSpeed);
         if (IsGrounded() && !isJumping)
         {
             gravityScale = 1;
@@ -271,7 +273,8 @@ public class Player : MonoBehaviour
             {
                 if (touch.phase == TouchPhase.Began)
                 {
-                    if (touch.position.x < Screen.width / 2)
+                    float ceiling = Screen.height - Screen.height / 8;
+                    if (touch.position.x < Screen.width / 2 && touch.position.y  < ceiling)
                     {
                         flipTouch = true;
                     }

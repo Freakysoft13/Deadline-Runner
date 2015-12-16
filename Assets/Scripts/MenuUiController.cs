@@ -10,29 +10,22 @@ public class MenuUiController : MonoBehaviour
     public GameObject[] ancestorText;
     public Image soundOn;
     public Image soundOff;
-    private int index;
 
 
     //timescale factor excluding freeze bug
     void Start()
     {
-        index = LevelManager.Instance.GetSoundCheck();
-        SoundBtnRoute();
+        SoundCheckOnStart();
         IndexChecker();
         Time.timeScale = 1;
     }
-    IEnumerator Fading()
-    {
-        float fadeTime = GameObject.Find("LevelManager").GetComponent<FadeScene>().BeginFade(1);
-        yield return new WaitForSeconds(fadeTime);
-    }
+
     //Load Game Scene (not active yet)
     public void StartGame()
     {
-        StartCoroutine(Fading());
         Application.LoadLevel("Main");
-        StartCoroutine(Fading());
     }
+
 
     //Load Shop Scene btn
     public void Shop()
@@ -80,22 +73,42 @@ public class MenuUiController : MonoBehaviour
         ancestorText[index].SetActive(true);
     }
     public void SoundBtnRoute()
-    {      
-        if (LevelManager.Instance.GetSoundCheck() == index)
+    {
+        print(LevelManager.Instance.GetSoundCheck());
+        print(soundOn.gameObject.activeInHierarchy);
+        print(soundOff.gameObject.activeInHierarchy);
+        print(AudioListener.pause);
+
+        if (LevelManager.Instance.GetSoundCheck() == 0)
         {
             soundOn.gameObject.SetActive(false);
             soundOff.gameObject.SetActive(true);
             AudioListener.pause = true;
-            LevelManager.Instance.SetSoundCkeck(index + 1);
-            print(LevelManager.Instance.GetSoundCheck());
+            LevelManager.Instance.SetSoundCkeck(+1);
         }
-        else 
+        else if (LevelManager.Instance.GetSoundCheck() == 1)
         {
             soundOn.gameObject.SetActive(true);
             soundOff.gameObject.SetActive(false);
             AudioListener.pause = false;
-            LevelManager.Instance.SetSoundCkeck(index -1);
-            print(LevelManager.Instance.GetSoundCheck());
+            LevelManager.Instance.SetSoundCkeck(-1);
+        }
+
+    }
+
+    void SoundCheckOnStart()
+    {
+        if (LevelManager.Instance.GetSoundCheck() == 1)
+        {
+            soundOn.gameObject.SetActive(false);
+            soundOff.gameObject.SetActive(true);
+            AudioListener.pause = true;
+        }
+        else
+        {
+            soundOn.gameObject.SetActive(true);
+            soundOff.gameObject.SetActive(false);
+            AudioListener.pause = false;
         }
 
     }
