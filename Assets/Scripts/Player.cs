@@ -96,7 +96,7 @@ public class Player : MonoBehaviour
         SetActiveSkin();
         animationController = GetComponent<AnimationController>();
         rigidBody = GetComponent<Rigidbody2D>();
-        //new ConsumablesManager().ApplyActiveConsumables();
+        new ConsumablesManager().ApplyActiveConsumables();
         moonPanel.localPosition = new Vector3(0, -350);
     }
 
@@ -284,7 +284,7 @@ public class Player : MonoBehaviour
             {
                 if (touch.phase == TouchPhase.Began)
                 {
-                    if (touch.position.x < Screen.width / 2)
+                    if (touch.position.x < Screen.width / 2 && touch.position.y < (Screen.height - Screen.height / 8))
                     {
                         flipTouch = true;
                     }
