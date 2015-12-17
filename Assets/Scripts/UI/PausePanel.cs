@@ -38,14 +38,14 @@ public class PausePanel : MonoBehaviour
         {
             soundOn.SetActive(false);
             soundOff.SetActive(true);
-            LevelManager.Instance.SetSoundCkeck(+1);
+            LevelManager.Instance.SetSoundCheck(+1);
             AudioListener.pause = true;
         }
         else
         {
             soundOn.SetActive(true);
             soundOff.SetActive(false);
-            LevelManager.Instance.SetSoundCkeck(-1);
+            LevelManager.Instance.SetSoundCheck(-1);
             AudioListener.pause = false;
         }
     }

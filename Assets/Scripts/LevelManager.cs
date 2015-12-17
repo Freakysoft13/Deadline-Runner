@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class LevelManager : MonoBehaviour
 {
@@ -14,6 +15,15 @@ public class LevelManager : MonoBehaviour
     private static LevelManager instance;
 
     public int[] levelsExp;
+
+    private int soundCheck = 0;
+
+    public int GetSoundCheck() {
+        return soundCheck;
+    }
+    public void SetSoundCheck(int soundCheck) {
+        this.soundCheck = soundCheck;
+    }
     public int maxPowerUpLevel = 6;
 
     public int[] shieldTimers;
