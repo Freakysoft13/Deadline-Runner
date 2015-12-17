@@ -34,9 +34,10 @@ public class Player : MonoBehaviour
 
     private bool jumpTouch = false;
     private bool flipTouch = false;
-    private Collider2D floorCollider;
 
     public RectTransform moonPanel;
+
+    private GameManager.Side side = GameManager.Side.UPPER;
 
     public bool CanFlip
     {
@@ -77,6 +78,19 @@ public class Player : MonoBehaviour
         }
     }
 
+    public GameManager.Side Side
+    {
+        get
+        {
+            return side;
+        }
+
+        set
+        {
+            side = value;
+        }
+    }
+
     void Start()
     {
         SetActiveSkin();
@@ -84,7 +98,6 @@ public class Player : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         //new ConsumablesManager().ApplyActiveConsumables();
         moonPanel.localPosition = new Vector3(0, -350);
-        floorCollider = GameObject.FindGameObjectWithTag("floor").GetComponent<Collider2D>();
     }
 
     private void SetActiveSkin()
@@ -318,10 +331,12 @@ public class Player : MonoBehaviour
         if (!isFlipped())
         {
             moonPanel.localPosition = new Vector3(0, -350);
+            Side = GameManager.Side.BOTTOM;
         }
         else
         {
             moonPanel.localPosition = new Vector3(0, -150);
+            Side = GameManager.Side.UPPER;
         }
     }
 

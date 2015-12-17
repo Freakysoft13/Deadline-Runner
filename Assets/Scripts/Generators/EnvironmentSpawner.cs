@@ -6,7 +6,7 @@ public class EnvironmentSpawner : MonoBehaviour
     public float distanceFromPlayer = 20.0f;
     public float maxSpawnDistance = 50;
 
-    public Side side;
+    public GameManager.Side side;
 
     [Header("Obstacles")]
     public ObjectTypesDataHolder.ObstacleType[] obstaclesToSpawn;
@@ -36,6 +36,10 @@ public class EnvironmentSpawner : MonoBehaviour
     private Transform player;
     private float startPoint;
 
+    [Header("Difficulty")]
+    public float amount = 0.2f;
+    public float interval = 5f;
+
     void Start() {
         pool = ObjectPool.Instance;
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -43,6 +47,8 @@ public class EnvironmentSpawner : MonoBehaviour
         StartCoroutine(SpawnObstacles());
         StartCoroutine(SpawnCrystals());
         StartCoroutine(SpawnEffects());
+        IncreaseDifficulty(amount, interval);
+        DecreaseDifficulty(amount, interval * 2);
     }
 
     private IEnumerator SpawnObstacles() {
@@ -76,6 +82,20 @@ public class EnvironmentSpawner : MonoBehaviour
             Spawn(minEffectsSpread, maxEffectsSpread, ref lastEffectSpawnPointX, ConvertEffectsEnum(), effectsDistribution, effectsPadding, new string[] { "obstacle", "crystal" });
 
             yield return new WaitForSeconds(1f);
+        }
+    }
+
+    private IEnumerator IncreaseDifficulty(float amount, float interval) {
+        while (side == GameManager.Instance.Player.Side) {
+            maxObstaclesSpread = Mathf.Clamp(maxObstaclesSpread - amount, minObstaclesSpread, maxObstaclesSpread);
+            yield return new WaitForSeconds(interval);
+        }
+    }
+
+    private IEnumerator DecreaseDifficulty(float amount, float interval) {
+        while (side != GameManager.Instance.Player.Side) {
+            maxObstaclesSpread = Mathf.Clamp(maxObstaclesSpread + amount, minObstaclesSpread, maxObstaclesSpread);
+            yield return new WaitForSeconds(interval);
         }
     }
 
@@ -118,7 +138,7 @@ public class EnvironmentSpawner : MonoBehaviour
         }
         float spawnPointX = lastSpawnPointX == 0 ? startPoint + spread + lastSpawnPointX : spread + lastSpawnPointX;
         SpawnableObject objectToSpawn = pool.GetObject(objectToSpawnName, false).GetComponent<SpawnableObject>();
-        int sideIndicator = side == Side.UPPER ? 1 : -1;
+        int sideIndicator = side == GameManager.Side.UPPER ? 1 : -1;
         Vector2 spawnPosition = new Vector2(spawnPointX, sideIndicator * objectToSpawn.yPosition);
         if (IsOverlappingWith(spawnPosition, collisionTags)) {
             Vector2 mostSuitableSpawnPos = FindSuitableSpawn(spawnPosition, maxSpread - spread, spread - minSpread, collisionTags);
@@ -131,7 +151,7 @@ public class EnvironmentSpawner : MonoBehaviour
             }
         }
         Quaternion rotation = Quaternion.identity;
-        if(side == Side.BOTTOM) {
+        if (side == GameManager.Side.BOTTOM) {
             rotation = Quaternion.Euler(0, 180, 180);
         }
         objectToSpawn.transform.rotation = rotation;
@@ -174,10 +194,5 @@ public class EnvironmentSpawner : MonoBehaviour
         }
 
         return false;
-    }
-
-    public enum Side
-    {
-        UPPER, BOTTOM
     }
 }

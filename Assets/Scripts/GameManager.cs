@@ -132,4 +132,9 @@ public class GameManager : MonoBehaviour
     public void SaveResult() {
         LevelManager.Instance.AddMoney(score);
     }
+    
+    public enum Side
+    {
+        UPPER, BOTTOM
+    }
 }
