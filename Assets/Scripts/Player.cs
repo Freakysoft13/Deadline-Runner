@@ -331,12 +331,12 @@ public class Player : MonoBehaviour
         if (!isFlipped())
         {
             moonPanel.localPosition = new Vector3(0, -350);
-            Side = GameManager.Side.BOTTOM;
+            side = GameManager.Side.UPPER;
         }
         else
         {
             moonPanel.localPosition = new Vector3(0, -150);
-            Side = GameManager.Side.UPPER;
+            side = GameManager.Side.BOTTOM;
         }
     }
 

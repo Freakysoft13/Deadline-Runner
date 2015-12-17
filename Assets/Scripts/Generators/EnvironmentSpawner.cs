@@ -46,8 +46,8 @@ public class EnvironmentSpawner : MonoBehaviour
         StartCoroutine(SpawnObstacles());
         StartCoroutine(SpawnCrystals());
         StartCoroutine(SpawnEffects());
-        IncreaseDifficulty(amount, interval);
-        DecreaseDifficulty(amount, interval * 2);
+        StartCoroutine(IncreaseDifficulty(amount, interval));
+        StartCoroutine(DecreaseDifficulty(amount, interval * 2));
     }
 
     private IEnumerator SpawnObstacles() {
@@ -85,15 +85,21 @@ public class EnvironmentSpawner : MonoBehaviour
     }
 
     private IEnumerator IncreaseDifficulty(float amount, float interval) {
-        while (side == GameManager.Instance.Player.Side) {
-            maxObstaclesSpread = Mathf.Clamp(maxObstaclesSpread - amount, minObstaclesSpread, maxObstaclesSpread);
+        while (true) {
+            if (side == GameManager.Instance.Player.Side) {
+                maxObstaclesSpread = Mathf.Clamp(maxObstaclesSpread - amount, minObstaclesSpread, maxObstaclesSpread);
+                print("Increase for " + side + " spread = " + maxObstaclesSpread + " Player at " + GameManager.Instance.Player.Side);
+            }
             yield return new WaitForSeconds(interval);
         }
     }
 
     private IEnumerator DecreaseDifficulty(float amount, float interval) {
-        while (side != GameManager.Instance.Player.Side) {
-            maxObstaclesSpread = Mathf.Clamp(maxObstaclesSpread + amount, minObstaclesSpread, maxObstaclesSpread);
+        while (true) {
+            if (side != GameManager.Instance.Player.Side) {
+                maxObstaclesSpread = Mathf.Clamp(maxObstaclesSpread + amount, minObstaclesSpread, maxObstaclesSpread);
+                print("Decrease for " + side + " spread = " + maxObstaclesSpread + " Player at " + GameManager.Instance.Player.Side);
+            }
             yield return new WaitForSeconds(interval);
         }
     }
