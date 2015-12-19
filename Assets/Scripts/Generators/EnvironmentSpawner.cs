@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Side = GameManager.Side;
 
 public class EnvironmentSpawner : MonoBehaviour
 {
@@ -33,6 +34,10 @@ public class EnvironmentSpawner : MonoBehaviour
     public float maxEffectsSpread;
     private float lastEffectSpawnPointX;
 
+    [Header("Difficulty")]
+    public float amount = 0.2f;
+    public float interval = 5f;
+
     private ObjectPool pool;
     private float startPoint;
 
@@ -42,6 +47,8 @@ public class EnvironmentSpawner : MonoBehaviour
         StartCoroutine(SpawnObstacles());
         StartCoroutine(SpawnCrystals());
         StartCoroutine(SpawnEffects());
+        StartCoroutine(IncreaseDifficulty(amount, interval));
+        StartCoroutine(DecreaseDifficulty(amount, interval * 2));
     }
 
     private IEnumerator SpawnObstacles() {
@@ -53,6 +60,26 @@ public class EnvironmentSpawner : MonoBehaviour
                 obstaclesDistribution, obstaclesPadding, new string[] { "obstacle", "crystal" });
 
             yield return new WaitForSeconds(.2f);
+        }
+    }
+
+    private IEnumerator IncreaseDifficulty(float amount, float interval) {
+        while (true) {
+            if (side == GameManager.Instance.Player.Side) {
+                maxObstaclesSpread = Mathf.Clamp(maxObstaclesSpread - amount, minObstaclesSpread, maxObstaclesSpread);
+                print("Increase for " + side + " spread = " + maxObstaclesSpread + " Player at " + GameManager.Instance.Player.Side);
+            }
+            yield return new WaitForSeconds(interval);
+        }
+    }
+
+    private IEnumerator DecreaseDifficulty(float amount, float interval) {
+        while (true) {
+            if (side != GameManager.Instance.Player.Side) {
+                maxObstaclesSpread = Mathf.Clamp(maxObstaclesSpread + amount, minObstaclesSpread, maxObstaclesSpread);
+                print("Decrease for " + side + " spread = " + maxObstaclesSpread + " Player at " + GameManager.Instance.Player.Side);
+            }
+            yield return new WaitForSeconds(interval);
         }
     }
 
@@ -173,10 +200,5 @@ public class EnvironmentSpawner : MonoBehaviour
         }
 
         return false;
-    }
-
-    public enum Side
-    {
-        UPPER, BOTTOM
     }
 }

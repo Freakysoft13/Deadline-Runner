@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using Effect;
-using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -29,6 +27,7 @@ public class Player : MonoBehaviour
     private bool isShielded = false;
     private bool canMove = true;
     private int exp;
+    private GameManager.Side side;
 
     private bool isInAfterLife = false;
 
@@ -74,6 +73,19 @@ public class Player : MonoBehaviour
         set
         {
             playerFlip = value;
+        }
+    }
+
+    public GameManager.Side Side
+    {
+        get
+        {
+            return side;
+        }
+
+        set
+        {
+            side = value;
         }
     }
 
@@ -321,10 +333,12 @@ public class Player : MonoBehaviour
         if (!isFlipped())
         {
             moonPanel.localPosition = new Vector3(0, -350);
+            side = GameManager.Side.UPPER;
         }
         else
         {
             moonPanel.localPosition = new Vector3(0, -150);
+            side = GameManager.Side.BOTTOM;
         }
     }
 
