@@ -16,7 +16,7 @@ public class AEDataParcer  {
 	private static float frameDuration;
 
 	public static AEAnimationData ParceAnimationData(string data) {
-
+        /*
 		XmlDocument doc =  new XmlDocument();
 		doc.LoadXml(data);
 
@@ -48,12 +48,13 @@ public class AEDataParcer  {
 
 
 
-		return animation;
+		return animation;*/
+        return null;
 	}
 
 
 	public static AECompositionTemplate ParseComposition(XmlNode composition) {
-
+        /*
 		AECompositionTemplate comp = new AECompositionTemplate ();
 
 		comp.id = System.Convert.ToInt32(composition.Attributes.GetNamedItem("id").Value);
@@ -152,7 +153,8 @@ public class AEDataParcer  {
 			comp.addLayer (layer);
 		}
 
-		return comp;
+		return comp;*/
+        return null;
 	}
 
 

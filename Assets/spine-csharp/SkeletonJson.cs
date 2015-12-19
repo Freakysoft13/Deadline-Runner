@@ -68,7 +68,7 @@ namespace Spine {
 			return this.ReadFile(path).Result;
 		}
 #else
-		public SkeletonData ReadSkeletonData (String path) {
+		/*public SkeletonData ReadSkeletonData (String path) {
 #if WINDOWS_PHONE
 			Stream stream = Microsoft.Xna.Framework.TitleContainer.OpenStream(path);
 			using (StreamReader reader = new StreamReader(stream)) {
@@ -79,7 +79,7 @@ namespace Spine {
 				skeletonData.name = Path.GetFileNameWithoutExtension(path);
 				return skeletonData;
 			}
-		}
+		}*/
 #endif
 
 		public SkeletonData ReadSkeletonData (TextReader reader) {
