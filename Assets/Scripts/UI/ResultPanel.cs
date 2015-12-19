@@ -55,7 +55,7 @@ public class ResultPanel : MonoBehaviour
         levelUp_txt.gameObject.SetActive(false);
         level_txt.text = "Level " + (1 + LevelManager.Instance.GetLevel());
         expEarned = GameManager.Instance.Player.Exp;
-        crystalsCollected = GameManager.Instance.GetScore();
+        crystalsCollected = GameManager.Instance.GetCrystals();
         int bestScore = LevelManager.Instance.GetBestScore();
         if (expEarned > bestScore)
         {
@@ -151,7 +151,7 @@ public class ResultPanel : MonoBehaviour
     //Video Ads for crystals
     public void CrystalsVideoBtn()
     {
-        GameManager.Instance.AddScore((GameManager.Instance.GetScore()*2));
+        GameManager.Instance.AddCrystals((GameManager.Instance.GetCrystals()*2));
         collectedCrystals.text = "Crystals collected: " + crystalsCollectedCounter * 2;
         LevelManager.Instance.AddMoney(crystalsCollected);
     }

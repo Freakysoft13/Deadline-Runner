@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public bool headStart = false;
     public int headStartDistance = 200;
     public float gravityMultiplier = 3;
+    public Effect.Shield startShieldStub;
 
     [Header("Speed increse muliplier")]
     public float speedThreshold = 50;
@@ -36,6 +37,18 @@ public class Player : MonoBehaviour
     private Collider2D floorCollider;
 
     public RectTransform moonPanel;
+
+    //tree passives
+    private bool isShieldPassive = false;
+    private bool isCrystalBoostPassive = false;
+    private bool isGreenCrystalDoubledPassive = false;
+    private bool isIncreasedBuffSpawnPassive = false;
+    private bool isScoreDoubledPassive = false;
+    private bool isCrystalsDoubledPassive = false;
+    private bool isObstacleInvurnerablePassive = false;
+    private bool isAfterlifeBoostPassive = false;
+    private bool isNoAdsResPassive = false;
+    private bool isAllPassives = false;
 
     public bool CanFlip
     {
@@ -89,23 +102,157 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Start()
+    public bool IsShieldPassive
     {
+        get
+        {
+            return isShieldPassive;
+        }
+
+        set
+        {
+            isShieldPassive = value;
+        }
+    }
+
+    public bool IsCrystalBoostPassive
+    {
+        get
+        {
+            return isCrystalBoostPassive;
+        }
+
+        set
+        {
+            isCrystalBoostPassive = value;
+        }
+    }
+
+    public bool IsGreenCrystalDoubledPassive
+    {
+        get
+        {
+            return isGreenCrystalDoubledPassive;
+        }
+
+        set
+        {
+            isGreenCrystalDoubledPassive = value;
+        }
+    }
+
+    public bool IsIncreasedBuffSpawnPassive
+    {
+        get
+        {
+            return isIncreasedBuffSpawnPassive;
+        }
+
+        set
+        {
+            isIncreasedBuffSpawnPassive = value;
+        }
+    }
+
+    public bool IsScoreDoubledPassive
+    {
+        get
+        {
+            return isScoreDoubledPassive;
+        }
+
+        set
+        {
+            isScoreDoubledPassive = value;
+        }
+    }
+
+    public bool IsCrystalsDoubledPassive
+    {
+        get
+        {
+            return isCrystalsDoubledPassive;
+        }
+
+        set
+        {
+            isCrystalsDoubledPassive = value;
+        }
+    }
+
+    public bool IsObstacleInvurnerablePassive
+    {
+        get
+        {
+            return isObstacleInvurnerablePassive;
+        }
+
+        set
+        {
+            isObstacleInvurnerablePassive = value;
+        }
+    }
+
+    public bool IsAfterlifeBoostPassive
+    {
+        get
+        {
+            return isAfterlifeBoostPassive;
+        }
+
+        set
+        {
+            isAfterlifeBoostPassive = value;
+        }
+    }
+
+    public bool IsNoAdsResPassive
+    {
+        get
+        {
+            return isNoAdsResPassive;
+        }
+
+        set
+        {
+            isNoAdsResPassive = value;
+        }
+    }
+
+    public bool IsAllPassives
+    {
+        get
+        {
+            return isAllPassives;
+        }
+
+        set
+        {
+            isAllPassives = value;
+        }
+    }
+
+    void Start() {
         SetActiveSkin();
         animationController = GetComponent<AnimationController>();
         rigidBody = GetComponent<Rigidbody2D>();
         new ConsumablesManager().ApplyActiveConsumables();
+        new TreePassivesManager().ApplyActivePassives();
         moonPanel.localPosition = new Vector3(0, -350);
         floorCollider = GameObject.FindGameObjectWithTag("floor").GetComponent<Collider2D>();
+        if (isScoreDoubledPassive) {
+            GameManager.Instance.expMultiplier = 2;
+        }
+        if (isCrystalBoostPassive) {
+            GameManager.Instance.scoreMultiplier = 2;
+        }
     }
 
-    private void SetActiveSkin()
-    {
+    private void SetActiveSkin() {
         SetSkin(LevelManager.Instance.GetEquippedSkin());
     }
 
-    private void SetSkin(LevelManager.Skin skin)
-    {
+    private void SetSkin(LevelManager.Skin skin) {
         LevelManager lm = LevelManager.Instance;
         SkeletonDataAsset asset = lm.skins[lm.GetItemIndex(skin)];
         SkeletonAnimation sa = GetComponent<SkeletonAnimation>();
@@ -113,42 +260,44 @@ public class Player : MonoBehaviour
         sa.Reset();
     }
 
-    public void AfterLifeStart()
-    {
+    public void AfterLifeStart() {
         isInAfterLife = true;
+        if(isAfterlifeBoostPassive) {
+            speed *= 2;
+        }
         SetSkin(LevelManager.Skin.GHOST);
     }
 
-    public void AfterLifeEnd()
-    {
+    public void AfterLifeEnd() {
         SetActiveSkin();
         isInAfterLife = false;
+        if (isAfterlifeBoostPassive) {
+            speed /= 2;
+        }
         Die();
     }
 
-    void Update()
-    {
+    void Update() {
         ApplyGravity();
         if (isDead || !canMove) { Stop(); return; }
         CheckTouch();
         Go();
-        if (IsFlipPressed() && IsGrounded())
-        {
+        if (IsFlipPressed() && IsGrounded()) {
             Flip();
         }
-        if ((IsJumpPressed() || jumpOnLand) && IsGrounded() && !isInAfterLife)
-        {
+        if ((IsJumpPressed() || jumpOnLand) && IsGrounded() && !isInAfterLife) {
             Jump();
         }
-        if (IsJumpPressed() && !IsGrounded())
-        {
+        if (IsJumpPressed() && !IsGrounded()) {
             jumpInterrupt = true;
             jumpOnLand = true;
             gravityScale = doubleJumpGravityAccel;
         }
-        if (PlayerFlip * transform.position.y > maxJumpHeight || jumpInterrupt || isFalling())
-        {
+        if (PlayerFlip * transform.position.y > maxJumpHeight || jumpInterrupt || isFalling()) {
             FallDown();
+        }
+        if (GetDistance() % 200 == 0 && isCrystalBoostPassive) {
+            GameManager.Instance.AddCrystals(20);
         }
         /* if(Input.GetKeyDown(KeyCode.LeftControl)) {
              EventManager.Instance.FireHeadstart();
@@ -158,99 +307,87 @@ public class Player : MonoBehaviour
          */
     }
 
-    private bool isFalling()
-    {
+    private bool isFalling() {
         return !IsGrounded() && velocity.y * PlayerFlip < 0;
     }
 
-    private bool IsJumpPressed()
-    {
+    private bool IsJumpPressed() {
         bool result = Input.GetKeyDown(KeyCode.Space) || jumpTouch;
         return result;
     }
 
-    private bool IsFlipPressed()
-    {
+    private bool IsFlipPressed() {
         bool result = Input.GetKeyDown(KeyCode.AltGr) || flipTouch;
         return result;
     }
 
-    public float maxSpeed = 10;
+    public float maxSpeed = 20;
 
-    public void Go()
-    {
+    public void Go() {
         float speedMultiplier = (1 + GetDistance() / 1000.0f);
         velocity.x = Mathf.Clamp(speed * (speedMultiplier), velocity.x, maxSpeed);
-        if (IsGrounded() && !isJumping)
-        {
+        if (IsGrounded() && !isJumping) {
             gravityScale = 1;
             animationController.Run(speedMultiplier);
         }
+
+        if (isShieldPassive) {
+            startShieldStub.PickUp();
+            isShieldPassive = false;
+        }
     }
-    public void Stop()
-    {
+    public void Stop() {
         velocity.x = 0;
-        if (PlayerFlip * velocity.y > 0)
-        {
+        if (PlayerFlip * velocity.y > 0) {
             velocity.y = 0;
         }
     }
 
-    public void Jump()
-    {
+    public void Jump() {
         isJumping = true;
         jumpOnLand = false;
         velocity.y = jumpSpeed * PlayerFlip;
         animationController.JumpUp();
     }
-    public void FallDown()
-    {
+    public void FallDown() {
         isJumping = false;
         jumpInterrupt = false;
-        if (PlayerFlip * velocity.y > 0)
-        {
+        if (PlayerFlip * velocity.y > 0) {
             velocity.y = 0;
         }
         animationController.FallDown();
     }
 
-    public void ApplyGravity()
-    {
+    public void ApplyGravity() {
         velocity.y -= 9.8f * Time.deltaTime * PlayerFlip * gravityScale * gravityMultiplier;
     }
 
-    void FixedUpdate()
-    {
+    void FixedUpdate() {
         rigidBody.velocity = velocity;
     }
 
-    public float GetSpeed()
-    {
+    public float GetSpeed() {
         return rigidBody.velocity.x;
     }
 
     public GameObject shieldEffect;
 
-    public void ShieldsUp()
-    {
+    public void ShieldsUp() {
         isShielded = true;
         shieldEffect.SetActive(true);
     }
 
-    public void ShieldsDown()
-    {
+    public void ShieldsDown() {
         isShielded = false;
         shieldEffect.SetActive(false);
     }
 
-    public void Die()
-    {
-        exp = GetDistance() / expToDistanceThreshold;
+    public void Die() {
+        exp = (GetDistance() * GameManager.Instance.expMultiplier) / expToDistanceThreshold;
         EventManager.Instance.FireBeforePlayerDied();
         isDead = true;
         jumpOnLand = false;
-        EventManager.Instance.OnAnimationComplete += delegate (string name)
-        {
+        EventManager.Instance.OnAnimationComplete += delegate (string name) {
             if (name != AnimationController.DEATH) { return; }
             canMove = false;
             EventManager.Instance.FirePlayerDied();
@@ -258,11 +395,9 @@ public class Player : MonoBehaviour
         animationController.Die();
     }
 
-    public void Ressurect()
-    {
+    public void Ressurect() {
         EventManager.Instance.FireBeforePlayerResurrected();
-        EventManager.Instance.OnAnimationComplete += delegate (string name)
-        {
+        EventManager.Instance.OnAnimationComplete += delegate (string name) {
             if (name != AnimationController.RESURRECTION) { return; }
             isDead = false;
             canMove = true;
@@ -274,24 +409,18 @@ public class Player : MonoBehaviour
         animationController.Ressurect();
     }
 
-    private void CheckTouch()
-    {
+    private void CheckTouch() {
         jumpTouch = false;
         flipTouch = false;
-        if (Input.touchCount == 1 && Time.timeScale == 1)
-        {
+        if (Input.touchCount == 1 && Time.timeScale == 1) {
             Touch touch = Input.GetTouch(0);
-            if (touch.tapCount > 0)
-            {
-                if (touch.phase == TouchPhase.Began)
-                {
+            if (touch.tapCount > 0) {
+                if (touch.phase == TouchPhase.Began) {
                     float ceiling = Screen.height - Screen.height / 8;
-                    if (touch.position.x < Screen.width / 2 && touch.position.y  < ceiling)
-                    {
+                    if (touch.position.x < Screen.width / 2 && touch.position.y < ceiling) {
                         flipTouch = true;
                     }
-                    else
-                    {
+                    else {
                         jumpTouch = true;
                     }
                 }
@@ -299,27 +428,22 @@ public class Player : MonoBehaviour
         }
     }
 
-    private bool IsGrounded()
-    {
+    private bool IsGrounded() {
         float botY = isFlipped() ? GetComponent<Collider2D>().bounds.max.y : GetComponent<Collider2D>().bounds.min.y;
         Collider2D[] colliders = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, botY), 0.1f);
-        foreach (Collider2D col in colliders)
-        {
-            if (col.CompareTag("floor"))
-            {
+        foreach (Collider2D col in colliders) {
+            if (col.CompareTag("floor")) {
                 return true;
             }
         }
         return false;
     }
 
-    private bool isFlipped()
-    {
+    private bool isFlipped() {
         return PlayerFlip == -1;
     }
 
-    public void Flip()
-    {
+    public void Flip() {
         if (!canFlip) { return; }
         PlayerFlip *= -1;
         Vector2 newPosition = transform.position;
@@ -330,13 +454,11 @@ public class Player : MonoBehaviour
         transform.localScale = newScale;
         velocity.y = 0;
 
-        if (!isFlipped())
-        {
+        if (!isFlipped()) {
             moonPanel.localPosition = new Vector3(0, -350);
             side = GameManager.Side.UPPER;
         }
-        else
-        {
+        else {
             moonPanel.localPosition = new Vector3(0, -150);
             side = GameManager.Side.BOTTOM;
         }
@@ -344,16 +466,13 @@ public class Player : MonoBehaviour
 
     public int expToDistanceThreshold = 3;
 
-    void OnTriggerEnter2D(Collider2D collider)
-    {
-        if (collider.CompareTag("obstacle") && !isDead && !isShielded && !isInAfterLife)
-        {
+    void OnTriggerEnter2D(Collider2D collider) {
+        if (collider.CompareTag("obstacle") && !isDead && !isShielded && !isInAfterLife) {
             GameManager.Instance.ApplyAfterLife();
         }
     }
 
-    public int GetDistance()
-    {
+    public int GetDistance() {
         return (int)transform.position.x + 8;
     }
 }

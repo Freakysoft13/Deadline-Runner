@@ -8,7 +8,7 @@
             amt = LevelManager.Instance.crystalValues[LevelManager.Instance.GetPowerUpLevel(type)];
         }
         public override void ApplyEffect(Player player) {
-            GameManager.Instance.AddScore(amt);
+            GameManager.Instance.AddCrystals(amt * (player.IsGreenCrystalDoubledPassive ? 2 : 1));
         }
 
         public override void RemoveEffect(Player player) {

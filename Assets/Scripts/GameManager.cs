@@ -94,11 +94,11 @@ public class GameManager : MonoBehaviour
         objectDecorator.SpawnParallaxObjectForObject(go, type);
     }
 
-    public void AddScore(int amt) {
+    public void AddCrystals(int amt) {
         score += amt * scoreMultiplier;
     }
 
-    public int GetScore() {
+    public int GetCrystals() {
         return score;
     }
 

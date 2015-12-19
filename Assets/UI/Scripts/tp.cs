@@ -63,7 +63,7 @@ public class tp : MonoBehaviour
 
     void Update() {
         distance_counter();
-        CrystalSumm.text = GameManager.Instance.GetScore().ToString();
+        CrystalSumm.text = GameManager.Instance.GetCrystals().ToString();
     }
 
     //pause_btn need to be cleaned
@@ -180,7 +180,12 @@ public class tp : MonoBehaviour
         Application.LoadLevel("Main");
     }
     public void RessurectWithAds() {
-        Player.GetComponent<Player>().Ressurect();
+        if(GameManager.Instance.Player.IsNoAdsResPassive) {
+            //skip ads;
+        } else {
+            //show video;
+        }
+        GameManager.Instance.Player.Ressurect();
         deathpnl.SetActive(false);
         scoreboard.SetActive(true);
     }

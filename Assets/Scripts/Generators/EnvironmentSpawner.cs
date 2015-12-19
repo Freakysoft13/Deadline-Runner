@@ -67,7 +67,6 @@ public class EnvironmentSpawner : MonoBehaviour
         while (true) {
             if (side == GameManager.Instance.Player.Side) {
                 maxObstaclesSpread = Mathf.Clamp(maxObstaclesSpread - amount, minObstaclesSpread, maxObstaclesSpread);
-                print("Increase for " + side + " spread = " + maxObstaclesSpread + " Player at " + GameManager.Instance.Player.Side);
             }
             yield return new WaitForSeconds(interval);
         }
@@ -77,7 +76,6 @@ public class EnvironmentSpawner : MonoBehaviour
         while (true) {
             if (side != GameManager.Instance.Player.Side) {
                 maxObstaclesSpread = Mathf.Clamp(maxObstaclesSpread + amount, minObstaclesSpread, maxObstaclesSpread);
-                print("Decrease for " + side + " spread = " + maxObstaclesSpread + " Player at " + GameManager.Instance.Player.Side);
             }
             yield return new WaitForSeconds(interval);
         }
@@ -98,6 +96,9 @@ public class EnvironmentSpawner : MonoBehaviour
         while (true) {
             while (lastEffectSpawnPointX > player.position.x + maxSpawnDistance) {
                 yield return new WaitForSeconds(1f);
+            }
+            if(GameManager.Instance.Player.IsIncreasedBuffSpawnPassive) {
+                maxEffectsSpread *= 0.8f;
             }
             Spawn(minEffectsSpread, maxEffectsSpread, ref lastEffectSpawnPointX, ConvertEffectsEnum(), effectsDistribution, effectsPadding, new string[] { "obstacle", "crystal" });
 
