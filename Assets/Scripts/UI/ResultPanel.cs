@@ -91,7 +91,13 @@ public class ResultPanel : MonoBehaviour
         }
         if (crystalsCollectedCounter < crystalsCollected && Mathf.Abs(Time.time - lastCryUpdateTime) > updateDelay)
         {
-            crystalsCollectedCounter++;
+            float divisor = crystalsCollected / 10.0f;
+            if ((crystalsCollectedCounter + (crystalsCollected / divisor)) <= crystalsCollected) {
+                crystalsCollectedCounter += crystalsCollected / divisor;
+            }
+            else {
+                crystalsCollectedCounter = crystalsCollected;
+            }
             collectedCrystals.text = "Crystals collected: " + crystalsCollectedCounter;
             lastCryUpdateTime = Time.time;
         }

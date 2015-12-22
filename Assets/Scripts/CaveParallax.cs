@@ -18,13 +18,13 @@ public class CaveParallax : MonoBehaviour
     void Update() {
         if (ShouldPerform()) {
             if (shouldSavePos) {
-                startPos = transform.position;
+                startPos = transform.localPosition;
                 shouldSavePos = false;
             }
             transform.Translate(Vector3.right * (player.GetComponent<Player>().GetSpeed() / movementSlowFactor) * Time.deltaTime);
         }
         else if (!shouldSavePos) {
-            transform.position = startPos;
+            transform.localPosition = startPos;
             shouldSavePos = true;
         }
     }
