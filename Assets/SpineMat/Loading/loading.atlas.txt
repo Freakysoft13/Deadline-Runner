@@ -1,0 +1,68 @@
+
+loading.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Layer 3 copy 4
+  rotate: true
+  xy: 170, 29
+  size: 214, 215
+  orig: 216, 217
+  offset: 1, 1
+  index: -1
+Layer 3 copy 5
+  rotate: false
+  xy: 2, 2
+  size: 44, 43
+  orig: 46, 45
+  offset: 1, 1
+  index: -1
+Layer 3 copy 6
+  rotate: false
+  xy: 768, 369
+  size: 83, 84
+  orig: 85, 86
+  offset: 1, 1
+  index: -1
+Layer 4 copy
+  rotate: false
+  xy: 170, 245
+  size: 255, 254
+  orig: 257, 256
+  offset: 1, 1
+  index: -1
+Layer 5
+  rotate: false
+  xy: 768, 455
+  size: 187, 44
+  orig: 189, 46
+  offset: 1, 1
+  index: -1
+Layer 6
+  rotate: false
+  xy: 427, 281
+  size: 274, 8
+  orig: 282, 10
+  offset: 1, 1
+  index: -1
+Layer 6 copy
+  rotate: false
+  xy: 427, 291
+  size: 304, 40
+  orig: 306, 42
+  offset: 1, 1
+  index: -1
+Layer 7
+  rotate: true
+  xy: 427, 333
+  size: 166, 339
+  orig: 168, 454
+  offset: 0, 110
+  index: -1
+SW
+  rotate: false
+  xy: 2, 47
+  size: 166, 452
+  orig: 168, 454
+  offset: 1, 1
+  index: -1

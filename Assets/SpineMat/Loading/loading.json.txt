@@ -1,0 +1,162 @@
+{
+"bones": [
+	{ "name": "root" },
+	{ "name": "Gear_1", "parent": "root", "x": 118.91, "y": 145.76 },
+	{ "name": "Gear_2", "parent": "root", "x": 229.4, "y": 345.72 },
+	{ "name": "Gear_3", "parent": "root", "x": 312.49, "y": 249.01 },
+	{ "name": "Gear_4", "parent": "root", "x": 369.98, "y": 268.05 },
+	{ "name": "Glow", "parent": "root", "x": 848.29, "y": 272.26 },
+	{ "name": "SW", "parent": "root", "length": 95.22, "x": 527.25, "y": 272.44, "rotation": -90 },
+	{ "name": "Wire_2", "parent": "root", "x": 547.42, "y": 272.02 },
+	{ "name": "Wire_1", "parent": "Wire_2", "x": -172.05, "y": -7.23 }
+],
+"slots": [
+	{ "name": "Layer 3 copy 4", "bone": "Gear_2", "attachment": "Layer 3 copy 4" },
+	{ "name": "Layer 3 copy 5", "bone": "Gear_3", "attachment": "Layer 3 copy 5" },
+	{ "name": "Layer 3 copy 6", "bone": "Gear_4", "attachment": "Layer 3 copy 6" },
+	{ "name": "Layer 4 copy", "bone": "Gear_1", "attachment": "Layer 4 copy" },
+	{ "name": "Layer 6", "bone": "root", "attachment": "Layer 6" },
+	{ "name": "Layer 6 copy", "bone": "Glow", "attachment": "Layer 6 copy" },
+	{ "name": "Layer 5", "bone": "Wire_1", "attachment": "Layer 5" },
+	{ "name": "SW", "bone": "SW", "attachment": "SW" },
+	{ "name": "Layer 7", "bone": "SW", "attachment": "Layer 7" }
+],
+"skins": {
+	"default": {
+		"Layer 3 copy 4": {
+			"Layer 3 copy 4": { "x": -2.24, "y": 0.99, "width": 216, "height": 217 }
+		},
+		"Layer 3 copy 5": {
+			"Layer 3 copy 5": { "x": -0.34, "y": 0.7, "width": 46, "height": 45 }
+		},
+		"Layer 3 copy 6": {
+			"Layer 3 copy 6": { "x": -0.33, "y": 0.16, "width": 85, "height": 86 }
+		},
+		"Layer 4 copy": {
+			"Layer 4 copy": { "x": -4.26, "y": -4.54, "width": 257, "height": 256 }
+		},
+		"Layer 5": {
+			"Layer 5": { "x": 87.28, "y": 6.43, "width": 189, "height": 46 }
+		},
+		"Layer 6": {
+			"Layer 6": { "x": 687.15, "y": 272.22, "width": 282, "height": 10 }
+		},
+		"Layer 6 copy": {
+			"Layer 6 copy": { "x": -161.14, "y": -0.04, "width": 306, "height": 42 }
+		},
+		"Layer 7": {
+			"Layer 7": { "x": 206.25, "y": 2.27, "rotation": 90, "width": 168, "height": 454 }
+		},
+		"SW": {
+			"SW": { "x": 209.62, "y": 5.24, "rotation": 90, "width": 168, "height": 454 }
+		}
+	}
+},
+"animations": {
+	"animation": {
+		"bones": {
+			"Gear_1": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.6666, "angle": 270 },
+					{ "time": 1.3333, "angle": 180 },
+					{ "time": 2, "angle": 90 },
+					{ "time": 2.6666, "angle": 0 }
+				]
+			},
+			"Gear_2": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.6666, "angle": 90 },
+					{ "time": 1.3333, "angle": 180 },
+					{ "time": 2, "angle": 270 },
+					{ "time": 2.6666, "angle": 0 }
+				]
+			},
+			"Gear_3": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.2231, "angle": 270 },
+					{ "time": 0.4462, "angle": 180 },
+					{ "time": 0.6694, "angle": 90 },
+					{ "time": 0.8925, "angle": 0 },
+					{ "time": 1.1157, "angle": 270 },
+					{ "time": 1.3388, "angle": 180 },
+					{ "time": 1.5619, "angle": 90 },
+					{ "time": 1.7851, "angle": 0 },
+					{ "time": 2.0082, "angle": 270 },
+					{ "time": 2.2314, "angle": 180 },
+					{ "time": 2.4545, "angle": 90 },
+					{ "time": 2.6666, "angle": 0 }
+				]
+			},
+			"Gear_4": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.3333, "angle": 90 },
+					{ "time": 0.6666, "angle": 180 },
+					{ "time": 1, "angle": 270 },
+					{ "time": 1.3333, "angle": 0 },
+					{ "time": 1.6666, "angle": 90 },
+					{ "time": 2, "angle": 180 },
+					{ "time": 2.3333, "angle": 270 },
+					{ "time": 2.6666, "angle": 0 }
+				]
+			},
+			"Wire_1": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				]
+			},
+			"Wire_2": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				]
+			}
+		},
+		"slots": {
+			"Layer 6 copy": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" },
+					{
+						"time": 0.5,
+						"color": "ffffffa0",
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 0.8333, "color": "ffffffff" },
+					{ "time": 1.5, "color": "ffffff00" },
+					{ "time": 1.5333, "color": "ffffff64" },
+					{ "time": 1.5666, "color": "ffffff00" },
+					{ "time": 1.6, "color": "ffffff64" },
+					{ "time": 1.6333, "color": "ffffff00" },
+					{ "time": 1.6666, "color": "ffffff64" },
+					{ "time": 1.7, "color": "ffffff00" },
+					{ "time": 1.7666, "color": "ffffffff" },
+					{ "time": 2.6666, "color": "ffffff00" }
+				]
+			},
+			"SW": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" }
+				]
+			},
+			"Layer 7": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" },
+					{ "time": 0.5, "color": "ffffffa0" },
+					{ "time": 0.8333, "color": "ffffffff" },
+					{ "time": 1.5, "color": "ffffff00" },
+					{ "time": 1.5333, "color": "ffffff64" },
+					{ "time": 1.5666, "color": "ffffff00" },
+					{ "time": 1.6, "color": "ffffff64" },
+					{ "time": 1.6333, "color": "ffffff00" },
+					{ "time": 1.6666, "color": "ffffff64" },
+					{ "time": 1.7, "color": "ffffff00" },
+					{ "time": 1.7666, "color": "ffffffff" },
+					{ "time": 2.6666, "color": "ffffff00" }
+				]
+			}
+		}
+	}
+}
+}

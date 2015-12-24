@@ -7,6 +7,8 @@ public class LoadingGM : MonoBehaviour
     [SerializeField]
     private FadeScene blackScreenLock;
 
+    public float waitTime = 1.5f;
+
     public static LoadingGM instance;
 
     public void StartGameBtn()
@@ -19,7 +21,11 @@ public class LoadingGM : MonoBehaviour
         //Fade
         yield return StartCoroutine(blackScreenLock.FadeIn());
         yield return Application.LoadLevelAsync("LoadingScene");
+
+        yield return new WaitForSeconds(waitTime);
+
         yield return Application.LoadLevelAdditiveAsync(sceneName);
+
         yield return StartCoroutine(blackScreenLock.FadeOut());
         LoadingSceneGM.UnloadLoadingScene();
     }

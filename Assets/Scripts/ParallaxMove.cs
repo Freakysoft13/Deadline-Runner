@@ -2,18 +2,18 @@
 
 public class ParallaxMove : MonoBehaviour
 {
+    public float speed;
 
-    public float speedScale = 0.9f;
-
-    private float speed;
-    private Transform player;
-
-    void Awake() {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+    private float startSpeed = 0;
+ 
+    void Start()
+    {
+        startSpeed = speed;
+        EventManager.Instance.OnBeforePlayerDied += () => { speed = 0; };
+        EventManager.Instance.OnPlayerResurrected += () => { speed = startSpeed; };
     }
 
     void Update() {
-        speed = player.GetComponent<Player>().GetSpeed();
-        transform.Translate(Vector2.right * speed * speedScale * Time.deltaTime);
+        transform.Translate(Vector2.right * speed * Time.deltaTime);
     }
 }
