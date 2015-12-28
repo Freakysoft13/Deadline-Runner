@@ -40,7 +40,7 @@ public class TreeManager : MonoBehaviour
     //test button, loading UIScene
     public void LoadTestUI()
     {
-        Application.LoadLevel("Ui_sc");
+        LevelManager.Instance.AddExp(10000);
     }
 
     public void ActivateAncestorWillow()
@@ -91,6 +91,7 @@ public class TreeManager : MonoBehaviour
     public void ActivateAncestorArchibald()
     {
         LevelManager.Instance.ActivatePassiveSkill(LevelManager.Passive.ARCHIBALD);
+        LevelManager.Instance.BuySkin(LevelManager.Skin.WIZARD);
         DeactivateAll();
     }
 }
