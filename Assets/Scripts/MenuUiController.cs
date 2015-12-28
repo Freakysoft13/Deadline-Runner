@@ -11,10 +11,10 @@ public class MenuUiController : MonoBehaviour
     public Image soundOn;
     public Image soundOff;
 
-
     //timescale factor excluding freeze bug
     void Start()
     {
+   
         SoundCheckOnStart();
         IndexChecker();
         Time.timeScale = 1;
@@ -23,7 +23,7 @@ public class MenuUiController : MonoBehaviour
     //Load Game Scene (not active yet)
     public void StartGame()
     {
-        Application.LoadLevel("Main");
+            Application.LoadLevel("Main");
     }
 
 
@@ -56,7 +56,7 @@ public class MenuUiController : MonoBehaviour
     {
         print(System.DateTime.Now.Ticks);
 
-        LevelManager.Instance.AddExp(10000);
+        Application.LoadLevel("pt");
     }
 
     private int GetActiveAncestor()

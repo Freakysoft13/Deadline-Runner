@@ -6,7 +6,6 @@
 	{ "name": "Gear_3", "parent": "root", "x": 312.49, "y": 249.01 },
 	{ "name": "Gear_4", "parent": "root", "x": 369.98, "y": 268.05 },
 	{ "name": "Glow", "parent": "root", "x": 848.29, "y": 272.26 },
-	{ "name": "SW", "parent": "root", "length": 95.22, "x": 527.25, "y": 272.44, "rotation": -90 },
 	{ "name": "Wire_2", "parent": "root", "x": 547.42, "y": 272.02 },
 	{ "name": "Wire_1", "parent": "Wire_2", "x": -172.05, "y": -7.23 }
 ],
@@ -17,9 +16,7 @@
 	{ "name": "Layer 4 copy", "bone": "Gear_1", "attachment": "Layer 4 copy" },
 	{ "name": "Layer 6", "bone": "root", "attachment": "Layer 6" },
 	{ "name": "Layer 6 copy", "bone": "Glow", "attachment": "Layer 6 copy" },
-	{ "name": "Layer 5", "bone": "Wire_1", "attachment": "Layer 5" },
-	{ "name": "SW", "bone": "SW", "attachment": "SW" },
-	{ "name": "Layer 7", "bone": "SW", "attachment": "Layer 7" }
+	{ "name": "Layer 5", "bone": "Wire_1", "attachment": "Layer 5" }
 ],
 "skins": {
 	"default": {
@@ -43,12 +40,6 @@
 		},
 		"Layer 6 copy": {
 			"Layer 6 copy": { "x": -161.14, "y": -0.04, "width": 306, "height": 42 }
-		},
-		"Layer 7": {
-			"Layer 7": { "x": 206.25, "y": 2.27, "rotation": 90, "width": 168, "height": 454 }
-		},
-		"SW": {
-			"SW": { "x": 209.62, "y": 5.24, "rotation": 90, "width": 168, "height": 454 }
 		}
 	}
 },
@@ -123,27 +114,6 @@
 						"color": "ffffffa0",
 						"curve": [ 0.25, 0, 0.75, 1 ]
 					},
-					{ "time": 0.8333, "color": "ffffffff" },
-					{ "time": 1.5, "color": "ffffff00" },
-					{ "time": 1.5333, "color": "ffffff64" },
-					{ "time": 1.5666, "color": "ffffff00" },
-					{ "time": 1.6, "color": "ffffff64" },
-					{ "time": 1.6333, "color": "ffffff00" },
-					{ "time": 1.6666, "color": "ffffff64" },
-					{ "time": 1.7, "color": "ffffff00" },
-					{ "time": 1.7666, "color": "ffffffff" },
-					{ "time": 2.6666, "color": "ffffff00" }
-				]
-			},
-			"SW": {
-				"color": [
-					{ "time": 0, "color": "ffffffff" }
-				]
-			},
-			"Layer 7": {
-				"color": [
-					{ "time": 0, "color": "ffffff00" },
-					{ "time": 0.5, "color": "ffffffa0" },
 					{ "time": 0.8333, "color": "ffffffff" },
 					{ "time": 1.5, "color": "ffffff00" },
 					{ "time": 1.5333, "color": "ffffff64" },

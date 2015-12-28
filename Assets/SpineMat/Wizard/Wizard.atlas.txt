@@ -1,0 +1,199 @@
+
+Wizard.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+1
+  rotate: false
+  xy: 352, 124
+  size: 97, 109
+  orig: 99, 111
+  offset: 1, 1
+  index: -1
+2
+  rotate: false
+  xy: 141, 2
+  size: 70, 106
+  orig: 72, 108
+  offset: 1, 1
+  index: -1
+3
+  rotate: true
+  xy: 553, 446
+  size: 47, 153
+  orig: 49, 155
+  offset: 1, 1
+  index: -1
+Body
+  rotate: true
+  xy: 213, 39
+  size: 69, 127
+  orig: 71, 129
+  offset: 1, 1
+  index: -1
+Glasses
+  rotate: true
+  xy: 777, 662
+  size: 102, 28
+  orig: 108, 45
+  offset: 6, 11
+  index: -1
+Head
+  rotate: false
+  xy: 811, 751
+  size: 211, 271
+  orig: 213, 273
+  offset: 1, 1
+  index: -1
+Left_Ankle
+  rotate: false
+  xy: 453, 328
+  size: 72, 131
+  orig: 74, 133
+  offset: 1, 1
+  index: -1
+Right_Ankle
+  rotate: false
+  xy: 453, 328
+  size: 72, 131
+  orig: 74, 133
+  offset: 1, 1
+  index: -1
+Left_Fist
+  rotate: true
+  xy: 527, 329
+  size: 42, 44
+  orig: 44, 46
+  offset: 1, 1
+  index: -1
+Right_Fist
+  rotate: true
+  xy: 527, 329
+  size: 42, 44
+  orig: 44, 46
+  offset: 1, 1
+  index: -1
+Left_Hand
+  rotate: true
+  xy: 213, 4
+  size: 33, 68
+  orig: 35, 70
+  offset: 1, 1
+  index: -1
+Right_Hand
+  rotate: true
+  xy: 213, 4
+  size: 33, 68
+  orig: 35, 70
+  offset: 1, 1
+  index: -1
+Left_Leg
+  rotate: true
+  xy: 527, 373
+  size: 71, 117
+  orig: 73, 119
+  offset: 1, 1
+  index: -1
+Right_Leg
+  rotate: true
+  xy: 527, 373
+  size: 71, 117
+  orig: 73, 119
+  offset: 1, 1
+  index: -1
+Left_Shoulder
+  rotate: false
+  xy: 451, 115
+  size: 52, 100
+  orig: 54, 102
+  offset: 1, 1
+  index: -1
+Right_Shoulder
+  rotate: false
+  xy: 451, 115
+  size: 52, 100
+  orig: 54, 102
+  offset: 1, 1
+  index: -1
+Left_Toe
+  rotate: true
+  xy: 2, 2
+  size: 106, 137
+  orig: 108, 139
+  offset: 1, 1
+  index: -1
+Right_Toe
+  rotate: true
+  xy: 2, 2
+  size: 106, 137
+  orig: 108, 139
+  offset: 1, 1
+  index: -1
+Ring
+  rotate: false
+  xy: 2, 110
+  size: 348, 349
+  orig: 350, 351
+  offset: 1, 1
+  index: -1
+Staff
+  rotate: false
+  xy: 553, 495
+  size: 222, 269
+  orig: 224, 271
+  offset: 1, 1
+  index: -1
+cap1
+  rotate: true
+  xy: 352, 235
+  size: 224, 99
+  orig: 226, 101
+  offset: 1, 1
+  index: -1
+cap2
+  rotate: true
+  xy: 453, 217
+  size: 109, 73
+  orig: 111, 75
+  offset: 1, 1
+  index: -1
+cap3
+  rotate: false
+  xy: 708, 452
+  size: 54, 41
+  orig: 56, 43
+  offset: 1, 1
+  index: -1
+cap4
+  rotate: false
+  xy: 646, 394
+  size: 55, 50
+  orig: 57, 52
+  offset: 1, 1
+  index: -1
+smoke3
+  rotate: false
+  xy: 2, 461
+  size: 549, 561
+  orig: 600, 600
+  offset: 29, 7
+  index: -1
+smoke5
+  rotate: false
+  xy: 553, 766
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+
+Wizard2.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Light
+  rotate: false
+  xy: 2, 2
+  size: 500, 500
+  orig: 500, 500
+  offset: 0, 0
+  index: -1
