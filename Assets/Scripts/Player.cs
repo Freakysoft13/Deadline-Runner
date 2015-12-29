@@ -277,6 +277,8 @@ public class Player : MonoBehaviour
         Die();
     }
 
+    private float updatedAtDistance = 0;
+
     void Update() {
         ApplyGravity();
         if (isDead || !canMove) { Stop(); return; }
@@ -296,8 +298,9 @@ public class Player : MonoBehaviour
         if (PlayerFlip * transform.position.y > maxJumpHeight || jumpInterrupt || isFalling()) {
             FallDown();
         }
-        if (GetDistance() % 200 == 0 && isCrystalBoostPassive) {
+        if (GetDistance() % 200 == 0 && isCrystalBoostPassive && updatedAtDistance != GetDistance()) {
             GameManager.Instance.AddCrystals(20);
+            updatedAtDistance = GetDistance();
         }
         /* if(Input.GetKeyDown(KeyCode.LeftControl)) {
              EventManager.Instance.FireHeadstart();
