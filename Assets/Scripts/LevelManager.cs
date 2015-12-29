@@ -296,7 +296,7 @@ public class LevelManager : MonoBehaviour
 
     public enum Skin
     {
-        NONE, WALKING_ARMOR, UR900, QUEEN_NORA, WIZARD, GUNMAN, BARBARIAN, POET, GHOST
+        NONE, WALKING_ARMOR, UR900, WIZARD, QUEEN_NORA, GUNMAN, BARBARIAN, POET, GHOST
     }
 
     public enum Achievement

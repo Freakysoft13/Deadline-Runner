@@ -2,7 +2,6 @@
 
 class TreePassivesManager
 {
-    //WARNING GAVNOCODE!
     public void ApplyActivePassives() {
         LevelManager lm = LevelManager.Instance;
         GameManager gm = GameManager.Instance;

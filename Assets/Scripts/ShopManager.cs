@@ -4,7 +4,6 @@ using System.Collections;
 
 public class ShopManager : MonoBehaviour
 {
-
     public Text money;
     public ScrollRect pwUpPnl;
     public ScrollRect ConsumPnl;
