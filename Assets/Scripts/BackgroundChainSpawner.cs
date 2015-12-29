@@ -4,6 +4,10 @@ public class BackgroundChainSpawner : ObjectChainSpawner
 {
     private bool hasSpawnedSelf = false;
 
+    void OnEnable() {
+        hasSpawnedSelf = false;
+    }
+
     protected override void SpawnNextObject()
     {
         if(hasSpawnedSelf) {

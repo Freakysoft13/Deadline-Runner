@@ -179,12 +179,14 @@ public class tp : MonoBehaviour
     public void RestartGameOnDeath() {
         Application.LoadLevel("Main");
     }
+
     public void RessurectWithAds() {
         if(GameManager.Instance.Player.IsNoAdsResPassive) {
             //skip ads;
         } else {
             //show video;
         }
+        AdsManager.Instance.ShowVideo(null);
         GameManager.Instance.Player.Ressurect();
         deathpnl.SetActive(false);
         scoreboard.SetActive(true);
@@ -206,7 +208,7 @@ public class tp : MonoBehaviour
     }
 
     private void PlayerDie() {
-        if (!GameManager.Instance.HasRessurectedThisRun) {
+        if (!GameManager.Instance.HasRessurectedThisRun && AdsManager.Instance.isAdReady) {
             deathpnl.SetActive(true);
         } else {
             result_pnl.SetActive(true);

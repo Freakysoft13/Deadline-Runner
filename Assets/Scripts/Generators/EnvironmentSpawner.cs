@@ -188,8 +188,8 @@ public class EnvironmentSpawner : MonoBehaviour
     }
 
     private bool IsOverlappingWith(Vector2 pos, string[] overlapTags) {
-        Vector2 pointA = new Vector2(pos.x - 2, pos.y - 2);
-        Vector2 pointB = new Vector2(pos.x + 2, pos.y + 2);
+        Vector2 pointA = new Vector2(pos.x - 4, pos.y - 4);
+        Vector2 pointB = new Vector2(pos.x + 4, pos.y + 4);
         Vector3 pos3D = new Vector3(pos.x, pos.y, 0);
         Collider2D[] colliders = Physics2D.OverlapAreaAll(pointA, pointB);
         foreach (Collider2D col in colliders) {
