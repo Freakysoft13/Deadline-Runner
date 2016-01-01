@@ -10,11 +10,18 @@ public class MenuUiController : MonoBehaviour
     public GameObject[] ancestorText;
     public Image soundOn;
     public Image soundOff;
+    public GameObject ladderObj;
 
     //timescale factor excluding freeze bug
     void Start()
     {
-   
+
+#if UNITY_WSA
+                    ladderObj.SetActive(false);
+#endif
+#if UNITY_STANDALONE_WIN
+                    ladderObj.SetActive(false);
+#endif
         SoundCheckOnStart();
         IndexChecker();
         Time.timeScale = 1;
@@ -23,7 +30,7 @@ public class MenuUiController : MonoBehaviour
     //Load Game Scene (not active yet)
     public void StartGame()
     {
-            Application.LoadLevel("Main");
+        Application.LoadLevel("Main");
     }
 
 
