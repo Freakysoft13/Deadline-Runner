@@ -558,26 +558,31 @@ public class MenuUI : MonoBehaviour
             PowerDashActiveBtn.gameObject.SetActive(true);
             BuyPowerDashBtn.gameObject.SetActive(false);
         }
-
-
-
     }
+
+	public enum Chest
+	{
+		SMALL,
+		MEDIUM,
+		BIG,
+		XXL
+	}
 
     public void GetMoneyChest()
     {
-        LevelManager.Instance.AddMoney(65000);
+		LevelManager.Instance.AquireInGameMoney (Chest.XXL);
     }
     public void GetMoneyShards()
-    {
-        LevelManager.Instance.AddMoney(5500);
+	{
+		LevelManager.Instance.AquireInGameMoney (Chest.SMALL);
     }
     public void GetMoneyBag()
-    {
-        LevelManager.Instance.AddMoney(12000);
+	{
+		LevelManager.Instance.AquireInGameMoney (Chest.MEDIUM);
     }
     public void GetMoneyBigBag()
-    {
-        LevelManager.Instance.AddMoney(31000);
+	{
+		LevelManager.Instance.AquireInGameMoney (Chest.BIG);
     }
 
 

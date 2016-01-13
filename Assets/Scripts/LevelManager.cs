@@ -24,6 +24,10 @@ public class LevelManager : MonoBehaviour
     public int[] strangeMachineTimers;
     public SkeletonDataAsset[] skins;
 
+	
+	public delegate void OnPurchase(object arg);
+	
+	public OnPurchase InGameMoneyPurchase;
 
     public static LevelManager Instance
     {
@@ -139,6 +143,19 @@ public class LevelManager : MonoBehaviour
         }
         return 0;
     }*/
+
+	public void AquireInGameMoney(MenuUI.Chest chestName) {
+		InGameMoneyPurchase (chestName);
+	}
+
+	public void AddMoneyFromChest(MenuUI.Chest chestName) {
+		switch (chestName) {
+			case MenuUI.Chest.SMALL: AddMoney(5500); break;
+			case MenuUI.Chest.MEDIUM: AddMoney(12000); break;
+			case MenuUI.Chest.BIG: AddMoney(31000); break;
+			case MenuUI.Chest.XXL: AddMoney(65000); break;
+		}
+	}
 
     public void ActivatePassiveSkill(Passive passive)
     {
