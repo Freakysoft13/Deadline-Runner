@@ -8,12 +8,12 @@ public class ParallaxMove : MonoBehaviour
     private Player player;
  
     void Awake() {
+        startSpeed = speedScale;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
     void Start()
     {
-        startSpeed = speedScale * player.GetSpeed();
         EventManager.Instance.OnBeforePlayerDied += () => { speedScale = 0; };
         EventManager.Instance.OnPlayerResurrected += () => { speedScale = startSpeed; };
     }
