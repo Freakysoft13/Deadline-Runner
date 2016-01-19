@@ -47,8 +47,8 @@ public class EnvironmentSpawner : MonoBehaviour
         StartCoroutine(SpawnObstacles());
         StartCoroutine(SpawnCrystals());
         StartCoroutine(SpawnEffects());
-        StartCoroutine(IncreaseDifficulty(amount, interval));
-        StartCoroutine(DecreaseDifficulty(amount, interval * 2));
+        //StartCoroutine(IncreaseDifficulty(amount, interval));
+        //StartCoroutine(DecreaseDifficulty(amount, interval * 2));
     }
 
     private IEnumerator SpawnObstacles() {
