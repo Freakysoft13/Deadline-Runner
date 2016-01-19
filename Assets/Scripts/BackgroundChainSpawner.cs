@@ -1,11 +1,20 @@
-﻿
-
-public class BackgroundChainSpawner : ObjectChainSpawner
+﻿public class BackgroundChainSpawner : ObjectChainSpawner
 {
     private bool hasSpawnedSelf = false;
+    private bool hasSpawnedNextObject = false;
 
     void OnEnable() {
         hasSpawnedSelf = false;
+    }
+
+    void Update() {
+        if(spawnOnCollision) {
+            return;
+        }
+        if(transform.position.x < 1.0f && !hasSpawnedNextObject) {
+            SpawnNextObject();
+            ResetSelfSapwnChance();
+        }
     }
 
     protected override void SpawnNextObject()
@@ -21,5 +30,6 @@ public class BackgroundChainSpawner : ObjectChainSpawner
             initScript.Init();
         }
         hasSpawnedSelf = true;
+        hasSpawnedNextObject = true;
     }
 }

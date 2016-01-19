@@ -5,6 +5,7 @@ public class ObjectChainSpawner : MonoBehaviour
 {
     public string[] availableObjects;
     public int[] probabilities;
+    public bool spawnOnCollision = true;
     public string spawnerTag = "Player";
     public float xOffset = 0.0f;
     public int selfRespawnChace = 0;
@@ -63,7 +64,7 @@ public class ObjectChainSpawner : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag(spawnerTag) && objectPool != null)
+        if (other.CompareTag(spawnerTag) && objectPool != null && spawnOnCollision)
         {
             SpawnNextObject();
             ResetSelfSapwnChance();
