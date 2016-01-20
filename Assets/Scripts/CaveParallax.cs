@@ -6,7 +6,7 @@ public class CaveParallax : MonoBehaviour
     private Vector3 startPos;
     private bool shouldSavePos = true;
 
-    public float minDistanceToPlayer = 15.0f;
+    public float minDistanceToCenter = 15.0f;
     public float movementDistance = 2.0f;
     public int movementSlowFactor = 2;
 
@@ -30,6 +30,6 @@ public class CaveParallax : MonoBehaviour
     }
 
     private bool ShouldPerform() {
-        return Mathf.Abs(transform.position.x - player.position.x) < minDistanceToPlayer;
+        return Mathf.Abs(transform.position.x - 0) < minDistanceToCenter;
     }
 }
