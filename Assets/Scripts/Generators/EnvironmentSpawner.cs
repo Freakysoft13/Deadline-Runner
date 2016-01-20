@@ -149,7 +149,8 @@ public class EnvironmentSpawner : MonoBehaviour
         Vector2 spawnPosition = new Vector2(spawnPointX, sideIndicator * objectToSpawn.yPosition);
         if (IsOverlappingWith(spawnPosition, collisionTags)) {
             Vector2 mostSuitableSpawnPos = FindSuitableSpawn(spawnPosition, maxSpread - spread, spread - minSpread, collisionTags);
-            if (spawnPosition != mostSuitableSpawnPos) {
+            if (Mathf.Abs(spawnPosition.x - mostSuitableSpawnPos.x) > Mathf.Epsilon &&
+                spread < maxSpread) {
                 spawnPosition = mostSuitableSpawnPos;
             }
             else {
@@ -168,17 +169,17 @@ public class EnvironmentSpawner : MonoBehaviour
         //print(lastSpawnPointX);
     }
 
-    private Vector2 FindSuitableSpawn(Vector2 currentSpawnPos, float forwardShifLength, float backwardShifLength, string[] collisionTags) {
+    private Vector2 FindSuitableSpawn(Vector2 currentSpawnPos, float forwardShiftLength, float backwardShiftLength, string[] collisionTags) {
         Vector2 result = currentSpawnPos;
         Vector2 searchVector = currentSpawnPos;
-        for (int i = 0; i < forwardShifLength; i++) {
+        for (int i = 0; i < forwardShiftLength; i++) {
             searchVector.x += i;
             if (!IsOverlappingWith(searchVector, collisionTags)) {
                 return searchVector;
             }
         }
         searchVector = currentSpawnPos;
-        for (int i = 0; i < backwardShifLength; i++) {
+        for (int i = 0; i < backwardShiftLength; i++) {
             searchVector.x -= i;
             if (!IsOverlappingWith(searchVector, collisionTags)) {
                 return searchVector;
@@ -188,8 +189,8 @@ public class EnvironmentSpawner : MonoBehaviour
     }
 
     private bool IsOverlappingWith(Vector2 pos, string[] overlapTags) {
-        Vector2 pointA = new Vector2(pos.x - 4, pos.y - 4);
-        Vector2 pointB = new Vector2(pos.x + 4, pos.y + 4);
+        Vector2 pointA = new Vector2(pos.x - 4, pos.y - 2);
+        Vector2 pointB = new Vector2(pos.x + 4, pos.y + 2);
         Vector3 pos3D = new Vector3(pos.x, pos.y, 0);
         Collider2D[] colliders = Physics2D.OverlapAreaAll(pointA, pointB);
         foreach (Collider2D col in colliders) {
@@ -199,7 +200,6 @@ public class EnvironmentSpawner : MonoBehaviour
                 }
             }
         }
-
         return false;
     }
 }
