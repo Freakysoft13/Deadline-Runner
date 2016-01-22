@@ -11,6 +11,7 @@ public class MenuUiController : MonoBehaviour
     public Image soundOn;
     public Image soundOff;
     public GameObject ladderObj;
+    public GameObject windowsHelp;
 
     //timescale factor excluding freeze bug
     void Start()
@@ -18,6 +19,7 @@ public class MenuUiController : MonoBehaviour
 
 #if UNITY_WSA
                     ladderObj.SetActive(false);
+                    windowsHelp.SetActive(true);
 #endif
 #if UNITY_STANDALONE_WIN
                     ladderObj.SetActive(false);
