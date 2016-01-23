@@ -33,6 +33,7 @@ public class tp : MonoBehaviour
     public Text levelUp_txt;
     public Text score_txt;
     public Text crystal_txt;
+    public Text windowsStandalonePause;
    
 
     public GameObject[] unlockedAncestors;
@@ -76,6 +77,9 @@ public class tp : MonoBehaviour
         fortunewheel.SetActive(false);
 
         Time.timeScale = 0;
+        #if UNITY_STANDALONE_WIN
+                  windowsStandalonePause.gameObject.SetActive(true);
+        #endif
     }
     // turn of sound_btn
     public void AudioMute() {
@@ -100,6 +104,9 @@ public class tp : MonoBehaviour
         fortunewheel.SetActive(false);
 
         Time.timeScale = 1;
+        #if UNITY_STANDALONE_WIN
+                  windowsStandalonePause.gameObject.SetActive(false);
+        #endif
     }
     //redirecting to main menu
     public void Restart_to_menu() {

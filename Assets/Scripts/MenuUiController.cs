@@ -12,6 +12,7 @@ public class MenuUiController : MonoBehaviour
     public Image soundOff;
     public GameObject ladderObj;
     public GameObject windowsHelp;
+    public GameObject Helpboard;
 
     //timescale factor excluding freeze bug
     void Start()
@@ -23,6 +24,7 @@ public class MenuUiController : MonoBehaviour
 #endif
 #if UNITY_STANDALONE_WIN
                     ladderObj.SetActive(false);
+                    windowsHelp.SetActive(true);
 #endif
 #if UNITY_STANDALONE_OSX
                     ladderObj.SetActive(false);
@@ -122,6 +124,18 @@ public class MenuUiController : MonoBehaviour
             soundOn.gameObject.SetActive(true);
             soundOff.gameObject.SetActive(false);
             AudioListener.pause = false;
+        }
+
+    }
+    public void StandaloneHelpBoard()
+    {
+        if (Helpboard.gameObject.activeInHierarchy)
+        {
+            Helpboard.SetActive(false);
+        }
+        else
+        {
+            Helpboard.SetActive(true);
         }
 
     }
