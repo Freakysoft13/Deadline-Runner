@@ -32,6 +32,9 @@ namespace Effect
                     effect.PickUpTime = 0;
                     effects.RemoveAt(i);
                 }
+                if (effect.PickUpTime != 0 && effect.duration - (Time.time - effect.PickUpTime) < effect.wearOff && !effect.isWearingOff) {
+                    effect.WearOff(player);
+                }
             }
         }
 

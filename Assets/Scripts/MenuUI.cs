@@ -537,7 +537,8 @@ public class MenuUI : MonoBehaviour
         else if (LevelManager.Instance.GetPowerUpLevel(LevelManager.PowerUp.TREASURE_HUNTER) < 6)
             CrystalPrice.text = powerUpLvlPrices[CrystalsPlvl].ToString();
 
-        if (LevelManager.Instance.IsConsumableActive(LevelManager.Consumable.DOUBLE_EXP))
+        if (LevelManager.Instance.IsConsumableActive(LevelManager.Consumable.DOUBLE_EXP)
+            || LevelManager.Instance.GetActivePassive() == LevelManager.Passive.MAXWELL)
         {
             ExpActiveBtn.gameObject.SetActive(true);
             BuyExpBtn.gameObject.SetActive(false);
@@ -548,7 +549,8 @@ public class MenuUI : MonoBehaviour
             MagnetActiveBtn.gameObject.SetActive(true);
             BuyMagnetBtn.gameObject.SetActive(false);
         }
-        if (LevelManager.Instance.IsConsumableActive(LevelManager.Consumable.DOUBLE_CRYSTALS))
+        if (LevelManager.Instance.IsConsumableActive(LevelManager.Consumable.DOUBLE_CRYSTALS)
+            || LevelManager.Instance.GetActivePassive() == LevelManager.Passive.AMORET)
         {
             ShardsActiveBtn.gameObject.SetActive(true);
             BuyShardsBtn.gameObject.SetActive(false);

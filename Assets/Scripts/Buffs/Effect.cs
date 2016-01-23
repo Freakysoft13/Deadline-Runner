@@ -6,6 +6,9 @@ namespace Effect
     {
         public LevelManager.PowerUp type;
         public float duration = 1.0f;
+        public float wearOff = 1.0f;
+        public bool isWearingOff = false;
+        public float upgradeDuration = 1.0f;
         public bool disappearOnPickup = true;
 
         private float pickUpTime = 0;
@@ -23,6 +26,9 @@ namespace Effect
 
         public abstract void ApplyEffect(Player player);
         public abstract void RemoveEffect(Player player);
+        public virtual void WearOff(Player player) {
+            isWearingOff = true;
+        }
 
         void OnTriggerEnter2D(Collider2D other) {
             if (other.CompareTag("Player")) {
@@ -31,6 +37,7 @@ namespace Effect
         }
 
         public void PickUp() {
+            isWearingOff = false;
             PickUpTime = Time.time;
             EffectManager.Instance.AddEffect(this); // maybe clone?
             if (disappearOnPickup) {

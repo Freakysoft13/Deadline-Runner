@@ -13,5 +13,9 @@
         public override void RemoveEffect(Player player) {
             player.speed = originalSpeed;
         }
+
+        public override void WearOff(Player player) {
+
+        }
     }
 }

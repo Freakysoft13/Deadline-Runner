@@ -236,14 +236,12 @@ public class Player : MonoBehaviour
         SetActiveSkin();
         animationController = GetComponent<AnimationController>();
         rigidBody = GetComponent<Rigidbody2D>();
-        new ConsumablesManager().ApplyActiveConsumables();
-        new TreePassivesManager().ApplyActivePassives();
         moonPanel.localPosition = new Vector3(0, -350);
         floorCollider = GameObject.FindGameObjectWithTag("floor").GetComponent<Collider2D>();
         if (isScoreDoubledPassive) {
             GameManager.Instance.expMultiplier = 2;
         }
-        if (isCrystalBoostPassive) {
+        if (IsCrystalsDoubledPassive) {
             GameManager.Instance.scoreMultiplier = 2;
         }
     }
@@ -376,6 +374,8 @@ public class Player : MonoBehaviour
     public GameObject shieldEffect;
 
     public void ShieldsUp() {
+        shieldEffect.GetComponent<SkeletonAnimation>().AnimationName = "anim";
+        shieldEffect.GetComponent<SkeletonAnimation>().Reset();
         isShielded = true;
         shieldEffect.SetActive(true);
     }
@@ -383,6 +383,11 @@ public class Player : MonoBehaviour
     public void ShieldsDown() {
         isShielded = false;
         shieldEffect.SetActive(false);
+    }
+
+    public void ShieldWearOff() {
+        shieldEffect.GetComponent<SkeletonAnimation>().AnimationName = "ending";
+        shieldEffect.GetComponent<SkeletonAnimation>().Reset();
     }
 
     public void Die() {

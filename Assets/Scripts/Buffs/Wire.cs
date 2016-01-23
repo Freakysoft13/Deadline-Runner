@@ -12,5 +12,9 @@ namespace Effect
         public override void RemoveEffect(Player player) {
             player.CanFlip = true;
         }
+
+        public override void WearOff(Player player) {
+
+        }
     }
 }

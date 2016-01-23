@@ -13,8 +13,10 @@ class TreePassivesManager
             case LevelManager.Passive.CRIMSON: gm.Player.IsIncreasedBuffSpawnPassive = true; break;
             case LevelManager.Passive.MAXWELL: gm.Player.IsScoreDoubledPassive = true; break;
             case LevelManager.Passive.AMORET: gm.Player.IsCrystalsDoubledPassive = true; break;
-            case LevelManager.Passive.MORDECAI: gm.Player.IsObstacleInvurnerablePassive = true; break;
-            case LevelManager.Passive.MORGANA: gm.Player.IsAfterlifeBoostPassive = true; break;
+            case LevelManager.Passive.MORDECAI:
+                GameManager.Instance.upgradePassives = true;
+                break;
+            case LevelManager.Passive.MORGANA: gm.Player.IsObstacleInvurnerablePassive = true; gm.Player.IsAfterlifeBoostPassive = true; break;
             case LevelManager.Passive.ELENOR: gm.Player.IsNoAdsResPassive = true; break;
             case LevelManager.Passive.ARCHIBALD:
                 gm.Player.IsShieldPassive = true;

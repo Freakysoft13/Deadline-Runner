@@ -30,6 +30,8 @@ public class ResultPanel : MonoBehaviour
     public GameObject[] ancestorsImg;
     public GameObject lockancestors;
     public GameObject ancesorButton;
+    public GameObject adButton;
+    public GameObject adImage;
 
 
     void Start()
@@ -42,6 +44,12 @@ public class ResultPanel : MonoBehaviour
             ancesorButton.SetActive(true);
             unlockText.gameObject.SetActive(false);
         };
+
+        if(!AdsManager.Instance.isAdReady) {
+            adButton.SetActive(false);
+            adImage.SetActive(false);
+        }
+
     }
 
     void OnEnable()

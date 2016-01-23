@@ -14,5 +14,8 @@
         public override void RemoveEffect(Player player) {
             
         }
+        public override void WearOff(Player player) {
+
+        }
     }
 }

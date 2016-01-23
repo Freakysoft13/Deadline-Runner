@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     public GameObject mainCamera;
     public int expMultiplier = 1;
     public int scoreMultiplier = 1;
+    public bool upgradePassives = false;
     public int target = 60;
 
     public static GameManager Instance {
@@ -71,8 +72,10 @@ public class GameManager : MonoBehaviour
         dataHolder.EffectTypes = effectTypes;
         dataHolder.Initialize();
         Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        new ConsumablesManager().ApplyActiveConsumables();
+        new TreePassivesManager().ApplyActivePassives();
     }
-
+    
     void Start() {
         Application.targetFrameRate = target;
         EventManager.Instance.OnPlayerDied += PlayerDie;
