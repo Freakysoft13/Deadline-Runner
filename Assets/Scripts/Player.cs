@@ -318,7 +318,7 @@ public class Player : MonoBehaviour
     }
 
     private bool IsFlipPressed() {
-        bool result = Input.GetKeyDown(KeyCode.AltGr) || flipTouch;
+        bool result = Input.GetKeyDown(KeyCode.RightControl) || Input.GetKeyDown(KeyCode.LeftControl) || flipTouch;
         return result;
     }
 

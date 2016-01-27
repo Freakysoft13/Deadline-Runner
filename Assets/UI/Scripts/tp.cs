@@ -34,7 +34,7 @@ public class tp : MonoBehaviour
     public Text score_txt;
     public Text crystal_txt;
     public Text windowsStandalonePause;
-   
+
 
     public GameObject[] unlockedAncestors;
 
@@ -77,9 +77,9 @@ public class tp : MonoBehaviour
         fortunewheel.SetActive(false);
 
         Time.timeScale = 0;
-        #if UNITY_STANDALONE_WIN
+#if UNITY_STANDALONE_WIN
                   windowsStandalonePause.gameObject.SetActive(true);
-        #endif
+#endif
     }
     // turn of sound_btn
     public void AudioMute() {
@@ -104,9 +104,12 @@ public class tp : MonoBehaviour
         fortunewheel.SetActive(false);
 
         Time.timeScale = 1;
-        #if UNITY_STANDALONE_WIN
-                  windowsStandalonePause.gameObject.SetActive(false);
-        #endif
+#if UNITY_STANDALONE_WIN
+        windowsStandalonePause.gameObject.SetActive(false);
+#endif
+#if UNITY_WSA
+        windowsStandalonePause.gameObject.SetActive(false);
+#endif
     }
     //redirecting to main menu
     public void Restart_to_menu() {
@@ -188,9 +191,10 @@ public class tp : MonoBehaviour
     }
 
     public void RessurectWithAds() {
-        if(GameManager.Instance.Player.IsNoAdsResPassive) {
+        if (GameManager.Instance.Player.IsNoAdsResPassive) {
             //skip ads;
-        } else {
+        }
+        else {
             //show video;
         }
         AdsManager.Instance.ShowVideo(null);
@@ -198,26 +202,24 @@ public class tp : MonoBehaviour
         deathpnl.SetActive(false);
         scoreboard.SetActive(true);
     }
-    public void closeRessWindow()
-    {
+    public void closeRessWindow() {
         Result();
     }
 
-    void Result ()
-    {
+    void Result() {
         scoreboard.SetActive(false);
         result_pnl.SetActive(true);
     }
 
-    public void LoadTree()
-    {
+    public void LoadTree() {
         Application.LoadLevel("TreeRevorked");
     }
 
     private void PlayerDie() {
         if (!GameManager.Instance.HasRessurectedThisRun && AdsManager.Instance.isAdReady) {
             deathpnl.SetActive(true);
-        } else {
+        }
+        else {
             result_pnl.SetActive(true);
         }
         scoreboard.SetActive(false);
