@@ -6,6 +6,10 @@ using UnityEngine;
 
 public class AdsManager : MonoBehaviour
 {
+    public string androidAppID;
+    public string iosAppID;
+    public string winAppID;
+
     public bool isAdReady;
 
     public delegate void OnEvent(object arg);
@@ -36,18 +40,16 @@ public class AdsManager : MonoBehaviour
         };
     }
 
+    void Start() {
+        Vungle.init(androidAppID, iosAppID, winAppID);
+    }
+
     public void RequestVideo(object arg) {
-        string[] args = new string[2];
-#if UNITY_STANDALONE_WIN
-            args[0] = "bba15f80-e19f-4471-83a7-b4dc040764e111569621";
-            args[1] = "11565268";
-        RequestVideoAd(args);
-#endif
-#if UNITY_WSA
+        /*string[] args = new string[2];
         args[0] = "795675e4-9376-416a-89a2-1e6fe8249ed5";
         args[1] = "11569621";
-        RequestVideoAd(args);
-#endif
+        RequestVideoAd(args);*/
+        Vungle.playAdWithOptions(new Dictionary<string, object>());
     }
 
     public void ShowVideo(object arg) {
