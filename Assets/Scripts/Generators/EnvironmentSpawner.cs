@@ -47,25 +47,26 @@ public class EnvironmentSpawner : MonoBehaviour
         StartCoroutine(SpawnObstacles());
         StartCoroutine(SpawnCrystals());
         StartCoroutine(SpawnEffects());
-        //StartCoroutine(IncreaseDifficulty(amount, interval));
-        //StartCoroutine(DecreaseDifficulty(amount, interval * 2));
+        StartCoroutine(IncreaseDifficulty(amount, interval));
+        StartCoroutine(DecreaseDifficulty(amount, interval * 2));
     }
 
     private IEnumerator SpawnObstacles() {
         while (true) {
             while (lastObstacleSpawnPointX > player.position.x + maxSpawnDistance) {
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(0.5f);
             }
             Spawn(minObstaclesSpread, maxObstaclesSpread, ref lastObstacleSpawnPointX, ConvertObstaclesEnum(),
-                obstaclesDistribution, obstaclesPadding, new string[] { "obstacle", "crystal" });
+            obstaclesDistribution, obstaclesPadding, new string[] { "obstacle", "crystal" });
 
-            yield return new WaitForSeconds(.2f);
+            yield return new WaitForSeconds(.05f);
         }
     }
 
     private IEnumerator IncreaseDifficulty(float amount, float interval) {
         while (true) {
             if (side == GameManager.Instance.Player.Side) {
+                minObstaclesSpread = maxObstaclesSpread - amount < minObstaclesSpread ? Mathf.Clamp(maxObstaclesSpread - amount, 0, minObstaclesSpread) : minObstaclesSpread;
                 maxObstaclesSpread = Mathf.Clamp(maxObstaclesSpread - amount, minObstaclesSpread, maxObstaclesSpread);
             }
             yield return new WaitForSeconds(interval);
@@ -97,7 +98,7 @@ public class EnvironmentSpawner : MonoBehaviour
             while (lastEffectSpawnPointX > player.position.x + maxSpawnDistance) {
                 yield return new WaitForSeconds(1f);
             }
-            if(GameManager.Instance.Player.IsIncreasedBuffSpawnPassive) {
+            if (GameManager.Instance.Player.IsIncreasedBuffSpawnPassive) {
                 maxEffectsSpread *= 0.8f;
             }
             Spawn(minEffectsSpread, maxEffectsSpread, ref lastEffectSpawnPointX, ConvertEffectsEnum(), effectsDistribution, effectsPadding, new string[] { "obstacle", "crystal" });
@@ -130,7 +131,7 @@ public class EnvironmentSpawner : MonoBehaviour
         return tmpEnum;
     }
 
-    private void Spawn(float minSpread, float maxSpread, ref float lastSpawnPointX, System.Enum[] objectsToSpawn, int[] objectsDistribution, float[] objectsPadding, string[] collisionTags) {
+    private bool Spawn(float minSpread, float maxSpread, ref float lastSpawnPointX, System.Enum[] objectsToSpawn, int[] objectsDistribution, float[] objectsPadding, string[] collisionTags) {
         int rng = Random.Range(0, 100);
         float spread = Random.Range(minSpread, maxSpread);
         string objectToSpawnName = "";
@@ -155,17 +156,18 @@ public class EnvironmentSpawner : MonoBehaviour
             }
             else {
                 lastSpawnPointX = spawnPosition.x;
-                return;
+                return false;
             }
         }
         Quaternion rotation = Quaternion.identity;
-        if(side == Side.BOTTOM) {
+        if (side == Side.BOTTOM) {
             rotation = Quaternion.Euler(0, 180, 180);
         }
         objectToSpawn.transform.rotation = rotation;
         objectToSpawn.transform.position = spawnPosition;
         objectToSpawn.gameObject.SetActiveRecursively(true);
         lastSpawnPointX = spawnPosition.x;
+        return true;
         //print(lastSpawnPointX);
     }
 

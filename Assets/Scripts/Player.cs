@@ -325,7 +325,7 @@ public class Player : MonoBehaviour
     public float maxSpeed = 20;
 
     public void Go() {
-        float speedMultiplier = (1 + GetDistance() / 1000.0f);
+        float speedMultiplier = (1 + GetDistance() / 3000.0f);
         velocity.x = Mathf.Clamp(speed * (speedMultiplier), velocity.x, maxSpeed);
         if (IsGrounded() && !isJumping) {
             gravityScale = 1;

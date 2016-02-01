@@ -38,14 +38,16 @@ public class AdsManager : MonoBehaviour
 
     public void RequestVideo(object arg) {
         string[] args = new string[2];
-        if(Application.isMobilePlatform) {
+#if UNITY_STANDALONE_WIN
             args[0] = "bba15f80-e19f-4471-83a7-b4dc040764e111569621";
             args[1] = "11565268";
-        } else {
-            args[0] = "795675e4-9376-416a-89a2-1e6fe8249ed5";
-            args[1] = "11569621";
-        }
         RequestVideoAd(args);
+#endif
+#if UNITY_WSA
+        args[0] = "795675e4-9376-416a-89a2-1e6fe8249ed5";
+        args[1] = "11569621";
+        RequestVideoAd(args);
+#endif
     }
 
     public void ShowVideo(object arg) {
