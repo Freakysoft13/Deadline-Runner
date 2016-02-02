@@ -69,13 +69,13 @@ public class RewardManager : MonoBehaviour
     {
         if (!shouldPerform) { return; }
         TimeSpan timeSinceLastOpening = (DateTime.Now - timeOfOpening);
-        if (timeSinceLastOpening.TotalMinutes < timers[lastOpenedChestId + 1])
+        if (IsOnCooldown() || timeSinceLastOpening.TotalMinutes < timers[lastOpenedChestId + 1])
         {
             TimeSpan timeUntilNextOpening = (timeOfNextOpening - DateTime.Now);
             timer.text = " " + DateTime.MinValue.Add(timeUntilNextOpening).ToString(TIME_FORMAT);
             timer2.text = "Next Reward In : " + DateTime.MinValue.Add(timeUntilNextOpening).ToString(TIME_FORMAT);
         }
-        if (timeSinceLastOpening.TotalMinutes > timers[lastOpenedChestId + 1]
+        if (IsOnCooldown() ||timeSinceLastOpening.TotalMinutes > timers[lastOpenedChestId + 1]
             && !buttons[lastOpenedChestId + 1].activeSelf)
         {
             if (IsOnCooldown())
