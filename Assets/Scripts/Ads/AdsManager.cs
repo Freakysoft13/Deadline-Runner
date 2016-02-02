@@ -56,8 +56,11 @@ public class AdsManager : MonoBehaviour
         RequestVideoAd(args);*/
     }
 
-    public void ShowVideo(object arg) {
-        ShowVideoAd(arg);
+    public void ShowVideo(object arg, Action<AdFinishedEventArgs> onAdCompleted) {
+        if(ShowVideoAd != null) {
+            ShowVideoAd(arg);
+        }
         Vungle.playAdWithOptions(new Dictionary<string, object>());
+        Vungle.onAdFinishedEvent += onAdCompleted;
     }
 }
