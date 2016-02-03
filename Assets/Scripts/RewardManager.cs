@@ -27,6 +27,7 @@ public class RewardManager : MonoBehaviour
 
     void Start()
     {
+        Application.runInBackground = true;
         Reinitialize();
     }
     private void Reinitialize()
