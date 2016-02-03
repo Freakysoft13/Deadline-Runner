@@ -192,15 +192,20 @@ public class tp : MonoBehaviour
 
     public void RessurectWithAds() {
         if (GameManager.Instance.Player.IsNoAdsResPassive) {
-            //skip ads;
+            GameManager.Instance.Player.Ressurect();
         }
         else {
-            //show video;
+            deathpnl.SetActive(false);
+            AdsManager.Instance.ShowVideo(null, (arg) => {
+                if (arg.IsCompletedView) {
+                    GameManager.Instance.Player.Ressurect();
+                }
+                else {
+                    deathpnl.SetActive(false);
+                    scoreboard.SetActive(true);
+                }
+            });
         }
-        AdsManager.Instance.ShowVideo(null);
-        GameManager.Instance.Player.Ressurect();
-        deathpnl.SetActive(false);
-        scoreboard.SetActive(true);
     }
     public void closeRessWindow() {
         Result();
