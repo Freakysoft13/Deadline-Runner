@@ -10,7 +10,8 @@ public class AdsManager : MonoBehaviour
     public string iosAppID;
     public string winAppID;
 
-    public bool isAdReady;
+    public bool isAdReady = false;
+    public bool isOuterAdReady = false;
 
     public delegate void OnEvent(object arg);
     public OnEvent RequestVideoAd;
@@ -33,10 +34,11 @@ public class AdsManager : MonoBehaviour
             DestroyImmediate(this);
         }
         OnAdLoadFailed += (arg) => {
-            isAdReady = false;
+            isOuterAdReady = false;
         };
         OnAdLoadSuccessful += (arg) => {
             isAdReady = true;
+            isOuterAdReady = true;
         };
     }
 
@@ -57,10 +59,12 @@ public class AdsManager : MonoBehaviour
     }
 
     public void ShowVideo(object arg, Action<AdFinishedEventArgs> onAdCompleted) {
-        if(ShowVideoAd != null) {
+        if (isOuterAdReady && ShowVideoAd != null) {
             ShowVideoAd(arg);
         }
-        Vungle.playAdWithOptions(new Dictionary<string, object>());
-        Vungle.onAdFinishedEvent += onAdCompleted;
+        else {
+            Vungle.playAdWithOptions(new Dictionary<string, object>());
+            Vungle.onAdFinishedEvent += onAdCompleted;
+        }
     }
 }
