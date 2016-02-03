@@ -105,8 +105,10 @@ public class RewardManager : MonoBehaviour
         PlayerPrefs.SetInt(LAST_OPENED_CHEST_ID, btnId);
         PlayerPrefs.SetString(TIME_OF_OPENING, DateTime.Now.ToString(TIME_FORMAT));
         shouldPerform = true;
-        //rewardText.text = "Earned " + rewards[btnId] + " Crystal Shards";
-        //rewardPanel.SetActive(true);
+        lockedImg[btnId].SetActive(false);
+        unlockedImg[btnId].SetActive(true);       
+        rewardText.text = "Earned " + rewards[btnId] + " Crystal Shards";
+        rewardPanel.SetActive(true);
         Reinitialize();
     }
 }
