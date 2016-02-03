@@ -35,6 +35,7 @@ public class AdsManager : MonoBehaviour
         }
         OnAdLoadFailed += (arg) => {
             isOuterAdReady = false;
+            FallbackAds();
         };
         OnAdLoadSuccessful += (arg) => {
             isAdReady = true;
@@ -42,7 +43,7 @@ public class AdsManager : MonoBehaviour
         };
     }
 
-    void Start() {
+    void FallbackAds() {
         Vungle.init(androidAppID, iosAppID, winAppID);
         Vungle.adPlayableEvent += AdPlayableEvent;
     }
