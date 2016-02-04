@@ -43,6 +43,7 @@ public class ResultPanel : MonoBehaviour
             lockancestors.SetActive(false);
             ancesorButton.SetActive(true);
             unlockText.gameObject.SetActive(false);
+            //отут левел ап
         };
 
         if(!AdsManager.Instance.isAdReady) {
@@ -141,8 +142,8 @@ public class ResultPanel : MonoBehaviour
         int currentLevel = LevelManager.Instance.GetLevel();
         int expEarned = overhead > 0 ? overhead : GameManager.Instance.Player.Exp;
         int[] levelsExp = LevelManager.Instance.levelsExp;
-        if (true)
-        { // change to current level < MAX_LEVEL
+        if (currentLevel < 10)
+        {
             int expToNextLevel = levelsExp[currentLevel + 1];
             if (overhead == 0)
             {
@@ -165,8 +166,12 @@ public class ResultPanel : MonoBehaviour
     //Video Ads for crystals
     public void CrystalsVideoBtn()
     {
-        GameManager.Instance.AddCrystals((GameManager.Instance.GetCrystals()*2));
-        collectedCrystals.text = "Crystals collected: " + crystalsCollectedCounter * 2;
-        LevelManager.Instance.AddMoney(crystalsCollected);
+        AdsManager.Instance.ShowVideo(null, (arg) => {
+            if(arg.IsCompletedView) {
+                GameManager.Instance.AddCrystals((GameManager.Instance.GetCrystals() * 2));
+                collectedCrystals.text = "Crystals collected: " + crystalsCollectedCounter * 2;
+                LevelManager.Instance.AddMoney(crystalsCollected);
+            }
+        });
     }
 }

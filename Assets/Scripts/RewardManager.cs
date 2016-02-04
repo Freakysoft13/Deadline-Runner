@@ -76,6 +76,9 @@ public class RewardManager : MonoBehaviour
             TimeSpan timeUntilNextOpening = (timeOfNextOpening - DateTime.Now);
             timer.text = " " + DateTime.MinValue.Add(timeUntilNextOpening).ToString(TIME_FORMAT);
             timer2.text = "Next Reward In : " + DateTime.MinValue.Add(timeUntilNextOpening).ToString(TIME_FORMAT);
+            if (rewardAnimator.activeSelf) {
+                rewardAnimator.SetActive(false);
+            }
         }
         if (IsOnCooldown() || timeSinceLastOpening.TotalMinutes > timers[lastOpenedChestId + 1]
             && !buttons[lastOpenedChestId + 1].activeSelf) {
@@ -85,8 +88,8 @@ public class RewardManager : MonoBehaviour
             }
             else {
                 buttons[lastOpenedChestId + 1].SetActive(true);
+                rewardAnimator.SetActive(true);
             }
-            //тут врубається коли закінчився таймер
         }
     }
 
