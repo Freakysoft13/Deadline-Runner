@@ -32,7 +32,6 @@ public class RewardManager : MonoBehaviour
     }
     private void Reinitialize()
     {
-
         lastOpenedChestId = PlayerPrefs.GetInt(LAST_OPENED_CHEST_ID, -1);
         if (lastOpenedChestId == -1)
         {
@@ -51,13 +50,15 @@ public class RewardManager : MonoBehaviour
         {
             return;
         }
-        for (int i = lastOpenedChestId + 1; i < buttons.Length; i++)
+        for (int i = 0; i < buttons.Length; i++)
         {
             buttons[i].SetActive(false);
             //тут закриває лєві іконки
         }
         //тут врубається чест який ти відрив вже.
-        buttons[lastOpenedChestId].SetActive(true);
+        if (!IsOnCooldown()) {
+            buttons[lastOpenedChestId].SetActive(true);
+        }
         timeOfNextOpening = IsOnCooldown() ? timeOfOpening.AddHours(COOLDOWN_HOURS) : timeOfOpening.AddMinutes(timers[lastOpenedChestId + 1]);
     }
 

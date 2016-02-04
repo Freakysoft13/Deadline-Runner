@@ -47,7 +47,7 @@ public class AdsManager : MonoBehaviour
         try {
             Vungle.init(androidAppID, iosAppID, winAppID);
             Vungle.adPlayableEvent += AdPlayableEvent;
-        }catch(Exception e) {
+        }catch(Exception) {
             isAdReady = false;
         }
     }
