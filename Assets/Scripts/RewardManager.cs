@@ -19,6 +19,7 @@ public class RewardManager : MonoBehaviour
     public Text timer2;
     public Text rewardText;
     public GameObject rewardPanel;
+    public GameObject rewardAnimator;
 
     private int lastOpenedChestId;
     private DateTime timeOfOpening;
@@ -52,9 +53,13 @@ public class RewardManager : MonoBehaviour
         for (int i = 0; i < buttons.Length; i++) {
             if (i < lastOpenedChestId) {
                 //отут відкривай відкриті сундуки
+                unlockedImg[i].SetActive(true);
+                lockedImg[i].SetActive(false);
             }
             else {
                 //отут закривай сундуки
+                lockedImg[i].SetActive(true);
+                unlockedImg[i].SetActive(false);
             }
         }
         timeOfNextOpening = IsOnCooldown() ? timeOfOpening.AddHours(COOLDOWN_HOURS) : timeOfOpening.AddMinutes(timers[lastOpenedChestId + 1]);
