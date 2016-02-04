@@ -25,78 +25,68 @@ public class RewardManager : MonoBehaviour
     private DateTime timeOfNextOpening;
     private bool shouldPerform = true;
 
-    void Start()
-    {
+    void Start() {
         Application.runInBackground = true;
         Reinitialize();
     }
-    private void Reinitialize()
-    {
+    private void Reinitialize() {
         lastOpenedChestId = PlayerPrefs.GetInt(LAST_OPENED_CHEST_ID, -1);
-        if (lastOpenedChestId == -1)
-        {
+        if (lastOpenedChestId == -1) {
             shouldPerform = false;
+            buttons[0].SetActive(true);
         }
         if (!DateTime.TryParseExact(PlayerPrefs.GetString(TIME_OF_OPENING, ""), TIME_FORMAT,
                                        System.Globalization.CultureInfo.InvariantCulture,
                                        System.Globalization.DateTimeStyles.None,
-                                       out timeOfOpening))
-        {
+                                       out timeOfOpening)) {
             shouldPerform = false;
         }
         timer.gameObject.SetActive(shouldPerform);
         timer2.gameObject.SetActive(shouldPerform);
-        if (!shouldPerform)
-        {
+        if (!shouldPerform) {
             return;
         }
-        for (int i = 0; i < buttons.Length; i++)
-        {
+        for (int i = 0; i < buttons.Length; i++) {
             buttons[i].SetActive(false);
-            //тут закриває лєві іконки
         }
-        //тут врубається чест який ти відрив вже.
-        if (!IsOnCooldown()) {
-            buttons[lastOpenedChestId].SetActive(true);
+        for (int i = 0; i < buttons.Length; i++) {
+            if (i < lastOpenedChestId) {
+                //отут відкривай відкриті сундуки
+            }
+            else {
+                //отут закривай сундуки
+            }
         }
         timeOfNextOpening = IsOnCooldown() ? timeOfOpening.AddHours(COOLDOWN_HOURS) : timeOfOpening.AddMinutes(timers[lastOpenedChestId + 1]);
     }
 
-    private bool IsOnCooldown()
-    {
+    private bool IsOnCooldown() {
         return lastOpenedChestId == buttons.Length - 1;
     }
 
-    void Update()
-    {
+    void Update() {
         if (!shouldPerform) { return; }
         TimeSpan timeSinceLastOpening = (DateTime.Now - timeOfOpening);
-        if (IsOnCooldown() || timeSinceLastOpening.TotalMinutes < timers[lastOpenedChestId + 1])
-        {
+        if (IsOnCooldown() || timeSinceLastOpening.TotalMinutes < timers[lastOpenedChestId + 1]) {
             TimeSpan timeUntilNextOpening = (timeOfNextOpening - DateTime.Now);
             timer.text = " " + DateTime.MinValue.Add(timeUntilNextOpening).ToString(TIME_FORMAT);
             timer2.text = "Next Reward In : " + DateTime.MinValue.Add(timeUntilNextOpening).ToString(TIME_FORMAT);
         }
-        if (IsOnCooldown() ||timeSinceLastOpening.TotalMinutes > timers[lastOpenedChestId + 1]
-            && !buttons[lastOpenedChestId + 1].activeSelf)
-        {
-            if (IsOnCooldown())
-            {
+        if (IsOnCooldown() || timeSinceLastOpening.TotalMinutes > timers[lastOpenedChestId + 1]
+            && !buttons[lastOpenedChestId + 1].activeSelf) {
+            if (IsOnCooldown()) {
                 PlayerPrefs.SetInt(LAST_OPENED_CHEST_ID, -1);
                 Reinitialize();
             }
-            else
-            {
+            else {
                 buttons[lastOpenedChestId + 1].SetActive(true);
             }
             //тут врубається коли закінчився таймер
         }
     }
 
-    public void Click(int btnId)
-    {
-        if (btnId <= lastOpenedChestId)
-        {
+    public void Click(int btnId) {
+        if (btnId <= lastOpenedChestId) {
             Debug.Log("Cheat!");
             return;
         }
@@ -108,7 +98,7 @@ public class RewardManager : MonoBehaviour
         PlayerPrefs.SetString(TIME_OF_OPENING, DateTime.Now.ToString(TIME_FORMAT));
         shouldPerform = true;
         lockedImg[btnId].SetActive(false);
-        unlockedImg[btnId].SetActive(true);       
+        unlockedImg[btnId].SetActive(true);
         rewardText.text = "Earned " + rewards[btnId] + " Crystal Shards";
         rewardPanel.SetActive(true);
         Reinitialize();
