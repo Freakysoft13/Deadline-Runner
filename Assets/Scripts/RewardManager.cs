@@ -54,12 +54,12 @@ public class RewardManager : MonoBehaviour
             if (i < lastOpenedChestId) {
                 //отут відкривай відкриті сундуки
                 unlockedImg[i].SetActive(true);
-                lockedImg[i].SetActive(false);
+                //lockedImg[i].SetActive(false);
             }
             else {
                 //отут закривай сундуки
                 lockedImg[i].SetActive(true);
-                unlockedImg[i].SetActive(false);
+               //unlockedImg[i].SetActive(false);
             }
         }
         timeOfNextOpening = IsOnCooldown() ? timeOfOpening.AddHours(COOLDOWN_HOURS) : timeOfOpening.AddMinutes(timers[lastOpenedChestId + 1]);
