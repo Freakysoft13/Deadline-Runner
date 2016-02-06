@@ -32,6 +32,8 @@ public class ResultPanel : MonoBehaviour
     public GameObject ancesorButton;
     public GameObject adButton;
     public GameObject adImage;
+    public Animator lockImg;
+    public Animator unlockImg;
 
 
     void Start()
@@ -43,6 +45,9 @@ public class ResultPanel : MonoBehaviour
             lockancestors.SetActive(false);
             ancesorButton.SetActive(true);
             unlockText.gameObject.SetActive(false);
+            lockImg.Play("LockedIcon");
+            unlockImg.gameObject.SetActive(true);
+            unlockImg.Play("UnlockedIcon");
             //отут левел ап
         };
 
