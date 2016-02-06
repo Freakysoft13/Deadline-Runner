@@ -51,7 +51,7 @@ public class RewardManager : MonoBehaviour
             buttons[i].SetActive(false);
         }
         for (int i = 0; i < buttons.Length; i++) {
-            if (i < lastOpenedChestId) {
+            if (i <= lastOpenedChestId) {
                 //отут відкривай відкриті сундуки
                 unlockedImg[i].SetActive(true);
                 lockedImg[i].SetActive(false);
@@ -83,15 +83,20 @@ public class RewardManager : MonoBehaviour
         if (IsOnCooldown() || timeSinceLastOpening.TotalMinutes > timers[lastOpenedChestId + 1]
             && !buttons[lastOpenedChestId + 1].activeSelf) {
             if (IsOnCooldown()) {
-                PlayerPrefs.SetInt(LAST_OPENED_CHEST_ID, -1);
                 Reinitialize();
             }
             else {
+                if (wasOnCooldown) {
+                    PlayerPrefs.SetInt(LAST_OPENED_CHEST_ID, -1);
+                }
                 buttons[lastOpenedChestId + 1].SetActive(true);
                 rewardAnimator.SetActive(true);
             }
+            wasOnCooldown = true;
         }
     }
+
+    private bool wasOnCooldown = false;
 
     public void Click(int btnId) {
         if (btnId <= lastOpenedChestId) {
