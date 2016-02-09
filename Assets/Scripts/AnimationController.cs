@@ -9,6 +9,7 @@ public class AnimationController : MonoBehaviour
     public Action animationEnd;
 
     public const string RUN = "Run";
+    public const string ELECTRICITY_RUN = "Electricity";
     public const string DEATH = "Death";
     public const string RESURRECTION = "Resurrection";
     public const string JUMP_UP = "Jump_Up";
@@ -43,6 +44,15 @@ public class AnimationController : MonoBehaviour
             skelAnimation.loop = true;
             skelAnimation.timeScale = speedScale;
             skelAnimation.AnimationName = RUN;
+            Reset();
+        }
+    }
+
+    public void RunWithElectricity(float speedScale) {
+        if (skelAnimation.AnimationName != ELECTRICITY_RUN) {
+            skelAnimation.loop = true;
+            skelAnimation.timeScale = speedScale;
+            skelAnimation.AnimationName = ELECTRICITY_RUN;
             Reset();
         }
     }

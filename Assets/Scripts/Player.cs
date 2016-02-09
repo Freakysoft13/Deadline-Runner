@@ -50,184 +50,142 @@ public class Player : MonoBehaviour
     private bool isNoAdsResPassive = false;
     private bool isAllPassives = false;
 
-    public bool CanFlip
-    {
-        get
-        {
+    public bool CanFlip {
+        get {
             return canFlip;
         }
 
-        set
-        {
+        set {
             canFlip = value;
         }
     }
 
-    public int Exp
-    {
-        get
-        {
+    public int Exp {
+        get {
             return exp;
         }
 
-        set
-        {
+        set {
             exp = value;
         }
     }
 
-    public int PlayerFlip
-    {
-        get
-        {
+    public int PlayerFlip {
+        get {
             return playerFlip;
         }
 
-        set
-        {
+        set {
             playerFlip = value;
         }
     }
 
-    public GameManager.Side Side
-    {
-        get
-        {
+    public GameManager.Side Side {
+        get {
             return side;
         }
 
-        set
-        {
+        set {
             side = value;
         }
     }
 
-    public bool IsShieldPassive
-    {
-        get
-        {
+    public bool IsShieldPassive {
+        get {
             return isShieldPassive;
         }
 
-        set
-        {
+        set {
             isShieldPassive = value;
         }
     }
 
-    public bool IsCrystalBoostPassive
-    {
-        get
-        {
+    public bool IsCrystalBoostPassive {
+        get {
             return isCrystalBoostPassive;
         }
 
-        set
-        {
+        set {
             isCrystalBoostPassive = value;
         }
     }
 
-    public bool IsGreenCrystalDoubledPassive
-    {
-        get
-        {
+    public bool IsGreenCrystalDoubledPassive {
+        get {
             return isGreenCrystalDoubledPassive;
         }
 
-        set
-        {
+        set {
             isGreenCrystalDoubledPassive = value;
         }
     }
 
-    public bool IsIncreasedBuffSpawnPassive
-    {
-        get
-        {
+    public bool IsIncreasedBuffSpawnPassive {
+        get {
             return isIncreasedBuffSpawnPassive;
         }
 
-        set
-        {
+        set {
             isIncreasedBuffSpawnPassive = value;
         }
     }
 
-    public bool IsScoreDoubledPassive
-    {
-        get
-        {
+    public bool IsScoreDoubledPassive {
+        get {
             return isScoreDoubledPassive;
         }
 
-        set
-        {
+        set {
             isScoreDoubledPassive = value;
         }
     }
 
-    public bool IsCrystalsDoubledPassive
-    {
-        get
-        {
+    public bool IsCrystalsDoubledPassive {
+        get {
             return isCrystalsDoubledPassive;
         }
 
-        set
-        {
+        set {
             isCrystalsDoubledPassive = value;
         }
     }
 
-    public bool IsObstacleInvurnerablePassive
-    {
-        get
-        {
+    public bool IsObstacleInvurnerablePassive {
+        get {
             return isObstacleInvurnerablePassive;
         }
 
-        set
-        {
+        set {
             isObstacleInvurnerablePassive = value;
         }
     }
 
-    public bool IsAfterlifeBoostPassive
-    {
-        get
-        {
+    public bool IsAfterlifeBoostPassive {
+        get {
             return isAfterlifeBoostPassive;
         }
 
-        set
-        {
+        set {
             isAfterlifeBoostPassive = value;
         }
     }
 
-    public bool IsNoAdsResPassive
-    {
-        get
-        {
+    public bool IsNoAdsResPassive {
+        get {
             return isNoAdsResPassive;
         }
 
-        set
-        {
+        set {
             isNoAdsResPassive = value;
         }
     }
 
-    public bool IsAllPassives
-    {
-        get
-        {
+    public bool IsAllPassives {
+        get {
             return isAllPassives;
         }
 
-        set
-        {
+        set {
             isAllPassives = value;
         }
     }
@@ -260,7 +218,7 @@ public class Player : MonoBehaviour
 
     public void AfterLifeStart() {
         isInAfterLife = true;
-        if(isAfterlifeBoostPassive) {
+        if (isAfterlifeBoostPassive) {
             speed *= 2;
         }
         SetSkin(LevelManager.Skin.GHOST);
@@ -329,7 +287,12 @@ public class Player : MonoBehaviour
         velocity.x = Mathf.Clamp(speed * (speedMultiplier), velocity.x, maxSpeed);
         if (IsGrounded() && !isJumping) {
             gravityScale = 1;
-            animationController.Run(speedMultiplier);
+            if (canFlip) {
+                animationController.Run(speedMultiplier);
+            }
+            else {
+                animationController.RunWithElectricity(speedMultiplier);
+            }
         }
 
         if (isShieldPassive) {
@@ -482,5 +445,13 @@ public class Player : MonoBehaviour
 
     public int GetDistance() {
         return (int)transform.position.x + 8;
+    }
+
+    public void ElectricityHit() {
+        canFlip = false;
+    }
+
+    public void ElectricityWearOff() {
+        canFlip = true;
     }
 }
