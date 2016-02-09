@@ -73,6 +73,10 @@ public class LevelManager : MonoBehaviour
         return overallExp - expForPrevLevels;
     }
 
+    public bool IsMaxLevel() {
+        return GetLevel() == 10;
+    }
+
     public int GetLevel()
     {
         int currentExp = GetExp();

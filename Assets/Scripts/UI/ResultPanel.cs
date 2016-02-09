@@ -60,10 +60,11 @@ public class ResultPanel : MonoBehaviour
 
     void OnEnable()
     {
-        lockancestors.SetActive(true);
+        bool isMaxLevel = LevelManager.Instance.IsMaxLevel();
+        lockancestors.SetActive(!isMaxLevel);
         ancesorButton.SetActive(false);
         unlockText.gameObject.SetActive(true);
-        unlockText.text = "Unlock on level: " + (LevelManager.Instance.GetLevel() + 2);
+        unlockText.text = isMaxLevel ? "" : "Unlock on level: " + (LevelManager.Instance.GetLevel() + 2);
         ancestorsImg[LevelManager.Instance.GetLevel() - 1].SetActive(true);
         if (LevelManager.Instance == null || GameManager.Instance == null || GameManager.Instance.Player == null) { return; }
         levelUp_txt.gameObject.SetActive(false);
