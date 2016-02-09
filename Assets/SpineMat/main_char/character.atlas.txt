@@ -3,58 +3,93 @@ character.png
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
+ClosedEye
+  rotate: false
+  xy: 531, 104
+  size: 46, 39
+  orig: 46, 39
+  offset: 0, 0
+  index: -1
+Electro2/Layer 18
+  rotate: false
+  xy: 799, 155
+  size: 106, 86
+  orig: 108, 88
+  offset: 1, 1
+  index: -1
+Electro2/Layer 20
+  rotate: false
+  xy: 205, 79
+  size: 212, 162
+  orig: 214, 164
+  offset: 1, 1
+  index: -1
+Electro2/Layer 22
+  rotate: false
+  xy: 531, 145
+  size: 124, 96
+  orig: 126, 98
+  offset: 1, 1
+  index: -1
+Electro2/Layer 23
+  rotate: true
+  xy: 205, 12
+  size: 65, 174
+  orig: 67, 176
+  offset: 1, 1
+  index: -1
 character_fist
   rotate: false
-  xy: 260, 23
+  xy: 907, 159
   size: 31, 27
   orig: 33, 29
   offset: 1, 1
   index: -1
 character_fist 2
   rotate: false
-  xy: 260, 23
+  xy: 907, 159
   size: 31, 27
   orig: 33, 29
   offset: 1, 1
   index: -1
 character_foot
-  rotate: true
-  xy: 205, 14
+  rotate: false
+  xy: 907, 188
   size: 114, 53
   orig: 116, 55
   offset: 1, 1
   index: -1
 character_foot 2
-  rotate: true
-  xy: 205, 14
+  rotate: false
+  xy: 907, 188
   size: 114, 53
   orig: 116, 55
   offset: 1, 1
   index: -1
 character_hand
-  rotate: true
-  xy: 317, 130
+  rotate: false
+  xy: 381, 17
   size: 32, 60
   orig: 34, 62
   offset: 1, 1
   index: -1
 character_hand 2
-  rotate: true
-  xy: 317, 130
+  rotate: false
+  xy: 381, 17
   size: 32, 60
   orig: 34, 62
   offset: 1, 1
   index: -1
 character_hand2
   rotate: false
-  xy: 459, 181
+  xy: 497, 68
   size: 32, 60
   orig: 34, 62
   offset: 1, 1
   index: -1
 character_hand2 2
   rotate: false
-  xy: 459, 181
+  xy: 497, 68
   size: 32, 60
   orig: 34, 62
   offset: 1, 1
@@ -67,36 +102,36 @@ character_head
   offset: 1, 1
   index: -1
 character_leg
-  rotate: false
-  xy: 260, 52
+  rotate: true
+  xy: 419, 68
   size: 60, 76
   orig: 62, 78
   offset: 1, 1
   index: -1
 character_leg 2
-  rotate: false
-  xy: 260, 52
+  rotate: true
+  xy: 419, 68
   size: 60, 76
   orig: 62, 78
   offset: 1, 1
   index: -1
 character_lower_2 copy
   rotate: true
-  xy: 317, 164
+  xy: 657, 164
   size: 77, 140
   orig: 79, 142
   offset: 1, 1
   index: -1
 character_lower_leg
   rotate: true
-  xy: 317, 164
+  xy: 657, 164
   size: 77, 140
   orig: 79, 142
   offset: 1, 1
   index: -1
 character_tors
   rotate: false
-  xy: 205, 130
+  xy: 419, 130
   size: 110, 111
   orig: 112, 113
   offset: 1, 1
