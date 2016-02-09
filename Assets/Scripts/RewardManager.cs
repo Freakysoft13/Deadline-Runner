@@ -29,6 +29,7 @@ public class RewardManager : MonoBehaviour
     void Start() {
         Application.runInBackground = true;
         Reinitialize();
+        LevelManager.Instance.AddExp(30000);
     }
     private void Reinitialize() {
         lastOpenedChestId = PlayerPrefs.GetInt(LAST_OPENED_CHEST_ID, -1);
