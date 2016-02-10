@@ -287,7 +287,7 @@ public class Player : MonoBehaviour
         velocity.x = Mathf.Clamp(speed * (speedMultiplier), velocity.x, maxSpeed);
         if (IsGrounded() && !isJumping) {
             gravityScale = 1;
-            if (canFlip) {
+            if (canFlip || isInAfterLife) {
                 animationController.Run(speedMultiplier);
             }
             else {

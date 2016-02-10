@@ -47,7 +47,7 @@ public class AdsManager : MonoBehaviour
         try {
             Vungle.init(androidAppID, iosAppID, winAppID);
             Vungle.adPlayableEvent += AdPlayableEvent;
-        }catch(Exception) {
+        } catch(Exception) {
             isAdReady = false;
         }
     }
@@ -57,10 +57,11 @@ public class AdsManager : MonoBehaviour
     }
 
     public void RequestVideo(object arg) {
-        /*string[] args = new string[2];
-        args[0] = "795675e4-9376-416a-89a2-1e6fe8249ed5";
-        args[1] = "11569621";
-        RequestVideoAd(args);*/
+        if (RequestVideoAd != null) {
+            RequestVideoAd(arg);
+        } else {
+            FallbackAds();
+        }
     }
 
     public void ShowVideo(object arg, Action<AdFinishedEventArgs> onAdCompleted) {

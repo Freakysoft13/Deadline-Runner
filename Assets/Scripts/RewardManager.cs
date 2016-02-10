@@ -86,17 +86,14 @@ public class RewardManager : MonoBehaviour
                 Reinitialize();
             }
             else {
-                if (wasOnCooldown) {
+                if (lastOpenedChestId == buttons.Length - 1) {
                     PlayerPrefs.SetInt(LAST_OPENED_CHEST_ID, -1);
                 }
                 buttons[lastOpenedChestId + 1].SetActive(true);
                 rewardAnimator.SetActive(true);
             }
-            wasOnCooldown = true;
         }
     }
-
-    private bool wasOnCooldown = false;
 
     public void Click(int btnId) {
         if (btnId <= lastOpenedChestId) {
