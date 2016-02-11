@@ -38,6 +38,11 @@ public class Player : MonoBehaviour
 
     public RectTransform moonPanel;
 
+    public bool IsShielded {
+        get { return isShielded; }
+        set { isShielded = value; }
+    }
+
     //tree passives
     private bool isShieldPassive = false;
     private bool isCrystalBoostPassive = false;
@@ -212,6 +217,9 @@ public class Player : MonoBehaviour
         LevelManager lm = LevelManager.Instance;
         SkeletonDataAsset asset = lm.skins[lm.GetItemIndex(skin)];
         SkeletonAnimation sa = GetComponent<SkeletonAnimation>();
+        if(skin == LevelManager.Skin.GHOST && sa.AnimationName == AnimationController.ELECTRICITY_RUN) {
+            sa.AnimationName = AnimationController.RUN;
+        }
         sa.skeletonDataAsset = asset;
         sa.Reset();
     }

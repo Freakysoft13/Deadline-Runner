@@ -35,7 +35,6 @@ public class AdsManager : MonoBehaviour
         }
         OnAdLoadFailed += (arg) => {
             isOuterAdReady = false;
-            Debug.Log("Fallback vid");
             FallbackAds();
         };
         OnAdLoadSuccessful += (arg) => {
@@ -56,6 +55,12 @@ public class AdsManager : MonoBehaviour
 
     private void Vungle_onLogEvent(string obj) {
         Debug.Log(obj);
+    }
+
+    void Update() {
+        if(Vungle.isAdvertAvailable()) {
+            throw new Exception("Available!");
+        }
     }
 
     private void AdPlayableEvent(bool flag) {
