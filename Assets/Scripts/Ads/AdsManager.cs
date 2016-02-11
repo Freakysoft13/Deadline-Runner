@@ -53,16 +53,6 @@ public class AdsManager : MonoBehaviour
         }
     }
 
-    private void Vungle_onLogEvent(string obj) {
-        Debug.Log(obj);
-    }
-
-    void Update() {
-        if(Vungle.isAdvertAvailable()) {
-            throw new Exception("Available!");
-        }
-    }
-
     private void AdPlayableEvent(bool flag) {
         isAdReady = true;
     }
