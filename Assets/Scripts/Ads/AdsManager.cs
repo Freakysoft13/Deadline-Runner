@@ -35,6 +35,7 @@ public class AdsManager : MonoBehaviour
         }
         OnAdLoadFailed += (arg) => {
             isOuterAdReady = false;
+            Debug.Log("Fallback vid");
             FallbackAds();
         };
         OnAdLoadSuccessful += (arg) => {
@@ -45,11 +46,16 @@ public class AdsManager : MonoBehaviour
 
     void FallbackAds() {
         try {
-            Vungle.init(androidAppID, iosAppID, winAppID);
             Vungle.adPlayableEvent += AdPlayableEvent;
+            Vungle.onLogEvent += Vungle_onLogEvent;
+            Vungle.init(androidAppID, iosAppID, winAppID);
         } catch(Exception) {
             isAdReady = false;
         }
+    }
+
+    private void Vungle_onLogEvent(string obj) {
+        Debug.Log(obj);
     }
 
     private void AdPlayableEvent(bool flag) {
@@ -58,6 +64,7 @@ public class AdsManager : MonoBehaviour
 
     public void RequestVideo(object arg) {
         if (RequestVideoAd != null) {
+            Debug.Log("Request vid");
             RequestVideoAd(arg);
         } else {
             FallbackAds();
