@@ -35,7 +35,6 @@ public class AdsManager : MonoBehaviour
         }
         OnAdLoadFailed += (arg) => {
             isOuterAdReady = false;
-            Debug.Log("Fallback vid");
             FallbackAds();
         };
         OnAdLoadSuccessful += (arg) => {
@@ -47,15 +46,11 @@ public class AdsManager : MonoBehaviour
     void FallbackAds() {
         try {
             Vungle.adPlayableEvent += AdPlayableEvent;
-            Vungle.onLogEvent += Vungle_onLogEvent;
             Vungle.init(androidAppID, iosAppID, winAppID);
-        } catch(Exception) {
+        }
+        catch (Exception) {
             isAdReady = false;
         }
-    }
-
-    private void Vungle_onLogEvent(string obj) {
-        Debug.Log(obj);
     }
 
     private void AdPlayableEvent(bool flag) {
@@ -66,18 +61,23 @@ public class AdsManager : MonoBehaviour
         if (RequestVideoAd != null) {
             Debug.Log("Request vid");
             RequestVideoAd(arg);
-        } else {
+        }
+        else {
             FallbackAds();
         }
     }
 
-    public void ShowVideo(object arg, Action<AdFinishedEventArgs> onAdCompleted) {
+    public void ShowVideo(object arg, string subscriberUID, Action<AdFinishedEventArgs> onAdCompleted) {
         if (isOuterAdReady && ShowVideoAd != null) {
             ShowVideoAd(arg);
         }
         else {
             Vungle.playAdWithOptions(new Dictionary<string, object>());
-            Vungle.onAdFinishedEvent += onAdCompleted;
+            if (!subscribers.Contains(subscriberUID)) {
+                Vungle.onAdFinishedEvent += onAdCompleted;
+            }
         }
     }
+
+    private List<string> subscribers = new List<string>();
 }

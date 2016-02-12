@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System;
 
 public class ResultPanel : MonoBehaviour
 {
@@ -65,7 +66,7 @@ public class ResultPanel : MonoBehaviour
         ancesorButton.SetActive(false);
         unlockText.gameObject.SetActive(true);
         unlockText.text = isMaxLevel ? "" : "Unlock on level: " + (LevelManager.Instance.GetLevel() + 2);
-        ancestorsImg[Mathf.Clamp(LevelManager.Instance.GetLevel() - 1, 0, 10)].SetActive(true);
+        ancestorsImg[Mathf.Clamp(LevelManager.Instance.GetLevel(), 0, 10)].SetActive(true);
         if (LevelManager.Instance == null || GameManager.Instance == null || GameManager.Instance.Player == null) { return; }
         levelUp_txt.gameObject.SetActive(false);
         level_txt.text = "Level " + (1 + LevelManager.Instance.GetLevel());
@@ -172,12 +173,13 @@ public class ResultPanel : MonoBehaviour
     //Video Ads for crystals
     public void CrystalsVideoBtn()
     {
-        AdsManager.Instance.ShowVideo(null, (arg) => {
-            if(arg.IsCompletedView) {
+        Action<AdFinishedEventArgs> onAdCompleted = (arg) => {
+            if (arg.IsCompletedView) {
                 GameManager.Instance.AddCrystals((GameManager.Instance.GetCrystals() * 2));
                 collectedCrystals.text = "Crystals collected: " + crystalsCollectedCounter * 2;
                 LevelManager.Instance.AddMoney(crystalsCollected);
             }
-        });
+        };
+        AdsManager.Instance.ShowVideo(null, "crystals_mult", onAdCompleted);
     }
 }
