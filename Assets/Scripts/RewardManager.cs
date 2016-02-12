@@ -76,7 +76,7 @@ public class RewardManager : MonoBehaviour
             TimeSpan timeUntilNextOpening = (timeOfNextOpening - DateTime.Now);
             timer.text = " " + DateTime.MinValue.Add(timeUntilNextOpening).ToString(TIME_FORMAT);
             timer2.text = "Next Reward In : " + DateTime.MinValue.Add(timeUntilNextOpening).ToString(TIME_FORMAT);
-            if (rewardAnimator.activeSelf) {
+            if (rewardAnimator.activeInHierarchy) {
                 rewardAnimator.SetActive(false);
             }
         }

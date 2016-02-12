@@ -73,8 +73,6 @@
 	{ "name": "Riight_Shoulder2", "bone": "Right_Shoulder2", "attachment": "Riight_Shoulder" },
 	{ "name": "Riight_Hand", "bone": "Right_Hand", "attachment": "Riight_Hand" },
 	{ "name": "Riight_Hand2", "bone": "Right_Hand2", "attachment": "Riight_Hand" },
-	{ "name": "Riight_Fist", "bone": "Right_Fist", "attachment": "Riight_Fist" },
-	{ "name": "Riight_Fist2", "bone": "Right_Fist2", "attachment": "Riight_Fist" },
 	{ "name": "Riight_Fist_2", "bone": "Right_Fist", "attachment": "Riight_Fist_2" },
 	{ "name": "Riight_Fist_22", "bone": "Right_Fist2", "attachment": "Riight_Fist_2" },
 	{ "name": "Head3", "bone": "Head_2", "attachment": "Head3" },
@@ -201,12 +199,6 @@
 		},
 		"Right_Toe2": {
 			"Right_Toe": { "x": 23.19, "y": 4.2, "rotation": 15.51, "width": 112, "height": 55 }
-		},
-		"Riight_Fist": {
-			"Riight_Fist": { "x": 14.96, "y": 15.41, "rotation": 65.39, "width": 231, "height": 149 }
-		},
-		"Riight_Fist2": {
-			"Riight_Fist": { "x": 14.96, "y": 15.41, "rotation": 65.39, "width": 231, "height": 149 }
 		},
 		"Riight_Fist_2": {
 			"Riight_Fist_2": { "x": -2.44, "y": 90.75, "rotation": 65.39, "width": 369, "height": 269 }
@@ -537,11 +529,6 @@
 					{ "time": 0, "color": "ffffff00" }
 				]
 			},
-			"Riight_Fist": {
-				"color": [
-					{ "time": 0, "color": "ffffff00" }
-				]
-			},
 			"Riight_Hand": {
 				"color": [
 					{ "time": 0, "color": "ffffff00" }
@@ -623,12 +610,6 @@
 				]
 			},
 			"Right_Toe2": {
-				"color": [
-					{ "time": 0, "color": "ffffffff", "curve": "stepped" },
-					{ "time": 2, "color": "ffffffff" }
-				]
-			},
-			"Riight_Fist2": {
 				"color": [
 					{ "time": 0, "color": "ffffffff", "curve": "stepped" },
 					{ "time": 2, "color": "ffffffff" }
@@ -736,8 +717,8 @@
 			{
 				"time": 0.0108,
 				"offsets": [
-					{ "slot": "Riight_Shoulder2", "offset": 8 },
-					{ "slot": "Riight_Hand2", "offset": 5 },
+					{ "slot": "Riight_Shoulder2", "offset": 6 },
+					{ "slot": "Riight_Hand2", "offset": 3 },
 					{ "slot": "Riight_Fist_22", "offset": 0 }
 				]
 			},
@@ -745,7 +726,7 @@
 			{
 				"time": 1.5333,
 				"offsets": [
-					{ "slot": "Riight_Fist_22", "offset": -27 }
+					{ "slot": "Riight_Fist_22", "offset": -25 }
 				]
 			}
 		]
@@ -1094,11 +1075,6 @@
 					{ "time": 0, "color": "ffffff00" }
 				]
 			},
-			"Riight_Fist": {
-				"color": [
-					{ "time": 0, "color": "ffffff00" }
-				]
-			},
 			"Riight_Hand": {
 				"color": [
 					{ "time": 0, "color": "ffffff00" }
@@ -1200,8 +1176,8 @@
 			{
 				"time": 0.0333,
 				"offsets": [
-					{ "slot": "Riight_Shoulder2", "offset": 8 },
-					{ "slot": "Riight_Hand2", "offset": 5 },
+					{ "slot": "Riight_Shoulder2", "offset": 6 },
+					{ "slot": "Riight_Hand2", "offset": 3 },
 					{ "slot": "Riight_Fist_22", "offset": 0 }
 				]
 			},
@@ -1209,12 +1185,12 @@
 			{
 				"time": 4.7,
 				"offsets": [
-					{ "slot": "Riight_Fist_22", "offset": -27 }
+					{ "slot": "Riight_Fist_22", "offset": -25 }
 				]
 			}
 		]
 	},
-	"Electric": {
+	"Electricity": {
 		"bones": {
 			"Right_Leg": {
 				"rotate": [
@@ -1641,11 +1617,6 @@
 				]
 			},
 			"Right_Toe2": {
-				"color": [
-					{ "time": 0, "color": "ffffff00" }
-				]
-			},
-			"Riight_Fist2": {
 				"color": [
 					{ "time": 0, "color": "ffffff00" }
 				]
@@ -2241,11 +2212,6 @@
 					{ "time": 0, "color": "ffffffff" }
 				]
 			},
-			"Riight_Fist": {
-				"color": [
-					{ "time": 0, "color": "ffffffff" }
-				]
-			},
 			"Riight_Hand": {
 				"color": [
 					{ "time": 0, "color": "ffffffff" }
@@ -2317,11 +2283,6 @@
 				]
 			},
 			"Right_Toe2": {
-				"color": [
-					{ "time": 0, "color": "ffffff00" }
-				]
-			},
-			"Riight_Fist2": {
 				"color": [
 					{ "time": 0, "color": "ffffff00" }
 				]
@@ -2789,11 +2750,6 @@
 				]
 			},
 			"Right_Toe2": {
-				"color": [
-					{ "time": 0, "color": "ffffff00" }
-				]
-			},
-			"Riight_Fist2": {
 				"color": [
 					{ "time": 0, "color": "ffffff00" }
 				]
@@ -3859,11 +3815,6 @@
 					{ "time": 0, "color": "ffffff00" }
 				]
 			},
-			"Riight_Fist": {
-				"color": [
-					{ "time": 0, "color": "ffffff00" }
-				]
-			},
 			"Riight_Hand": {
 				"color": [
 					{ "time": 0, "color": "ffffff00" }
@@ -3945,12 +3896,6 @@
 				]
 			},
 			"Right_Toe2": {
-				"color": [
-					{ "time": 0, "color": "ffffffff", "curve": "stepped" },
-					{ "time": 3, "color": "ffffffff" }
-				]
-			},
-			"Riight_Fist2": {
 				"color": [
 					{ "time": 0, "color": "ffffffff", "curve": "stepped" },
 					{ "time": 3, "color": "ffffffff" }
@@ -4059,13 +4004,13 @@
 				"time": 0,
 				"offsets": [
 					{ "slot": "Riight_Shoulder2", "offset": -20 },
-					{ "slot": "Riight_Fist_22", "offset": -27 }
+					{ "slot": "Riight_Fist_22", "offset": -25 }
 				]
 			},
 			{
 				"time": 1.6666,
 				"offsets": [
-					{ "slot": "Riight_Shoulder2", "offset": 7 },
+					{ "slot": "Riight_Shoulder2", "offset": 5 },
 					{ "slot": "Riight_Fist_22", "offset": 2 }
 				]
 			}
@@ -4415,11 +4360,6 @@
 					{ "time": 0, "color": "ffffff00" }
 				]
 			},
-			"Riight_Fist": {
-				"color": [
-					{ "time": 0, "color": "ffffff00" }
-				]
-			},
 			"Riight_Hand": {
 				"color": [
 					{ "time": 0, "color": "ffffff00" }
@@ -4500,15 +4440,15 @@
 			{
 				"time": 1.4,
 				"offsets": [
-					{ "slot": "Riight_Fist_22", "offset": -27 }
+					{ "slot": "Riight_Fist_22", "offset": -25 }
 				]
 			},
 			{ "time": 1.4333 },
 			{
 				"time": 6.0333,
 				"offsets": [
-					{ "slot": "Riight_Shoulder2", "offset": 8 },
-					{ "slot": "Riight_Hand2", "offset": 5 },
+					{ "slot": "Riight_Shoulder2", "offset": 6 },
+					{ "slot": "Riight_Hand2", "offset": 3 },
 					{ "slot": "Riight_Fist_22", "offset": 0 }
 				]
 			},
@@ -4935,11 +4875,6 @@
 					{ "time": 0, "color": "ffffff00" }
 				]
 			},
-			"Riight_Fist2": {
-				"color": [
-					{ "time": 0, "color": "ffffff00" }
-				]
-			},
 			"Riight_Hand2": {
 				"color": [
 					{ "time": 0, "color": "ffffff00" }
@@ -4992,14 +4927,7 @@
 			},
 			"Layer 21": {
 				"color": [
-					{ "time": 0, "color": "ffffff00", "curve": "stepped" },
-					{ "time": 0.3666, "color": "ffffff00" },
-					{ "time": 0.4, "color": "ffffffff" },
-					{ "time": 0.4333, "color": "ffffff00" },
-					{ "time": 0.4666, "color": "ffffffff" },
-					{ "time": 0.5, "color": "ffffff00" },
-					{ "time": 0.5333, "color": "ffffffff" },
-					{ "time": 0.6666, "color": "ffffff00" }
+					{ "time": 0, "color": "ffffff00" }
 				]
 			},
 			"Head22": {
@@ -5449,11 +5377,6 @@
 				]
 			},
 			"Right_Toe2": {
-				"color": [
-					{ "time": 0, "color": "ffffff00" }
-				]
-			},
-			"Riight_Fist2": {
 				"color": [
 					{ "time": 0, "color": "ffffff00" }
 				]
