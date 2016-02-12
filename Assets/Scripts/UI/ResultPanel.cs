@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System;
 
 public class ResultPanel : MonoBehaviour
 {
@@ -172,12 +173,13 @@ public class ResultPanel : MonoBehaviour
     //Video Ads for crystals
     public void CrystalsVideoBtn()
     {
-        AdsManager.Instance.ShowVideo(null, (arg) => {
-            if(arg.IsCompletedView) {
+        Action<AdFinishedEventArgs> onAdCompleted = (arg) => {
+            if (arg.IsCompletedView) {
                 GameManager.Instance.AddCrystals((GameManager.Instance.GetCrystals() * 2));
                 collectedCrystals.text = "Crystals collected: " + crystalsCollectedCounter * 2;
                 LevelManager.Instance.AddMoney(crystalsCollected);
             }
-        });
+        };
+        AdsManager.Instance.ShowVideo(null, "crystals_mult", onAdCompleted);
     }
 }
