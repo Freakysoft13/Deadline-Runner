@@ -4,11 +4,11 @@ using System;
 
 public class RewardManager : MonoBehaviour
 {
+
     private const string LAST_OPENED_CHEST_ID = "chest_id";
     private const string TIME_OF_OPENING = "time";
     private const string TIME_FORMAT = "HH:mm:ss";
     private const int COOLDOWN_HOURS = 24;
-
 
     public GameObject[] buttons;
     public float[] timers;
@@ -22,57 +22,58 @@ public class RewardManager : MonoBehaviour
     public GameObject rewardAnimator;
 
     private int lastOpenedChestId;
-    private DateTime timeOfOpening;
+    private int nextChestId;
     private DateTime timeOfNextOpening;
     private bool shouldPerform = true;
 
     void Start() {
-        Application.runInBackground = true;
-        Reinitialize();
+        Initialize();
     }
-    private void Reinitialize() {
-        lastOpenedChestId = PlayerPrefs.GetInt(LAST_OPENED_CHEST_ID, -1);
-        if (lastOpenedChestId == -1) {
-            shouldPerform = false;
-            buttons[0].SetActive(true);
+
+    private bool IsOnCooldown(int lastOpenedChestId) {
+        return lastOpenedChestId == buttons.Length - 1;
+    }
+
+    private void Initialize() {
+        int lastOpenedChestId = PlayerPrefs.GetInt(LAST_OPENED_CHEST_ID, -1);
+        for(int i = 0; i < buttons.Length; i++) {
+            buttons[i].SetActive(false);
+            lockedImg[i].SetActive(true);
+            unlockedImg[i].SetActive(false);
         }
+        DateTime timeOfOpening;
         if (!DateTime.TryParseExact(PlayerPrefs.GetString(TIME_OF_OPENING, ""), TIME_FORMAT,
                                        System.Globalization.CultureInfo.InvariantCulture,
                                        System.Globalization.DateTimeStyles.None,
                                        out timeOfOpening)) {
             shouldPerform = false;
         }
-        timer.gameObject.SetActive(shouldPerform);
-        timer2.gameObject.SetActive(shouldPerform);
-        if (!shouldPerform) {
+        if (IsOnCooldown(lastOpenedChestId)) {
+            timeOfNextOpening = timeOfOpening.AddHours(COOLDOWN_HOURS);
+            nextChestId = 0;
             return;
         }
-        for (int i = 0; i < buttons.Length; i++) {
-            buttons[i].SetActive(false);
+        nextChestId = lastOpenedChestId + 1;
+        if (lastOpenedChestId == -1) {
+            ActivateChest(0);
+            return;
         }
-        for (int i = 0; i < buttons.Length; i++) {
-            if (i <= lastOpenedChestId) {
-                //отут відкривай відкриті сундуки
-                unlockedImg[i].SetActive(true);
-                //lockedImg[i].SetActive(false);
-            }
-            else {
-                //отут закривай сундуки
-                lockedImg[i].SetActive(true);
-               //unlockedImg[i].SetActive(false);
-            }
+        timeOfNextOpening = timeOfOpening.AddMinutes(timers[nextChestId]);
+        for (int i = 0; i < lastOpenedChestId + 1; i++) {
+            lockedImg[i].SetActive(false);
+            unlockedImg[i].SetActive(true);
         }
-        timeOfNextOpening = IsOnCooldown() ? timeOfOpening.AddHours(COOLDOWN_HOURS) : timeOfOpening.AddMinutes(timers[lastOpenedChestId + 1]);
     }
 
-    private bool IsOnCooldown() {
-        return lastOpenedChestId == buttons.Length - 1;
+    private void ActivateChest(int id) {
+        buttons[id].SetActive(true);
+        timer.text = "";
+        timer2.text = "";
     }
 
     void Update() {
-        if (!shouldPerform) { return; }
-        TimeSpan timeSinceLastOpening = (DateTime.Now - timeOfOpening);
-        if (IsOnCooldown() || timeSinceLastOpening.TotalMinutes < timers[lastOpenedChestId + 1]) {
+        if (!shouldPerform) return;
+        if (timeOfNextOpening > DateTime.Now) {
             TimeSpan timeUntilNextOpening = (timeOfNextOpening - DateTime.Now);
             timer.text = " " + DateTime.MinValue.Add(timeUntilNextOpening).ToString(TIME_FORMAT);
             timer2.text = "Next Reward In : " + DateTime.MinValue.Add(timeUntilNextOpening).ToString(TIME_FORMAT);
@@ -80,23 +81,17 @@ public class RewardManager : MonoBehaviour
                 rewardAnimator.SetActive(false);
             }
         }
-        if (IsOnCooldown() || timeSinceLastOpening.TotalMinutes > timers[lastOpenedChestId + 1]
-            && !buttons[lastOpenedChestId + 1].activeSelf) {
-            if (IsOnCooldown()) {
-                Reinitialize();
-            }
-            else {
-                if (lastOpenedChestId == buttons.Length - 1) {
-                    PlayerPrefs.SetInt(LAST_OPENED_CHEST_ID, -1);
-                }
-                buttons[lastOpenedChestId + 1].SetActive(true);
+        else {
+            ActivateChest(nextChestId);
+            if (!rewardAnimator.activeInHierarchy) {
                 rewardAnimator.SetActive(true);
             }
         }
     }
 
     public void Click(int btnId) {
-        if (btnId <= lastOpenedChestId) {
+        int lastChestId = lastOpenedChestId == -1 ? 0 : lastOpenedChestId;
+        if (btnId < lastOpenedChestId) {
             Debug.Log("Cheat!");
             return;
         }
@@ -111,6 +106,6 @@ public class RewardManager : MonoBehaviour
         unlockedImg[btnId].SetActive(true);
         rewardText.text = "Earned " + rewards[btnId] + " Crystal Shards";
         rewardPanel.SetActive(true);
-        Reinitialize();
+        Initialize();
     }
 }
