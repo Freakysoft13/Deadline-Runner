@@ -27,8 +27,6 @@ public class RewardManager : MonoBehaviour
     private bool shouldPerform = true;
 
     void Start() {
-        PlayerPrefs.DeleteKey(LAST_OPENED_CHEST_ID);
-        PlayerPrefs.DeleteKey(TIME_OF_OPENING);
         Initialize();
     }
 
