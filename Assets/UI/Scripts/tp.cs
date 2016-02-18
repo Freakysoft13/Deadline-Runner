@@ -199,6 +199,7 @@ public class tp : MonoBehaviour
             AdsManager.Instance.ShowVideo(null, "ress", (arg) => {
                 if (arg.IsCompletedView) {
                     GameManager.Instance.Player.Ressurect();
+                    AdsManager.Instance.Unsubscribe("ress");
                 }
                 else {
                     deathpnl.SetActive(false);

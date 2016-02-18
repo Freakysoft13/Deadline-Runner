@@ -59,7 +59,6 @@ public class AdsManager : MonoBehaviour
 
     public void RequestVideo(object arg) {
         if (RequestVideoAd != null) {
-            Debug.Log("Request vid");
             RequestVideoAd(arg);
         }
         else {
@@ -73,11 +72,18 @@ public class AdsManager : MonoBehaviour
         }
         else {
             Vungle.playAdWithOptions(new Dictionary<string, object>());
-            if (!subscribers.Contains(subscriberUID)) {
+            if (!subscribers.Keys.Contains(subscriberUID)) {
                 Vungle.onAdFinishedEvent += onAdCompleted;
+                subscribers.Add(subscriberUID, onAdCompleted);
             }
         }
     }
 
-    private List<string> subscribers = new List<string>();
+    public void Unsubscribe(string subscriberUID) {
+        if (subscribers.Keys.Contains(subscriberUID)) {
+            Vungle.onAdFinishedEvent -= subscribers[subscriberUID];
+        }
+    }
+
+    private Dictionary<string, Action<AdFinishedEventArgs>> subscribers = new Dictionary<string, Action<AdFinishedEventArgs>>();
 }

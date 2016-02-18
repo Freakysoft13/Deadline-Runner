@@ -4,10 +4,10 @@ using System;
 
 public class RewardManager : MonoBehaviour
 {
-
     private const string LAST_OPENED_CHEST_ID = "chest_id";
     private const string TIME_OF_OPENING = "time";
-    private const string TIME_FORMAT = "HH:mm:ss";
+    private const string TIME_FORMAT = "F";
+    private const string TIME_FORMAT_TIMER = "HH:mm:ss";
     private const int COOLDOWN_HOURS = 24;
 
     public GameObject[] buttons;
@@ -27,6 +27,8 @@ public class RewardManager : MonoBehaviour
     private bool shouldPerform = true;
 
     void Start() {
+        PlayerPrefs.DeleteKey(LAST_OPENED_CHEST_ID);
+        PlayerPrefs.DeleteKey(TIME_OF_OPENING);
         Initialize();
     }
 
@@ -42,10 +44,7 @@ public class RewardManager : MonoBehaviour
             unlockedImg[i].SetActive(false);
         }
         DateTime timeOfOpening;
-        if (!DateTime.TryParseExact(PlayerPrefs.GetString(TIME_OF_OPENING, ""), TIME_FORMAT,
-                                       System.Globalization.CultureInfo.InvariantCulture,
-                                       System.Globalization.DateTimeStyles.None,
-                                       out timeOfOpening)) {
+        if (!DateTime.TryParse(PlayerPrefs.GetString(TIME_OF_OPENING, ""), out timeOfOpening)) {
             shouldPerform = false;
         }
         if (IsOnCooldown(lastOpenedChestId)) {
@@ -73,10 +72,10 @@ public class RewardManager : MonoBehaviour
 
     void Update() {
         if (!shouldPerform) return;
-        if (timeOfNextOpening > DateTime.Now) {
+        if (timeOfNextOpening.CompareTo(DateTime.Now) == 1) {
             TimeSpan timeUntilNextOpening = (timeOfNextOpening - DateTime.Now);
-            timer.text = " " + DateTime.MinValue.Add(timeUntilNextOpening).ToString(TIME_FORMAT);
-            timer2.text = "Next Reward In : " + DateTime.MinValue.Add(timeUntilNextOpening).ToString(TIME_FORMAT);
+            timer.text = " " + DateTime.MinValue.Add(timeUntilNextOpening).ToString(TIME_FORMAT_TIMER);
+            timer2.text = "Next Reward In : " + DateTime.MinValue.Add(timeUntilNextOpening).ToString(TIME_FORMAT_TIMER);
             if (rewardAnimator.activeInHierarchy) {
                 rewardAnimator.SetActive(false);
             }

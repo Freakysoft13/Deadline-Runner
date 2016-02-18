@@ -178,8 +178,11 @@ public class ResultPanel : MonoBehaviour
                 GameManager.Instance.AddCrystals((GameManager.Instance.GetCrystals() * 2));
                 collectedCrystals.text = "Crystals collected: " + crystalsCollectedCounter * 2;
                 LevelManager.Instance.AddMoney(crystalsCollected);
+                AdsManager.Instance.Unsubscribe("crystals_mult");
             }
         };
+        adImage.SetActive(false);
+        adButton.SetActive(false);
         AdsManager.Instance.ShowVideo(null, "crystals_mult", onAdCompleted);
     }
 }
