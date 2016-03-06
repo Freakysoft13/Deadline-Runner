@@ -36,13 +36,46 @@ public class ResultPanel : MonoBehaviour
     public Animator lockImg;
     public Animator unlockImg;
 
+    private String LevelLoc;
+    private String bestscoreLoc;
+    private String collectedCryLoc;
+    private String scoreLoc;
+    private String unlockLoc;
 
+    void Awake()
+    {
+        if (Application.systemLanguage.ToString() == "Russian")
+        {
+            LevelLoc = "Уровень ";
+            bestscoreLoc = "Лучший результат: ";
+            collectedCryLoc = "Собрано Осколков: ";
+            scoreLoc = "Очки: ";
+            unlockLoc = "Открывается на уровне ";
+        }
+        else if (Application.systemLanguage.ToString() == "Ukrainian")
+        {
+            LevelLoc = "Рівень ";
+            bestscoreLoc = "Кращий результат: ";
+            collectedCryLoc = "Зібрано Кристалів: ";
+            scoreLoc = "Очки: ";
+            unlockLoc = "Відкривається на рівні ";
+        }
+        else
+        {
+            LevelLoc = "Level ";
+            bestscoreLoc = "Best Score: ";
+            collectedCryLoc = "Crystals collected: ";
+            scoreLoc = "Score: ";
+            unlockLoc = "Unlock on Level ";
+        }
+    }
     void Start()
     {
+        
         EventManager.Instance.OnLevelUp += delegate ()
         {
             levelUp_txt.gameObject.SetActive(true);
-            level_txt.text = "Level " + (1 + LevelManager.Instance.GetLevel());
+            level_txt.text = LevelLoc + (1 + LevelManager.Instance.GetLevel());
             lockancestors.SetActive(false);
             ancesorButton.SetActive(true);
             unlockText.gameObject.SetActive(false);
@@ -65,11 +98,11 @@ public class ResultPanel : MonoBehaviour
         lockancestors.SetActive(!isMaxLevel);
         ancesorButton.SetActive(false);
         unlockText.gameObject.SetActive(true);
-        unlockText.text = isMaxLevel ? "" : "Unlock on level: " + (LevelManager.Instance.GetLevel() + 2);
+        unlockText.text = isMaxLevel ? "" : unlockLoc + (LevelManager.Instance.GetLevel() + 2);
         ancestorsImg[Mathf.Clamp(LevelManager.Instance.GetLevel(), 0, 10)].SetActive(true);
         if (LevelManager.Instance == null || GameManager.Instance == null || GameManager.Instance.Player == null) { return; }
         levelUp_txt.gameObject.SetActive(false);
-        level_txt.text = "Level " + (1 + LevelManager.Instance.GetLevel());
+        level_txt.text = LevelLoc + (1 + LevelManager.Instance.GetLevel());
         expEarned = GameManager.Instance.Player.Exp;
         crystalsCollected = GameManager.Instance.GetCrystals();
         int bestScore = LevelManager.Instance.GetBestScore();
@@ -78,7 +111,7 @@ public class ResultPanel : MonoBehaviour
             bestScore = expEarned;
             LevelManager.Instance.SaveBestScore(bestScore);
         }
-        bestscore.text = "Best score: " + bestScore;
+        bestscore.text = bestscoreLoc + bestScore;
         CalcLevelProgress();
         LevelManager.Instance.AddMoney(crystalsCollected);
     }
@@ -102,7 +135,7 @@ public class ResultPanel : MonoBehaviour
             {
                 expEarnedCounter = expEarned;
             }
-            score.text = "Score: " + (int)expEarnedCounter;
+            score.text = scoreLoc + (int)expEarnedCounter;
             lastExpUpdateTime = Time.time;
         }
         if (crystalsCollectedCounter < crystalsCollected && Mathf.Abs(Time.time - lastCryUpdateTime) > updateDelay)
@@ -114,7 +147,7 @@ public class ResultPanel : MonoBehaviour
             else {
                 crystalsCollectedCounter = crystalsCollected;
             }
-            collectedCrystals.text = "Crystals collected: " + crystalsCollectedCounter;
+            collectedCrystals.text = collectedCryLoc + crystalsCollectedCounter;
             lastCryUpdateTime = Time.time;
         }
     }
@@ -176,7 +209,7 @@ public class ResultPanel : MonoBehaviour
         Action<AdFinishedEventArgs> onAdCompleted = (arg) => {
             if (arg.IsCompletedView) {
                 GameManager.Instance.AddCrystals((GameManager.Instance.GetCrystals() * 2));
-                collectedCrystals.text = "Crystals collected: " + crystalsCollectedCounter * 2;
+                collectedCrystals.text = collectedCryLoc + crystalsCollectedCounter * 2;
                 LevelManager.Instance.AddMoney(crystalsCollected);
                 AdsManager.Instance.Unsubscribe("crystals_mult");
             }

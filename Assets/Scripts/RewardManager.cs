@@ -20,6 +20,7 @@ public class RewardManager : MonoBehaviour
     public Text rewardText;
     public GameObject rewardPanel;
     public GameObject rewardAnimator;
+    public Text NextRewardTxt;
 
     private int lastOpenedChestId;
     private int nextChestId;
@@ -64,6 +65,7 @@ public class RewardManager : MonoBehaviour
 
     private void ActivateChest(int id) {
         buttons[id].SetActive(true);
+        NextRewardTxt.gameObject.SetActive(false);
         timer.text = "";
         timer2.text = "";
     }
@@ -73,7 +75,7 @@ public class RewardManager : MonoBehaviour
         if (timeOfNextOpening.CompareTo(DateTime.Now) == 1) {
             TimeSpan timeUntilNextOpening = (timeOfNextOpening - DateTime.Now);
             timer.text = " " + DateTime.MinValue.Add(timeUntilNextOpening).ToString(TIME_FORMAT_TIMER);
-            timer2.text = "Next Reward In : " + DateTime.MinValue.Add(timeUntilNextOpening).ToString(TIME_FORMAT_TIMER);
+            timer2.text = " " + DateTime.MinValue.Add(timeUntilNextOpening).ToString(TIME_FORMAT_TIMER);
             if (rewardAnimator.activeInHierarchy) {
                 rewardAnimator.SetActive(false);
             }
@@ -101,8 +103,9 @@ public class RewardManager : MonoBehaviour
         shouldPerform = true;
         lockedImg[btnId].SetActive(false);
         unlockedImg[btnId].SetActive(true);
-        rewardText.text = "Earned " + rewards[btnId] + " Crystal Shards";
+        rewardText.text = rewards[btnId].ToString();
         rewardPanel.SetActive(true);
+        NextRewardTxt.gameObject.SetActive(true);
         Initialize();
     }
 }
