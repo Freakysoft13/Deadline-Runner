@@ -36,8 +36,7 @@ public class tp : MonoBehaviour
 
     public GameObject[] unlockedAncestors;
 
-    void Start()
-    {
+    void Start() {
         // ress_ads_btn.gameObject.GetComponent<UnityEngine.UI.Button>().interactable = true;
         //ressurected_with_ads = false;
 
@@ -59,15 +58,13 @@ public class tp : MonoBehaviour
         EventManager.Instance.OnPlayerResurrected += PlayerResurrect;
     }
 
-    void Update()
-    {
+    void Update() {
         distance_counter();
         CrystalSumm.text = GameManager.Instance.GetCrystals().ToString();
     }
 
     //pause_btn need to be cleaned
-    public void Pause()
-    {
+    public void Pause() {
         deathpnl.SetActive(false);
         pause_pnl.SetActive(true);
         blockingmask.SetActive(false);
@@ -79,24 +76,20 @@ public class tp : MonoBehaviour
 #endif
     }
     // turn of sound_btn
-    public void AudioMute()
-    {
-        if (audios.mute == true)
-        {
+    public void AudioMute() {
+        if (audios.mute == true) {
             audios.mute = false;
             audioOn_img.gameObject.SetActive(true);
             audioOff_img.gameObject.SetActive(false);
         }
-        else
-        {
+        else {
             audios.mute = true;
             audioOff_img.gameObject.SetActive(true);
             audioOn_img.gameObject.SetActive(false);
         }
     }
     // resume after pause need to be cleaned
-    public void Resume()
-    {
+    public void Resume() {
         deathpnl.SetActive(false);
         pause_pnl.SetActive(false);
         blockingmask.SetActive(false);
@@ -111,14 +104,12 @@ public class tp : MonoBehaviour
 #endif
     }
     //redirecting to main menu
-    public void Restart_to_menu()
-    {
+    public void Restart_to_menu() {
         Time.timeScale = 1;
         Application.LoadLevel("StartMenu");
     }
     //test btn fortune wheel need to be cleaned
-    public void Fortune()
-    {
+    public void Fortune() {
         deathpnl.SetActive(false);
         pause_pnl.SetActive(false);
         blockingmask.SetActive(true);
@@ -126,50 +117,41 @@ public class tp : MonoBehaviour
     }
 
     // counting distanve for gameobject, gameobject need to be seted in menu
-    private void distance_counter()
-    {
+    private void distance_counter() {
         int newdistance;
         newdistance = distance + 1 * ((int)Player.transform.position.x);
         Distance_txt.text = newdistance.ToString() + " m";
     }
 
     // test_money mask can be replaced with prefab from shop
-    void Money_mask()
-    {
+    void Money_mask() {
         money_mask.gameObject.SetActive(true);
     }
     //redirect link leads to special pnl in shop(if using other mask prefab add this to mask GetCrystal btn)
-    public void get_crystals()
-    {
+    public void get_crystals() {
         LevelManager.Instance.SetShopID(1);
         Application.LoadLevel("Shop");
     }
     //closes money mask(if maske replaced add this to new mask close btn)
-    public void close_moneymask()
-    {
+    public void close_moneymask() {
         money_mask.gameObject.SetActive(false);
     }
     // ress button for money ress no actuall ress is added only money part
-    public void ressurect()
-    {
+    public void ressurect() {
         ress_txt.text = ress_price.ToString();
 
-        if (LevelManager.Instance.GetMoney() >= ress_price[priceindex])
-        {
+        if (LevelManager.Instance.GetMoney() >= ress_price[priceindex]) {
             LevelManager.Instance.AddMoney(-ress_price[priceindex]);
 
-            if (priceindex <= 1)
-            {
+            if (priceindex <= 1) {
                 priceindex++;
             }
             print("a");
-            if (priceindex <= 2)
-            {
+            if (priceindex <= 2) {
                 ress_txt.text = ress_price[priceindex].ToString();
                 print("b");
             }
-            else
-            {
+            else {
                 ress_txt.text = ress_price[2].ToString();
             }
             print(priceindex);
@@ -177,87 +159,69 @@ public class tp : MonoBehaviour
             deathpnl.SetActive(false);
             scoreboard.SetActive(true);
         }
-        else
-        {
+        else {
             ress_txt.text = ress_price[priceindex].ToString();
             Money_mask();
         }
 
     }
     // not currently used need to be added to unity ads script
-    public void ressurect_video()
-    {
-        if (ressurected_with_ads == false)
-        {
+    public void ressurect_video() {
+        if (ressurected_with_ads == false) {
             //resscode
             ressurected_with_ads = true;
         }
-        else
-        {
+        else {
             ress_ads_btn.gameObject.GetComponent<UnityEngine.UI.Button>().interactable = false;
             print("Hi");
         }
     }
-    public void RestartGameOnDeath()
-    {
+    public void RestartGameOnDeath() {
         Application.LoadLevel("Main");
     }
 
-    public void RessurectWithAds()
-    {
-        if (GameManager.Instance.Player.IsNoAdsResPassive)
-        {
+    public void RessurectWithAds() {
+        if (GameManager.Instance.Player.IsNoAdsResPassive) {
             GameManager.Instance.Player.Ressurect();
         }
-        else
-        {
+        else {
             deathpnl.SetActive(false);
-            AdsManager.Instance.ShowVideo(null, "ress", (arg) =>
-            {
-                if (arg.IsCompletedView)
-                {
+            AdsManager.Instance.ShowVideo(null, "ress", (arg) => {
+                if (arg == null || (arg != null && (arg is AdFinishedEventArgs) && ((AdFinishedEventArgs)arg).IsCompletedView)) {
                     GameManager.Instance.Player.Ressurect();
                     AdsManager.Instance.Unsubscribe("ress");
                 }
-                else
-                {
+                else {
                     deathpnl.SetActive(false);
                     scoreboard.SetActive(true);
                 }
             });
         }
     }
-    public void closeRessWindow()
-    {
+    public void closeRessWindow() {
         Result();
     }
 
-    void Result()
-    {
+    void Result() {
         scoreboard.SetActive(false);
         result_pnl.SetActive(true);
     }
 
-    public void LoadTree()
-    {
+    public void LoadTree() {
         Application.LoadLevel("TreeRevorked");
     }
 
-    private void PlayerDie()
-    {
-        if (!GameManager.Instance.HasRessurectedThisRun && AdsManager.Instance.isAdReady)
-        {
+    private void PlayerDie() {
+        if (!GameManager.Instance.HasRessurectedThisRun && AdsManager.Instance.isAdReady) {
             deathpnl.SetActive(true);
         }
-        else
-        {
+        else {
             result_pnl.SetActive(true);
         }
         scoreboard.SetActive(false);
     }
 
-    private void PlayerResurrect()
-    {
+    private void PlayerResurrect() {
         deathpnl.SetActive(false);
         scoreboard.SetActive(true);
     }

@@ -14,10 +14,12 @@ public class AdsManager : MonoBehaviour
     public bool isOuterAdReady = false;
 
     public delegate void OnEvent(object arg);
-    public OnEvent RequestVideoAd;
-    public OnEvent ShowVideoAd;
+    public OnEvent RequestVideoAd; //arg = bool isAdDuplex
+    public OnEvent ShowVideoAd; //arg = bool isAdDuplex
+    public OnEvent NoVideoAd; //arg = bool isAdDuplex
     public OnEvent OnAdLoadFailed;
     public OnEvent OnAdLoadSuccessful;
+    public OnEvent OnAdFinished;
 
     private static AdsManager instance = null;
 
@@ -41,6 +43,9 @@ public class AdsManager : MonoBehaviour
             isAdReady = true;
             isOuterAdReady = true;
         };
+        NoVideoAd += (arg) => {
+            isAdReady = false;
+        };
     }
 
     void FallbackAds() {
@@ -50,38 +55,56 @@ public class AdsManager : MonoBehaviour
         }
         catch (Exception) {
             isAdReady = false;
+            RequestVideoAd(true);
         }
     }
 
     private void AdPlayableEvent(bool flag) {
+        if (!flag) {
+            RequestVideoAd(true);
+        }
         isAdReady = true;
     }
 
-    public void RequestVideo(object arg) {
+    public void RequestVideo() {
         if (RequestVideoAd != null) {
-            RequestVideoAd(arg);
+            RequestVideoAd(false);
         }
         else {
             FallbackAds();
         }
     }
 
-    public void ShowVideo(object arg, string subscriberUID, Action<AdFinishedEventArgs> onAdCompleted) {
+    public void ShowVideo(object arg, string subscriberUID, Action<object> onAdCompleted) {
         if (isOuterAdReady && ShowVideoAd != null) {
-            ShowVideoAd(arg);
+            ShowVideoAd(false);
+            OnAdFinished += (argument) => {
+                onAdCompleted(null);
+            };
         }
-        else {
+        else if(Vungle.isAdvertAvailable()) {
             Vungle.playAdWithOptions(new Dictionary<string, object>());
             if (!subscribers.Keys.Contains(subscriberUID)) {
-                Vungle.onAdFinishedEvent += onAdCompleted;
-                subscribers.Add(subscriberUID, onAdCompleted);
+                Action<AdFinishedEventArgs> sub = (param) => {
+                    onAdCompleted(param);
+                };
+                Vungle.onAdFinishedEvent += sub;
+                subscribers.Add(subscriberUID, sub);
             }
+        } else {
+            ShowVideoAd(true);
+            OnAdFinished += (argument) => {
+                onAdCompleted(null);
+            };
         }
     }
 
     public void Unsubscribe(string subscriberUID) {
         if (subscribers.Keys.Contains(subscriberUID)) {
             Vungle.onAdFinishedEvent -= subscribers[subscriberUID];
+        }
+        if(OnAdFinished != null) {
+            OnAdFinished = null;
         }
     }
 

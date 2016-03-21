@@ -42,26 +42,22 @@ public class ResultPanel : MonoBehaviour
     private String scoreLoc;
     private String unlockLoc;
 
-    void Awake()
-    {
-        if (Application.systemLanguage.ToString() == "Russian")
-        {
+    void Awake() {
+        if (Application.systemLanguage.ToString() == "Russian") {
             LevelLoc = "Уровень ";
             bestscoreLoc = "Лучший результат: ";
             collectedCryLoc = "Собрано Осколков: ";
             scoreLoc = "Очки: ";
             unlockLoc = "Открывается на уровне ";
         }
-        else if (Application.systemLanguage.ToString() == "Ukrainian")
-        {
+        else if (Application.systemLanguage.ToString() == "Ukrainian") {
             LevelLoc = "Рівень ";
             bestscoreLoc = "Кращий результат: ";
             collectedCryLoc = "Зібрано Кристалів: ";
             scoreLoc = "Очки: ";
             unlockLoc = "Відкривається на рівні ";
         }
-        else
-        {
+        else {
             LevelLoc = "Level ";
             bestscoreLoc = "Best Score: ";
             collectedCryLoc = "Crystals collected: ";
@@ -69,11 +65,9 @@ public class ResultPanel : MonoBehaviour
             unlockLoc = "Unlock on Level ";
         }
     }
-    void Start()
-    {
-        
-        EventManager.Instance.OnLevelUp += delegate ()
-        {
+    void Start() {
+
+        EventManager.Instance.OnLevelUp += delegate () {
             levelUp_txt.gameObject.SetActive(true);
             level_txt.text = LevelLoc + (1 + LevelManager.Instance.GetLevel());
             lockancestors.SetActive(false);
@@ -85,15 +79,14 @@ public class ResultPanel : MonoBehaviour
             //отут левел ап
         };
 
-        if(!AdsManager.Instance.isAdReady) {
+        if (!AdsManager.Instance.isAdReady) {
             adButton.SetActive(false);
             adImage.SetActive(false);
         }
 
     }
 
-    void OnEnable()
-    {
+    void OnEnable() {
         bool isMaxLevel = LevelManager.Instance.IsMaxLevel();
         lockancestors.SetActive(!isMaxLevel);
         ancesorButton.SetActive(false);
@@ -106,8 +99,7 @@ public class ResultPanel : MonoBehaviour
         expEarned = GameManager.Instance.Player.Exp;
         crystalsCollected = GameManager.Instance.GetCrystals();
         int bestScore = LevelManager.Instance.GetBestScore();
-        if (expEarned > bestScore)
-        {
+        if (expEarned > bestScore) {
             bestScore = expEarned;
             LevelManager.Instance.SaveBestScore(bestScore);
         }
@@ -116,30 +108,24 @@ public class ResultPanel : MonoBehaviour
         LevelManager.Instance.AddMoney(crystalsCollected);
     }
 
-    void Update()
-    {
+    void Update() {
         UpdateExp();
         UpdateCounters();
     }
 
-    private void UpdateCounters()
-    {
-        if (expEarnedCounter < expEarned && Mathf.Abs(Time.time - lastExpUpdateTime) > updateDelay)
-        {
+    private void UpdateCounters() {
+        if (expEarnedCounter < expEarned && Mathf.Abs(Time.time - lastExpUpdateTime) > updateDelay) {
             float divisor = expEarned / 10.0f;
-            if ((expEarnedCounter + (expEarned / divisor)) <= expEarned)
-            {
+            if ((expEarnedCounter + (expEarned / divisor)) <= expEarned) {
                 expEarnedCounter += expEarned / divisor;
             }
-            else
-            {
+            else {
                 expEarnedCounter = expEarned;
             }
             score.text = scoreLoc + (int)expEarnedCounter;
             lastExpUpdateTime = Time.time;
         }
-        if (crystalsCollectedCounter < crystalsCollected && Mathf.Abs(Time.time - lastCryUpdateTime) > updateDelay)
-        {
+        if (crystalsCollectedCounter < crystalsCollected && Mathf.Abs(Time.time - lastCryUpdateTime) > updateDelay) {
             float divisor = crystalsCollected / 10.0f;
             if ((crystalsCollectedCounter + (crystalsCollected / divisor)) <= crystalsCollected) {
                 crystalsCollectedCounter += crystalsCollected / divisor;
@@ -152,23 +138,18 @@ public class ResultPanel : MonoBehaviour
         }
     }
 
-    private void UpdateExp()
-    {
+    private void UpdateExp() {
         if (!updateExpBar) { return; }
-        if (Mathf.Abs(expSlider.value - targetValue) > fillPrecision)
-        {
+        if (Mathf.Abs(expSlider.value - targetValue) > fillPrecision) {
             expSlider.value += (1.0f / (int)(1 / (fillWaitTime * targetValue))) * Time.deltaTime;
         }
-        else
-        {
+        else {
             updateExpBar = false;
-            if (Mathf.Abs(expSlider.value - 1) < fillPrecision)
-            {
+            if (Mathf.Abs(expSlider.value - 1) < fillPrecision) {
                 EventManager.Instance.FireLevelUp();
                 expSlider.value = 0;
             }
-            if (overhead > 0)
-            {
+            if (overhead > 0) {
                 CalcLevelProgress();
             }
         }
@@ -176,25 +157,20 @@ public class ResultPanel : MonoBehaviour
 
     private int overhead = 0;
 
-    private void CalcLevelProgress()
-    {
+    private void CalcLevelProgress() {
         int currentExp = LevelManager.Instance.GetExpThisLevel();
         int currentLevel = LevelManager.Instance.GetLevel();
         int expEarned = overhead > 0 ? overhead : GameManager.Instance.Player.Exp;
         int[] levelsExp = LevelManager.Instance.levelsExp;
-        if (currentLevel < 10)
-        {
+        if (currentLevel < 10) {
             int expToNextLevel = levelsExp[currentLevel + 1];
-            if (overhead == 0)
-            {
+            if (overhead == 0) {
                 expSlider.value = currentExp / (float)expToNextLevel;
             }
-            if (expEarned + currentExp > expToNextLevel)
-            {
+            if (expEarned + currentExp > expToNextLevel) {
                 overhead = expEarned - (expToNextLevel - currentExp);
             }
-            else
-            {
+            else {
                 overhead = 0;
             }
             int remainder = expEarned - overhead;
@@ -204,10 +180,9 @@ public class ResultPanel : MonoBehaviour
         }
     }
     //Video Ads for crystals
-    public void CrystalsVideoBtn()
-    {
-        Action<AdFinishedEventArgs> onAdCompleted = (arg) => {
-            if (arg.IsCompletedView) {
+    public void CrystalsVideoBtn() {
+        Action<object> onAdCompleted = (arg) => {
+            if (arg == null || (arg != null && (arg is AdFinishedEventArgs) && ((AdFinishedEventArgs)arg).IsCompletedView)) {
                 GameManager.Instance.AddCrystals((GameManager.Instance.GetCrystals() * 2));
                 collectedCrystals.text = collectedCryLoc + crystalsCollectedCounter * 2;
                 LevelManager.Instance.AddMoney(crystalsCollected);
