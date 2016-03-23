@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using System;
+using UnityEngine.Advertisements;
 
 public class ResultPanel : MonoBehaviour
 {
@@ -79,12 +80,45 @@ public class ResultPanel : MonoBehaviour
             //отут левел ап
         };
 
-        if (!AdsManager.Instance.isAdReady) {
+        if (!AdsManager.Instance.isAdReady||!Advertisement.IsReady()) {
             adButton.SetActive(false);
             adImage.SetActive(false);
         }
 
     }
+#if UNITY_ANDROID
+    public void ShowRewardedAd()
+    {
+        if (Advertisement.IsReady("rewardedVideo"))
+        {
+            var options = new ShowOptions { resultCallback = HandleShowResult };
+            Advertisement.Show("rewardedVideo", options);
+        }
+    }
+
+    private void HandleShowResult(ShowResult result)
+    {
+        switch (result)
+        {
+            case ShowResult.Finished:
+                Debug.Log("The ad was successfully shown.");
+                //
+                // YOUR CODE TO REWARD THE GAMER
+                // Give coins etc.
+                GameManager.Instance.AddCrystals((GameManager.Instance.GetCrystals() * 2));
+                collectedCrystals.text = collectedCryLoc + crystalsCollectedCounter * 2;
+                LevelManager.Instance.AddMoney(crystalsCollected);
+                AdsManager.Instance.Unsubscribe("crystals_mult");
+                break;
+            case ShowResult.Skipped:
+                Debug.Log("The ad was skipped before reaching the end.");
+                break;
+            case ShowResult.Failed:
+                Debug.LogError("The ad failed to be shown.");
+                break;
+        }
+    }
+#endif
 
     void OnEnable() {
         bool isMaxLevel = LevelManager.Instance.IsMaxLevel();
@@ -181,6 +215,7 @@ public class ResultPanel : MonoBehaviour
     }
     //Video Ads for crystals
     public void CrystalsVideoBtn() {
+#if UNITY_WSA
         Action<object> onAdCompleted = (arg) => {
             if (arg == null || (arg != null && (arg is AdFinishedEventArgs) && ((AdFinishedEventArgs)arg).IsCompletedView)) {
                 GameManager.Instance.AddCrystals((GameManager.Instance.GetCrystals() * 2));
@@ -189,8 +224,14 @@ public class ResultPanel : MonoBehaviour
                 AdsManager.Instance.Unsubscribe("crystals_mult");
             }
         };
+        AdsManager.Instance.ShowVideo(null, "crystals_mult", onAdCompleted);
+#endif
+        //ADS
+#if UNITY_ANDROID
+        ShowRewardedAd();
+#endif
         adImage.SetActive(false);
         adButton.SetActive(false);
-        AdsManager.Instance.ShowVideo(null, "crystals_mult", onAdCompleted);
+                
     }
 }
