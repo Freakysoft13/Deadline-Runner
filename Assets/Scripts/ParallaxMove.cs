@@ -14,8 +14,8 @@ public class ParallaxMove : MonoBehaviour
 
     void Start()
     {
-        EventManager.Instance.OnBeforePlayerDied += () => { speedScale = 0; };
-        EventManager.Instance.OnPlayerResurrected += () => { speedScale = startSpeed; };
+        EventManager.OnBeforePlayerDied += () => { speedScale = 0; };
+        EventManager.OnPlayerResurrected += () => { speedScale = startSpeed; };
     }
 
     void Update() {

@@ -55,8 +55,8 @@ public class tp : MonoBehaviour
         audioOn_img.gameObject.SetActive(true);
         money_mask.gameObject.SetActive(false);
         CrystalSumm.text = LevelManager.Instance.GetMoney().ToString();
-        EventManager.Instance.OnPlayerDied += PlayerDie;
-        EventManager.Instance.OnPlayerResurrected += PlayerResurrect;
+        EventManager.OnPlayerDied += PlayerDie;
+        EventManager.OnPlayerResurrected += PlayerResurrect;
     }
 #if UNITY_ANDROID
     public void ShowRewardedAd()
@@ -243,7 +243,7 @@ public class tp : MonoBehaviour
         else
         {
             deathpnl.SetActive(false);
-#if UNITY_ANDROID || UNITY_EDITOR
+#if UNITY_ANDROID
             ShowRewardedAd();
 #endif
 #if UNITY_WSA

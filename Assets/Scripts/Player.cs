@@ -363,27 +363,27 @@ public class Player : MonoBehaviour
 
     public void Die() {
         exp = (GetDistance() * GameManager.Instance.expMultiplier) / expToDistanceThreshold;
-        EventManager.Instance.FireBeforePlayerDied();
+        EventManager.FireBeforePlayerDied();
         isDead = true;
         jumpOnLand = false;
-        EventManager.Instance.OnAnimationComplete += delegate (string name) {
+        EventManager.OnAnimationComplete += delegate (string name) {
             if (name != AnimationController.DEATH) { return; }
             canMove = false;
-            EventManager.Instance.FirePlayerDied();
+            EventManager.FirePlayerDied();
         };
         animationController.Die();
     }
 
     public void Ressurect() {
-        EventManager.Instance.FireBeforePlayerResurrected();
-        EventManager.Instance.OnAnimationComplete += delegate (string name) {
+        EventManager.FireBeforePlayerResurrected();
+        EventManager.OnAnimationComplete += delegate (string name) {
             if (name != AnimationController.RESURRECTION) { return; }
             isDead = false;
             canMove = true;
             Vector3 pos = transform.position;
             pos.y = PlayerFlip;
             transform.position = pos;
-            EventManager.Instance.FirePlayerResurrected();
+            EventManager.FirePlayerResurrected();
         };
         animationController.Ressurect();
     }

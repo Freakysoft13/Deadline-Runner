@@ -11,8 +11,8 @@ public class MaterialChanger : MonoBehaviour
 
     void Start() {
         originalMaterial = GetComponent<BoxCollider2D>().sharedMaterial;
-        EventManager.Instance.OnPlayerResurrected += Swap;
-        EventManager.Instance.OnBeforePlayerDied += Swap;
+        EventManager.OnPlayerResurrected += Swap;
+        EventManager.OnBeforePlayerDied += Swap;
     }
 
     public void Swap() {

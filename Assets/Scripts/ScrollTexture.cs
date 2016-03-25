@@ -12,8 +12,8 @@ public class ScrollTexture : MonoBehaviour
 
     void Start() {
         rend = GetComponent<Renderer>();
-        EventManager.Instance.OnBeforePlayerDied += OnDisable;
-        EventManager.Instance.OnPlayerResurrected += OnEnable;
+        EventManager.OnBeforePlayerDied += OnDisable;
+        EventManager.OnPlayerResurrected += OnEnable;
     }
 
     void Update() {

@@ -12,7 +12,7 @@ public class CarController : MonoBehaviour {
     void Start () {
         skelAnimation = GetComponent<SkeletonAnimation>();
         skelAnimation.state.Complete += AnimationComplete;
-        EventManager.Instance.OnHeadstart += delegate () {
+        EventManager.OnHeadstart += delegate () {
             MoveToPlayer();
             skelAnimation.AnimationName = PREPARE;
             Reset();
@@ -28,7 +28,7 @@ public class CarController : MonoBehaviour {
     }
 
     private void AnimationComplete(Spine.AnimationState state, int trackIndex, int loopCount) {
-        EventManager.Instance.FireAnimationComplete(skelAnimation.AnimationName);
+        EventManager.FireAnimationComplete(skelAnimation.AnimationName);
         switch(skelAnimation.AnimationName) {
             case PREPARE:
                 skelAnimation.AnimationName = START; skelAnimation.loop = true; Reset(); break;

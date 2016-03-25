@@ -78,9 +78,9 @@ public class GameManager : MonoBehaviour
     
     void Start() {
         Application.targetFrameRate = target;
-        EventManager.Instance.OnPlayerDied += PlayerDie;
-        EventManager.Instance.OnPlayerResurrected += PlayerResurrect;
-        EventManager.Instance.OnBeforePlayerResurrected += BeforePlayerResurrect;
+        EventManager.OnPlayerDied += PlayerDie;
+        EventManager.OnPlayerResurrected += PlayerResurrect;
+        EventManager.OnBeforePlayerResurrected += BeforePlayerResurrect;
         AdsManager.Instance.RequestVideo();
     }
 

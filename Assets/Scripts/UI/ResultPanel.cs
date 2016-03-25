@@ -68,7 +68,7 @@ public class ResultPanel : MonoBehaviour
     }
     void Start() {
 
-        EventManager.Instance.OnLevelUp += delegate () {
+        EventManager.OnLevelUp += delegate () {
             levelUp_txt.gameObject.SetActive(true);
             level_txt.text = LevelLoc + (1 + LevelManager.Instance.GetLevel());
             lockancestors.SetActive(false);
@@ -180,7 +180,7 @@ public class ResultPanel : MonoBehaviour
         else {
             updateExpBar = false;
             if (Mathf.Abs(expSlider.value - 1) < fillPrecision) {
-                EventManager.Instance.FireLevelUp();
+                EventManager.FireLevelUp();
                 expSlider.value = 0;
             }
             if (overhead > 0) {

@@ -13,7 +13,8 @@ public class EnvironmentSpawner : MonoBehaviour
     [Header("Obstacles")]
     public ObjectTypesDataHolder.ObstacleType[] obstaclesToSpawn;
     public int[] obstaclesDistribution;
-    public float[] obstaclesPadding;
+	public float[] obstaclesPadding;
+	public float[] obstacleStartSpawnDistance;
     public float minObstaclesSpread;
     public float maxObstaclesSpread;
     private float lastObstacleSpawnPointX;
@@ -21,7 +22,8 @@ public class EnvironmentSpawner : MonoBehaviour
     [Header("Crystals")]
     public ObjectTypesDataHolder.CrystalType[] crystalsToSpawn;
     public int[] crystalDistribution;
-    public float[] crystalPadding;
+	public float[] crystalPadding;
+	public float[] crystalStartSpawnDistance;
     public float minCrystalsSpread;
     public float maxCrystalsSpread;
     private float lastCrystalSpawnPointX;
@@ -29,7 +31,8 @@ public class EnvironmentSpawner : MonoBehaviour
     [Header("Effects")]
     public LevelManager.PowerUp[] effectsToSpawn;
     public int[] effectsDistribution;
-    public float[] effectsPadding;
+	public float[] effectsPadding;
+	public float[] effectStartSpawnDistance;
     public float minEffectsSpread;
     public float maxEffectsSpread;
     private float lastEffectSpawnPointX;
@@ -57,7 +60,8 @@ public class EnvironmentSpawner : MonoBehaviour
                 yield return new WaitForSeconds(0.5f);
             }
             Spawn(minObstaclesSpread, maxObstaclesSpread, ref lastObstacleSpawnPointX, ConvertObstaclesEnum(),
-            obstaclesDistribution, obstaclesPadding, new string[] { "obstacle", "crystal" });
+				obstaclesDistribution, obstaclesPadding, new string[] { "obstacle", "crystal" },
+				obstacleStartSpawnDistance);
 
             yield return new WaitForSeconds(.05f);
         }
@@ -87,7 +91,8 @@ public class EnvironmentSpawner : MonoBehaviour
             while (lastCrystalSpawnPointX > player.position.x + maxSpawnDistance) {
                 yield return new WaitForSeconds(1f);
             }
-            Spawn(minCrystalsSpread, maxCrystalsSpread, ref lastCrystalSpawnPointX, ConvertCrystalsEnum(), crystalDistribution, crystalPadding, new string[] { "obstacle", "crystal" });
+            Spawn(minCrystalsSpread, maxCrystalsSpread, ref lastCrystalSpawnPointX, ConvertCrystalsEnum(),
+				crystalDistribution, crystalPadding, new string[] { "obstacle", "crystal" }, crystalStartSpawnDistance);
 
             yield return new WaitForSeconds(.2f);
         }
@@ -101,7 +106,8 @@ public class EnvironmentSpawner : MonoBehaviour
             if (GameManager.Instance.Player.IsIncreasedBuffSpawnPassive) {
                 maxEffectsSpread *= 0.8f;
             }
-            Spawn(minEffectsSpread, maxEffectsSpread, ref lastEffectSpawnPointX, ConvertEffectsEnum(), effectsDistribution, effectsPadding, new string[] { "obstacle", "crystal" });
+            Spawn(minEffectsSpread, maxEffectsSpread, ref lastEffectSpawnPointX, ConvertEffectsEnum(),
+				effectsDistribution, effectsPadding, new string[] { "obstacle", "crystal" }, effectStartSpawnDistance);
 
             yield return new WaitForSeconds(1f);
         }
@@ -131,12 +137,14 @@ public class EnvironmentSpawner : MonoBehaviour
         return tmpEnum;
     }
 
-    private bool Spawn(float minSpread, float maxSpread, ref float lastSpawnPointX, System.Enum[] objectsToSpawn, int[] objectsDistribution, float[] objectsPadding, string[] collisionTags) {
+    private bool Spawn(float minSpread, float maxSpread, ref float lastSpawnPointX, System.Enum[] objectsToSpawn,
+		int[] objectsDistribution, float[] objectsPadding, string[] collisionTags, float[] startSpawnDistance) {
         int rng = Random.Range(0, 100);
         float spread = Random.Range(minSpread, maxSpread);
         string objectToSpawnName = "";
         for (int i = 0; i < objectsDistribution.Length; i++) {
-            if (rng < objectsDistribution[i]) {
+			int actualPorbability = objectsDistribution [i] * lastSpawnPointX > startSpawnDistance [i] ? 1 : 0;
+			if (rng < actualPorbability) {
                 objectToSpawnName = ObjectTypesDataHolder.Instance.GetObjectNameForType(objectsToSpawn[i]);
                 if (objectsPadding.Length == objectsToSpawn.Length) {
                     spread = spread < objectsPadding[i] ? objectsPadding[i] : spread;

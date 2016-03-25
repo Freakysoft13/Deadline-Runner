@@ -22,7 +22,7 @@ public class AnimationController : MonoBehaviour
     }
 
     private void AnimationComplete(Spine.AnimationState state, int trackIndex, int loopCount) {
-        EventManager.Instance.FireAnimationComplete(skelAnimation.AnimationName);
+        EventManager.FireAnimationComplete(skelAnimation.AnimationName);
     }
 
     public void JumpUp() {

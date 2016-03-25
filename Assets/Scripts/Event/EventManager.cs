@@ -1,29 +1,13 @@
 ﻿using UnityEngine;
 
-public class EventManager : MonoBehaviour
+public static class EventManager
 {
-
-    private static EventManager instance;
-
-    public static EventManager Instance {
-        get {
-            return instance;
-        }
-
-        set {
-            instance = value;
-        }
-    }
-
-    void Awake() {
-        instance = this;
-    }
 
     public delegate void PlayerDied();
 
-    public PlayerDied OnPlayerDied;
+	public static PlayerDied OnPlayerDied;
 
-    public void FirePlayerDied() {
+	public static void FirePlayerDied() {
         if (OnPlayerDied != null) {
             OnPlayerDied();
         }
@@ -31,9 +15,9 @@ public class EventManager : MonoBehaviour
 
     public delegate void PlayerResurrected();
 
-    public PlayerDied OnPlayerResurrected;
+	public static PlayerDied OnPlayerResurrected;
 
-    public void FirePlayerResurrected() {
+	public static void FirePlayerResurrected() {
         if (OnPlayerResurrected != null) {
             OnPlayerResurrected();
         }
@@ -41,9 +25,9 @@ public class EventManager : MonoBehaviour
 
     public delegate void BeforePlayerDied();
 
-    public BeforePlayerDied OnBeforePlayerDied;
+	public static BeforePlayerDied OnBeforePlayerDied;
 
-    public void FireBeforePlayerDied() {
+	public static void FireBeforePlayerDied() {
         if (OnBeforePlayerDied != null) {
             OnBeforePlayerDied();
         }
@@ -51,9 +35,9 @@ public class EventManager : MonoBehaviour
 
     public delegate void BeforePlayerResurrected();
 
-    public BeforePlayerResurrected OnBeforePlayerResurrected;
+	public static BeforePlayerResurrected OnBeforePlayerResurrected;
 
-    public void FireBeforePlayerResurrected() {
+	public static void FireBeforePlayerResurrected() {
         if (OnBeforePlayerResurrected != null) {
             OnBeforePlayerResurrected();
         }
@@ -62,9 +46,9 @@ public class EventManager : MonoBehaviour
 
     public delegate void Headstart();
 
-    public Headstart OnHeadstart;
+	public static Headstart OnHeadstart;
 
-    public void FireHeadstart() {
+	public static void FireHeadstart() {
         if (OnHeadstart != null) {
             OnHeadstart();
         }
@@ -72,9 +56,9 @@ public class EventManager : MonoBehaviour
 
     public delegate void HeadstartEnd();
 
-    public HeadstartEnd OnHeadstartEnd;
+	public static HeadstartEnd OnHeadstartEnd;
 
-    public void FireHeadstartEnd() {
+	public static void FireHeadstartEnd() {
         if (OnHeadstartEnd != null) {
             OnHeadstartEnd();
         }
@@ -82,9 +66,9 @@ public class EventManager : MonoBehaviour
 
     public delegate void LevelUp();
 
-    public LevelUp OnLevelUp;
+	public static LevelUp OnLevelUp;
 
-    public void FireLevelUp() {
+	public static void FireLevelUp() {
         if (OnLevelUp != null) {
             OnLevelUp();
         }
@@ -92,11 +76,21 @@ public class EventManager : MonoBehaviour
 
     public delegate void AnimationComplete(string animationName);
 
-    public AnimationComplete OnAnimationComplete;
+	public static AnimationComplete OnAnimationComplete;
 
-    public void FireAnimationComplete(string animationName) {
+	public static void FireAnimationComplete(string animationName) {
         if (OnAnimationComplete != null) {
             OnAnimationComplete(animationName);
         }
     }
+
+	public delegate void ObstacleWarning(bool show, GameManager.Side side);
+
+	public static ObstacleWarning OnObstacleWarning;
+
+	public static void FireObstacleWarning(bool show, GameManager.Side side) {
+		if (OnObstacleWarning != null) {
+			OnObstacleWarning(show, side);
+		}
+	}
 }
