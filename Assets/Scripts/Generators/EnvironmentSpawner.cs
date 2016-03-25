@@ -152,6 +152,9 @@ public class EnvironmentSpawner : MonoBehaviour
                 break;
             }
         }
+        if(objectToSpawnName.Equals("")) {
+            return false;
+        }
         float spawnPointX = lastSpawnPointX == 0 ? startPoint + spread + lastSpawnPointX : spread + lastSpawnPointX;
         SpawnableObject objectToSpawn = pool.GetObject(objectToSpawnName, false).GetComponent<SpawnableObject>();
         int sideIndicator = side == Side.UPPER ? 1 : -1;
