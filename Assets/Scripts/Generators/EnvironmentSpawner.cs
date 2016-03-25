@@ -142,18 +142,16 @@ public class EnvironmentSpawner : MonoBehaviour
         int rng = Random.Range(0, 100);
         float spread = Random.Range(minSpread, maxSpread);
         string objectToSpawnName = "";
+		float delaySpawnDistance = 0;
         for (int i = 0; i < objectsDistribution.Length; i++) {
-			int actualPorbability = objectsDistribution [i] * lastSpawnPointX > startSpawnDistance [i] ? 1 : 0;
-			if (rng < actualPorbability) {
+			if (rng < objectsDistribution [i]) {
                 objectToSpawnName = ObjectTypesDataHolder.Instance.GetObjectNameForType(objectsToSpawn[i]);
+				delaySpawnDistance = startSpawnDistance [i];
                 if (objectsPadding.Length == objectsToSpawn.Length) {
                     spread = spread < objectsPadding[i] ? objectsPadding[i] : spread;
                 }
                 break;
             }
-        }
-        if(objectToSpawnName.Equals("")) {
-            return false;
         }
         float spawnPointX = lastSpawnPointX == 0 ? startPoint + spread + lastSpawnPointX : spread + lastSpawnPointX;
         SpawnableObject objectToSpawn = pool.GetObject(objectToSpawnName, false).GetComponent<SpawnableObject>();
@@ -162,7 +160,7 @@ public class EnvironmentSpawner : MonoBehaviour
         if (IsOverlappingWith(spawnPosition, collisionTags)) {
             Vector2 mostSuitableSpawnPos = FindSuitableSpawn(spawnPosition, maxSpread - spread, spread - minSpread, collisionTags);
             if (Mathf.Abs(spawnPosition.x - mostSuitableSpawnPos.x) > Mathf.Epsilon &&
-                spread < maxSpread) {
+				spread < maxSpread && delaySpawnDistance < mostSuitableSpawnPos.x) {
                 spawnPosition = mostSuitableSpawnPos;
             }
             else {
