@@ -74,6 +74,7 @@ public class GameManager : MonoBehaviour
         Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         new ConsumablesManager().ApplyActiveConsumables();
         new TreePassivesManager().ApplyActivePassives();
+        EventManager.Reset();
     }
     
     void Start() {

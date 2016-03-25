@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public static class EventManager
+﻿public static class EventManager
 {
 
     public delegate void PlayerDied();
@@ -93,4 +91,16 @@ public static class EventManager
 			OnObstacleWarning(show, side);
 		}
 	}
+    
+    public static void Reset() {
+        OnObstacleWarning = null;
+        OnAnimationComplete = null;
+        OnBeforePlayerDied = null;
+        OnBeforePlayerResurrected = null;
+        OnHeadstart = null;
+        OnHeadstartEnd = null;
+        OnLevelUp = null;
+        OnPlayerDied = null;
+        OnPlayerResurrected = null;
+    }
 }
