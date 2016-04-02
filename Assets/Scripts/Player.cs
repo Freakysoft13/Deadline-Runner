@@ -446,7 +446,7 @@ public class Player : MonoBehaviour
     public int expToDistanceThreshold = 2;
 
     void OnTriggerEnter2D(Collider2D collider) {
-        if (collider.CompareTag("obstacle") && !isDead && !isShielded && !isInAfterLife) {
+        if ((collider.CompareTag("obstacle") || collider.CompareTag("flying")) && !isDead && !isShielded && !isInAfterLife) {
             GameManager.Instance.ApplyAfterLife();
         }
     }

@@ -1,46 +1,88 @@
 ﻿using UnityEngine;
-using System.Collections;
 using Side = GameManager.Side;
 
-public class FlyingObstacle : MonoBehaviour {
+public class FlyingObstacle : MonoBehaviour
+{
+    public float speed = 10.0f;
+    public float distanceToPlayer = 10.0f;
+    public float distanceFromPlayer = 30.0f;
 
-	public float speed = 10.0f;
-	public float distanceToPlayer = 10.0f;
+    public float startSpawnDistance = 200.0f;
 
-	private Transform player;
-	private bool isWarningShown = false;
-	private Side side;
+    private Player player;
+    private bool isWarningShown = false;
+    private Side side;
+    private bool shouldSpawn = false;
+    private bool shouldRespawn = true;
 
-	// Use this for initialization
-	void Start () {
-		SpawnableObject so = GetComponent<SpawnableObject>();
-		Vector3 pos = transform.position;
-		float rng = Random.Range(0, 1);
-		if (rng > 0.5f) {
-			pos.y = 2;
-			side = Side.UPPER;
-		} else {
-			pos.y = -7;
-			side = Side.BOTTOM;
-		}
-		transform.position = pos;
-		player = GameObject.FindGameObjectWithTag("Player").transform;
-		if (!isWarningShown) {
-			EventManager.FireObstacleWarning(true, side);
-			isWarningShown = true;
-		}
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		transform.Translate(speed * Vector2.left * Time.deltaTime);
-		if (shouldDisableWarning() && isWarningShown) {
-			EventManager.FireObstacleWarning(false, side);
-			isWarningShown = false;
-		}
-	}
+    // Use this for initialization
+    void Start()
+    {
+        player = GameManager.Instance.Player;
+    }
 
-	private bool shouldDisableWarning() {
-		return transform.position.x - player.position.x < distanceToPlayer;
-	}
+
+    private void Spawn()
+    {
+        if (player.transform.position.x < startSpawnDistance) { return; }
+        Vector3 pos = transform.position;
+        int rng = Random.Range(0, 100);
+        if (rng > 50)
+        {
+            pos.y = 2;
+            side = Side.UPPER;
+        }
+        else
+        {
+            pos.y = -7;
+            side = Side.BOTTOM;
+        }
+        pos.x = player.transform.position.x + distanceFromPlayer;
+        transform.position = pos;
+        if (!isWarningShown)
+        {
+            EventManager.FireObstacleWarning(true, side);
+            isWarningShown = true;
+        }
+    }
+
+    void Update()
+    {
+        transform.Translate(speed * Vector2.left * Time.deltaTime);
+        if (shouldDisableWarning() && isWarningShown)
+        {
+            EventManager.FireObstacleWarning(false, side);
+            isWarningShown = false;
+        }
+        if (shouldSpawn)
+        {
+            Spawn();
+            shouldSpawn = false;
+            shouldRespawn = true;
+        }
+        else if (player.transform.position.x - transform.position.x > distanceFromPlayer && shouldRespawn)
+        {
+            shouldRespawn = false;
+            Invoke("AttemptRespawn", 2.0f);
+        }
+    }
+
+    private void AttemptRespawn()
+    {
+        float rng = Random.Range(0, 100);
+        float canonicalSpawnChance = 10.0f;
+        if (rng < Mathf.Clamp(canonicalSpawnChance * (int)(player.GetDistance() / 100.0f), canonicalSpawnChance, 50.0f))
+        {
+            shouldSpawn = true;
+        }
+        else
+        {
+            Invoke("AttemptRespawn", 2.0f);
+        }
+    }
+
+    private bool shouldDisableWarning()
+    {
+        return transform.position.x - player.transform.position.x < distanceToPlayer;
+    }
 }

@@ -67,7 +67,6 @@ public class ResultPanel : MonoBehaviour
         }
     }
     void Start() {
-
         EventManager.OnLevelUp += delegate () {
             levelUp_txt.gameObject.SetActive(true);
             level_txt.text = LevelLoc + (1 + LevelManager.Instance.GetLevel());
@@ -79,11 +78,18 @@ public class ResultPanel : MonoBehaviour
             unlockImg.Play("UnlockedIcon");
             //отут левел ап
         };
-
-        if (!AdsManager.Instance.isAdReady||!Advertisement.IsReady()) {
+        #if UNITY_WSA
+        if (!AdsManager.Instance.isAdReady) {
             adButton.SetActive(false);
             adImage.SetActive(false);
         }
+        #endif
+        #if UNITY_ANDROID        
+        if (!Advertisement.IsReady()) {
+            adButton.SetActive(false);
+            adImage.SetActive(false);
+        }
+        #endif
 
     }
 #if UNITY_ANDROID
