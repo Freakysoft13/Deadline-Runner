@@ -26,17 +26,15 @@ public class FlyingObstacle : MonoBehaviour
     {
         if (player.transform.position.x < startSpawnDistance) { return; }
         Vector3 pos = transform.position;
-        int rng = Random.Range(0, 100);
-        if (rng > 50)
+        if (player.Side.Equals(Side.UPPER))
         {
             pos.y = 2;
-            side = Side.UPPER;
         }
         else
         {
             pos.y = -7;
-            side = Side.BOTTOM;
         }
+        side = player.Side;
         pos.x = player.transform.position.x + distanceFromPlayer;
         transform.position = pos;
         if (!isWarningShown)
@@ -71,7 +69,7 @@ public class FlyingObstacle : MonoBehaviour
     {
         float rng = Random.Range(0, 100);
         float canonicalSpawnChance = 10.0f;
-        if (rng < Mathf.Clamp(canonicalSpawnChance * (int)(player.GetDistance() / 100.0f), canonicalSpawnChance, 50.0f))
+        if (rng < Mathf.Clamp(canonicalSpawnChance * (player.GetDistance() / 100.0f), canonicalSpawnChance, 50.0f))
         {
             shouldSpawn = true;
         }

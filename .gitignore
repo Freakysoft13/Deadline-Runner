@@ -44,6 +44,9 @@ Assets/Audio/abaaml-*
 Assets/Audio/Circus_Clown_Halloween_Horror*
 Assets/Plugins/Cruncher*
 Win10/*
+Win/*
 UWP/*
 apk.apk
 .consulo
+.vscode
+Assets/VSCode*

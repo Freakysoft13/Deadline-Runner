@@ -45,6 +45,7 @@ public class LevelManager : MonoBehaviour
         if (!ownedSkins.Contains(Skin.NONE)) {
             BuySkin(Skin.NONE);
         }
+        Screen.fullScreen = true;
     }
 
     public void AddExp(int amt) {
