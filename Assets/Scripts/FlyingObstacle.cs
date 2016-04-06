@@ -7,11 +7,17 @@ public class FlyingObstacle : MonoBehaviour
     public float distanceToPlayer = 10.0f;
     public float distanceFromPlayer = 30.0f;
 
+    public float minRespawnDelay = 2.0f;
+    public float maxRespawnDelay = 10.0f;
+
     public float startSpawnDistance = 200.0f;
+    public float hardModeDistance = 1000.0f;
+    
+    public float threshold = 2000.0f;
 
     private Player player;
     private bool isWarningShown = false;
-    private Side side;
+    private Side side = Side.NONE;
     private bool shouldSpawn = false;
     private bool shouldRespawn = true;
 
@@ -19,14 +25,27 @@ public class FlyingObstacle : MonoBehaviour
     void Start()
     {
         player = GameManager.Instance.Player;
+        Invoke("Spawn", Mathf.Clamp(threshold / (player.GetDistance() + 1), minRespawnDelay, maxRespawnDelay));
     }
 
 
     private void Spawn()
     {
-        if (player.transform.position.x < startSpawnDistance) { return; }
+        if (player.GetDistance() < startSpawnDistance || !canRespawn())
+        {
+            Invoke("Spawn", Mathf.Clamp(threshold / (player.GetDistance() + 1), minRespawnDelay, maxRespawnDelay));
+            return;
+        }
         Vector3 pos = transform.position;
-        if (player.Side.Equals(Side.UPPER))
+        if (side.Equals(Side.NONE) || hardModeDistance < player.GetDistance())
+        {
+            side = player.Side;
+        }
+        else
+        {
+            side = side.Equals(Side.UPPER) ? Side.BOTTOM : Side.UPPER;
+        }
+        if (side.Equals(Side.UPPER))
         {
             pos.y = 2;
         }
@@ -34,14 +53,14 @@ public class FlyingObstacle : MonoBehaviour
         {
             pos.y = -7;
         }
-        side = player.Side;
-        pos.x = player.transform.position.x + distanceFromPlayer;
+        pos.x = player.GetDistance() + distanceFromPlayer;
         transform.position = pos;
         if (!isWarningShown)
         {
             EventManager.FireObstacleWarning(true, side);
             isWarningShown = true;
         }
+        Invoke("Spawn", Mathf.Clamp(threshold / (player.GetDistance() + 1), minRespawnDelay, maxRespawnDelay));
     }
 
     void Update()
@@ -52,35 +71,15 @@ public class FlyingObstacle : MonoBehaviour
             EventManager.FireObstacleWarning(false, side);
             isWarningShown = false;
         }
-        if (shouldSpawn)
-        {
-            Spawn();
-            shouldSpawn = false;
-            shouldRespawn = true;
-        }
-        else if (player.transform.position.x - transform.position.x > distanceFromPlayer && shouldRespawn)
-        {
-            shouldRespawn = false;
-            Invoke("AttemptRespawn", 2.0f);
-        }
-    }
-
-    private void AttemptRespawn()
-    {
-        float rng = Random.Range(0, 100);
-        float canonicalSpawnChance = 10.0f;
-        if (rng < Mathf.Clamp(canonicalSpawnChance * (player.GetDistance() / 100.0f), canonicalSpawnChance, 50.0f))
-        {
-            shouldSpawn = true;
-        }
-        else
-        {
-            Invoke("AttemptRespawn", 2.0f);
-        }
     }
 
     private bool shouldDisableWarning()
     {
         return transform.position.x - player.transform.position.x < distanceToPlayer;
+    }
+
+    private bool canRespawn()
+    {
+        return player.transform.position.x - transform.position.x > distanceToPlayer;
     }
 }

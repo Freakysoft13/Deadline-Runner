@@ -140,6 +140,6 @@ public class GameManager : MonoBehaviour
     
     public enum Side
     {
-        UPPER, BOTTOM
+        UPPER, BOTTOM, NONE
     }
 }
