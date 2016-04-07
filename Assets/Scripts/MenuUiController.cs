@@ -89,10 +89,10 @@ public class MenuUiController : MonoBehaviour
     }
     public void SoundBtnRoute()
     {
-        print(LevelManager.Instance.GetSoundCheck());
-        print(soundOn.gameObject.activeInHierarchy);
-        print(soundOff.gameObject.activeInHierarchy);
-        print(AudioListener.pause);
+        //print(LevelManager.Instance.GetSoundCheck());
+        //print(soundOn.gameObject.activeInHierarchy);
+        //print(soundOff.gameObject.activeInHierarchy);
+        //print(AudioListener.pause);
 
         if (LevelManager.Instance.GetSoundCheck() == 0)
         {
