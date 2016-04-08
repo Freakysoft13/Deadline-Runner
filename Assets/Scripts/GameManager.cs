@@ -109,9 +109,7 @@ public class GameManager : MonoBehaviour
 
     public void PlayerDie() {
         //Time.timeScale = 0;
-        mainCamera.SetActive(true);
-        playerCamera.SetActive(false);
-        grayscaleCamera.SetActive(false);
+
     }
 
     public void ApplyAfterLife() {
@@ -124,6 +122,9 @@ public class GameManager : MonoBehaviour
     public void PlayerResurrect() {
         shieldStub.PickUp();
         hasRessurectedThisRun = true;
+        mainCamera.SetActive(true);
+        playerCamera.SetActive(false);
+        grayscaleCamera.SetActive(false);
     }
 
     public void BeforePlayerResurrect() {
