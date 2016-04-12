@@ -21,7 +21,6 @@ public class tp : MonoBehaviour
     public Image audioOn_img;
     public Image audioOff_img;
 
-    public GameObject money_mask;
     public int[] ress_price;
     public Text ress_txt;
     private int priceindex = 0;
@@ -53,7 +52,6 @@ public class tp : MonoBehaviour
 
         audioOff_img.gameObject.SetActive(false);
         audioOn_img.gameObject.SetActive(true);
-        money_mask.gameObject.SetActive(false);
         CrystalSumm.text = LevelManager.Instance.GetMoney().ToString();
         EventManager.OnPlayerDied += PlayerDie;
         EventManager.OnPlayerResurrected += PlayerResurrect;
@@ -165,21 +163,13 @@ public class tp : MonoBehaviour
     }
 
     // test_money mask can be replaced with prefab from shop
-    void Money_mask()
-    {
-        money_mask.gameObject.SetActive(true);
-    }
     //redirect link leads to special pnl in shop(if using other mask prefab add this to mask GetCrystal btn)
     public void get_crystals()
     {
         LevelManager.Instance.SetShopID(1);
         Application.LoadLevel("Shop");
     }
-    //closes money mask(if maske replaced add this to new mask close btn)
-    public void close_moneymask()
-    {
-        money_mask.gameObject.SetActive(false);
-    }
+
     // ress button for money ress no actuall ress is added only money part
     public void ressurect()
     {
@@ -211,7 +201,6 @@ public class tp : MonoBehaviour
         else
         {
             ress_txt.text = ress_price[priceindex].ToString();
-            Money_mask();
         }
 
     }
