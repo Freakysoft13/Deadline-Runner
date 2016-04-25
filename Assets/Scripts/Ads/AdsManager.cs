@@ -65,7 +65,10 @@ public class AdsManager : MonoBehaviour
         catch (Exception)
         {
             isAdReady = false;
-            RequestVideoAd(true);
+            if (RequestVideoAd != null)
+            {
+                RequestVideoAd(true);
+            }
         }
     }
 
@@ -73,7 +76,10 @@ public class AdsManager : MonoBehaviour
     {
         if (!flag)
         {
-            RequestVideoAd(true);
+            if (RequestVideoAd != null)
+            {
+                RequestVideoAd(true);
+            }
         }
         else
         {
@@ -118,7 +124,10 @@ public class AdsManager : MonoBehaviour
         }
         else
         {
-            ShowVideoAd(true);
+            if (ShowVideoAd != null)
+            {
+                ShowVideoAd(true);
+            }
             OnAdFinished += (argument) =>
             {
                 onAdCompleted(null);
