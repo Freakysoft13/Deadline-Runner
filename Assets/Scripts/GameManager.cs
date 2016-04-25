@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
 
     void Update() {
         if (target != Application.targetFrameRate) {
-            Application.targetFrameRate = target;
+           Application.targetFrameRate = target;
         }
     }
 

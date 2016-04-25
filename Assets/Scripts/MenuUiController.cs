@@ -17,10 +17,12 @@ public class MenuUiController : MonoBehaviour
     //timescale factor excluding freeze bug
     void Start()
     {
+        // PlayerPrefs.DeleteAll();
 
 #if UNITY_WSA
-                    ladderObj.SetActive(false);
-                    windowsHelp.SetActive(true);
+        ladderObj.SetActive(false);
+        windowsHelp.SetActive(true);
+
 #endif
 #if UNITY_STANDALONE_WIN
                     ladderObj.SetActive(false);
