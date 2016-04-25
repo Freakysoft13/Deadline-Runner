@@ -1,0 +1,40 @@
+
+Chain.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+BigGear
+  rotate: false
+  xy: 2, 2
+  size: 250, 249
+  orig: 283, 348
+  offset: 22, 51
+  index: -1
+Chain1
+  rotate: false
+  xy: 408, 206
+  size: 26, 45
+  orig: 45, 57
+  offset: 9, 7
+  index: -1
+Chain2
+  rotate: false
+  xy: 254, 7
+  size: 5, 43
+  orig: 45, 56
+  offset: 19, 7
+  index: -1
+Chain3
+  rotate: false
+  xy: 254, 52
+  size: 28, 45
+  orig: 45, 57
+  offset: 8, 7
+  index: -1
+Gear
+  rotate: false
+  xy: 254, 99
+  size: 152, 152
+  orig: 160, 160
+  offset: 4, 4
+  index: -1
