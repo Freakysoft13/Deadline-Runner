@@ -63,7 +63,7 @@ public class EnvironmentSpawner : MonoBehaviour
 				obstaclesDistribution, obstaclesPadding, new string[] { "obstacle", "crystal" },
 				obstacleStartSpawnDistance);
 
-            yield return new WaitForSeconds(.05f);
+            yield return new WaitForSeconds(.5f);
         }
     }
 
