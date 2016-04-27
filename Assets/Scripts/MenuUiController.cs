@@ -17,7 +17,6 @@ public class MenuUiController : MonoBehaviour
     //timescale factor excluding freeze bug
     void Start()
     {
-        // PlayerPrefs.DeleteAll();
 
 #if UNITY_WSA
         ladderObj.SetActive(false);
@@ -95,7 +94,6 @@ public class MenuUiController : MonoBehaviour
         //print(soundOn.gameObject.activeInHierarchy);
         //print(soundOff.gameObject.activeInHierarchy);
         //print(AudioListener.pause);
-
         if (LevelManager.Instance.GetSoundCheck() == 0)
         {
             soundOn.gameObject.SetActive(false);

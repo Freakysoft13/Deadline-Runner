@@ -92,7 +92,12 @@ public class AnimationManager : MonoBehaviour
     }
 
     public void FillCanal(int index) {
-        canalImages[index].GetComponent<Animator>().SetTrigger("Fill");
+        #if UNITY_WSA_8_1
+            OpenAncestor();      
+        #else
+            canalImages[index].GetComponent<Animator>().SetTrigger("Fill");
+        #endif  
+        
     }
 
     public void OpenAncestor() {
@@ -104,9 +109,10 @@ public class AnimationManager : MonoBehaviour
         skelAnim.AnimationName = "animation";
         unlocked_ancestor_btn[index].SetActive(true);
         SaveOpenedAncestor(index);
-        StopAllGears();
         SaveLastEntryLevel(index);
+        StopAllGears();
         InitiateAncestorLevelCheck();
+        canalImages[index].fillAmount = 1.0f;
     }
 
     private void StopAllGears() {

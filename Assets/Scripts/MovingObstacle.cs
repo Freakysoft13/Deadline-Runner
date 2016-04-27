@@ -6,6 +6,7 @@ public class MovingObstacle : MonoBehaviour {
     private Vector2 velocity;
     private float gravityScale = 1.0f;
     private bool isAnimationTriggered = false;
+    private AudioSource source;
 
     public float speed;
     public int direction = -1;
@@ -14,6 +15,7 @@ public class MovingObstacle : MonoBehaviour {
 
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        source = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -23,6 +25,7 @@ public class MovingObstacle : MonoBehaviour {
             if(!isAnimationTriggered) {
                 anim.SetTrigger("fall");
                 isAnimationTriggered = true;
+                source.PlayDelayed(0.5f);
             }
             velocity.x = direction * speed;
         } else {

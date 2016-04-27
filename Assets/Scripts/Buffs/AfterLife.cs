@@ -15,6 +15,7 @@ namespace Effect
 
         public override void ApplyEffect(Player player) {
             player.AfterLifeStart();
+            GetComponent<AudioSource>().Play();
         }
 
         public override void WearOff(Player player) {
@@ -22,6 +23,7 @@ namespace Effect
 
         public override void RemoveEffect(Player player) {
             player.AfterLifeEnd();
+            GetComponent<AudioSource>().Stop();
         }
     }
 }

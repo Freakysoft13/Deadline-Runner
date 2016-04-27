@@ -26,8 +26,11 @@ public class RewardManager : MonoBehaviour
     private int nextChestId;
     private DateTime timeOfNextOpening;
     private bool shouldPerform = true;
+    
+    private AudioSource source;
 
     void Start() {
+        source = GetComponent<AudioSource>();
         Initialize();
     }
 
@@ -94,7 +97,7 @@ public class RewardManager : MonoBehaviour
             Debug.Log("Cheat!");
             return;
         }
-
+        source.Play();
         int rewardedAmt = rewards[btnId];
         LevelManager.Instance.AddMoney(rewardedAmt);
         Debug.Log("You are rewarded with " + rewardedAmt + " crystals!");
