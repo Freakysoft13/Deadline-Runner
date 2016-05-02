@@ -21,7 +21,7 @@ public class SpikesSoundPlayer : MonoBehaviour
 
     void Update()
     {
-        if ((Time.time - playbackTime > DELAY * timeScale) && Mathf.Abs(transform.position.x - player.position.x) < 10)
+        if ((Time.time - playbackTime > DELAY * timeScale) && Mathf.Abs(transform.position.x - player.position.x) < 7)
         {
 			playbackTime = Time.time + DELAY;
 			source.Play();

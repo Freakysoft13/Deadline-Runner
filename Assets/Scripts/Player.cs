@@ -38,6 +38,10 @@ public class Player : MonoBehaviour
 
     public RectTransform moonPanel;
 
+    private AudioSource jumpSound;
+    private AudioSource runSound;
+    private AudioSource deathSound;
+
     public bool IsShielded {
         get { return isShielded; }
         set { isShielded = value; }
@@ -207,6 +211,10 @@ public class Player : MonoBehaviour
         if (IsCrystalsDoubledPassive) {
             GameManager.Instance.scoreMultiplier = 2;
         }
+        AudioSource[] sources = GetComponents<AudioSource>();
+        jumpSound = sources[0];
+        runSound = sources[1];
+        deathSound = sources[2];
     }
 
     private void SetActiveSkin() {
@@ -307,12 +315,14 @@ public class Player : MonoBehaviour
             startShieldStub.PickUp();
             isShieldPassive = false;
         }
+        runSound.Play();
     }
     public void Stop() {
         velocity.x = 0;
         if (PlayerFlip * velocity.y > 0) {
             velocity.y = 0;
         }
+        runSound.Stop();
     }
 
     public void Jump() {
@@ -320,6 +330,7 @@ public class Player : MonoBehaviour
         jumpOnLand = false;
         velocity.y = jumpSpeed * PlayerFlip;
         animationController.JumpUp();
+        jumpSound.Play();
     }
     public void FallDown() {
         isJumping = false;
@@ -372,6 +383,7 @@ public class Player : MonoBehaviour
             EventManager.FirePlayerDied();
         };
         animationController.Die();
+        deathSound.Play();
     }
 
     public void Ressurect() {

@@ -23,7 +23,6 @@ namespace Effect
 
         public override void RemoveEffect(Player player) {
             player.AfterLifeEnd();
-            GetComponent<AudioSource>().Stop();
         }
     }
 }

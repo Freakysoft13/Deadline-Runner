@@ -90,10 +90,9 @@ public class AnimationManager : MonoBehaviour
         }
         return ancestorLevel;
     }
-
     public void FillCanal(int index) {
-        #if UNITY_WSA_8_1
-            OpenAncestor();      
+        #if UNITY_WSA_8_1 || UNITY_WP_8_1
+            OpenAncestor();
         #else
             canalImages[index].GetComponent<Animator>().SetTrigger("Fill");
         #endif  

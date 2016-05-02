@@ -6,6 +6,7 @@ namespace Effect
     {
         private List<Effect> effects = new List<Effect>();
         private Player player;
+        private AudioSource pickupSound;
 
         private static EffectManager instance;
 
@@ -22,6 +23,7 @@ namespace Effect
         void Start() {
             instance = this;
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+            pickupSound = GetComponent<AudioSource>();
         }
 
         void Update() {
@@ -46,6 +48,7 @@ namespace Effect
                 effect.ApplyEffect(player);
             }
             effects.Add(effect);
+            pickupSound.Play();
         }
     }
 }
