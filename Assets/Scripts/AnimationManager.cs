@@ -39,8 +39,8 @@ public class AnimationManager : MonoBehaviour
         int level = LevelManager.Instance.GetLevel();
         int ancestorLevel = GetAncestorLevel();
         if (ancestorLevel <= level && ancestorLevel != GetLastOpenedAncestor()) {
-            TriggerStart();
             FillCanal(ancestorLevel);
+            TriggerStart();
         }
         else {
             SaveLastEntryLevel(LevelManager.Instance.GetLevel());
