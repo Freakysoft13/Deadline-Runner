@@ -12,6 +12,7 @@ public class MovingObstacle : MonoBehaviour {
     public int direction = -1;
     public float defaultGravityAccel = 1.0f;
     public float distanceToPlayer = 25.0f;
+    public float soundDelay = 0.055f;
 
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -25,7 +26,7 @@ public class MovingObstacle : MonoBehaviour {
             if(!isAnimationTriggered) {
                 anim.SetTrigger("fall");
                 isAnimationTriggered = true;
-                source.PlayDelayed(0.5f);
+                source.PlayDelayed(soundDelay);
             }
             velocity.x = direction * speed;
         } else {
