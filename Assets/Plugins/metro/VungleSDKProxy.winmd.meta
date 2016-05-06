@@ -47,10 +47,10 @@ PluginImporter:
       enabled: 1
       settings:
         CPU: AnyCPU
-        DontProcess: False
+        DontProcess: True
         PlaceholderPath: Assets/Plugins/VungleSDKProxy.dll
-        SDK: AnySDK
-        ScriptingBackend: AnyScriptingBackend
+        SDK: UWP
+        ScriptingBackend: DotNet
   userData: 
   assetBundleName: 
   assetBundleVariant: 

@@ -236,12 +236,14 @@ public class tp : MonoBehaviour
             ShowRewardedAd();
 #endif
 #if UNITY_WSA
-            AdsManager.Instance.ShowVideo(null, "ress", (arg) => {
-                if (arg == null || (arg != null && (arg is AdFinishedEventArgs) && ((AdFinishedEventArgs)arg).IsCompletedView)) {
+            AdsManager.Instance.ShowVideo((arg) =>
+            {
+                if (arg == null || (arg != null && (arg is AdFinishedEventArgs) && ((AdFinishedEventArgs)arg).IsCompletedView))
+                {
                     GameManager.Instance.Player.Ressurect();
-                    AdsManager.Instance.Unsubscribe("ress");
                 }
-                else {
+                else
+                {
                     deathpnl.SetActive(false);
                     scoreboard.SetActive(true);
                 }
@@ -267,7 +269,7 @@ public class tp : MonoBehaviour
 
     private void PlayerDie()
     {
-        if (!GameManager.Instance.HasRessurectedThisRun && AdsManager.Instance.isAdReady)
+        if (!GameManager.Instance.HasRessurectedThisRun && AdsManager.Instance.IsAdReady)
         {
             deathpnl.SetActive(true);
         }

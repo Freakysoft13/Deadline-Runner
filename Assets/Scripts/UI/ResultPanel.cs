@@ -93,7 +93,7 @@ public class ResultPanel : MonoBehaviour
             levelUp = sources[1];
         }
 #if UNITY_WSA
-        if (!AdsManager.Instance.isAdReady)
+        if (!AdsManager.Instance.IsAdReady)
         {
             adButton.SetActive(false);
             adImage.SetActive(false);
@@ -275,10 +275,9 @@ public class ResultPanel : MonoBehaviour
                 GameManager.Instance.AddCrystals((GameManager.Instance.GetCrystals() * 2));
                 collectedCrystals.text = collectedCryLoc + crystalsCollectedCounter * 2;
                 LevelManager.Instance.AddMoney(crystalsCollected);
-                AdsManager.Instance.Unsubscribe("crystals_mult");
             }
         };
-        AdsManager.Instance.ShowVideo(null, "crystals_mult", onAdCompleted);
+        AdsManager.Instance.ShowVideo(onAdCompleted);
 #endif
         //ADS
 #if UNITY_ANDROID

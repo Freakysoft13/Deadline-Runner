@@ -1,31 +1,40 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using UnityEngine;
 
 public class AdsManager : MonoBehaviour
 {
+    public int msAdsRetryCount = 1;
+
     public string androidAppID;
     public string iosAppID;
     public string winAppID;
 
-    public bool isAdReady = false;
-    public bool isOuterAdReady = false;
+    public bool IsAdReady
+    {
+        get { return displayAds; }
+        set { displayAds = value; }
+    }
 
-    public delegate void OnEvent(object arg);
-    public OnEvent RequestVideoAd; //arg = bool isAdDuplex
-    public OnEvent ShowVideoAd; //arg = bool isAdDuplex
-    public OnEvent NoVideoAd; //arg = bool isAdDuplex
-    public OnEvent OnAdLoadFailed;
-    public OnEvent OnAdLoadSuccessful;
-    public OnEvent OnAdFinished;
+    public Action<object> OnAdCompleted;
 
     private static AdsManager instance = null;
 
     public static AdsManager Instance
     {
         get { return instance; }
+    }
+
+    private Microsoft.UnityPlugins.IInterstittialAd msInterstitialAd;
+    private const string MicrosoftAdsAppId = "bba15f80-e19f-4471-83a7-b4dc040764e1";
+    private int retryCount = 0;
+    private bool displayAds = false;
+    private bool isMSAds = true;
+    protected string NextMicrosoftAd
+    {
+        get
+        {
+            return "11569621";
+        }
     }
 
     void Awake()
@@ -39,113 +48,88 @@ public class AdsManager : MonoBehaviour
         {
             DestroyImmediate(this);
         }
-        OnAdLoadFailed += (arg) =>
+        msInterstitialAd = Microsoft.UnityPlugins.MicrosoftAdsBridge.InterstitialAdFactory.CreateAd(OnMSReady,
+            OnMSAdCompleted, OnMSAdCancelled, OnMSAdError);
+    }
+    public void OnMSReady(object obj)
+    {
+        displayAds = true;
+    }
+    public void OnMSAdCompleted(object obj)
+    {
+        RequestMSAd();
+        OnAdCompleted(obj);
+        OnAdCompleted = null;
+    }
+    public void OnMSAdCancelled(object obj)
+    {
+        RequestMSAd();
+    }
+    public void OnMSAdError(object obj)
+    {
+        if (retryCount++ < msAdsRetryCount)
         {
-            isOuterAdReady = false;
+            RequestMSAd();
+        }
+        else
+        {
             FallbackAds();
-        };
-        OnAdLoadSuccessful += (arg) =>
-        {
-            isAdReady = true;
-            isOuterAdReady = true;
-        };
-        NoVideoAd += (arg) =>
-        {
-            isAdReady = false;
-        };
+        }
+    }
+
+    private void RequestMSAd()
+    {
+        msInterstitialAd.Request(MicrosoftAdsAppId, NextMicrosoftAd, Microsoft.UnityPlugins.AdType.Video);
+    }
+    private void ShowMSAd()
+    {
+        msInterstitialAd.Show();
+    }
+    private void RequestVungleAd()
+    {
+        Vungle.playAd();
+    }
+    private void ShowVungleAd()
+    {
+        msInterstitialAd.Show();
     }
 
     void FallbackAds()
     {
-        try
-        {
-            Vungle.init(androidAppID, iosAppID, winAppID);
-            Vungle.adPlayableEvent += AdPlayableEvent;
-        }
-        catch (Exception)
-        {
-            isAdReady = false;
-            if (RequestVideoAd != null)
-            {
-                RequestVideoAd(true);
-            }
-        }
+        isMSAds = false;
+        Vungle.init(androidAppID, iosAppID, winAppID);
+        Vungle.adPlayableEvent += AdPlayableEvent;
+        Vungle.onAdFinishedEvent += VungleAdFinished;
     }
 
+    private void VungleAdFinished(AdFinishedEventArgs args)
+    {
+        OnAdCompleted(args);
+        OnAdCompleted = null;
+    }
     private void AdPlayableEvent(bool flag)
     {
-        if (!flag)
-        {
-            if (RequestVideoAd != null)
-            {
-                RequestVideoAd(true);
-            }
-        }
-        else
-        {
-            isAdReady = true;
-        }
+        displayAds = true;
     }
 
     public void RequestVideo()
     {
-        if (RequestVideoAd != null)
+        if (isMSAds)
         {
-            RequestVideoAd(false);
+            RequestMSAd();
+        }
+    }
+
+    public void ShowVideo(Action<object> callback)
+    {
+        OnAdCompleted = callback;
+        if (isMSAds)
+        {
+            ShowMSAd();
         }
         else
         {
-            FallbackAds();
+            ShowVungleAd();
         }
     }
-
-    public void ShowVideo(object arg, string subscriberUID, Action<object> onAdCompleted)
-    {
-        if (isOuterAdReady && ShowVideoAd != null)
-        {
-            ShowVideoAd(false);
-            OnAdFinished += (argument) =>
-            {
-                onAdCompleted(null);
-            };
-        }
-        else if (Vungle.isAdvertAvailable())
-        {
-            Vungle.playAdWithOptions(new Dictionary<string, object>());
-            if (!subscribers.Keys.Contains(subscriberUID))
-            {
-                Action<AdFinishedEventArgs> sub = (param) =>
-                {
-                    onAdCompleted(param);
-                };
-                Vungle.onAdFinishedEvent += sub;
-                subscribers.Add(subscriberUID, sub);
-            }
-        }
-        else
-        {
-            if (ShowVideoAd != null)
-            {
-                ShowVideoAd(true);
-            }
-            OnAdFinished += (argument) =>
-            {
-                onAdCompleted(null);
-            };
-        }
-    }
-
-    public void Unsubscribe(string subscriberUID)
-    {
-        if (subscribers.Keys.Contains(subscriberUID))
-        {
-            Vungle.onAdFinishedEvent -= subscribers[subscriberUID];
-        }
-        if (OnAdFinished != null)
-        {
-            OnAdFinished = null;
-        }
-    }
-
-    private Dictionary<string, Action<AdFinishedEventArgs>> subscribers = new Dictionary<string, Action<AdFinishedEventArgs>>();
 }
