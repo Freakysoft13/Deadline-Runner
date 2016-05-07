@@ -232,21 +232,17 @@ public class tp : MonoBehaviour
         else
         {
             deathpnl.SetActive(false);
+            result_pnl.SetActive(true); //In case something goes wrong with ad.
 #if UNITY_ANDROID
             ShowRewardedAd();
 #endif
 #if UNITY_WSA
             AdsManager.Instance.ShowVideo((arg) =>
             {
-                if (arg == null || (arg != null && (arg is AdFinishedEventArgs) && ((AdFinishedEventArgs)arg).IsCompletedView))
-                {
-                    GameManager.Instance.Player.Ressurect();
-                }
-                else
-                {
-                    deathpnl.SetActive(false);
-                    scoreboard.SetActive(true);
-                }
+                GameManager.Instance.Player.Ressurect();
+                deathpnl.SetActive(false);
+                scoreboard.SetActive(true);
+                result_pnl.SetActive(false); //looks like ad has been successfully displayed
             });
 #endif
         }

@@ -48,7 +48,7 @@ PluginImporter:
       settings:
         CPU: AnyCPU
         DontProcess: False
-        PlaceholderPath: 
+        PlaceholderPath: Assets/Plugins/metro/VungleSDKProxy.winmd
         SDK: AnySDK
         ScriptingBackend: AnyScriptingBackend
   userData: 

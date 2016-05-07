@@ -49,7 +49,7 @@ PluginImporter:
         CPU: AnyCPU
         DontProcess: True
         PlaceholderPath: Assets/Plugins/VungleSDKProxy.dll
-        SDK: UWP
+        SDK: AnySDK
         ScriptingBackend: DotNet
   userData: 
   assetBundleName: 

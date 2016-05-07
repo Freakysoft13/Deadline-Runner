@@ -82,7 +82,6 @@ public class GameManager : MonoBehaviour
         EventManager.OnPlayerDied += PlayerDie;
         EventManager.OnPlayerResurrected += PlayerResurrect;
         EventManager.OnBeforePlayerResurrected += BeforePlayerResurrect;
-        AdsManager.Instance.RequestVideo();
     }
 
     void Update() {

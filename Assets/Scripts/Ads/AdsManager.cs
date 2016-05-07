@@ -28,7 +28,7 @@ public class AdsManager : MonoBehaviour
     private const string MicrosoftAdsAppId = "bba15f80-e19f-4471-83a7-b4dc040764e1";
     private int retryCount = 0;
     private bool displayAds = false;
-    private bool isMSAds = true;
+    private bool isMSAds = false;
     protected string NextMicrosoftAd
     {
         get
@@ -48,8 +48,12 @@ public class AdsManager : MonoBehaviour
         {
             DestroyImmediate(this);
         }
+    }
+    void Start()
+    {
         msInterstitialAd = Microsoft.UnityPlugins.MicrosoftAdsBridge.InterstitialAdFactory.CreateAd(OnMSReady,
             OnMSAdCompleted, OnMSAdCancelled, OnMSAdError);
+        RequestMSAd();
     }
     public void OnMSReady(object obj)
     {
@@ -67,14 +71,13 @@ public class AdsManager : MonoBehaviour
     }
     public void OnMSAdError(object obj)
     {
-        if (retryCount++ < msAdsRetryCount)
-        {
+        FallbackAds();
+        /*if (retryCount++ < msAdsRetryCount) {
             RequestMSAd();
         }
-        else
-        {
+        else {
             FallbackAds();
-        }
+        }*/
     }
 
     private void RequestMSAd()
@@ -85,19 +88,15 @@ public class AdsManager : MonoBehaviour
     {
         msInterstitialAd.Show();
     }
-    private void RequestVungleAd()
-    {
-        Vungle.playAd();
-    }
     private void ShowVungleAd()
     {
-        msInterstitialAd.Show();
+        Vungle.playAd();
     }
 
     void FallbackAds()
     {
-        isMSAds = false;
-        Vungle.init(androidAppID, iosAppID, winAppID);
+        isMSAds = true;
+        Vungle.init("com.prime31.Vungle", "vungleTest", "vungleTest");
         Vungle.adPlayableEvent += AdPlayableEvent;
         Vungle.onAdFinishedEvent += VungleAdFinished;
     }
@@ -109,7 +108,7 @@ public class AdsManager : MonoBehaviour
     }
     private void AdPlayableEvent(bool flag)
     {
-        displayAds = true;
+        displayAds = false;
     }
 
     public void RequestVideo()
