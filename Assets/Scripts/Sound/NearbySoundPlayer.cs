@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class NearbySoundPlayer : MonoBehaviour
 {
@@ -7,16 +6,12 @@ public class NearbySoundPlayer : MonoBehaviour
     public float soundRange = 0.0f;
     private AudioSource source;
     private Transform player;
-    private float a;
-    private float b;
     private float startVolume;
 
     void Start()
     {
         source = GetComponent<AudioSource>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        a = transform.position.x - soundRange;
-        b = transform.position.x + soundRange;
         startVolume = source.volume;
     }
 

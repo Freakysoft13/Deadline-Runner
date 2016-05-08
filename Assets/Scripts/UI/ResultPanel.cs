@@ -100,7 +100,8 @@ public class ResultPanel : MonoBehaviour
         }
 #endif
 #if UNITY_ANDROID
-        if (!Advertisement.IsReady()) {
+        if (!Advertisement.IsReady())
+        {
             adButton.SetActive(false);
             adImage.SetActive(false);
         }
@@ -129,7 +130,6 @@ public class ResultPanel : MonoBehaviour
                 GameManager.Instance.AddCrystals((GameManager.Instance.GetCrystals() * 2));
                 collectedCrystals.text = collectedCryLoc + crystalsCollectedCounter * 2;
                 LevelManager.Instance.AddMoney(crystalsCollected);
-                AdsManager.Instance.Unsubscribe("crystals_mult");
                 break;
             case ShowResult.Skipped:
                 Debug.Log("The ad was skipped before reaching the end.");
@@ -169,6 +169,32 @@ public class ResultPanel : MonoBehaviour
     {
         UpdateExp();
         UpdateCounters();
+    }
+
+    public void GrantAchievements()
+    {
+        float distanceTraveled = GameManager.Instance.Player.GetDistance();
+        float crystalsCollected = LevelManager.Instance.GetTotalMoney();
+        if (distanceTraveled > 1999)
+        {
+            GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_runner, 100.0f);
+        }
+        if (distanceTraveled > 4999)
+        {
+            GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_long_distance_runner, 100.0f);
+        }
+        if (crystalsCollected > 99)
+        {
+            GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_something_shiny, 100.0f);
+        }
+        if (crystalsCollected > 4999)
+        {
+            GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_gemology, 100.0f);
+        }
+        if (crystalsCollected > 49999)
+        {
+            GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_jeweler, 100.0f);
+        }
     }
 
     private void UpdateCounters()
@@ -217,7 +243,7 @@ public class ResultPanel : MonoBehaviour
         else
         {
             updateExpBar = false;
-            if (Mathf.Abs(expSlider.value - 1) < fillPrecision)
+            if (Mathf.Abs(expSlider.value - 1) < fillPrecision && !LevelManager.Instance.IsMaxLevel())
             {
                 EventManager.FireLevelUp();
                 levelUp.Play();
@@ -227,7 +253,11 @@ public class ResultPanel : MonoBehaviour
             {
                 CalcLevelProgress();
             }
-            
+            else
+            {
+                GrantAchievements();
+            }
+
             if (expGain.isPlaying)
             {
                 expGain.Stop();

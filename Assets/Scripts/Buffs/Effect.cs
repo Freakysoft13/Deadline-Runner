@@ -10,6 +10,7 @@ namespace Effect
         public bool isWearingOff = false;
         public float upgradeDuration = 1.0f;
         public bool disappearOnPickup = true;
+        public bool isBuff = false;
 
         private float pickUpTime = 0;
         private Player player;

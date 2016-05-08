@@ -76,7 +76,6 @@ public class tp : MonoBehaviour
                 // YOUR CODE TO REWARD THE GAMER
                 // Give coins etc.
                 GameManager.Instance.Player.Ressurect();
-                AdsManager.Instance.Unsubscribe("ress");
                 break;
             case ShowResult.Skipped:
                 Debug.Log("The ad was skipped before reaching the end.");
@@ -232,7 +231,6 @@ public class tp : MonoBehaviour
         else
         {
             deathpnl.SetActive(false);
-            result_pnl.SetActive(true); //In case something goes wrong with ad.
 #if UNITY_ANDROID
             ShowRewardedAd();
 #endif
@@ -242,7 +240,6 @@ public class tp : MonoBehaviour
                 GameManager.Instance.Player.Ressurect();
                 deathpnl.SetActive(false);
                 scoreboard.SetActive(true);
-                result_pnl.SetActive(false); //looks like ad has been successfully displayed
             });
 #endif
         }

@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public ObjectTypesDataHolder.CrystalType[] crystalTypes;
     public string[] effectNames;
     public LevelManager.PowerUp[] effectTypes;
-   
+
 
     private int score;
     private Player player;
@@ -32,31 +32,41 @@ public class GameManager : MonoBehaviour
     public bool upgradePassives = false;
     public int target = 60;
 
-    public static GameManager Instance {
+    public static GameManager Instance
+    {
         get { return instance; }
     }
 
-    public Player Player {
-        get {
+    public Player Player
+    {
+        get
+        {
             return player;
         }
 
-        set {
+        set
+        {
             player = value;
         }
     }
 
-    public bool HasRessurectedThisRun {
-        get {
+    public int Score { get; set; }
+
+    public bool HasRessurectedThisRun
+    {
+        get
+        {
             return hasRessurectedThisRun;
         }
 
-        set {
+        set
+        {
             hasRessurectedThisRun = value;
         }
     }
 
-    void Awake() {
+    void Awake()
+    {
         instance = this;
         objectDecorator = new ObjectDecorator();
         dataHolder = ObjectTypesDataHolder.Instance;
@@ -76,49 +86,83 @@ public class GameManager : MonoBehaviour
         new TreePassivesManager().ApplyActivePassives();
         EventManager.Reset();
     }
-    
-    void Start() {
+
+    void Start()
+    {
         Application.targetFrameRate = target;
         EventManager.OnPlayerDied += PlayerDie;
         EventManager.OnPlayerResurrected += PlayerResurrect;
         EventManager.OnBeforePlayerResurrected += BeforePlayerResurrect;
+        EventManager.OnLevelUp += () =>
+        {
+            if (LevelManager.Instance.IsMaxLevel())
+            {
+                GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_monster_slayer, 100.0f);
+            }
+        };
     }
 
-    void Update() {
-        if (target != Application.targetFrameRate) {
-           Application.targetFrameRate = target;
+    void Update()
+    {
+        if (target != Application.targetFrameRate)
+        {
+            Application.targetFrameRate = target;
+        }
+        if (Time.timeSinceLevelLoad > 3.0f)
+        {
+            int gamesPlayed = PlayerPrefs.GetInt("games_played", 0);
+            PlayerPrefs.SetInt("games_played", ++gamesPlayed);
+            if (gamesPlayed > 0)
+            {
+                GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_newbie, 100.0f);
+            }
+            if (gamesPlayed > 24)
+            {
+                GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_addict, 100.0f);
+            }
+            if (gamesPlayed > 100)
+            {
+                GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_fan_club, 100.0f);
+            }
         }
     }
 
-    public void SpawnDecorationForObject(GameObject go, ObjectTypesDataHolder.DecorationObjectType type, bool isUpper) {
+    public void SpawnDecorationForObject(GameObject go, ObjectTypesDataHolder.DecorationObjectType type, bool isUpper)
+    {
         objectDecorator.SpawnDecorationForObject(go, type, isUpper);
     }
 
-    public void SpawnParallaxObjectForObject(GameObject go, ObjectTypesDataHolder.ParallaxObjectType type) {
+    public void SpawnParallaxObjectForObject(GameObject go, ObjectTypesDataHolder.ParallaxObjectType type)
+    {
         objectDecorator.SpawnParallaxObjectForObject(go, type);
     }
 
-    public void AddCrystals(int amt) {
+    public void AddCrystals(int amt)
+    {
         score += amt * scoreMultiplier;
     }
 
-    public int GetCrystals() {
+    public int GetCrystals()
+    {
         return score;
     }
 
-    public void PlayerDie() {
+    public void PlayerDie()
+    {
         //Time.timeScale = 0;
 
     }
 
-    public void ApplyAfterLife() {
+    public void ApplyAfterLife()
+    {
         playerCamera.SetActive(true);
         grayscaleCamera.SetActive(true);
         mainCamera.SetActive(false);
         afterLifeStub.PickUp();
     }
 
-    public void PlayerResurrect() {
+    public void PlayerResurrect()
+    {
         shieldStub.PickUp();
         hasRessurectedThisRun = true;
         mainCamera.SetActive(true);
@@ -126,18 +170,21 @@ public class GameManager : MonoBehaviour
         grayscaleCamera.SetActive(false);
     }
 
-    public void BeforePlayerResurrect() {
+    public void BeforePlayerResurrect()
+    {
         //Time.timeScale = 1;
     }
 
-    public void HeadstartEnd() {
+    public void HeadstartEnd()
+    {
         shieldStub.PickUp();
     }
 
-    public void SaveResult() {
+    public void SaveResult()
+    {
         LevelManager.Instance.AddMoney(score);
     }
-    
+
     public enum Side
     {
         UPPER, BOTTOM, NONE

@@ -1,4 +1,11 @@
-lastUpgrade=00921
+lastUpgrade=00932
 proj.AppId=435153132449
 web.ClientId=
 android.SetupDone=true
+proj.pluginVersion=0.9.32
+and.BundleId=com.freakysoft.deadlinerunner
+proj.classDir=Assets
+proj.ConstantsClassName=GPGIds
+and.ResourceData=%3c%3fxml+version%3d%221.0%22+encoding%3d%22utf-8%22%3f%3e%0d%0a%3c%21--%0d%0aGoogle+Play+game+services+IDs.%0d%0aSave+this+file+as+res%2fvalues%2fgames-ids.xml+in+your+project.%0d%0a--%3e%0d%0a%3cresources%3e%0d%0a++%3cstring+name%3d%22app_id%22%3e435153132449%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22package_name%22%3ecom.freakysoft.deadlinerunner%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_newbie%22%3eCgkIobeXidUMEAIQAQ%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_sprinter%22%3eCgkIobeXidUMEAIQAg%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_something_shiny%22%3eCgkIobeXidUMEAIQAw%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_gemology%22%3eCgkIobeXidUMEAIQBA%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_i_feel_the_power%22%3eCgkIobeXidUMEAIQBQ%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_addict%22%3eCgkIobeXidUMEAIQCA%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_fan_club%22%3eCgkIobeXidUMEAIQCQ%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_runner%22%3eCgkIobeXidUMEAIQCg%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_long_distance_runner%22%3eCgkIobeXidUMEAIQCw%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_jeweler%22%3eCgkIobeXidUMEAIQDA%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_power_surge%22%3eCgkIobeXidUMEAIQDQ%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_overpowered%22%3eCgkIobeXidUMEAIQDg%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_monster_slayer%22%3eCgkIobeXidUMEAIQDw%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22leaderboard_best_score%22%3eCgkIobeXidUMEAIQBg%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22leaderboard_distance%22%3eCgkIobeXidUMEAIQBw%3c%2fstring%3e%0d%0a%3c%2fresources%3e
+and.ClientId=
+proj.requireGPlus=false
