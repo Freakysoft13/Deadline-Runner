@@ -13,7 +13,10 @@ public class Purchaser : MonoBehaviour, IStoreListener
     // Product identifiers for all products capable of being purchased: "convenience" general identifiers for use with Purchasing, and their store-specific identifier counterparts 
     // for use with and outside of Unity Purchasing. Define store-specific identifiers also on each platform's publisher dashboard (iTunes Connect, Google Play Developer Console, etc.)
 
-    private static string kProductIDConsumable = "consumable";                                                         // General handle for the consumable product.
+    private static string UNITY_SMALL_CHEST_ID = "small_chest"; 
+    private static string UNITY_MEDIUM_CHEST_ID = "medium_chest";
+    private static string UNITY_BIG_CHEST_ID = "big_chest";
+    private static string UNITY_XXL_CHEST_ID = "xxl_chest";                                                        // General handle for the consumable product.
     private static string kProductIDNonConsumable = "nonconsumable";                                                  // General handle for the non-consumable product.
     private static string kProductIDSubscription = "subscription";                                                   // General handle for the subscription product.
 
@@ -48,16 +51,16 @@ public class Purchaser : MonoBehaviour, IStoreListener
         var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
 
         // Add a product to sell / restore by way of its identifier, associating the general identifier with its store-specific identifiers.
-        builder.AddProduct(kProductIDConsumable, ProductType.Consumable,
+        builder.AddProduct(UNITY_SMALL_CHEST_ID, ProductType.Consumable,
          new IDs() { { kProductNameAppleConsumable, AppleAppStore.Name },
           { GP_SMALL, GooglePlay.Name }, });
-        builder.AddProduct(kProductIDConsumable, ProductType.Consumable,
+        builder.AddProduct(UNITY_MEDIUM_CHEST_ID, ProductType.Consumable,
        new IDs() { { kProductNameAppleConsumable, AppleAppStore.Name },
           { GP_MEDIUM, GooglePlay.Name }, });
-        builder.AddProduct(kProductIDConsumable, ProductType.Consumable,
+        builder.AddProduct(UNITY_BIG_CHEST_ID, ProductType.Consumable,
        new IDs() { { kProductNameAppleConsumable, AppleAppStore.Name },
           { GP_BIG, GooglePlay.Name }, });
-        builder.AddProduct(kProductIDConsumable, ProductType.Consumable,
+        builder.AddProduct(UNITY_XXL_CHEST_ID, ProductType.Consumable,
        new IDs() { { kProductNameAppleConsumable, AppleAppStore.Name },
           { GP_XXL, GooglePlay.Name }, });
         //builder.AddProduct(kProductIDNonConsumable, ProductType.NonConsumable, new IDs() { { kProductNameAppleNonConsumable, AppleAppStore.Name }, { kProductNameGooglePlayNonConsumable, GooglePlay.Name }, });// And finish adding the subscription product.
@@ -73,10 +76,10 @@ public class Purchaser : MonoBehaviour, IStoreListener
     }
 
 
-    public void BuyConsumable()
+    public void BuyConsumable(string unityConsumableID)
     {
         // Buy the consumable product using its general identifier. Expect a response either through ProcessPurchase or OnPurchaseFailed asynchronously.
-        BuyProductID(kProductIDConsumable);
+        BuyProductID(unityConsumableID);
     }
 
 
@@ -195,26 +198,7 @@ public class Purchaser : MonoBehaviour, IStoreListener
 
     public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs args)
     {
-        // A consumable product has been purchased by this user.
-        if (String.Equals(args.purchasedProduct.definition.id, kProductIDConsumable, StringComparison.Ordinal))
-        {
-            Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));//If the consumable item has been successfully purchased, add 100 coins to the player's in-game score.
-            LevelManager.Instance.AddMoneyFromChest(args.purchasedProduct.definition.storeSpecificId);
-        }
-
-        // Or ... a non-consumable product has been purchased by this user.
-        else if (String.Equals(args.purchasedProduct.definition.id, kProductIDNonConsumable, StringComparison.Ordinal))
-        {
-            Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
-        }// Or ... a subscription product has been purchased by this user.
-        else if (String.Equals(args.purchasedProduct.definition.id, kProductIDSubscription, StringComparison.Ordinal))
-        {
-            Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
-        }// Or ... an unknown product has been purchased by this user. Fill in additional products here.
-        else
-        {
-            Debug.Log(string.Format("ProcessPurchase: FAIL. Unrecognized product: '{0}'", args.purchasedProduct.definition.id));
-        }// Return a flag indicating wither this product has completely been received, or if the application needs to be reminded of this purchase at next app launch. Is useful when saving purchased products to the cloud, and when that save is delayed.
+        LevelManager.Instance.AddMoneyFromChest(args.purchasedProduct.definition.id);
         return PurchaseProcessingResult.Complete;
     }
 
