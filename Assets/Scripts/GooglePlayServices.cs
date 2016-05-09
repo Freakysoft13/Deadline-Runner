@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System;
+#if UNITY_ANDROID
 using GooglePlayGames;
+#endif
 using UnityEngine.SocialPlatforms;
 
 public class GooglePlayServices : MonoBehaviour
 {
-
+#if UNITY_ANDROID
     private bool isLoggedIn = false;
 
 
@@ -80,4 +82,5 @@ public class GooglePlayServices : MonoBehaviour
     {
         Social.ReportProgress(achievementID, progress, null);
     }
+#endif
 }
