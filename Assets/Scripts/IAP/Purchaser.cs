@@ -225,8 +225,8 @@ public class Purchaser : MonoBehaviour, IStoreListener
         Debug.Log(string.Format("OnPurchaseFailed: FAIL. Product: '{0}', PurchaseFailureReason: {1}", product.definition.storeSpecificId, failureReason));
     }
 
-    public static string GP_SMALL = "";
-    public static string GP_MEDIUM = "";
-    public static string GP_BIG = "";
-    public static string GP_XXL = "";
+    public static string GP_SMALL = "small_chest";
+    public static string GP_MEDIUM = "medium_chest";
+    public static string GP_BIG = "big_chest";
+    public static string GP_XXL = "xxl_chest";
 }
