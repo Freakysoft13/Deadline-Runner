@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     public Effect.Shield startShieldStub;
 
     [Header("Speed increse muliplier")]
-    public float speedThreshold = 50;
+    public float speedThreshold = 2;
 
     private Vector2 velocity;
     private AnimationController animationController;
@@ -299,7 +299,7 @@ public class Player : MonoBehaviour
     public float maxSpeed = 20;
 
     public void Go() {
-        float speedMultiplier = (1 + GetDistance() / 3000.0f);
+        float speedMultiplier = (1 + GetDistance() / speedThreshold * 1000.0f);
         velocity.x = Mathf.Clamp(speed * (speedMultiplier), velocity.x, maxSpeed);
         if (IsGrounded() && !isJumping) {
             gravityScale = 1;
