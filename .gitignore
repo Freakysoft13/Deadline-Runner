@@ -50,3 +50,7 @@ apk.apk
 .consulo
 .vscode
 Assets/VSCode*
+/WinRunner
+/Assets/GooglePlayGames.7z.meta
+/Assets/GooglePlayGames.7z
+/apk1.apk
