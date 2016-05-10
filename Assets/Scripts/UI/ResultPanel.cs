@@ -173,6 +173,7 @@ public class ResultPanel : MonoBehaviour
 
     public void GrantAchievements()
     {
+        #if UNITY_ANDROID
         float distanceTraveled = GameManager.Instance.Player.GetDistance();
         float crystalsCollected = LevelManager.Instance.GetTotalMoney();
         if (distanceTraveled > 1999)
@@ -195,6 +196,7 @@ public class ResultPanel : MonoBehaviour
         {
             GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_jeweler, 100.0f);
         }
+        #endif
     }
 
     private void UpdateCounters()

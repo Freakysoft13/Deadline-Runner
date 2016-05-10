@@ -93,6 +93,7 @@ public class GameManager : MonoBehaviour
         EventManager.OnPlayerDied += PlayerDie;
         EventManager.OnPlayerResurrected += PlayerResurrect;
         EventManager.OnBeforePlayerResurrected += BeforePlayerResurrect;
+        #if UNITY_ANDROID
         EventManager.OnLevelUp += () =>
         {
             if (LevelManager.Instance.IsMaxLevel())
@@ -100,6 +101,7 @@ public class GameManager : MonoBehaviour
                 GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_monster_slayer, 100.0f);
             }
         };
+        #endif
     }
 
     void Update()
@@ -108,6 +110,7 @@ public class GameManager : MonoBehaviour
         {
             Application.targetFrameRate = target;
         }
+        #if UNITY_ANDROID
         if (Time.timeSinceLevelLoad > 3.0f)
         {
             int gamesPlayed = PlayerPrefs.GetInt("games_played", 0);
@@ -125,6 +128,7 @@ public class GameManager : MonoBehaviour
                 GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_fan_club, 100.0f);
             }
         }
+        #endif
     }
 
     public void SpawnDecorationForObject(GameObject go, ObjectTypesDataHolder.DecorationObjectType type, bool isUpper)

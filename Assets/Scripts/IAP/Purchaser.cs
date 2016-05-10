@@ -198,7 +198,7 @@ public class Purchaser : MonoBehaviour, IStoreListener
     }
 
     public static string GP_SMALL = "small_chest";
-    public static string GP_MEDIUM = "medium_chest";
+    public static string GP_MEDIUM = "mid_chest";
     public static string GP_BIG = "big_chest";
     public static string GP_XXL = "xxl_chest";
 }

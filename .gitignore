@@ -43,6 +43,9 @@ Assets/JMO Assets
 Assets/Audio/abaaml-*
 Assets/Audio/Circus_Clown_Halloween_Horror*
 Assets/Plugins/Cruncher*
+Assets/2DTools*
+Assets/-tk2d.asset
+Assets/TK2DROOT/*
 Win10/*
 Win/*
 UWP/*
@@ -54,3 +57,5 @@ Assets/VSCode*
 /Assets/GooglePlayGames.7z.meta
 /Assets/GooglePlayGames.7z
 /apk1.apk
+/Win.7z
+Win/*
