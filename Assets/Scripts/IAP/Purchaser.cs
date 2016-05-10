@@ -12,11 +12,7 @@ public class Purchaser : MonoBehaviour, IStoreListener
 
     // Product identifiers for all products capable of being purchased: "convenience" general identifiers for use with Purchasing, and their store-specific identifier counterparts 
     // for use with and outside of Unity Purchasing. Define store-specific identifiers also on each platform's publisher dashboard (iTunes Connect, Google Play Developer Console, etc.)
-
-    private static string UNITY_SMALL_CHEST_ID = "small_chest"; 
-    private static string UNITY_MEDIUM_CHEST_ID = "medium_chest";
-    private static string UNITY_BIG_CHEST_ID = "big_chest";
-    private static string UNITY_XXL_CHEST_ID = "xxl_chest";                                                        // General handle for the consumable product.
+                                                         // General handle for the consumable product.
     private static string kProductIDNonConsumable = "nonconsumable";                                                  // General handle for the non-consumable product.
     private static string kProductIDSubscription = "subscription";                                                   // General handle for the subscription product.
 
@@ -51,18 +47,10 @@ public class Purchaser : MonoBehaviour, IStoreListener
         var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
 
         // Add a product to sell / restore by way of its identifier, associating the general identifier with its store-specific identifiers.
-        builder.AddProduct(UNITY_SMALL_CHEST_ID, ProductType.Consumable,
-         new IDs() { { kProductNameAppleConsumable, AppleAppStore.Name },
-          { GP_SMALL, GooglePlay.Name }, });
-        builder.AddProduct(UNITY_MEDIUM_CHEST_ID, ProductType.Consumable,
-       new IDs() { { kProductNameAppleConsumable, AppleAppStore.Name },
-          { GP_MEDIUM, GooglePlay.Name }, });
-        builder.AddProduct(UNITY_BIG_CHEST_ID, ProductType.Consumable,
-       new IDs() { { kProductNameAppleConsumable, AppleAppStore.Name },
-          { GP_BIG, GooglePlay.Name }, });
-        builder.AddProduct(UNITY_XXL_CHEST_ID, ProductType.Consumable,
-       new IDs() { { kProductNameAppleConsumable, AppleAppStore.Name },
-          { GP_XXL, GooglePlay.Name }, });
+        builder.AddProduct(GP_SMALL, ProductType.Consumable);
+        builder.AddProduct(GP_MEDIUM, ProductType.Consumable);
+        builder.AddProduct(GP_BIG, ProductType.Consumable);
+        builder.AddProduct(GP_XXL, ProductType.Consumable);
         //builder.AddProduct(kProductIDNonConsumable, ProductType.NonConsumable, new IDs() { { kProductNameAppleNonConsumable, AppleAppStore.Name }, { kProductNameGooglePlayNonConsumable, GooglePlay.Name }, });// And finish adding the subscription product.
         //builder.AddProduct(kProductIDSubscription, ProductType.Subscription, new IDs() { { kProductNameAppleSubscription, AppleAppStore.Name }, { kProductNameGooglePlaySubscription, GooglePlay.Name }, });// Kick off the remainder of the set-up with an asynchrounous call, passing the configuration and this class' instance. Expect a response either in OnInitialized or OnInitializeFailed.
         UnityPurchasing.Initialize(this, builder);
