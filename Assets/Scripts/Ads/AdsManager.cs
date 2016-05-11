@@ -11,7 +11,14 @@ public class AdsManager : MonoBehaviour
 
     public bool IsAdReady
     {
-        get { return displayAds; }
+        get
+        {
+#if UNITY_ANDROID
+            return true;
+#else
+            return displayAds;
+#endif
+        }
         set { displayAds = value; }
     }
 

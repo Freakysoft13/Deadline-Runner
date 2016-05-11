@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
         EventManager.OnPlayerDied += PlayerDie;
         EventManager.OnPlayerResurrected += PlayerResurrect;
         EventManager.OnBeforePlayerResurrected += BeforePlayerResurrect;
-        #if UNITY_ANDROID
+#if UNITY_ANDROID
         EventManager.OnLevelUp += () =>
         {
             if (LevelManager.Instance.IsMaxLevel())
@@ -101,7 +101,8 @@ public class GameManager : MonoBehaviour
                 GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_monster_slayer, 100.0f);
             }
         };
-        #endif
+        Invoke("GrantAchievements", 3.0f);
+#endif
     }
 
     void Update()
@@ -110,25 +111,26 @@ public class GameManager : MonoBehaviour
         {
             Application.targetFrameRate = target;
         }
-        #if UNITY_ANDROID
-        if (Time.timeSinceLevelLoad > 3.0f)
+    }
+
+    private void GrantAchievements()
+    {
+#if UNITY_ANDROID
+        int gamesPlayed = PlayerPrefs.GetInt("games_played", 0);
+        PlayerPrefs.SetInt("games_played", ++gamesPlayed);
+        if (gamesPlayed > 0)
         {
-            int gamesPlayed = PlayerPrefs.GetInt("games_played", 0);
-            PlayerPrefs.SetInt("games_played", ++gamesPlayed);
-            if (gamesPlayed > 0)
-            {
-                GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_newbie, 100.0f);
-            }
-            if (gamesPlayed > 24)
-            {
-                GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_addict, 100.0f);
-            }
-            if (gamesPlayed > 100)
-            {
-                GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_fan_club, 100.0f);
-            }
+            GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_newbie, 100.0f);
         }
-        #endif
+        if (gamesPlayed > 24)
+        {
+            GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_addict, 100.0f);
+        }
+        if (gamesPlayed > 100)
+        {
+            GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_fan_club, 100.0f);
+        }
+#endif
     }
 
     public void SpawnDecorationForObject(GameObject go, ObjectTypesDataHolder.DecorationObjectType type, bool isUpper)
