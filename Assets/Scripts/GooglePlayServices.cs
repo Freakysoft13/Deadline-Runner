@@ -31,7 +31,7 @@ public class GooglePlayServices : MonoBehaviour
         }
     }
 
-    public void Login(Action callback)
+    public void Login(Action callback = null)
     {
         Social.localUser.Authenticate((bool success) =>
         {
@@ -75,12 +75,18 @@ public class GooglePlayServices : MonoBehaviour
 
     public void ReportScore(String leaderboard, long score)
     {
-        Social.ReportScore(score, leaderboard, null);
+        if (isLoggedIn)
+        {
+            Social.ReportScore(score, leaderboard, null);
+        }
     }
 
     public void ReportProgress(String achievementID, float progress)
     {
-        Social.ReportProgress(achievementID, progress, null);
+        if (isLoggedIn)
+        {
+            Social.ReportProgress(achievementID, progress, null);
+        }
     }
 #endif
 }
