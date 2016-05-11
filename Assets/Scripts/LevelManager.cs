@@ -6,7 +6,7 @@ public class LevelManager : MonoBehaviour
 {
     private const string EXP_KEY = "exp";
     private const string MONEY_KEY = "money";
-    private const string TOTAL_MONEY_KEY = "money";
+    private const string TOTAL_MONEY_KEY = "total_money";
     private const string ACTIVE_SKIN_KEY = "active_skin";
     private const string SHOP_ID = "shop_id";
     private const string ACTIVE_CONSUMABLE = "active";
