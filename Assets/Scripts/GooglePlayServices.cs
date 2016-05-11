@@ -31,6 +31,13 @@ public class GooglePlayServices : MonoBehaviour
         }
     }
 
+    void Start ()
+    {
+#if UNITY_ANDROID
+        Login();
+#endif
+    }
+
     public void Login(Action callback = null)
     {
         Social.localUser.Authenticate((bool success) =>
@@ -82,11 +89,11 @@ public class GooglePlayServices : MonoBehaviour
     }
 
     public void ReportProgress(String achievementID, float progress)
-    {
+    {   
         if (isLoggedIn)
         {
             Social.ReportProgress(achievementID, progress, null);
         }
     }
 #endif
-}
+    }
