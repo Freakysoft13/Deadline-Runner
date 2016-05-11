@@ -21,7 +21,7 @@ public class CameraController : MonoBehaviour
         GetComponent<Camera>().orthographicSize = (desiredScreenWidth / Screen.width * Screen.height / 2) / currentPixelToUnits;
     }
 
-    void LateUpdate() {
+    void Update() {
         if (target) {
             Vector3 newPos = transform.position;
             newPos.x = target.position.x + xDelta;
