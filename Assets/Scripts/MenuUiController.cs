@@ -30,7 +30,9 @@ public class MenuUiController : MonoBehaviour
 #if UNITY_STANDALONE_OSX
                     ladderObj.SetActive(false);
 #endif
-
+#if UNITY_ANDROID
+        ladderObj.SetActive(true);
+#endif
         SoundCheckOnStart();
         IndexChecker();
         Time.timeScale = 1;
