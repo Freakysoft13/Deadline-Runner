@@ -20,6 +20,7 @@ public class GooglePlayServices : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
+        PlayGamesPlatform.Activate();
         if (instance == null)
         {
             instance = this;
