@@ -59,7 +59,10 @@ namespace Effect
                 effect.ApplyEffect(player);
             }
             effects.Add(effect);
-            pickupSound.Play();
+            if (effect.isBuff)
+            {
+                pickupSound.Play();
+            }
 
         }
         void ApplyEffectAchievements(Effect effect)
@@ -68,7 +71,7 @@ namespace Effect
             {
                 int overallEffectsPickedUp = PlayerPrefs.GetInt("total_effects", 0);
                 PlayerPrefs.SetInt("total_effects", Mathf.Clamp(++overallEffectsPickedUp, 0, 101));
-                #if UNITY_ANDROID
+#if UNITY_ANDROID
                 if (overallEffectsPickedUp > 0)
                 {
                     GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_i_feel_the_power, 100.0f);
@@ -83,7 +86,7 @@ namespace Effect
                 {
                     GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_overpowered, 100.0f);
                 }
-                # endif
+#endif
             }
         }
     }
