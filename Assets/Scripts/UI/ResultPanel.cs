@@ -45,6 +45,8 @@ public class ResultPanel : MonoBehaviour
     private AudioSource expGain;
     private AudioSource levelUp;
 
+    private bool hasGrantedAchievements = false;
+
     void Awake()
     {
         if (Application.systemLanguage.ToString() == "Russian")
@@ -173,7 +175,7 @@ public class ResultPanel : MonoBehaviour
 
     public void GrantAchievements()
     {
-        #if UNITY_ANDROID
+#if UNITY_ANDROID
         float distanceTraveled = GameManager.Instance.Player.GetDistance();
         float crystalsCollected = LevelManager.Instance.GetTotalMoney();
         if (distanceTraveled > 1999)
@@ -196,7 +198,7 @@ public class ResultPanel : MonoBehaviour
         {
             GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_jeweler, 100.0f);
         }
-        #endif
+#endif
     }
 
     private void UpdateCounters()
@@ -257,7 +259,11 @@ public class ResultPanel : MonoBehaviour
             }
             else
             {
-                GrantAchievements();
+                if (!hasGrantedAchievements)
+                {
+                    hasGrantedAchievements = true;
+                    GrantAchievements();
+                }
             }
 
             if (expGain.isPlaying)

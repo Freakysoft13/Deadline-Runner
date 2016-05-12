@@ -63,7 +63,6 @@ namespace Effect
             {
                 pickupSound.Play();
             }
-
         }
         void ApplyEffectAchievements(Effect effect)
         {
