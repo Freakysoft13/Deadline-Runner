@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     [Header("Speed increse muliplier")]
     public float speedThreshold = 2;
 
+    public float speedTime = 0.5f;
+
     private Vector2 velocity;
     private AnimationController animationController;
     private Rigidbody2D rigidBody;
@@ -42,7 +44,8 @@ public class Player : MonoBehaviour
     private AudioSource runSound;
     private AudioSource deathSound;
 
-    public bool IsShielded {
+    public bool IsShielded
+    {
         get { return isShielded; }
         set { isShielded = value; }
     }
@@ -59,191 +62,246 @@ public class Player : MonoBehaviour
     private bool isNoAdsResPassive = false;
     private bool isAllPassives = false;
 
-    public bool CanFlip {
-        get {
+    public bool CanFlip
+    {
+        get
+        {
             return canFlip;
         }
 
-        set {
+        set
+        {
             canFlip = value;
         }
     }
 
-    public int Exp {
-        get {
+    public int Exp
+    {
+        get
+        {
             return exp;
         }
 
-        set {
+        set
+        {
             exp = value;
         }
     }
 
-    public int PlayerFlip {
-        get {
+    public int PlayerFlip
+    {
+        get
+        {
             return playerFlip;
         }
 
-        set {
+        set
+        {
             playerFlip = value;
         }
     }
 
-    public GameManager.Side Side {
-        get {
+    public GameManager.Side Side
+    {
+        get
+        {
             return side;
         }
 
-        set {
+        set
+        {
             side = value;
         }
     }
 
-    public bool IsShieldPassive {
-        get {
+    public bool IsShieldPassive
+    {
+        get
+        {
             return isShieldPassive;
         }
 
-        set {
+        set
+        {
             isShieldPassive = value;
         }
     }
 
-    public bool IsCrystalBoostPassive {
-        get {
+    public bool IsCrystalBoostPassive
+    {
+        get
+        {
             return isCrystalBoostPassive;
         }
 
-        set {
+        set
+        {
             isCrystalBoostPassive = value;
         }
     }
 
-    public bool IsGreenCrystalDoubledPassive {
-        get {
+    public bool IsGreenCrystalDoubledPassive
+    {
+        get
+        {
             return isGreenCrystalDoubledPassive;
         }
 
-        set {
+        set
+        {
             isGreenCrystalDoubledPassive = value;
         }
     }
 
-    public bool IsIncreasedBuffSpawnPassive {
-        get {
+    public bool IsIncreasedBuffSpawnPassive
+    {
+        get
+        {
             return isIncreasedBuffSpawnPassive;
         }
 
-        set {
+        set
+        {
             isIncreasedBuffSpawnPassive = value;
         }
     }
 
-    public bool IsScoreDoubledPassive {
-        get {
+    public bool IsScoreDoubledPassive
+    {
+        get
+        {
             return isScoreDoubledPassive;
         }
 
-        set {
+        set
+        {
             isScoreDoubledPassive = value;
         }
     }
 
-    public bool IsCrystalsDoubledPassive {
-        get {
+    public bool IsCrystalsDoubledPassive
+    {
+        get
+        {
             return isCrystalsDoubledPassive;
         }
 
-        set {
+        set
+        {
             isCrystalsDoubledPassive = value;
         }
     }
 
-    public bool IsObstacleInvurnerablePassive {
-        get {
+    public bool IsObstacleInvurnerablePassive
+    {
+        get
+        {
             return isObstacleInvurnerablePassive;
         }
 
-        set {
+        set
+        {
             isObstacleInvurnerablePassive = value;
         }
     }
 
-    public bool IsAfterlifeBoostPassive {
-        get {
+    public bool IsAfterlifeBoostPassive
+    {
+        get
+        {
             return isAfterlifeBoostPassive;
         }
 
-        set {
+        set
+        {
             isAfterlifeBoostPassive = value;
         }
     }
 
-    public bool IsNoAdsResPassive {
-        get {
+    public bool IsNoAdsResPassive
+    {
+        get
+        {
             return isNoAdsResPassive;
         }
 
-        set {
+        set
+        {
             isNoAdsResPassive = value;
         }
     }
 
-    public bool IsAllPassives {
-        get {
+    public bool IsAllPassives
+    {
+        get
+        {
             return isAllPassives;
         }
 
-        set {
+        set
+        {
             isAllPassives = value;
         }
     }
 
-    void Start() {
+    void Start()
+    {
         SetActiveSkin();
         animationController = GetComponent<AnimationController>();
         rigidBody = GetComponent<Rigidbody2D>();
         moonPanel.localPosition = new Vector3(0, -350);
         floorCollider = GameObject.FindGameObjectWithTag("floor").GetComponent<Collider2D>();
-        if (isScoreDoubledPassive) {
+        if (isScoreDoubledPassive)
+        {
             GameManager.Instance.expMultiplier = 2;
         }
-        if (IsCrystalsDoubledPassive) {
+        if (IsCrystalsDoubledPassive)
+        {
             GameManager.Instance.scoreMultiplier = 2;
         }
         AudioSource[] sources = GetComponents<AudioSource>();
         jumpSound = sources[0];
         runSound = sources[1];
-        deathSound = sources[2];
+        if (!LevelManager.Instance.GetEquippedSkin().Equals(LevelManager.Skin.UR900))
+        {
+            Invoke("RunSound", speedTime);
+        }
     }
 
-    private void SetActiveSkin() {
+    private void SetActiveSkin()
+    {
         SetSkin(LevelManager.Instance.GetEquippedSkin());
     }
 
-    private void SetSkin(LevelManager.Skin skin) {
+    private void SetSkin(LevelManager.Skin skin)
+    {
         LevelManager lm = LevelManager.Instance;
         SkeletonDataAsset asset = lm.skins[lm.GetItemIndex(skin)];
         SkeletonAnimation sa = GetComponent<SkeletonAnimation>();
-        if(skin == LevelManager.Skin.GHOST && sa.AnimationName == AnimationController.ELECTRICITY_RUN) {
+        if (skin == LevelManager.Skin.GHOST && sa.AnimationName == AnimationController.ELECTRICITY_RUN)
+        {
             sa.AnimationName = AnimationController.RUN;
         }
         sa.skeletonDataAsset = asset;
         sa.Reset();
     }
 
-    public void AfterLifeStart() {
+    public void AfterLifeStart()
+    {
         isInAfterLife = true;
-        if (isAfterlifeBoostPassive) {
+        if (isAfterlifeBoostPassive)
+        {
             speed *= 2;
         }
         SetSkin(LevelManager.Skin.GHOST);
     }
 
-    public void AfterLifeEnd() {
+    public void AfterLifeEnd()
+    {
         SetActiveSkin();
         isInAfterLife = false;
-        if (isAfterlifeBoostPassive) {
+        if (isAfterlifeBoostPassive)
+        {
             speed /= 2;
         }
         Die();
@@ -251,26 +309,32 @@ public class Player : MonoBehaviour
 
     private float updatedAtDistance = 0;
 
-    void Update() {
+    void Update()
+    {
         ApplyGravity();
         if (isDead || !canMove) { Stop(); return; }
         CheckTouch();
         Go();
-        if (IsFlipPressed() && IsGrounded()) {
+        if (IsFlipPressed() && IsGrounded())
+        {
             Flip();
         }
-        if ((IsJumpPressed() || jumpOnLand) && IsGrounded() && !isInAfterLife) {
+        if ((IsJumpPressed() || jumpOnLand) && IsGrounded() && !isInAfterLife)
+        {
             Jump();
         }
-        if (IsJumpPressed() && !IsGrounded()) {
+        if (IsJumpPressed() && !IsGrounded())
+        {
             jumpInterrupt = true;
             jumpOnLand = true;
             gravityScale = doubleJumpGravityAccel;
         }
-        if (PlayerFlip * transform.position.y > maxJumpHeight || jumpInterrupt || isFalling()) {
+        if (PlayerFlip * transform.position.y > maxJumpHeight || jumpInterrupt || isFalling())
+        {
             FallDown();
         }
-        if (GetDistance() % 200 == 0 && isCrystalBoostPassive && updatedAtDistance != GetDistance()) {
+        if (GetDistance() % 200 == 0 && isCrystalBoostPassive && updatedAtDistance != GetDistance())
+        {
             GameManager.Instance.AddCrystals(20);
             updatedAtDistance = GetDistance();
         }
@@ -282,102 +346,134 @@ public class Player : MonoBehaviour
          */
     }
 
-    private bool isFalling() {
+    private bool isFalling()
+    {
         return !IsGrounded() && velocity.y * PlayerFlip < 0;
     }
 
-    private bool IsJumpPressed() {
+    private bool IsJumpPressed()
+    {
         bool result = Input.GetKeyDown(KeyCode.Space) || jumpTouch;
         return result;
     }
 
-    private bool IsFlipPressed() {
+    private bool IsFlipPressed()
+    {
         bool result = Input.GetKeyDown(KeyCode.RightControl) || Input.GetKeyDown(KeyCode.LeftControl) || flipTouch;
         return result;
     }
 
     public float maxSpeed = 20;
 
-    public void Go() {
+    public void Go()
+    {
         float speedMultiplier = (1 + GetDistance() / (speedThreshold * 1000.0f));
         velocity.x = Mathf.Clamp(speed * (speedMultiplier), velocity.x, maxSpeed);
-        if (IsGrounded() && !isJumping) {
+        if (IsGrounded() && !isJumping)
+        {
             gravityScale = 1;
-            if (canFlip || isInAfterLife) {
+            if (canFlip || isInAfterLife)
+            {
                 animationController.Run(speedMultiplier);
             }
-            else {
+            else
+            {
                 animationController.RunWithElectricity(speedMultiplier);
             }
         }
 
-        if (isShieldPassive) {
+        if (isShieldPassive)
+        {
             startShieldStub.PickUp();
             isShieldPassive = false;
         }
-        runSound.Play();
     }
-    public void Stop() {
+
+    private void RunSound()
+    {
+        float speedMultiplier = (1 + GetDistance() / (speedThreshold * 1000.0f));
+        if (IsGrounded())
+        {
+            //runSound.pitch = Random.Range(0.7f, 0.8f);
+            runSound.Play();
+        }
+        Invoke("RunSound", speedTime / speedMultiplier);
+    }
+
+    public void Stop()
+    {
         velocity.x = 0;
-        if (PlayerFlip * velocity.y > 0) {
+        if (PlayerFlip * velocity.y > 0)
+        {
             velocity.y = 0;
         }
         runSound.Stop();
     }
 
-    public void Jump() {
+    public void Jump()
+    {
         isJumping = true;
         jumpOnLand = false;
         velocity.y = jumpSpeed * PlayerFlip;
         animationController.JumpUp();
         jumpSound.Play();
     }
-    public void FallDown() {
+    public void FallDown()
+    {
         isJumping = false;
         jumpInterrupt = false;
-        if (PlayerFlip * velocity.y > 0) {
+        if (PlayerFlip * velocity.y > 0)
+        {
             velocity.y = 0;
         }
         animationController.FallDown();
     }
 
-    public void ApplyGravity() {
+    public void ApplyGravity()
+    {
         velocity.y -= 9.8f * Time.deltaTime * PlayerFlip * gravityScale * gravityMultiplier;
     }
 
-    void FixedUpdate() {
+    void FixedUpdate()
+    {
         rigidBody.velocity = velocity;
     }
 
-    public float GetSpeed() {
+    public float GetSpeed()
+    {
         return rigidBody.velocity.x;
     }
 
     public GameObject shieldEffect;
 
-    public void ShieldsUp() {
+    public void ShieldsUp()
+    {
         shieldEffect.GetComponent<SkeletonAnimation>().AnimationName = "anim";
         shieldEffect.GetComponent<SkeletonAnimation>().Reset();
         isShielded = true;
         shieldEffect.SetActive(true);
     }
 
-    public void ShieldsDown() {
+    public void ShieldsDown()
+    {
         isShielded = false;
         shieldEffect.SetActive(false);
     }
 
-    public void ShieldWearOff() {
+    public void ShieldWearOff()
+    {
         shieldEffect.GetComponent<SkeletonAnimation>().AnimationName = "ending";
         shieldEffect.GetComponent<SkeletonAnimation>().Reset();
     }
 
-    public void Die() {
+    public void Die()
+    {
         exp = (GetDistance() * GameManager.Instance.expMultiplier) / expToDistanceThreshold;
         EventManager.FireBeforePlayerDied();
         isDead = true;
         jumpOnLand = false;
-        EventManager.OnAnimationComplete += delegate (string name) {
+        EventManager.OnAnimationComplete += delegate (string name)
+        {
             if (name != AnimationController.DEATH) { return; }
             canMove = false;
             EventManager.FirePlayerDied();
@@ -386,9 +482,11 @@ public class Player : MonoBehaviour
         deathSound.Play();
     }
 
-    public void Ressurect() {
+    public void Ressurect()
+    {
         EventManager.FireBeforePlayerResurrected();
-        EventManager.OnAnimationComplete += delegate (string name) {
+        EventManager.OnAnimationComplete += delegate (string name)
+        {
             if (name != AnimationController.RESURRECTION) { return; }
             isDead = false;
             canMove = true;
@@ -400,18 +498,24 @@ public class Player : MonoBehaviour
         animationController.Ressurect();
     }
 
-    private void CheckTouch() {
+    private void CheckTouch()
+    {
         jumpTouch = false;
         flipTouch = false;
-        if (Input.touchCount == 1 && Time.timeScale == 1) {
+        if (Input.touchCount == 1 && Time.timeScale == 1)
+        {
             Touch touch = Input.GetTouch(0);
-            if (touch.tapCount > 0) {
-                if (touch.phase == TouchPhase.Began) {
+            if (touch.tapCount > 0)
+            {
+                if (touch.phase == TouchPhase.Began)
+                {
                     float ceiling = Screen.height - Screen.height / 8;
-                    if (touch.position.x < Screen.width / 2 && touch.position.y < ceiling) {
+                    if (touch.position.x < Screen.width / 2 && touch.position.y < ceiling)
+                    {
                         flipTouch = true;
                     }
-                    else {
+                    else
+                    {
                         jumpTouch = true;
                     }
                 }
@@ -419,22 +523,27 @@ public class Player : MonoBehaviour
         }
     }
 
-    private bool IsGrounded() {
+    private bool IsGrounded()
+    {
         float botY = isFlipped() ? GetComponent<Collider2D>().bounds.max.y : GetComponent<Collider2D>().bounds.min.y;
         Collider2D[] colliders = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, botY), 0.1f);
-        foreach (Collider2D col in colliders) {
-            if (col.CompareTag("floor")) {
+        foreach (Collider2D col in colliders)
+        {
+            if (col.CompareTag("floor"))
+            {
                 return true;
             }
         }
         return false;
     }
 
-    private bool isFlipped() {
+    private bool isFlipped()
+    {
         return PlayerFlip == -1;
     }
 
-    public void Flip() {
+    public void Flip()
+    {
         if (!canFlip) { return; }
         PlayerFlip *= -1;
         Vector2 newPosition = transform.position;
@@ -445,11 +554,13 @@ public class Player : MonoBehaviour
         transform.localScale = newScale;
         velocity.y = 0;
 
-        if (!isFlipped()) {
+        if (!isFlipped())
+        {
             moonPanel.localPosition = new Vector3(0, -350);
             side = GameManager.Side.UPPER;
         }
-        else {
+        else
+        {
             moonPanel.localPosition = new Vector3(0, -150);
             side = GameManager.Side.BOTTOM;
         }
@@ -457,21 +568,26 @@ public class Player : MonoBehaviour
 
     public int expToDistanceThreshold = 2;
 
-    void OnTriggerEnter2D(Collider2D collider) {
-        if ((collider.CompareTag("obstacle") || collider.CompareTag("flying")) && !isDead && !isShielded && !isInAfterLife) {
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if ((collider.CompareTag("obstacle") || collider.CompareTag("flying")) && !isDead && !isShielded && !isInAfterLife)
+        {
             GameManager.Instance.ApplyAfterLife();
         }
     }
 
-    public int GetDistance() {
+    public int GetDistance()
+    {
         return (int)transform.position.x + 8;
     }
 
-    public void ElectricityHit() {
+    public void ElectricityHit()
+    {
         canFlip = false;
     }
 
-    public void ElectricityWearOff() {
+    public void ElectricityWearOff()
+    {
         canFlip = true;
     }
 }
