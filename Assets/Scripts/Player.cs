@@ -392,9 +392,9 @@ public class Player : MonoBehaviour
     private void RunSound()
     {
         float speedMultiplier = (1 + GetDistance() / (speedThreshold * 1000.0f));
-        if (IsGrounded())
+        if (IsGrounded() && !isInAfterLife)
         {
-            //runSound.pitch = Random.Range(0.7f, 0.8f);
+            runSound.pitch = Random.Range(0.7f, 0.8f);
             runSound.Play();
         }
         Invoke("RunSound", speedTime / speedMultiplier);
@@ -479,7 +479,6 @@ public class Player : MonoBehaviour
             EventManager.FirePlayerDied();
         };
         animationController.Die();
-        deathSound.Play();
     }
 
     public void Ressurect()
