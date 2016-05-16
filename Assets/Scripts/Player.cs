@@ -394,7 +394,7 @@ public class Player : MonoBehaviour
         float speedMultiplier = (1 + GetDistance() / (speedThreshold * 1000.0f));
         if (IsGrounded() && !isInAfterLife)
         {
-            runSound.pitch = Random.Range(0.7f, 0.8f);
+            runSound.pitch = Random.Range(0.8f, 0.9f);
             runSound.Play();
         }
         Invoke("RunSound", speedTime / speedMultiplier);
@@ -472,6 +472,7 @@ public class Player : MonoBehaviour
         EventManager.FireBeforePlayerDied();
         isDead = true;
         jumpOnLand = false;
+        runSound.Stop();
         EventManager.OnAnimationComplete += delegate (string name)
         {
             if (name != AnimationController.DEATH) { return; }

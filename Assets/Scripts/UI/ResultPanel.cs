@@ -114,7 +114,7 @@ public class ResultPanel : MonoBehaviour
         int alreadyRated = PlayerPrefs.GetInt("already_rated", 0);
         if (alreadyRated == 0)
         {
-            Invoke("TryShowRateUs", 2.0f);
+            Invoke("TryShowRateUs", 0.5f);
         }
     }
 #if UNITY_ANDROID
@@ -356,5 +356,9 @@ public class ResultPanel : MonoBehaviour
         adImage.SetActive(false);
         adButton.SetActive(false);
 
+    }
+    public void GPGRating ()
+    {
+        Application.OpenURL("http://play.google.com/store/apps/details?id=" + Application.bundleIdentifier);
     }
 }
