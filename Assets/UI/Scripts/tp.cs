@@ -105,6 +105,9 @@ public class tp : MonoBehaviour
 #if UNITY_STANDALONE_WIN
                   windowsStandalonePause.gameObject.SetActive(true);
 #endif
+#if UNITY_ANDROID
+        windowsStandalonePause.gameObject.SetActive(false);
+#endif
     }
     // turn of sound_btn
     public void AudioMute()
