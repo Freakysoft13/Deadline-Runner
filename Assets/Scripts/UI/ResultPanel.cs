@@ -11,6 +11,8 @@ public class ResultPanel : MonoBehaviour
     public float fillPrecision = 0.01f;
     public float updateDelay = 0.001f;
 
+    public GameObject rateUsPanel;
+
     private float targetValue;
     private int levelsAcquired = 0;
     private bool updateExpBar = false;
@@ -108,7 +110,7 @@ public class ResultPanel : MonoBehaviour
             adImage.SetActive(false);
         }
 #endif
-
+        Invoke("TryShowRateUs", 3.0f);
     }
 #if UNITY_ANDROID
     public void ShowRewardedAd()
@@ -117,6 +119,20 @@ public class ResultPanel : MonoBehaviour
         {
             var options = new ShowOptions { resultCallback = HandleShowResult };
             Advertisement.Show("rewardedVideo", options);
+        }
+    }
+
+    public int[] rateUsPopTimes;
+
+    private void TryShowRateUs()
+    {
+        int triesAmt = PlayerPrefs.GetInt("tries_amt", 0);
+        int rateUsPopAmt = PlayerPrefs.GetInt("rate_us_pop_amt", 0);
+        PlayerPrefs.SetInt("tries_amt", ++triesAmt);
+        if (triesAmt >= rateUsPopTimes[rateUsPopAmt])
+        {
+            PlayerPrefs.SetInt("rate_us_pop_amt", Mathf.Clamp(++rateUsPopAmt, 0, rateUsPopTimes.Length - 1));
+            rateUsPanel.SetActive(true);
         }
     }
 
