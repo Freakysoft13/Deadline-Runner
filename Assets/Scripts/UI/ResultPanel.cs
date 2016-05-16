@@ -110,7 +110,12 @@ public class ResultPanel : MonoBehaviour
             adImage.SetActive(false);
         }
 #endif
-        Invoke("TryShowRateUs", 3.0f);
+
+        int alreadyRated = PlayerPrefs.GetInt("already_rated", 0);
+        if (alreadyRated == 0)
+        {
+            Invoke("TryShowRateUs", 2.0f);
+        }
     }
 #if UNITY_ANDROID
     public void ShowRewardedAd()
@@ -217,6 +222,17 @@ public class ResultPanel : MonoBehaviour
 #endif
     }
 
+    public void RateUs()
+    {
+        PlayerPrefs.SetInt("already_rated", 1);
+        rateUsPanel.SetActive(false);
+        Application.OpenURL("market://details?id=com.freakysoft.deadlinerunner/");
+    }
+
+    public void Cancel()
+    {
+        rateUsPanel.SetActive(false);
+    }
     private void UpdateCounters()
     {
         if (expEarnedCounter < expEarned && Mathf.Abs(Time.time - lastExpUpdateTime) > updateDelay)
