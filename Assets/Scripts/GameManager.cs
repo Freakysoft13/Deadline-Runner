@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     public int expMultiplier = 1;
     public int scoreMultiplier = 1;
     public bool upgradePassives = false;
-    public int target = 60;
+ 
 
     public static GameManager Instance
     {
@@ -89,7 +89,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        Application.targetFrameRate = target;
         EventManager.OnPlayerDied += PlayerDie;
         EventManager.OnPlayerResurrected += PlayerResurrect;
         EventManager.OnBeforePlayerResurrected += BeforePlayerResurrect;
@@ -103,14 +102,6 @@ public class GameManager : MonoBehaviour
         };
         Invoke("GrantAchievements", 3.0f);
 #endif
-    }
-
-    void Update()
-    {
-        if (target != Application.targetFrameRate)
-        {
-            Application.targetFrameRate = target;
-        }
     }
 
     private void GrantAchievements()
