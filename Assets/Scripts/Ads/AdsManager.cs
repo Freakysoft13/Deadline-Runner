@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Advertisements;
 
 public class AdsManager : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class AdsManager : MonoBehaviour
         get
         {
 #if UNITY_ANDROID
-            return true;
+            return Advertisement.IsReady();
 #else
             return displayAds;
 #endif

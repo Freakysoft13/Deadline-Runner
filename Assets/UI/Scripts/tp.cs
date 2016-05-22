@@ -265,7 +265,7 @@ public class tp : MonoBehaviour
 
     private void PlayerDie()
     {
-        if (!GameManager.Instance.HasRessurectedThisRun && AdsManager.Instance.IsAdReady && Advertisement.IsReady())
+        if (!GameManager.Instance.HasRessurectedThisRun && AdsManager.Instance.IsAdReady)
         {
             deathpnl.SetActive(true);
         }

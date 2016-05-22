@@ -109,13 +109,13 @@ public class ResultPanel : MonoBehaviour
             adButton.SetActive(false);
             adImage.SetActive(false);
         }
-#endif
 
         int alreadyRated = PlayerPrefs.GetInt("already_rated", 0);
         if (alreadyRated == 0)
         {
             Invoke("TryShowRateUs", 0.5f);
         }
+#endif
     }
 #if UNITY_ANDROID
     public void ShowRewardedAd()
