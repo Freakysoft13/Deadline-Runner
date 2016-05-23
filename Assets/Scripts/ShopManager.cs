@@ -50,9 +50,13 @@ public class ShopManager : MonoBehaviour
     private void UpdateCharPos() {
         foreach (GameObject go in charlist) {
             go.transform.position = bottomPos;
+            go.SetActive(false);
         }
+        charlist[index].SetActive(true);
         charlist[index].transform.position = startLeftPosition;
+        charlist[index + 1].SetActive(true);
         charlist[index + 1].transform.position = startCentrePosition;
+        charlist[index + 2].SetActive(true);
         charlist[index + 2].transform.position = startRightPosition;
     }
 
