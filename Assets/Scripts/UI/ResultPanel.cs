@@ -182,7 +182,13 @@ public class ResultPanel : MonoBehaviour
         {
             bestScore = expEarned;
             LevelManager.Instance.SaveBestScore(bestScore);
+#if UNITY_ANDROID
+            GooglePlayServices.Instance.ReportScore(GPGIds.leaderboard_best_score, bestScore);
+#endif
         }
+#if UNITY_ANDROID
+        GooglePlayServices.Instance.ReportScore(GPGIds.leaderboard_distance, GameManager.Instance.Player.GetDistance());
+#endif
         bestscore.text = bestscoreLoc + bestScore;
         CalcLevelProgress();
         LevelManager.Instance.AddMoney(crystalsCollected);
@@ -357,7 +363,7 @@ public class ResultPanel : MonoBehaviour
         adButton.SetActive(false);
 
     }
-    public void GPGRating ()
+    public void GPGRating()
     {
         Application.OpenURL("http://play.google.com/store/apps/details?id=" + Application.bundleIdentifier);
     }

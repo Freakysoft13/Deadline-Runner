@@ -1,13 +1,11 @@
-﻿using UnityEngine;
+﻿#if UNITY_ANDROID
+using UnityEngine;
 using System;
-#if UNITY_ANDROID
 using GooglePlayGames;
-#endif
 using UnityEngine.SocialPlatforms;
 
 public class GooglePlayServices : MonoBehaviour
 {
-#if UNITY_ANDROID
     private bool isLoggedIn = false;
 
 
@@ -32,11 +30,9 @@ public class GooglePlayServices : MonoBehaviour
         }
     }
 
-    void Start ()
+    void Start()
     {
-#if UNITY_ANDROID
         Login();
-#endif
     }
 
     public void Login(Action callback = null)
@@ -53,7 +49,8 @@ public class GooglePlayServices : MonoBehaviour
 
     public void ShowAchievements()
     {
-        Social.localUser.Authenticate((bool success) => {
+        Social.localUser.Authenticate((bool success) =>
+        {
             Social.ShowAchievementsUI();
         });
         Social.ShowAchievementsUI();
@@ -61,11 +58,12 @@ public class GooglePlayServices : MonoBehaviour
 
     public void ShowLeaderboard()
     {
-        Social.localUser.Authenticate((bool success) => {
+        Social.localUser.Authenticate((bool success) =>
+        {
             // handle success or failure
         });
         Social.ShowLeaderboardUI();
-        
+
     }
 
     public void ReportScore(String leaderboard, long score)
@@ -77,11 +75,11 @@ public class GooglePlayServices : MonoBehaviour
     }
 
     public void ReportProgress(String achievementID, float progress)
-    {   
+    {
         if (isLoggedIn)
         {
             Social.ReportProgress(achievementID, progress, null);
         }
     }
+}
 #endif
-    }
