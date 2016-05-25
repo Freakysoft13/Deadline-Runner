@@ -537,7 +537,7 @@ public class Player : MonoBehaviour
         return false;
     }
 
-    private bool isFlipped()
+    public bool isFlipped()
     {
         return PlayerFlip == -1;
     }

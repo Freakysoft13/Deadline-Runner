@@ -1,0 +1,131 @@
+
+Beast.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Body
+  rotate: true
+  xy: 2, 37
+  size: 89, 138
+  orig: 91, 140
+  offset: 1, 1
+  index: -1
+Chain_1
+  rotate: false
+  xy: 109, 16
+  size: 8, 19
+  orig: 10, 21
+  offset: 1, 1
+  index: -1
+Chain_2
+  rotate: true
+  xy: 468, 70
+  size: 20, 35
+  orig: 22, 37
+  offset: 1, 1
+  index: -1
+Head
+  rotate: true
+  xy: 142, 34
+  size: 92, 93
+  orig: 94, 95
+  offset: 1, 1
+  index: -1
+Left_Ankle
+  rotate: true
+  xy: 468, 92
+  size: 34, 42
+  orig: 36, 44
+  offset: 1, 1
+  index: -1
+Left_Ear
+  rotate: false
+  xy: 79, 9
+  size: 28, 26
+  orig: 30, 28
+  offset: 1, 1
+  index: -1
+Left_Fist
+  rotate: true
+  xy: 332, 65
+  size: 61, 81
+  orig: 63, 83
+  offset: 1, 1
+  index: -1
+Right_Fist
+  rotate: true
+  xy: 332, 65
+  size: 61, 81
+  orig: 63, 83
+  offset: 1, 1
+  index: -1
+Left_Hand
+  rotate: false
+  xy: 333, 8
+  size: 36, 55
+  orig: 38, 57
+  offset: 1, 1
+  index: -1
+Right_Hand
+  rotate: false
+  xy: 333, 8
+  size: 36, 55
+  orig: 38, 57
+  offset: 1, 1
+  index: -1
+Left_Leg
+  rotate: false
+  xy: 415, 69
+  size: 51, 57
+  orig: 53, 59
+  offset: 1, 1
+  index: -1
+Left_Toe
+  rotate: false
+  xy: 371, 37
+  size: 36, 26
+  orig: 38, 28
+  offset: 1, 1
+  index: -1
+Pelvis
+  rotate: true
+  xy: 237, 49
+  size: 77, 93
+  orig: 79, 95
+  offset: 1, 1
+  index: -1
+Right_Ankle
+  rotate: true
+  xy: 237, 2
+  size: 45, 40
+  orig: 47, 42
+  offset: 1, 1
+  index: -1
+Right_Ear
+  rotate: true
+  xy: 45, 7
+  size: 28, 32
+  orig: 30, 34
+  offset: 1, 1
+  index: -1
+Right_Leg
+  rotate: false
+  xy: 279, 6
+  size: 52, 41
+  orig: 54, 43
+  offset: 1, 1
+  index: -1
+Right_Toe
+  rotate: false
+  xy: 2, 6
+  size: 41, 29
+  orig: 43, 31
+  offset: 1, 1
+  index: -1
+Tail
+  rotate: true
+  xy: 371, 10
+  size: 25, 35
+  orig: 27, 37
+  offset: 1, 1
+  index: -1
