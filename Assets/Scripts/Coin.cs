@@ -7,10 +7,12 @@ public class Coin : MonoBehaviour
     private AudioSource source;
 
     private Transform target;
+    private Vector3 startPos;
 
     void Start()
     {
         source = GameObject.Find("CoinAudio").GetComponent<AudioSource>();
+        startPos = transform.localPosition;
     }
 
     void Update()
@@ -36,6 +38,10 @@ public class Coin : MonoBehaviour
     void OnEnable()
     {
         GetComponent<Rigidbody2D>().MovePosition(new Vector3(transform.position.x, 0, transform.position.z));
+        if (!startPos.Equals(Vector3.zero))
+        {
+            transform.localPosition = startPos;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D col)
