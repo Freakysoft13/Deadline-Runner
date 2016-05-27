@@ -15,8 +15,7 @@ public class PetScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        bool isActive = LevelManager.Instance.IsConsumableActive(LevelManager.Consumable.COLLECTOR_PET) || 
-            LevelManager.Instance.(LevelManager.Consumable.COLLECTOR_PET) &&HasPet();
+        bool isActive = LevelManager.Instance.IsConsumableActive(LevelManager.Consumable.COLLECTOR_PET) || HasPet();
         gameObject.SetActive(isActive);
         if (!isActive)
         {
