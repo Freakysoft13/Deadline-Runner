@@ -12,7 +12,7 @@ public class ConsumablesManager {
                 case LevelManager.Consumable.DOUBLE_CRYSTALS: gm.scoreMultiplier = 2; lm.DeactivateConsumable(c); break;
                 case LevelManager.Consumable.DOUBLE_EXP: gm.expMultiplier = 2; lm.DeactivateConsumable(c); break;
                 //case LevelManager.Consumable.POWER_START: gm.Player.headStart = true; lm.DeactivateConsumable(c); break;
-                //case LevelManager.Consumable.COLLECTOR_PET: lm.DeactivateConsumable(c); break;
+                case LevelManager.Consumable.COLLECTOR_PET: lm.DeactivateConsumable(c); break;
             }
         }
     }
