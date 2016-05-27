@@ -26,6 +26,7 @@ public class PetScript : MonoBehaviour
         Run();
         EventManager.OnBeforePlayerDied += () =>
         {
+            LevelManager.Instance.DeactivateConsumable(LevelManager.Consumable.COLLECTOR_PET);
             Stop();
         };
         EventManager.OnPlayerResurrected += () =>
