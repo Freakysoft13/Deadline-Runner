@@ -49,21 +49,12 @@ public class GooglePlayServices : MonoBehaviour
 
     public void ShowAchievements()
     {
-        Social.localUser.Authenticate((bool success) =>
-        {
             Social.ShowAchievementsUI();
-        });
-        Social.ShowAchievementsUI();
     }
 
     public void ShowLeaderboard()
     {
-        Social.localUser.Authenticate((bool success) =>
-        {
-            // handle success or failure
-        });
         Social.ShowLeaderboardUI();
-
     }
 
     public void ReportScore(String leaderboard, long score)

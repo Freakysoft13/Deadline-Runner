@@ -655,7 +655,7 @@ public class MenuUI : MonoBehaviour
             LevelManager.Instance.AquireConsumable(LevelManager.Consumable.COLLECTOR_PET);
             MagnetActiveBtn.gameObject.SetActive(true);
             BuyMagnetBtn.gameObject.SetActive(false);
-            LevelManager.Instance.AddMoney(-DoubleShardsPrice);
+            LevelManager.Instance.AddMoney(-MagnetPrice);
             print(LevelManager.Instance.IsConsumableActive(LevelManager.Consumable.COLLECTOR_PET));
         }
         else if (LevelManager.Instance.GetMoney() < MagnetPrice)
