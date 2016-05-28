@@ -137,6 +137,7 @@ public class ResultPanel : MonoBehaviour
         if (triesAmt >= rateUsPopTimes[rateUsPopAmt])
         {
             PlayerPrefs.SetInt("rate_us_pop_amt", Mathf.Clamp(++rateUsPopAmt, 0, rateUsPopTimes.Length - 1));
+            PlayerPrefs.SetInt("tries_amt", 0);
             rateUsPanel.SetActive(true);
         }
     }
