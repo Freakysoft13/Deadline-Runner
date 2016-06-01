@@ -1,49 +1,78 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CarController : MonoBehaviour {
+public class CarController : MonoBehaviour
+{
 
     private SkeletonAnimation skelAnimation;
+    private float xSpawn;
 
     public const string PREPARE = "Preparation";
     public const string START = "Starting";
     public const string DESTROY = "Destroying";
 
-    void Start () {
+    public float travelDistance = 10;
+
+    void OnEnable()
+    {
         skelAnimation = GetComponent<SkeletonAnimation>();
         skelAnimation.state.Complete += AnimationComplete;
-        EventManager.OnHeadstart += delegate () {
-            MoveToPlayer();
-            skelAnimation.AnimationName = PREPARE;
-            Reset();
-        };
+        GetInTheCar();
     }
-	
-    private void MoveToPlayer() {
+
+    void OnDisable()
+    {
+        skelAnimation.state.Complete -= AnimationComplete;
+        GameManager.Instance.Player.ToggleCar(false);
+    }
+
+    private void GetInTheCar()
+    {
+        MoveToPlayer();
+        skelAnimation.state.SetAnimation(0, PREPARE, false);
+        xSpawn = GameManager.Instance.Player.transform.position.x;
+        GameManager.Instance.Player.ToggleCar(true);
+        target = new Vector3(xSpawn + travelDistance, GameManager.Instance.Player.PlayerFlip * 2, 0);
+    }
+
+    private Vector3 target;
+
+    private void MoveToPlayer()
+    {
         Player player = GameManager.Instance.Player;
         float yOffset = 0;
         Vector2 newPos = player.transform.position;
         newPos.y += player.PlayerFlip * yOffset;
         transform.position = newPos;
+        transform.localScale = player.transform.localScale;
     }
 
-    private void AnimationComplete(Spine.AnimationState state, int trackIndex, int loopCount) {
-        EventManager.FireAnimationComplete(skelAnimation.AnimationName);
-        switch(skelAnimation.AnimationName) {
+    private bool isMoving = false;
+
+    private void AnimationComplete(Spine.AnimationState state, int trackIndex, int loopCount)
+    {
+        switch (skelAnimation.AnimationName)
+        {
             case PREPARE:
-                skelAnimation.AnimationName = START; skelAnimation.loop = true; Reset(); break;
-            case START: skelAnimation.AnimationName = DESTROY; Reset(); break;
-            case DESTROY: gameObject.SetActive(false); break;
+                skelAnimation.state.SetAnimation(0, START, true); isMoving = true; break;
+            case DESTROY:
+                gameObject.SetActive(false);
+                break;
         }
     }
 
-    private void Reset() {
-        skelAnimation.Reset();
-        skelAnimation.state.Complete += AnimationComplete;
+    // Update is called once per frame
+    void Update()
+    {
+        if (isMoving)
+            transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+
+        if (Mathf.Abs(transform.position.x - target.x) < Mathf.Epsilon && isMoving)
+        {
+            skelAnimation.state.SetAnimation(0, DESTROY, false);
+            isMoving = false;
+        }
     }
 
-    // Update is called once per frame
-    void Update () {
-	
-	}
+    public float speed = 10f;
 }

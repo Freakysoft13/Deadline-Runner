@@ -308,9 +308,19 @@ public class Player : MonoBehaviour
     }
 
     private float updatedAtDistance = 0;
-
+    public GameObject car;
     void Update()
     {
+        if (isInCar)
+        {
+            velocity = Vector3.zero;
+            transform.position = car.transform.position;
+            Vector3 newPos = transform.position;
+            newPos.x -= 0.2f;
+            newPos.y -= playerFlip * -0.5f;
+            transform.position = newPos;
+            return;
+        }
         ApplyGravity();
         if (isDead || !canMove) { Stop(); return; }
         CheckTouch();
@@ -344,6 +354,10 @@ public class Player : MonoBehaviour
              animationController.Idle();
          }
          */
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            car.SetActive(true);
+        }
     }
 
     private bool isFalling()
@@ -388,7 +402,16 @@ public class Player : MonoBehaviour
             isShieldPassive = false;
         }
     }
+    private bool isInCar = false;
 
+    public void ToggleCar(bool flag)
+    {
+        isInCar = flag;
+        if (flag)
+        {
+            animationController.FallDown();
+        }
+    }
     private void RunSound()
     {
         float speedMultiplier = (1 + GetDistance() / (speedThreshold * 1000.0f));
@@ -399,7 +422,6 @@ public class Player : MonoBehaviour
         }
         Invoke("RunSound", speedTime / speedMultiplier);
     }
-
     public void Stop()
     {
         velocity.x = 0;
@@ -570,7 +592,7 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if ((collider.CompareTag("obstacle") || collider.CompareTag("flying")) && !isDead && !isShielded && !isInAfterLife)
+        if ((collider.CompareTag("obstacle") || collider.CompareTag("flying")) && !isDead && !isShielded && !isInAfterLife && !isInCar)
         {
             GameManager.Instance.ApplyAfterLife();
         }
