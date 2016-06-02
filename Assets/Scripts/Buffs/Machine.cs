@@ -3,7 +3,7 @@
     public class Machine : Effect
     {
         public override void ApplyEffect(Player player) {
-            player.ToggleCar(true);
+            player.ActivateCar();
         }
 
         public override void WearOff(Player player) {

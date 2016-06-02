@@ -405,6 +405,10 @@ public class Player : MonoBehaviour
     }
     private bool isInCar = false;
 
+    public void ActivateCar() {
+        car.SetActive(true);
+    }
+
     public void ToggleCar(bool flag)
     {
         isInCar = flag;
