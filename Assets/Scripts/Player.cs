@@ -354,9 +354,10 @@ public class Player : MonoBehaviour
              animationController.Idle();
          }
          */
-        if (Input.GetKeyDown(KeyCode.M))
+        if (headStart)
         {
-            car.SetActive(true);
+            ToggleCar(true);
+            headStart = false;
         }
     }
 
