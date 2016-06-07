@@ -15,6 +15,14 @@ public class CarController : MonoBehaviour
 
     void OnEnable()
     {
+        if (skelAnimation != null)
+        {
+            GetInTheCar();
+        }
+    }
+
+    void Start()
+    {
         skelAnimation = GetComponent<SkeletonAnimation>();
         skelAnimation.state.Complete += AnimationComplete;
         GetInTheCar();
