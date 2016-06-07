@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public int headStartDistance = 200;
     public float gravityMultiplier = 3;
     public Effect.Shield startShieldStub;
+    public Effect.Shield machineShieldStub;
 
     [Header("Speed increse muliplier")]
     public float speedThreshold = 2;
@@ -405,7 +406,8 @@ public class Player : MonoBehaviour
     }
     private bool isInCar = false;
 
-    public void ActivateCar() {
+    public void ActivateCar()
+    {
         car.SetActive(true);
     }
 
@@ -415,6 +417,10 @@ public class Player : MonoBehaviour
         if (flag)
         {
             animationController.FallDown();
+        }
+        else
+        {
+            machineShieldStub.PickUp();
         }
     }
     private void RunSound()
