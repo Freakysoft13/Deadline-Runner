@@ -233,7 +233,12 @@ public class ResultPanel : MonoBehaviour
     {
         PlayerPrefs.SetInt("already_rated", 1);
         rateUsPanel.SetActive(false);
+        #if UNITY_ANDROID
         Application.OpenURL("market://details?id=com.freakysoft.deadlinerunner/");
+        #endif
+        #if UNITY_WSA
+        Application.OpenURL("ASDASFSEDRHGJIUSRYG*T($TU(S");
+        #endif
     }
 
     public void Cancel()
