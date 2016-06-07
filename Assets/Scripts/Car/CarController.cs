@@ -18,6 +18,7 @@ public class CarController : MonoBehaviour
         if (skelAnimation != null)
         {
             GetInTheCar();
+            skelAnimation.state.Complete += AnimationComplete;
         }
     }
 
