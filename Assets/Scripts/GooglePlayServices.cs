@@ -37,6 +37,14 @@ public class GooglePlayServices : MonoBehaviour
 
     public void Login(Action callback = null)
     {
+        if (isLoggedIn)
+        {
+            if (callback != null)
+            {
+                callback();
+            }
+            return;
+        }
         Social.localUser.Authenticate((bool success) =>
         {
             isLoggedIn = success;
@@ -49,7 +57,7 @@ public class GooglePlayServices : MonoBehaviour
 
     public void ShowAchievements()
     {
-            Social.ShowAchievementsUI();
+        Social.ShowAchievementsUI();
     }
 
     public void ShowLeaderboard()
