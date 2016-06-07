@@ -54,6 +54,10 @@ public class Coin : MonoBehaviour
         {
             target = col.transform;
         }
+        if (col.CompareTag("machine"))
+        {
+            target = col.transform;
+        }
     }
 
     private void PickUp()

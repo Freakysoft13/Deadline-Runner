@@ -11,10 +11,11 @@ public class CarController : MonoBehaviour
     public const string START = "Starting";
     public const string DESTROY = "Destroying";
 
-    public float travelDistance = 10;
+    public float travelDistance;
 
     void OnEnable()
     {
+        travelDistance = LevelManager.Instance.strangeMachineTimers[LevelManager.Instance.GetPowerUpLevel(LevelManager.PowerUp.MACHINE)];
         if (skelAnimation != null)
         {
             GetInTheCar();
@@ -34,13 +35,17 @@ public class CarController : MonoBehaviour
         skelAnimation.state.Complete -= AnimationComplete;
         GameManager.Instance.Player.ToggleCar(false);
     }
-
+    public float headStartDistance = 20.0f;
     private void GetInTheCar()
     {
         MoveToPlayer();
         skelAnimation.state.SetAnimation(0, PREPARE, false);
         xSpawn = GameManager.Instance.Player.transform.position.x;
         GameManager.Instance.Player.ToggleCar(true);
+        if (GameManager.Instance.Player.headStart)
+        {
+            travelDistance = headStartDistance;
+        }
         target = new Vector3(xSpawn + travelDistance, GameManager.Instance.Player.PlayerFlip * 2, 0);
     }
 

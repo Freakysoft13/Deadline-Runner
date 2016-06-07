@@ -358,7 +358,6 @@ public class Player : MonoBehaviour
         if (headStart)
         {
             ToggleCar(true);
-            headStart = false;
         }
     }
 
@@ -421,6 +420,10 @@ public class Player : MonoBehaviour
         else
         {
             machineShieldStub.PickUp();
+            if (headStart)
+            {
+                headStart = false;
+            }
         }
     }
     private void RunSound()
