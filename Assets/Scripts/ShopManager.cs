@@ -36,6 +36,7 @@ public class ShopManager : MonoBehaviour
         index = GetSkinIndex();
         UpdateCharPos();
         SkinChecker();
+        lockmasklist[0].gameObject.SetActive(false);
     }
     void Update() {
         money.text = LevelManager.Instance.GetMoney().ToString();
@@ -92,8 +93,7 @@ public class ShopManager : MonoBehaviour
             SkinChecker();
         }
         else {
-            lockmasklist[index].SetActive(false);
-            blockingMask.SetActive(true);
+             blockingMask.SetActive(true);
         }
     }
     public void LockedChar(int index) {

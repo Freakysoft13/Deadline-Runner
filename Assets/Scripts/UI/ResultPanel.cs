@@ -235,10 +235,11 @@ public class ResultPanel : MonoBehaviour
         rateUsPanel.SetActive(false);
         #if UNITY_ANDROID
         Application.OpenURL("market://details?id=com.freakysoft.deadlinerunner/");
-        #endif
-        #if UNITY_WSA
-        Application.OpenURL("ASDASFSEDRHGJIUSRYG*T($TU(S");
-        #endif
+#endif
+#if UNITY_WSA
+         UnityEngine.WSA.Launcher.LaunchUri("ms-windows-store:REVIEW?ProductId=9nblggh5hql4",
+                                false);
+#endif
     }
 
     public void Cancel()
