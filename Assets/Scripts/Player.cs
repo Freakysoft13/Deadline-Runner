@@ -416,6 +416,7 @@ public class Player : MonoBehaviour
         if (flag)
         {
             animationController.FallDown();
+            ActivateCar();
         }
         else
         {

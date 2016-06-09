@@ -639,7 +639,6 @@ public class MenuUI : MonoBehaviour
             PowerDashActiveBtn.gameObject.SetActive(true);
             BuyPowerDashBtn.gameObject.SetActive(false);
             LevelManager.Instance.AddMoney(-DoubleShardsPrice);
-            print(LevelManager.Instance.IsConsumableActive(LevelManager.Consumable.POWER_START));
         }
         else if (LevelManager.Instance.GetMoney() < PowerDashPrice)
         {
