@@ -16,6 +16,7 @@ public class CarController : MonoBehaviour
     void OnEnable()
     {
         travelDistance = LevelManager.Instance.strangeMachineTimers[LevelManager.Instance.GetPowerUpLevel(LevelManager.PowerUp.MACHINE)];
+        print(travelDistance);
         if (skelAnimation != null)
         {
             GetInTheCar();

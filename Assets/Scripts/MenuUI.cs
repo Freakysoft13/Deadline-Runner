@@ -335,7 +335,7 @@ public class MenuUI : MonoBehaviour
 
     public void BuyHpBoost()
     {
-        BuyItem(LevelManager.Instance.GetPowerUpLevel(LevelManager.PowerUp.HP_BOOST), LevelManager.PowerUp.HP_BOOST, HpBoostPowerUPImage, HpBoostText, HpBoostPrice,
+        BuyItem(LevelManager.Instance.GetPowerUpLevel(LevelManager.PowerUp.MACHINE), LevelManager.PowerUp.MACHINE, HpBoostPowerUPImage, HpBoostText, HpBoostPrice,
             BuyHpBoostBtn, HpBoostMaxedBtn,mashinevaluetxt,machineValue);
     }
 
