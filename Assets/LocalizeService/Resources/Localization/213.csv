@@ -48,7 +48,7 @@ First Character Name,Wanderer,Cкиталец,Блукач
 Seceond Character Name,Living Armor,Живой Доспех,Живі Обладунки
 Third Character Name,UR-900,UR-900,UR-900
 Fourth Character Name,Serious Wizard,Серьезный Волшебник,Серйозний Чаклун
-Fifth Character Name,Elven Queen,Королева эльфов,Королева Ельфів
+Fifth Character Name,Coming Soon,Недоступно,Недоступно
 Sixth Character Name,Coming Soon,Недоступно,Недоступно
 Seventh Character Name,Coming Soon,Недоступно,Недоступно
 Eight Character Name,Coming Soon,Недоступно,Недоступно
@@ -86,7 +86,6 @@ Reward MSG pt1,Earned,Получено ,Отримано
 Reward MSG pt2,Crystal Shards,Хрустальных Осколков,Кришталевих шматочків
 Buy Shards button,Buy Shards,Купить Кристалов,Купити Кристалів
 Play Button,Play,Играть,Грати
-Get Button,Get!,Достать,Отримати
 Not Enough Shards,You need more Crystal Shards to buy this!,Вам нужно больше Хрустальных Осколков чтобы купить это!,Вам потрібно більше Кришталевих шматочків щоб купити це!
 Ancestor_1,Willow,Виллоу,Віллоу
 Ancestor_2,Delmor,Делмор,Делмор
@@ -118,7 +117,6 @@ Ancestor_7 description,"Improves Shield, Afterlife, Machine's world and Big crys
 Ancestor_8 description,You move on hyper speed when Afterlife trigger.,В Загробной жизни вы двигаетесь на гипер скорости.,У Потойбічному житті ви рухаєтеся на гіпершвидкості.
 Ancestor_9 description,Every run you have free resurrection.,Каждую игру у вас есть бесплатное воскрешение.,Кожну гру у вас є безкоштовне воскресіння.
 Ancestor_10 description,Unlock special Character. All other bonuses is active.,Откривает специального персонажа. Все остальные бонусы также активны.,Відкриває спеціального персонажа. Всі інші бонуси також активні.
-Mage Description,To unlock this awesome Character all you need to do is reach level 10.,"Для того, чтобы получить этого удивительного персонажа все, что вам нужно сделать, это получить 10 уровень.","Для того, щоб отримати цього дивовижного персонажа все, що вам потрібно зробити, це отримати 10 рівень."
 localization1,English,Английский,Англійська
 localization2,Russian,Русский,Російська
 localization3,Ukrainian,Украинский,Українська

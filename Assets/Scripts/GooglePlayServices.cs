@@ -55,16 +55,6 @@ public class GooglePlayServices : MonoBehaviour
         });
     }
 
-    public void ShowAchievements()
-    {
-        Social.ShowAchievementsUI();
-    }
-
-    public void ShowLeaderboard()
-    {
-        Social.ShowLeaderboardUI();
-    }
-
     public void ReportScore(String leaderboard, long score)
     {
         if (isLoggedIn)

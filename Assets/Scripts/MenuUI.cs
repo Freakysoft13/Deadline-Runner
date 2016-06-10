@@ -54,7 +54,7 @@ public class MenuUI : MonoBehaviour
 
     private int DoubleExpPrice = 500;
     private int DoubleShardsPrice = 500;
-    private int PowerDashPrice = 750;
+    private int PowerDashPrice = 250;
     private int MagnetPrice = 250;
 
     public RectTransform BuyExpBtn;
@@ -335,7 +335,7 @@ public class MenuUI : MonoBehaviour
 
     public void BuyHpBoost()
     {
-        BuyItem(LevelManager.Instance.GetPowerUpLevel(LevelManager.PowerUp.MACHINE), LevelManager.PowerUp.MACHINE, HpBoostPowerUPImage, HpBoostText, HpBoostPrice,
+        BuyItem(LevelManager.Instance.GetPowerUpLevel(LevelManager.PowerUp.HP_BOOST), LevelManager.PowerUp.HP_BOOST, HpBoostPowerUPImage, HpBoostText, HpBoostPrice,
             BuyHpBoostBtn, HpBoostMaxedBtn,mashinevaluetxt,machineValue);
     }
 
@@ -638,7 +638,7 @@ public class MenuUI : MonoBehaviour
             LevelManager.Instance.AquireConsumable(LevelManager.Consumable.POWER_START);
             PowerDashActiveBtn.gameObject.SetActive(true);
             BuyPowerDashBtn.gameObject.SetActive(false);
-            LevelManager.Instance.AddMoney(-DoubleShardsPrice);
+            LevelManager.Instance.AddMoney(-PowerDashPrice);
         }
         else if (LevelManager.Instance.GetMoney() < PowerDashPrice)
         {

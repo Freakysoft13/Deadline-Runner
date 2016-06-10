@@ -12,7 +12,7 @@ repeat: none
   index: -1
 2
   rotate: true
-  xy: 589, 348
+  xy: 589, 335
   size: 70, 106
   orig: 72, 108
   offset: 1, 1
@@ -31,16 +31,23 @@ Body
   orig: 71, 129
   offset: 1, 1
   index: -1
-Electro2/Layer 15
+Chest
   rotate: false
-  xy: 516, 266
+  xy: 516, 257
+  size: 66, 83
+  orig: 71, 84
+  offset: 1, 0
+  index: -1
+Electro2/Layer 15
+  rotate: true
+  xy: 697, 332
   size: 50, 74
   orig: 52, 76
   offset: 1, 1
   index: -1
 Electro2/Layer 18
   rotate: false
-  xy: 876, 663
+  xy: 589, 407
   size: 106, 86
   orig: 108, 88
   offset: 1, 1
@@ -53,8 +60,8 @@ Electro2/Layer 20
   offset: 1, 1
   index: -1
 Electro2/Layer 21
-  rotate: true
-  xy: 851, 528
+  rotate: false
+  xy: 686, 287
   size: 54, 43
   orig: 56, 45
   offset: 1, 1
@@ -73,11 +80,32 @@ Electro2/Layer 23
   orig: 67, 176
   offset: 1, 1
   index: -1
+Eye
+  rotate: false
+  xy: 553, 470
+  size: 23, 23
+  orig: 25, 25
+  offset: 1, 1
+  index: -1
 Head
   rotate: false
   xy: 811, 751
   size: 211, 271
   orig: 213, 273
+  offset: 1, 1
+  index: -1
+Laser
+  rotate: false
+  xy: 507, 152
+  size: 14, 26
+  orig: 16, 28
+  offset: 1, 1
+  index: -1
+LaserSpark
+  rotate: false
+  xy: 876, 649
+  size: 97, 100
+  orig: 99, 102
   offset: 1, 1
   index: -1
 Left_Ankle
@@ -96,28 +124,28 @@ Right_Ankle
   index: -1
 Left_Fist
   rotate: false
-  xy: 507, 134
+  xy: 851, 538
   size: 42, 44
   orig: 44, 46
   offset: 1, 1
   index: -1
 Right_Fist
   rotate: false
-  xy: 507, 134
+  xy: 851, 538
   size: 42, 44
   orig: 44, 46
   offset: 1, 1
   index: -1
 Left_Hand
   rotate: false
-  xy: 984, 681
+  xy: 975, 681
   size: 33, 68
   orig: 35, 70
   offset: 1, 1
   index: -1
 Right_Hand
   rotate: false
-  xy: 984, 681
+  xy: 975, 681
   size: 33, 68
   orig: 35, 70
   offset: 1, 1
@@ -138,14 +166,14 @@ Right_Leg
   index: -1
 Left_Shoulder
   rotate: true
-  xy: 700, 441
+  xy: 584, 281
   size: 52, 100
   orig: 54, 102
   offset: 1, 1
   index: -1
 Right_Shoulder
   rotate: true
-  xy: 700, 441
+  xy: 584, 281
   size: 52, 100
   orig: 54, 102
   offset: 1, 1
@@ -186,8 +214,8 @@ cap1
   offset: 1, 1
   index: -1
 cap2
-  rotate: false
-  xy: 589, 420
+  rotate: true
+  xy: 697, 384
   size: 109, 73
   orig: 111, 75
   offset: 1, 1
@@ -201,7 +229,7 @@ cap3
   index: -1
 cap4
   rotate: true
-  xy: 802, 450
+  xy: 528, 200
   size: 55, 50
   orig: 57, 52
   offset: 1, 1

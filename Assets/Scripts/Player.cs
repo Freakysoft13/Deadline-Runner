@@ -435,7 +435,10 @@ public class Player : MonoBehaviour
             runSound.pitch = Random.Range(0.8f, 0.9f);
             runSound.Play();
         }
-        Invoke("RunSound", speedTime / speedMultiplier);
+        if (!isDead)
+        {
+            Invoke("RunSound", speedTime / speedMultiplier);
+        }
     }
     public void Stop()
     {
