@@ -24,12 +24,12 @@ Shield Description_3,Protecting you from all damage for 9 seconds.,Защища
 Shield Description_4,Protecting you from all damage for 10 seconds.,Защищает вас от всех повреждений в течение 10 секунд.,Захищає вас від усіх пошкоджень протягом 10 секунд.
 Shield Description_5,Protecting you from all damage for 11 seconds.,Защищает вас от всех повреждений в течение 11 секунд.,Захищає вас від усіх пошкоджень протягом 11 секунд.
 Machine's world Title,Machine's world,Мир Машин,Світ Машин
-Machine's world Description,Just enjoy the flight for 60 feets.,Просто наслаждайтесь полетом на протяжении 60 футов.,Просто насолоджуйтесь польотом протягом 60 футів.
-Machine's world Description_1,Just enjoy the flight for 70 feets.,Просто наслаждайтесь полетом на протяжении 70 футов.,Просто насолоджуйтесь польотом протягом 70 футів.
-Machine's world Description_2,Just enjoy the flight for 80 feets.,Просто наслаждайтесь полетом на протяжении 80 футов.,Просто насолоджуйтесь польотом протягом 80 футів.
-Machine's world Description_3,Just enjoy the flight for 90 feets.,Просто наслаждайтесь полетом на протяжении 90 футов.,Просто насолоджуйтесь польотом протягом 90 футів.
-Machine's world Description_4,Just enjoy the flight for 100 feets.,Просто наслаждайтесь полетом на протяжении 100 футов.,Просто насолоджуйтесь польотом протягом 100 футів.
-Machine's world Description_5,Just enjoy the flight for 110 feets.,Просто наслаждайтесь полетом на протяжении 110 футов.,Просто насолоджуйтесь польотом протягом 110 футів.
+Machine's world Description,Destroy every hostile object on your path for 5 seconds.,Уничтожить все враждебные объект на вашем пути за 5 секунд.,Знищує всі перешкоди на вашому шляху протягом 5 секунд.
+Machine's world Description_1,Destroy every hostile object on your path for 6 seconds.,Уничтожить все враждебные объект на вашем пути за 6 секунд.,Знищує всі перешкоди на вашому шляху протягом 6 секунд.
+Machine's world Description_2,Destroy every hostile object on your path for 7 seconds.,Уничтожить все враждебные объект на вашем пути за 7 секунд.,Знищує всі перешкоди на вашому шляху протягом 7 секунд.
+Machine's world Description_3,Destroy every hostile object on your path for 8 seconds.,Уничтожить все враждебные объект на вашем пути за 8 секунд.,Знищує всі перешкоди на вашому шляху протягом 8 секунд.
+Machine's world Description_4,Destroy every hostile object on your path for 9 seconds.,Уничтожить все враждебные объект на вашем пути за 9 секунд.,Знищує всі перешкоди на вашому шляху протягом 9 секунд.
+Machine's world Description_5,Destroy every hostile object on your path for 10 seconds.,Уничтожить все враждебные объект на вашем пути за 10 секунд.,Знищує всі перешкоди на вашому шляху протягом 10 секунд.
 Afterlife Title,AfterLife,Загробная жизнь,Потойбічне життя
 Afterlife Description,Death won't stop you at least for 4 seconds.,Смерть не остановит вас еще 4 секунды.,"Смерть вас не зупинить, принаймні ще 4 секунди."
 Afterlife Description_1,Death won't stop you at least for 5 seconds.,Смерть не остановит вас еще 5 секунд.,"Смерть вас не зупинить, принаймні ще 5 секунд."
@@ -53,8 +53,8 @@ Sixth Character Name,Coming Soon,Недоступно,Недоступно
 Seventh Character Name,Coming Soon,Недоступно,Недоступно
 Eight Character Name,Coming Soon,Недоступно,Недоступно
 Ninth Character Name,Coming Soon,Недоступно,Недоступно
-Double Score Title,Double Experience,Двойной Опыт,Подвійний досвід
-Double Score Description,In the next run you gain double experience.,В следующей игре ваш опыт удваивается,В наступній грі ваш досвід подвоюється
+Double Score Title,Double Score,Двойные Очки,Подвійні Очки
+Double Score Description,In the next run you gain double score.,В следующей игре ваши очки удваиваются,В наступній грі ваші очки подвоюються
 Double Crystals Title,Double Crystals,Двойные Кристаллы,Подвійні Кристали
 Double Crystals Description,In the next run you gain double crystals.,В следующей игре ваши хрустальные кусочки удваиваются,В наступній грі ваші кришталеві шматочки подвоюються
 Power Start Title,Power Start,Сильний старт,Потужний старт
@@ -112,7 +112,7 @@ Ancestor_1 description,Nothing can't hurt you for the first 15 seconds.,Ничт
 Ancestor_2 description,You gain 20 extra crystals for every 200 feets passed.,Вы получаете 20 дополнительных кристаллов за каждые 200 футов.,Ви отримуєте 20 додаткових кристалів за кожні 200 пройдених метрів.
 Ancestor_3 description,You gain double amount of crystal shards from Big crystals.,Ви отримуєте подвійну кількість кришталевих шматочків від великих кристалів.,Ви отримаєте подвійну винагороду від великих кристалів.
 Ancestor_4 description,Power-Up's Spawns more often. ,Бонусы встречаются намного чаще.,Бонуси зустрічаються набагато частіше.
-Ancestor_5 description,Double Experience is always active.,Двойной Опыт всегда активирован.,Подвійні досвід завжди активовано.
+Ancestor_5 description,Double Score is always active.,Двойные Очки всегда активированы.,Подвійні Очки завжди активовані.
 Ancestor_6 description,Double crystals is always active.,Двойные кристаллы всегда активна.,Подвійні кристали завжди активовані.
 Ancestor_7 description,"Improves Shield, Afterlife, Machine's world and Big crystal effects.",Усиливает все ваши способности.,Підсилює всі ваші здібності.
 Ancestor_8 description,You move on hyper speed when Afterlife trigger.,В Загробной жизни вы двигаетесь на гипер скорости.,У Потойбічному житті ви рухаєтеся на гіпершвидкості.

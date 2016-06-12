@@ -96,6 +96,7 @@ public class tp : MonoBehaviour
     //pause_btn need to be cleaned
     public void Pause()
     {
+        System.GC.Collect();
         deathpnl.SetActive(false);
         pause_pnl.SetActive(true);
         blockingmask.SetActive(false);
@@ -144,6 +145,7 @@ public class tp : MonoBehaviour
     //redirecting to main menu
     public void Restart_to_menu()
     {
+        System.GC.Collect();
         Time.timeScale = 1;
         Application.LoadLevel("StartMenu");
     }
@@ -222,6 +224,7 @@ public class tp : MonoBehaviour
     }
     public void RestartGameOnDeath()
     {
+        System.GC.Collect();
         Application.LoadLevel("Main");
     }
 
