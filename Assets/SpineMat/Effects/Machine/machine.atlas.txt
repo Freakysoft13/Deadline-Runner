@@ -3,101 +3,281 @@ machine.png
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
+Blades/car_00000
+  rotate: false
+  xy: 824, 288
+  size: 175, 137
+  orig: 230, 200
+  offset: 40, 25
+  index: -1
+Blades/car_00001
+  rotate: false
+  xy: 549, 147
+  size: 192, 128
+  orig: 230, 200
+  offset: 15, 48
+  index: -1
+Blades/car_00003
+  rotate: false
+  xy: 650, 9
+  size: 188, 136
+  orig: 230, 200
+  offset: 31, 30
+  index: -1
+Blades/car_00004
+  rotate: false
+  xy: 743, 159
+  size: 200, 127
+  orig: 230, 200
+  offset: 11, 45
+  index: -1
+Blades/car_00006
+  rotate: true
+  xy: 824, 427
+  size: 186, 146
+  orig: 230, 200
+  offset: 28, 26
+  index: -1
+Blades/car_00008
+  rotate: false
+  xy: 840, 24
+  size: 182, 133
+  orig: 230, 200
+  offset: 27, 20
+  index: -1
+Blades/car_00012
+  rotate: false
+  xy: 341, 161
+  size: 206, 115
+  orig: 230, 200
+  offset: 13, 57
+  index: -1
+Blades/car_00018
+  rotate: false
+  xy: 263, 2
+  size: 180, 143
+  orig: 230, 200
+  offset: 14, 33
+  index: -1
+Blades/car_00020
+  rotate: false
+  xy: 445, 16
+  size: 203, 129
+  orig: 230, 200
+  offset: 19, 42
+  index: -1
+Blades/car_00023
+  rotate: true
+  xy: 595, 277
+  size: 196, 135
+  orig: 230, 200
+  offset: 15, 39
+  index: -1
 BodyGlow
   rotate: true
-  xy: 760, 337
+  xy: 760, 345
   size: 461, 62
   orig: 463, 64
   offset: 1, 1
   index: -1
 FireGlow
   rotate: false
-  xy: 775, 825
+  xy: 775, 833
   size: 246, 189
   orig: 247, 191
   offset: 0, 1
   index: -1
 HeadlightGlow
   rotate: true
-  xy: 2, 2
+  xy: 2, 10
   size: 79, 111
   orig: 81, 113
   offset: 1, 1
   index: -1
 Layer 21 copy 3
   rotate: false
-  xy: 2, 433
+  xy: 2, 441
   size: 585, 365
   orig: 587, 367
   offset: 1, 1
   index: -1
 Layer 23 copy
   rotate: false
-  xy: 2, 241
+  xy: 2, 249
   size: 337, 190
   orig: 339, 192
   offset: 1, 1
   index: -1
 Layer 24 copy 5
   rotate: false
-  xy: 2, 800
+  xy: 2, 808
   size: 771, 214
   orig: 773, 216
   offset: 1, 1
   index: -1
 Layer 25
   rotate: false
-  xy: 341, 270
+  xy: 341, 278
   size: 252, 161
   orig: 254, 163
   offset: 1, 1
   index: -1
 Layer 26
   rotate: true
-  xy: 824, 607
+  xy: 824, 615
   size: 216, 157
   orig: 218, 159
   offset: 1, 1
   index: -1
 Layer 27 copy
   rotate: false
-  xy: 2, 83
+  xy: 2, 91
   size: 259, 156
   orig: 261, 158
   offset: 1, 1
   index: -1
 Layer 28
   rotate: true
-  xy: 589, 467
+  xy: 589, 475
   size: 331, 169
   orig: 333, 171
   offset: 1, 1
   index: -1
 Layer 30
   rotate: true
-  xy: 263, 89
+  xy: 195, 20
   size: 69, 49
   orig: 71, 51
   offset: 1, 1
   index: -1
 Layer 31
-  rotate: false
-  xy: 115, 33
+  rotate: true
+  xy: 945, 189
   size: 97, 48
   orig: 99, 50
   offset: 1, 1
   index: -1
 blade2
   rotate: false
-  xy: 824, 538
+  xy: 115, 22
   size: 78, 67
   orig: 78, 67
   offset: 0, 0
   index: -1
 blade3
   rotate: true
-  xy: 263, 160
+  xy: 263, 168
   size: 79, 68
   orig: 79, 68
   offset: 0, 0
+  index: -1
+
+machine2.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Blades/car_00002
+  rotate: true
+  xy: 289, 38
+  size: 162, 151
+  orig: 230, 200
+  offset: 24, 17
+  index: -1
+Blades/car_00005
+  rotate: true
+  xy: 275, 202
+  size: 166, 146
+  orig: 230, 200
+  offset: 30, 12
+  index: -1
+Blades/car_00007
+  rotate: false
+  xy: 189, 370
+  size: 184, 136
+  orig: 230, 200
+  offset: 6, 35
+  index: -1
+Blades/car_00009
+  rotate: true
+  xy: 2, 172
+  size: 193, 129
+  orig: 230, 200
+  offset: 22, 45
+  index: -1
+Blades/car_00010
+  rotate: true
+  xy: 442, 53
+  size: 160, 151
+  orig: 230, 200
+  offset: 17, 22
+  index: -1
+Blades/car_00011
+  rotate: true
+  xy: 148, 22
+  size: 167, 139
+  orig: 230, 200
+  offset: 45, 21
+  index: -1
+Blades/car_00013
+  rotate: true
+  xy: 423, 215
+  size: 164, 147
+  orig: 230, 200
+  offset: 20, 18
+  index: -1
+Blades/car_00014
+  rotate: false
+  xy: 572, 217
+  size: 166, 151
+  orig: 230, 200
+  offset: 46, 17
+  index: -1
+Blades/car_00015
+  rotate: false
+  xy: 375, 381
+  size: 195, 125
+  orig: 230, 200
+  offset: 8, 49
+  index: -1
+Blades/car_00016
+  rotate: false
+  xy: 758, 367
+  size: 181, 139
+  orig: 230, 200
+  offset: 17, 20
+  index: -1
+Blades/car_00017
+  rotate: false
+  xy: 572, 370
+  size: 184, 136
+  orig: 230, 200
+  offset: 33, 33
+  index: -1
+Blades/car_00019
+  rotate: true
+  xy: 2, 2
+  size: 168, 144
+  orig: 230, 200
+  offset: 33, 17
+  index: -1
+Blades/car_00021
+  rotate: false
+  xy: 2, 367
+  size: 185, 139
+  orig: 230, 200
+  offset: 13, 30
+  index: -1
+Blades/car_00022
+  rotate: false
+  xy: 740, 215
+  size: 164, 150
+  orig: 230, 200
+  offset: 42, 11
+  index: -1
+Blades/car_00024
+  rotate: true
+  xy: 133, 191
+  size: 174, 140
+  orig: 230, 200
+  offset: 10, 26
   index: -1

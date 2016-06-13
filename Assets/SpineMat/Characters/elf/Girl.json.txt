@@ -4633,6 +4633,376 @@
 			}
 		}
 	},
+	"Ride": {
+		"bones": {
+			"Thigh_R": {
+				"rotate": [
+					{ "time": 0, "angle": 74.64 },
+					{ "time": 0.1666, "angle": 157.07 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Ankle_R": {
+				"rotate": [
+					{ "time": 0, "angle": -94.14 },
+					{ "time": 0.1666, "angle": -147.77 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Foot_R": {
+				"rotate": [
+					{ "time": 0, "angle": -78.62 },
+					{ "time": 0.1666, "angle": 16.33 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Thigh_L": {
+				"rotate": [
+					{ "time": 0, "angle": 89.69 },
+					{ "time": 0.1666, "angle": 143.02 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Ankle_L": {
+				"rotate": [
+					{ "time": 0, "angle": -133.9 },
+					{ "time": 0.1666, "angle": -148.93 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Body": {
+				"rotate": [
+					{ "time": 0, "angle": -26.66 },
+					{ "time": 0.1666, "angle": -18.36 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 49.35 },
+					{ "time": 0.1666, "x": 0, "y": -145.76 }
+				]
+			},
+			"Neck": {
+				"rotate": [
+					{ "time": 0, "angle": 3.14 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.1666, "x": -12.45, "y": -2.87 }
+				]
+			},
+			"Head": {
+				"rotate": [
+					{ "time": 0, "angle": -6.51 },
+					{ "time": 0.1666, "angle": -27.67 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.1666, "x": -17.01, "y": -2.8 }
+				]
+			},
+			"Shoulder_R": {
+				"rotate": [
+					{ "time": 0, "angle": -61.6 },
+					{ "time": 0.1666, "angle": -68.45 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Arm_R": {
+				"rotate": [
+					{ "time": 0, "angle": 92.03 },
+					{ "time": 0.1666, "angle": 136.76 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Shoulder_L": {
+				"rotate": [
+					{ "time": 0, "angle": -85.55 },
+					{ "time": 0.1666, "angle": -56.91 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Arm_L": {
+				"rotate": [
+					{ "time": 0, "angle": 73.92 },
+					{ "time": 0.1666, "angle": 103.59 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Foot_L": {
+				"rotate": [
+					{ "time": 0, "angle": -48.21 },
+					{ "time": 0.1666, "angle": 37.08 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Dress": {
+				"rotate": [
+					{ "time": 0, "angle": 23.38 },
+					{ "time": 0.1666, "angle": 35.52 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.1666, "x": 39.57, "y": 14.58 }
+				]
+			},
+			"Pocket_1": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Scapular_1_L": {
+				"rotate": [
+					{ "time": 0, "angle": -35.46 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Scapular_1_R": {
+				"rotate": [
+					{ "time": 0, "angle": -39.95 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Shorts": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Pocket_2": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Scapular_2_L": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Scapular_2_R": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Ear": {
+				"rotate": [
+					{ "time": 0, "angle": 44.37 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Knee_L": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Knee_R": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Weapon": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Weapon2": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Right_Breast": {
+				"rotate": [
+					{ "time": 0, "angle": -7.33 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Left_Breast": {
+				"rotate": [
+					{ "time": 0, "angle": -10.96 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Leaf_1": {
+				"rotate": [
+					{ "time": 0, "angle": -36.71 }
+				],
+				"translate": [
+					{ "time": 0, "x": -606.84, "y": 52.04 }
+				]
+			},
+			"Leaf_2": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": -594.94, "y": 54.01 }
+				]
+			},
+			"Leaf_3": {
+				"rotate": [
+					{ "time": 0, "angle": -13.86 }
+				],
+				"translate": [
+					{ "time": 0, "x": -650.82, "y": 70.2 }
+				]
+			},
+			"Leaf_4": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": -440.91, "y": 51.82 }
+				]
+			},
+			"Leaf_5": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": -449.67, "y": 18.97 }
+				]
+			},
+			"Shorts_L": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			}
+		},
+		"slots": {
+			"Electro_Body": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			},
+			"Electro_Dress": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			},
+			"Electro_Foot": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			},
+			"Electro_Head": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			},
+			"Electro_Thigh": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			},
+			"EyeClosed": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			},
+			"EyeHalf": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			},
+			"1": {
+				"color": [
+					{ "time": 0, "color": "79ff0000" }
+				]
+			},
+			"2": {
+				"color": [
+					{ "time": 0, "color": "79ff0000" }
+				]
+			},
+			"Electro_Foot2": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			},
+			"Electro_Head2": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			},
+			"Weapon2": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			},
+			"3": {
+				"color": [
+					{ "time": 0, "color": "79ff0000" }
+				]
+			},
+			"4": {
+				"color": [
+					{ "time": 0, "color": "79ff0000" }
+				]
+			},
+			"5": {
+				"color": [
+					{ "time": 0, "color": "79ff0000" }
+				]
+			}
+		}
+	},
 	"Run": {
 		"bones": {
 			"Thigh_R": {

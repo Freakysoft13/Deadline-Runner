@@ -15,6 +15,7 @@ public class AnimationController : MonoBehaviour
     public const string JUMP_UP = "Jump_Up";
     public const string JUMP_DOWN = "Jump_Down";
     public const string IDLE = "Idle";
+    public const string RIDE = "Ride";
 
     void Start() {
         skelAnimation = GetComponent<SkeletonAnimation>();
@@ -86,4 +87,13 @@ public class AnimationController : MonoBehaviour
         skelAnimation.Reset();
         skelAnimation.state.Complete += AnimationComplete;
     }
+
+    public void Ride()
+    {
+        skelAnimation.loop = false;
+        skelAnimation.timeScale = 1.0f;
+        skelAnimation.AnimationName = RIDE;
+        Reset();
+    }
+
 }

@@ -415,7 +415,7 @@ public class Player : MonoBehaviour
         isInCar = flag;
         if (flag)
         {
-            animationController.FallDown();
+            animationController.Ride();
             ActivateCar();
         }
         else

@@ -2555,6 +2555,290 @@
 			}
 		}
 	},
+	"Ride": {
+		"bones": {
+			"Left_Shoulder": {
+				"rotate": [
+					{ "time": 0, "angle": -96.05 },
+					{ "time": 0.1666, "angle": 337.65 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Left_Leg": {
+				"rotate": [
+					{ "time": 0, "angle": 117.38 },
+					{ "time": 0.1666, "angle": 165.95 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.1666, "x": 9.61, "y": 11.61 }
+				]
+			},
+			"Left_Toe": {
+				"rotate": [
+					{ "time": 0, "angle": -13.81 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Head": {
+				"rotate": [
+					{ "time": 0, "angle": 3.95 },
+					{ "time": 0.1666, "angle": 0.76 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.1666, "x": -45.1, "y": 9.26 }
+				]
+			},
+			"Left_Ankle": {
+				"rotate": [
+					{ "time": 0, "angle": -110.02 },
+					{ "time": 0.1666, "angle": -136.97 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Body": {
+				"rotate": [
+					{ "time": 0, "angle": -12.01 },
+					{ "time": 0.1666, "angle": 2.07 }
+				],
+				"translate": [
+					{ "time": 0, "x": -17.36, "y": 154.14 },
+					{ "time": 0.1666, "x": 5.33, "y": -31.33 }
+				]
+			},
+			"Right_Fist": {
+				"rotate": [
+					{ "time": 0, "angle": 22 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Right_Ankle": {
+				"rotate": [
+					{ "time": 0, "angle": -75.15 },
+					{ "time": 0.1666, "angle": -150.77 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Right_Shoulder": {
+				"rotate": [
+					{ "time": 0, "angle": -83.68 },
+					{ "time": 0.1666, "angle": 347.27 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Right_Leg": {
+				"rotate": [
+					{ "time": 0, "angle": 87.35 },
+					{ "time": 0.1666, "angle": 162.28 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.1666, "x": 9.61, "y": 11.61 }
+				]
+			},
+			"root": {
+				"rotate": [
+					{ "time": 0, "angle": -7 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Left_Hand": {
+				"rotate": [
+					{ "time": 0, "angle": 68.26 },
+					{ "time": 0.1666, "angle": 104.12 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Right_Hand": {
+				"rotate": [
+					{ "time": 0, "angle": 42.93 },
+					{ "time": 0.1666, "angle": 80.4 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Right_Toe": {
+				"rotate": [
+					{ "time": 0, "angle": -1.16 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Right_Leg_Light": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Left_Leg_Light": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"FieldPart1": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"FieldPart2": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"FieldPart3": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"ElectroHead": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"ElectroBody": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"ElectroBody2": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Left_fist": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Main": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Jetpack": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Eye": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Jetpack_Fire": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			}
+		},
+		"slots": {
+			"Left_Leg_Light": {
+				"color": [
+					{ "time": 0, "color": "fffffffa" }
+				]
+			},
+			"Right_Left_Light": {
+				"color": [
+					{ "time": 0, "color": "fffffffa" }
+				]
+			},
+			"FieldPart1": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			},
+			"FieldPart2": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			},
+			"FieldPart3": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			},
+			"Layer 18": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			},
+			"Layer 22": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			},
+			"Layer 222": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			}
+		},
+		"draworder": [
+			{
+				"time": 0,
+				"offsets": [
+					{ "slot": "Left_Leg_Light", "offset": -11 }
+				]
+			}
+		]
+	},
 	"Run": {
 		"bones": {
 			"Jetpack_Fire": {
