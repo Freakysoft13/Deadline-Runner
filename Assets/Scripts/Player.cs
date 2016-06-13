@@ -425,7 +425,13 @@ public class Player : MonoBehaviour
             {
                 headStart = false;
             }
+            ToggleMeshRenderer(true);
         }
+    }
+
+    public void ToggleMeshRenderer(bool active)
+    {
+        GetComponent<MeshRenderer>().enabled = active;
     }
     private void RunSound()
     {

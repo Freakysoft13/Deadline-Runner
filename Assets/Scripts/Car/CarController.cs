@@ -34,7 +34,6 @@ public class CarController : MonoBehaviour
     void OnDisable()
     {
         skelAnimation.state.Complete -= AnimationComplete;
-        GameManager.Instance.Player.ToggleCar(false);
     }
     public float headStartDistance = 20.0f;
     private void GetInTheCar()
@@ -69,6 +68,7 @@ public class CarController : MonoBehaviour
         switch (skelAnimation.AnimationName)
         {
             case PREPARE:
+                GameManager.Instance.Player.ToggleMeshRenderer(false);
                 skelAnimation.state.SetAnimation(0, START, true); isMoving = true; break;
             case DESTROY:
                 gameObject.SetActive(false);
@@ -84,6 +84,7 @@ public class CarController : MonoBehaviour
 
         if (Mathf.Abs(transform.position.x - target.x) < Mathf.Epsilon && isMoving)
         {
+            GameManager.Instance.Player.ToggleCar(false);
             skelAnimation.state.SetAnimation(0, DESTROY, false);
             isMoving = false;
         }
