@@ -65,6 +65,9 @@
 	{ "name": "Left_Toe2", "bone": "Right_Toe3", "attachment": "Left_Toe" },
 	{ "name": "Eye", "bone": "Eye", "attachment": "Eye" },
 	{ "name": "Head", "bone": "Head", "attachment": "Head" },
+	{ "name": "HaldClosedEye2", "bone": "Head", "attachment": "HaldClosedEye" },
+	{ "name": "HaldClosedEye", "bone": "Head", "attachment": "HaldClosedEye" },
+	{ "name": "ClosedEye", "bone": "Head", "attachment": "ClosedEye" },
 	{ "name": "Right_Leg", "bone": "Right_Leg", "attachment": "Right_Leg" },
 	{ "name": "Right_Leg2", "bone": "Right_Leg2", "attachment": "Right_Leg" },
 	{ "name": "Right_Ankle", "bone": "Right_Ankle", "attachment": "Right_Ankle" },
@@ -121,11 +124,20 @@
 		"Chest": {
 			"Chest": { "x": 21.45, "y": -2.59, "rotation": -88.19, "width": 71, "height": 84 }
 		},
+		"ClosedEye": {
+			"ClosedEye": { "x": 62.77, "y": -40.42, "rotation": -91.35, "width": 43, "height": 27 }
+		},
 		"ElectroBody2": {
 			"Electro2/Layer 18": { "x": 31.71, "y": -14.67, "rotation": 18.58, "width": 108, "height": 88 }
 		},
 		"Eye": {
 			"Eye": { "x": 9.91, "y": -0.56, "width": 25, "height": 25 }
+		},
+		"HaldClosedEye": {
+			"HaldClosedEye": { "x": 61.63, "y": -39.61, "rotation": -88.65, "width": 41, "height": 23 }
+		},
+		"HaldClosedEye2": {
+			"HaldClosedEye": { "x": 64.48, "y": -38.46, "rotation": 282.09, "width": 41, "height": 23 }
 		},
 		"Head": {
 			"Head": { "x": 3.56, "y": 18.92, "rotation": -91.35, "width": 213, "height": 273 }
@@ -537,10 +549,22 @@
 					{ "time": 0.1, "color": "ffffff00" }
 				]
 			},
+			"ClosedEye": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" },
+					{ "time": 0.0333, "color": "ffffffff" },
+					{ "time": 0.1, "color": "ffffff00" }
+				]
+			},
 			"Eye": {
 				"color": [
 					{ "time": 0, "color": "ffffffff" },
 					{ "time": 0.1, "color": "ffffff00" }
+				]
+			},
+			"HaldClosedEye": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
 				]
 			},
 			"Head": {
@@ -679,6 +703,11 @@
 				]
 			},
 			"ElectroBody2": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			},
+			"HaldClosedEye2": {
 				"color": [
 					{ "time": 0, "color": "ffffff00" }
 				]
@@ -1248,6 +1277,16 @@
 			}
 		},
 		"slots": {
+			"ClosedEye": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			},
+			"HaldClosedEye": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			},
 			"Laser": {
 				"color": [
 					{ "time": 0, "color": "ffffff00" }
@@ -1290,6 +1329,11 @@
 					{ "time": 0.6666, "color": "ffffff00" },
 					{ "time": 0.7333, "color": "ffffffff" },
 					{ "time": 0.8333, "color": "ffffff00" }
+				]
+			},
+			"HaldClosedEye2": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
 				]
 			},
 			"Left_Ankle2": {
@@ -2772,6 +2816,47 @@
 			}
 		},
 		"slots": {
+			"ClosedEye": {
+				"color": [
+					{ "time": 0, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.0666, "color": "ffffff00" },
+					{ "time": 0.1333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.9666, "color": "ffffffff" },
+					{ "time": 1, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 1.3333, "color": "ffffff00" },
+					{ "time": 1.3666, "color": "ffffffff" },
+					{ "time": 1.4, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 5.8666, "color": "ffffff00" },
+					{ "time": 5.9, "color": "ffffffff" },
+					{ "time": 5.9333, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 7.7666, "color": "ffffff00" },
+					{ "time": 7.8, "color": "ffffffff" },
+					{ "time": 7.8333, "color": "ffffff00" }
+				]
+			},
+			"HaldClosedEye": {
+				"color": [
+					{ "time": 0, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.0666, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.9666, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 1, "color": "ffffffff" },
+					{ "time": 1.0333, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 1.3, "color": "ffffff00" },
+					{ "time": 1.3333, "color": "ffffffff" },
+					{ "time": 1.3666, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 5.8, "color": "ffffff00" },
+					{ "time": 5.8666, "color": "ffffffff" },
+					{ "time": 6.0333, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 7.7333, "color": "ffffff00" },
+					{ "time": 7.7666, "color": "ffffffff" },
+					{ "time": 7.8, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 9.2666, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 9.3333, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 9.4, "color": "ffffff00" },
+					{ "time": 9.4666, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 10, "color": "ffffffff" }
+				]
+			},
 			"Laser": {
 				"color": [
 					{ "time": 0, "color": "ffffff00", "curve": "stepped" },
@@ -2842,6 +2927,13 @@
 			"ElectroBody2": {
 				"color": [
 					{ "time": 0, "color": "ffffff00" }
+				]
+			},
+			"HaldClosedEye2": {
+				"color": [
+					{ "time": 0, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 9.2666, "color": "ffffff00" },
+					{ "time": 9.3333, "color": "ffffffff" }
 				]
 			},
 			"Light2": {
@@ -3266,6 +3358,16 @@
 			}
 		},
 		"slots": {
+			"ClosedEye": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			},
+			"HaldClosedEye": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			},
 			"Laser": {
 				"color": [
 					{ "time": 0, "color": "ffffff00" }
@@ -3291,6 +3393,11 @@
 				]
 			},
 			"ElectroBody2": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			},
+			"HaldClosedEye2": {
 				"color": [
 					{ "time": 0, "color": "ffffff00" }
 				]
@@ -3662,6 +3769,20 @@
 			}
 		},
 		"slots": {
+			"ClosedEye": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.0333, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.0666, "color": "ffffff00" }
+				]
+			},
+			"HaldClosedEye": {
+				"color": [
+					{ "time": 0, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.0333, "color": "ffffffff" },
+					{ "time": 0.0666, "color": "ffffff00" }
+				]
+			},
 			"Laser": {
 				"color": [
 					{ "time": 0, "color": "ffffff00" }
@@ -3687,6 +3808,13 @@
 			"ElectroBody2": {
 				"color": [
 					{ "time": 0, "color": "ffffff00" }
+				]
+			},
+			"HaldClosedEye2": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.0333, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.0666, "color": "ffffff00" }
 				]
 			},
 			"Left_Ankle2": {
@@ -4036,6 +4164,22 @@
 			}
 		},
 		"slots": {
+			"ClosedEye": {
+				"color": [
+					{ "time": 0, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.1, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.1333, "color": "ffffff00" },
+					{ "time": 0.1666, "color": "ffffffff" }
+				]
+			},
+			"HaldClosedEye": {
+				"color": [
+					{ "time": 0, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.1, "color": "ffffff00" },
+					{ "time": 0.1333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.1666, "color": "ffffffff" }
+				]
+			},
 			"Laser": {
 				"color": [
 					{ "time": 0, "color": "ffffff00" }
@@ -4061,6 +4205,14 @@
 			"ElectroBody2": {
 				"color": [
 					{ "time": 0, "color": "ffffff00" }
+				]
+			},
+			"HaldClosedEye2": {
+				"color": [
+					{ "time": 0, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.1, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.1333, "color": "ffffff00" },
+					{ "time": 0.1666, "color": "ffffffff" }
 				]
 			},
 			"Left_Ankle2": {
@@ -4446,10 +4598,20 @@
 					{ "time": 0.1333, "color": "ffffff00" }
 				]
 			},
+			"ClosedEye": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			},
 			"Eye": {
 				"color": [
 					{ "time": 0, "color": "ffffffff" },
 					{ "time": 0.1333, "color": "ffffff00" }
+				]
+			},
+			"HaldClosedEye": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
 				]
 			},
 			"Head": {
@@ -4588,6 +4750,11 @@
 				]
 			},
 			"ElectroBody2": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			},
+			"HaldClosedEye2": {
 				"color": [
 					{ "time": 0, "color": "ffffff00" }
 				]
@@ -4990,11 +5157,23 @@
 					{ "time": 2.6666, "color": "ffffffff" }
 				]
 			},
+			"ClosedEye": {
+				"color": [
+					{ "time": 0, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 2.5333, "color": "ffffff00" }
+				]
+			},
 			"Eye": {
 				"color": [
 					{ "time": 0, "color": "ffffff00", "curve": "stepped" },
 					{ "time": 2.5333, "color": "ffffff00" },
 					{ "time": 2.6, "color": "ffffffff" }
+				]
+			},
+			"HaldClosedEye": {
+				"color": [
+					{ "time": 0, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 2.5333, "color": "ffffff00" }
 				]
 			},
 			"Head": {
@@ -5154,6 +5333,12 @@
 			"ElectroBody2": {
 				"color": [
 					{ "time": 0, "color": "ffffff00" }
+				]
+			},
+			"HaldClosedEye2": {
+				"color": [
+					{ "time": 0, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 2.5333, "color": "ffffff00" }
 				]
 			},
 			"Left_Ankle2": {
@@ -5709,6 +5894,16 @@
 			}
 		},
 		"slots": {
+			"ClosedEye": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			},
+			"HaldClosedEye": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			},
 			"Laser": {
 				"color": [
 					{ "time": 0, "color": "ffffff00" }
@@ -5735,6 +5930,11 @@
 				]
 			},
 			"ElectroBody2": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			},
+			"HaldClosedEye2": {
 				"color": [
 					{ "time": 0, "color": "ffffff00" }
 				]
@@ -6291,6 +6491,16 @@
 			}
 		},
 		"slots": {
+			"ClosedEye": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			},
+			"HaldClosedEye": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			},
 			"Laser": {
 				"color": [
 					{ "time": 0, "color": "ffffff00" }
@@ -6317,6 +6527,11 @@
 				]
 			},
 			"ElectroBody2": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			},
+			"HaldClosedEye2": {
 				"color": [
 					{ "time": 0, "color": "ffffff00" }
 				]

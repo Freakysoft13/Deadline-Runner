@@ -38,6 +38,13 @@ Chest
   orig: 71, 84
   offset: 1, 0
   index: -1
+ClosedEye
+  rotate: true
+  xy: 742, 289
+  size: 41, 25
+  orig: 43, 27
+  offset: 1, 1
+  index: -1
 Electro2/Layer 15
   rotate: true
   xy: 697, 332
@@ -85,6 +92,13 @@ Eye
   xy: 553, 470
   size: 23, 23
   orig: 25, 25
+  offset: 1, 1
+  index: -1
+HaldClosedEye
+  rotate: false
+  xy: 584, 258
+  size: 39, 21
+  orig: 41, 23
   offset: 1, 1
   index: -1
 Head
