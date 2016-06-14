@@ -180,6 +180,12 @@
 		}
 	}
 },
+"events": {
+	"Destroy": {},
+	"Drill": {},
+	"Hit": {},
+	"Starting": {}
+},
 "animations": {
 	"Destroying": {
 		"bones": {
@@ -557,7 +563,10 @@
 					{ "time": 0.4333, "color": "ffffff00" }
 				]
 			}
-		}
+		},
+		"events": [
+			{ "time": 0.1333, "name": "Destroy" }
+		]
 	},
 	"Preparation": {
 		"bones": {
@@ -1060,7 +1069,15 @@
 					{ "time": 0.6, "color": "ffffffff" }
 				]
 			}
-		}
+		},
+		"events": [
+			{ "time": 0.1666, "name": "Hit" },
+			{ "time": 0.3, "name": "Hit" },
+			{ "time": 0.4333, "name": "Hit" },
+			{ "time": 0.6, "name": "Hit" },
+			{ "time": 0.7666, "name": "Drill" },
+			{ "time": 1, "name": "Starting" }
+		]
 	},
 	"Starting": {
 		"bones": {

@@ -13,6 +13,11 @@ public class CarController : MonoBehaviour
 
     public float travelDistance;
 
+    private AudioSource hit;
+    private AudioSource prepare;
+    private AudioSource flying;
+    private AudioSource destroy;
+
     void OnEnable()
     {
         travelDistance = LevelManager.Instance.strangeMachineTimers[LevelManager.Instance.GetPowerUpLevel(LevelManager.PowerUp.HP_BOOST)];
@@ -21,19 +26,39 @@ public class CarController : MonoBehaviour
         {
             GetInTheCar();
             skelAnimation.state.Complete += AnimationComplete;
+            skelAnimation.state.Event += OnEvent;
+        }
+    }
+
+    private void OnEvent(Spine.AnimationState state, int trackIndex, Spine.Event e)
+    {
+        if (e.Data.Name == "Hit")
+        {
+            hit.Play();
+        }
+        if (e.Data.Name == "Starting")
+        {
+            prepare.Play();
         }
     }
 
     void Start()
     {
         skelAnimation = GetComponent<SkeletonAnimation>();
+        var audios = GetComponents<AudioSource>();
+        hit = audios[0];
+        prepare = audios[1];
+        flying = audios[2];
+        destroy = audios[3];
         skelAnimation.state.Complete += AnimationComplete;
+        skelAnimation.state.Event += OnEvent;
         GetInTheCar();
     }
 
     void OnDisable()
     {
         skelAnimation.state.Complete -= AnimationComplete;
+        skelAnimation.state.Event -= OnEvent;
     }
     public float headStartDistance = 20.0f;
     private void GetInTheCar()
@@ -69,6 +94,7 @@ public class CarController : MonoBehaviour
         {
             case PREPARE:
                 GameManager.Instance.Player.ToggleMeshRenderer(false);
+                flying.Play();
                 skelAnimation.state.SetAnimation(0, START, true); isMoving = true; break;
             case DESTROY:
                 gameObject.SetActive(false);
@@ -85,6 +111,8 @@ public class CarController : MonoBehaviour
         if (Mathf.Abs(transform.position.x - target.x) < Mathf.Epsilon && isMoving)
         {
             GameManager.Instance.Player.ToggleCar(false);
+            flying.Stop();
+            destroy.Play();
             skelAnimation.state.SetAnimation(0, DESTROY, false);
             isMoving = false;
         }

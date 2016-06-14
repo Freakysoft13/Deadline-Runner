@@ -172,7 +172,7 @@ public class ResultPanel : MonoBehaviour
         ancesorButton.SetActive(false);
         unlockText.gameObject.SetActive(true);
         unlockText.text = isMaxLevel ? "" : unlockLoc + (LevelManager.Instance.GetLevel() + 2);
-        ancestorsImg[Mathf.Clamp(LevelManager.Instance.GetLevel(), 0, 10)].SetActive(true);
+        ancestorsImg[Mathf.Clamp(LevelManager.Instance.GetLevel(), 0, 9)].SetActive(true);
         if (LevelManager.Instance == null || GameManager.Instance == null || GameManager.Instance.Player == null) { return; }
         levelUp_txt.gameObject.SetActive(false);
         level_txt.text = LevelLoc + (1 + LevelManager.Instance.GetLevel());
