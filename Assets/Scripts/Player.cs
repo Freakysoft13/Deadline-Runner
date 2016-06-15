@@ -245,6 +245,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    public bool IsDead
+    {
+        get { return isDead; }
+    }
+
     void Start()
     {
         SetActiveSkin();
