@@ -476,7 +476,8 @@
 					{ "time": 0, "angle": 0 }
 				],
 				"translate": [
-					{ "time": 0, "x": 0, "y": 0 }
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.6666, "x": 500, "y": 0 }
 				]
 			},
 			"Dress": {
@@ -4174,7 +4175,9 @@
 					{ "time": 0, "angle": 0 }
 				],
 				"translate": [
-					{ "time": 0, "x": 0, "y": 0 }
+					{ "time": 0, "x": 500, "y": 0, "curve": "stepped" },
+					{ "time": 1.4333, "x": 500, "y": 0 },
+					{ "time": 2.1, "x": 0, "y": 0 }
 				]
 			},
 			"Dress": {

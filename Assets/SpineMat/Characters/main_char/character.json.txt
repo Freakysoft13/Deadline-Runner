@@ -112,8 +112,8 @@
 					{ "time": 0, "angle": 0 }
 				],
 				"translate": [
-					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
-					{ "time": 0.9666, "x": 0, "y": 0 }
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.6333, "x": 515, "y": 0 }
 				],
 				"scale": [
 					{ "time": 0, "x": 1, "y": 1 }
@@ -1924,7 +1924,8 @@
 					{ "time": 0.9666, "angle": 0 }
 				],
 				"translate": [
-					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0, "x": 515, "y": 0, "curve": "stepped" },
+					{ "time": 0.3333, "x": 515, "y": 0 },
 					{ "time": 0.9666, "x": 0, "y": 0 }
 				],
 				"scale": [
