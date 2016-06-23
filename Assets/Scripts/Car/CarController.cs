@@ -72,6 +72,7 @@ public class CarController : MonoBehaviour
             travelDistance = headStartDistance;
         }
         target = new Vector3(xSpawn + travelDistance, GameManager.Instance.Player.PlayerFlip * 2, 0);
+        EventManager.FireHeadstart();
     }
 
     private Vector3 target;
@@ -95,6 +96,7 @@ public class CarController : MonoBehaviour
             case PREPARE:
                 GameManager.Instance.Player.ToggleMeshRenderer(false);
                 flying.Play();
+                EventManager.FireHeadstartEnd();
                 skelAnimation.state.SetAnimation(0, START, true); isMoving = true; break;
             case DESTROY:
                 gameObject.SetActive(false);

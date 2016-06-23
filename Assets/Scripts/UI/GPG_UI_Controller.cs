@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if UNITY_ANDROID
+using UnityEngine;
 using System.Collections;
 using GooglePlayGames;
 using UnityEngine.SocialPlatforms;
@@ -15,3 +16,4 @@ public class GPG_UI_Controller : MonoBehaviour {
         Social.ShowLeaderboardUI();
     }
 }
+#endif

@@ -33,6 +33,14 @@ public class PetScript : MonoBehaviour
         {
             Run();
         };
+        EventManager.OnHeadstart += () =>
+        {
+            Stop();
+        };
+        EventManager.OnHeadstartEnd += () =>
+        {
+            Run();
+        };
     }
 
     private bool HasPet()
@@ -66,6 +74,7 @@ public class PetScript : MonoBehaviour
             }
             transform.localScale = scale;
             transform.position = futurePos;
+            anim.state.TimeScale = (player.car.activeSelf ? 2 : (1 + player.GetDistance() / (player.speedThreshold * 1000.0f)));
         }
     }
 
