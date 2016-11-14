@@ -6,7 +6,9 @@ using UnityEngine.SocialPlatforms;
 
 public class GooglePlayServices : MonoBehaviour
 {
+
     private bool isLoggedIn = false;
+    public string leaderboard;
 
 
     private static GooglePlayServices instance = null;
@@ -48,9 +50,13 @@ public class GooglePlayServices : MonoBehaviour
         Social.localUser.Authenticate((bool success) =>
         {
             isLoggedIn = success;
-            if (callback != null)
+            if (success)
             {
-                callback();
+                print("Login Succes");
+            }
+            else
+            {
+                print("login failed");
             }
         });
     }
@@ -70,5 +76,16 @@ public class GooglePlayServices : MonoBehaviour
             Social.ReportProgress(achievementID, progress, null);
         }
     }
+
+    public void ShowAchievements ()
+    {
+        Social.ShowAchievementsUI();
+    }
+    
+    public void ShowLadder ()
+    {
+        Social.ShowLeaderboardUI();
+    }
+
 }
 #endif

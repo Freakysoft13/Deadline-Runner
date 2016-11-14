@@ -5,14 +5,15 @@ using System.Text;
 using System.Collections.Generic;
 
 #pragma warning disable 618
+#pragma warning disable 162
 
 public class Vungle
 {
 	//Change this constant fields when a new version of the plugin or sdk was released
-	private const string PLUGIN_VERSION = "3.1.5";
-	private const string IOS_SDK_VERSION = "3.2.0";
+	private const string PLUGIN_VERSION = "3.1.10";
+	private const string IOS_SDK_VERSION = "3.2.1";
 	private const string WIN_SDK_VERSION = "1.1.6";
-	private const string ANDROID_SDK_VERSION = "3.3.4";
+	private const string ANDROID_SDK_VERSION = "3.3.5";
 
 	#region Events
 
@@ -117,6 +118,9 @@ public class Vungle
 	// Initializes the Vungle SDK. Pass in your Android and iOS app ID's from the Vungle web portal.
 	public static void init( string androidAppId, string iosAppId, string winAppId = "" )
 	{
+#if UNITY_EDITOR
+		return;
+#endif
 #if UNITY_IPHONE
 		VungleBinding.startWithAppId( iosAppId , PLUGIN_VERSION);
 #elif UNITY_ANDROID
@@ -130,6 +134,9 @@ public class Vungle
 	// Sets if sound should be enabled or not
 	public static void setSoundEnabled( bool isEnabled )
 	{
+#if UNITY_EDITOR
+		return;
+#endif
 #if UNITY_IPHONE
 		VungleBinding.setSoundEnabled( isEnabled );
 #elif UNITY_ANDROID
@@ -143,6 +150,9 @@ public class Vungle
 	// Checks to see if a video is available
 	public static bool isAdvertAvailable()
 	{
+#if UNITY_EDITOR
+		return false;
+#endif
 #if UNITY_IPHONE
 		return VungleBinding.isAdAvailable();
 #elif UNITY_ANDROID
@@ -159,6 +169,9 @@ public class Vungle
 	[Obsolete("This method is deprecated. Please use playAdWithOptions( Dictionary<string,object> ) method instead.")]
 	public static void playAd( bool incentivized = false, string user = "", int orientation = 6)
 	{
+#if UNITY_EDITOR
+		return;
+#endif
 #if UNITY_IPHONE
 		VungleBinding.playAd( incentivized, user, (VungleAdOrientation)orientation);
 #elif UNITY_ANDROID
@@ -171,6 +184,9 @@ public class Vungle
 	// Displays an ad with the given options. The user option is only supported for incentivized ads.
 	public static void playAdWithOptions( Dictionary<string,object> options )
 	{
+#if UNITY_EDITOR
+		return;
+#endif
 		if(options == null)
 		{
 			throw new ArgumentException("You can not call this method with null parameter");
@@ -187,6 +203,9 @@ public class Vungle
 	// Clear cache
 	public static void clearCache()
 	{
+		#if UNITY_EDITOR
+		return;
+		#endif
 		#if UNITY_IPHONE
 		VungleBinding.clearCache();
 		#elif UNITY_ANDROID
@@ -199,6 +218,9 @@ public class Vungle
 	// Clear sleep
 	public static void clearSleep()
 	{
+		#if UNITY_EDITOR
+		return;
+		#endif
 		#if UNITY_IPHONE
 		VungleBinding.clearSleep();
 		#elif UNITY_ANDROID
@@ -208,6 +230,9 @@ public class Vungle
 	
 	public static void setEndPoint(string endPoint)
 	{
+		#if UNITY_EDITOR
+		return;
+		#endif
 		#if UNITY_IPHONE
 		VungleBinding.setEndPoint(endPoint);
 		#elif UNITY_ANDROID
@@ -218,6 +243,9 @@ public class Vungle
 
 	public static void setLogEnable(bool enable)
 	{
+		#if UNITY_EDITOR
+		return;
+		#endif
 		#if UNITY_IPHONE
 		VungleBinding.enableLogging(enable);
 		#elif UNITY_ANDROID
@@ -228,6 +256,9 @@ public class Vungle
 	
 	public static string getEndPoint()
 	{
+		#if UNITY_EDITOR
+		return "";
+		#endif
 		#if UNITY_IPHONE
 		return VungleBinding.getEndPoint();
 		#elif UNITY_ANDROID
@@ -239,6 +270,9 @@ public class Vungle
 	
 	public static void onResume()
 	{
+		#if UNITY_EDITOR
+		return;
+		#endif
 		#if UNITY_ANDROID
 		VungleAndroid.onResume();
 		#endif
@@ -246,6 +280,9 @@ public class Vungle
 
 	public static void onPause()
 	{
+		#if UNITY_EDITOR
+		return;
+		#endif
 		#if UNITY_ANDROID
 		VungleAndroid.onPause();
 		#endif

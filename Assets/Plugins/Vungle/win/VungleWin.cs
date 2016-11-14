@@ -93,7 +93,7 @@ public class VungleWin
 	{
 		Dictionary<string,object> options = new Dictionary<string,object> ();
 		options.Add ("incentivized", incentivized);
-		options.Add ("orientation", orientation);
+		options.Add ("orientation", orientation != 5);
 		options.Add ("large", large);
 		if (user != "")
 			options.Add ("userTag", user);
@@ -117,10 +117,15 @@ public class VungleWin
 			if (options.ContainsKey("userTag") && options["userTag"] is string)
 				cfg.SetUserId ((string) options["userTag"]);
 			cfg.SetSoundEnabled (_isSoundEnabled);
-			if (options.ContainsKey("orientation") && options["orientation"] is bool)
-				cfg.SetOrientation(((bool)options["orientation"])?VungleSDKProxy.DisplayOrientations.AutoRotate:VungleSDKProxy.DisplayOrientations.Landscape);
-			else
-				cfg.SetOrientation((_orientation == VungleAdOrientation.AutoRotate)?VungleSDKProxy.DisplayOrientations.AutoRotate:VungleSDKProxy.DisplayOrientations.Landscape);
+			if (options.ContainsKey("orientation")) {
+				if (options ["orientation"] is bool) {
+					cfg.SetOrientation (((bool)options ["orientation"]) ? VungleSDKProxy.DisplayOrientations.AutoRotate : VungleSDKProxy.DisplayOrientations.Landscape);
+				}
+				if (options ["orientation"] is VungleAdOrientation) {
+					cfg.SetOrientation(((VungleAdOrientation)options ["orientation"] == VungleAdOrientation.AutoRotate) ? VungleSDKProxy.DisplayOrientations.AutoRotate : VungleSDKProxy.DisplayOrientations.Landscape);
+				}
+			} else
+				cfg.SetOrientation((_orientation == VungleAdOrientation.AutoRotate) ? VungleSDKProxy.DisplayOrientations.AutoRotate : VungleSDKProxy.DisplayOrientations.Landscape);
 			if (options.ContainsKey("placement") && options["placement"] is string)
 				cfg.SetPlacement ((string) options["placement"]);
 			if (options.ContainsKey("alertText") && options["alertText"] is string)
