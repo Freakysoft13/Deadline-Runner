@@ -1,9 +1,7 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: c29fb405742c34195b21de445457f3ff
-=======
-guid: 5e531254bce1e448db9cedcd6b669b5c
->>>>>>> 8c22bbf3e1b86f89d20210afce881812ff4eb38b
+guid: 95628ef7dd7e9404e9f607517da71e29
+timeCreated: 1462698102
+licenseType: Free
 PluginImporter:
   serializedVersion: 1
   iconMap: {}
