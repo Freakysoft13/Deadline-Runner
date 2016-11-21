@@ -32,18 +32,15 @@ public class AdsManager : MonoBehaviour
         get { return instance; }
     }
 
-    private Microsoft.UnityPlugins.IInterstittialAd msInterstitialAd;
-    private const string MicrosoftAdsAppId = "bba15f80-e19f-4471-83a7-b4dc040764e1";
-    private int retryCount = 0;
+    public delegate void AdsHandler(object arg);
+
+    public static event AdsHandler RequestMsAd;
+
+    public static event AdsHandler DisplayMsAd;
+    
     private bool displayAds = false;
     private bool isMSAds = false;
-    protected string NextMicrosoftAd
-    {
-        get
-        {
-            return "11569621";
-        }
-    }
+    
 
     void Awake()
     {
@@ -59,23 +56,24 @@ public class AdsManager : MonoBehaviour
     }
     void Start()
     {
-        msInterstitialAd = Microsoft.UnityPlugins.MicrosoftAdsBridge.InterstitialAdFactory.CreateAd(OnMSReady,
-            OnMSAdCompleted, OnMSAdCancelled, OnMSAdError);
-        RequestMSAd();
+        RequestMsAd(null);
     }
     public void OnMSReady(object obj)
     {
         displayAds = true;
+        isMSAds = true;
     }
     public void OnMSAdCompleted(object obj)
     {
-        RequestMSAd();
-        OnAdCompleted(obj);
-        OnAdCompleted = null;
+        //RequestMsAd(null);
+        if(OnAdCompleted != null) {
+            OnAdCompleted(obj);
+            OnAdCompleted = null;
+        }
     }
     public void OnMSAdCancelled(object obj)
     {
-        RequestMSAd();
+        RequestMsAd(null);
     }
     public void OnMSAdError(object obj)
     {
@@ -87,15 +85,6 @@ public class AdsManager : MonoBehaviour
             FallbackAds();
         }*/
     }
-
-    private void RequestMSAd()
-    {
-        msInterstitialAd.Request(MicrosoftAdsAppId, NextMicrosoftAd, Microsoft.UnityPlugins.AdType.Video);
-    }
-    private void ShowMSAd()
-    {
-        msInterstitialAd.Show();
-    }
     private void ShowVungleAd()
     {
         Vungle.playAd();
@@ -103,7 +92,7 @@ public class AdsManager : MonoBehaviour
 
     void FallbackAds()
     {
-        isMSAds = true;
+        isMSAds = false;
         Vungle.init("com.prime31.Vungle", "vungleTest", "vungleTest");
         Vungle.adPlayableEvent += AdPlayableEvent;
         Vungle.onAdFinishedEvent += VungleAdFinished;
@@ -123,7 +112,7 @@ public class AdsManager : MonoBehaviour
     {
         if (isMSAds)
         {
-            RequestMSAd();
+            RequestMsAd(null);
         }
     }
 
@@ -132,7 +121,7 @@ public class AdsManager : MonoBehaviour
         OnAdCompleted = callback;
         if (isMSAds)
         {
-            ShowMSAd();
+            DisplayMsAd(null);
         }
         else
         {
