@@ -29,6 +29,5 @@ class TreePassivesManager
                 gm.Player.IsAfterlifeBoostPassive = true;
                 gm.Player.IsNoAdsResPassive = true; break;
         }
-        gm.Player.IsNoAdsResPassive = true;
     }
 }
