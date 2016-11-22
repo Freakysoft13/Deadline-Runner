@@ -1,56 +1,23 @@
 fileFormatVersion: 2
-guid: a5bb338756f44498eb56d9209611868c
+guid: 7f848ff2949304717855f0368a2335b2
 PluginImporter:
   serializedVersion: 1
   iconMap: {}
   executionOrder: {}
   isPreloaded: 0
   platformData:
-    Android:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
     Any:
       enabled: 0
       settings: {}
     Editor:
       enabled: 0
       settings:
-        CPU: AnyCPU
         DefaultValueInitialized: true
-        OS: AnyOS
-    Linux:
-      enabled: 0
-      settings:
-        CPU: x86
-    Linux64:
-      enabled: 0
-      settings:
-        CPU: x86_64
-    OSXIntel:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-    OSXIntel64:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-    Win:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-    Win64:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
     WindowsStoreApps:
       enabled: 1
       settings:
         CPU: AnyCPU
-        DontProcess: True
-        PlaceholderPath: 
         SDK: UWP
-        ScriptingBackend: DotNet
   userData: 
   assetBundleName: 
   assetBundleVariant: 

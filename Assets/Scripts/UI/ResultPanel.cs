@@ -193,6 +193,7 @@ public class ResultPanel : MonoBehaviour
         bestscore.text = bestscoreLoc + bestScore;
         CalcLevelProgress();
         LevelManager.Instance.AddMoney(crystalsCollected);
+        LevelManager.Instance.AddMoney(GameManager.Instance.SpecialCurrency);
     }
 
     void Update()
@@ -353,7 +354,7 @@ public class ResultPanel : MonoBehaviour
 #if UNITY_WSA
         Action<object> onAdCompleted = (arg) =>
         {
-            if (arg == null || (arg != null && (arg is AdFinishedEventArgs) && ((AdFinishedEventArgs)arg).IsCompletedView))
+            if (arg == null)
             {
                 GameManager.Instance.AddCrystals((GameManager.Instance.GetCrystals() * 2));
                 collectedCrystals.text = collectedCryLoc + crystalsCollectedCounter * 2;

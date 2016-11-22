@@ -13,8 +13,8 @@ public class EnvironmentSpawner : MonoBehaviour
     [Header("Obstacles")]
     public ObjectTypesDataHolder.ObstacleType[] obstaclesToSpawn;
     public int[] obstaclesDistribution;
-	public float[] obstaclesPadding;
-	public float[] obstacleStartSpawnDistance;
+    public float[] obstaclesPadding;
+    public float[] obstacleStartSpawnDistance;
     public float minObstaclesSpread;
     public float maxObstaclesSpread;
     private float lastObstacleSpawnPointX;
@@ -22,8 +22,8 @@ public class EnvironmentSpawner : MonoBehaviour
     [Header("Crystals")]
     public ObjectTypesDataHolder.CrystalType[] crystalsToSpawn;
     public int[] crystalDistribution;
-	public float[] crystalPadding;
-	public float[] crystalStartSpawnDistance;
+    public float[] crystalPadding;
+    public float[] crystalStartSpawnDistance;
     public float minCrystalsSpread;
     public float maxCrystalsSpread;
     private float lastCrystalSpawnPointX;
@@ -31,8 +31,8 @@ public class EnvironmentSpawner : MonoBehaviour
     [Header("Effects")]
     public LevelManager.PowerUp[] effectsToSpawn;
     public int[] effectsDistribution;
-	public float[] effectsPadding;
-	public float[] effectStartSpawnDistance;
+    public float[] effectsPadding;
+    public float[] effectStartSpawnDistance;
     public float minEffectsSpread;
     public float maxEffectsSpread;
     private float lastEffectSpawnPointX;
@@ -44,32 +44,43 @@ public class EnvironmentSpawner : MonoBehaviour
     private ObjectPool pool;
     private float startPoint;
 
-    void Start() {
+    void Start()
+    {
         pool = ObjectPool.Instance;
         startPoint = player.position.x + distanceFromPlayer;
         StartCoroutine(SpawnObstacles());
         StartCoroutine(SpawnCrystals());
+        if (GameManager.Instance.Player.IsIncreasedBuffSpawnPassive)
+        {
+            maxEffectsSpread *= 0.8f;
+        }
         StartCoroutine(SpawnEffects());
         StartCoroutine(IncreaseDifficulty(amount, interval));
         StartCoroutine(DecreaseDifficulty(amount, interval * 2));
     }
 
-    private IEnumerator SpawnObstacles() {
-        while (true) {
-            while (lastObstacleSpawnPointX > player.position.x + maxSpawnDistance) {
+    private IEnumerator SpawnObstacles()
+    {
+        while (true)
+        {
+            while (lastObstacleSpawnPointX > player.position.x + maxSpawnDistance)
+            {
                 yield return new WaitForSeconds(0.5f);
             }
             Spawn(minObstaclesSpread, maxObstaclesSpread, ref lastObstacleSpawnPointX, ConvertObstaclesEnum(),
-				obstaclesDistribution, obstaclesPadding, new string[] { "obstacle", "crystal" },
-				obstacleStartSpawnDistance);
+                obstaclesDistribution, obstaclesPadding, new string[] { "obstacle", "crystal" },
+                obstacleStartSpawnDistance);
 
             yield return new WaitForSeconds(.5f);
         }
     }
 
-    private IEnumerator IncreaseDifficulty(float amount, float interval) {
-        while (true) {
-            if (side == GameManager.Instance.Player.Side) {
+    private IEnumerator IncreaseDifficulty(float amount, float interval)
+    {
+        while (true)
+        {
+            if (side == GameManager.Instance.Player.Side)
+            {
                 minObstaclesSpread = maxObstaclesSpread - amount < minObstaclesSpread ? Mathf.Clamp(maxObstaclesSpread - amount, 0, minObstaclesSpread) : minObstaclesSpread;
                 maxObstaclesSpread = Mathf.Clamp(maxObstaclesSpread - amount, minObstaclesSpread, maxObstaclesSpread);
             }
@@ -77,77 +88,93 @@ public class EnvironmentSpawner : MonoBehaviour
         }
     }
 
-    private IEnumerator DecreaseDifficulty(float amount, float interval) {
-        while (true) {
-            if (side != GameManager.Instance.Player.Side) {
+    private IEnumerator DecreaseDifficulty(float amount, float interval)
+    {
+        while (true)
+        {
+            if (side != GameManager.Instance.Player.Side)
+            {
                 maxObstaclesSpread = Mathf.Clamp(maxObstaclesSpread + amount, minObstaclesSpread, maxObstaclesSpread);
             }
             yield return new WaitForSeconds(interval);
         }
     }
 
-    private IEnumerator SpawnCrystals() {
-        while (true) {
-            while (lastCrystalSpawnPointX > player.position.x + maxSpawnDistance) {
+    private IEnumerator SpawnCrystals()
+    {
+        while (true)
+        {
+            while (lastCrystalSpawnPointX > player.position.x + maxSpawnDistance)
+            {
                 yield return new WaitForSeconds(1f);
             }
             Spawn(minCrystalsSpread, maxCrystalsSpread, ref lastCrystalSpawnPointX, ConvertCrystalsEnum(),
-				crystalDistribution, crystalPadding, new string[] { "obstacle", "crystal" }, crystalStartSpawnDistance);
+                crystalDistribution, crystalPadding, new string[] { "obstacle", "crystal" }, crystalStartSpawnDistance);
 
             yield return new WaitForSeconds(.2f);
         }
     }
 
-    private IEnumerator SpawnEffects() {
-        while (true) {
-            while (lastEffectSpawnPointX > player.position.x + maxSpawnDistance) {
+    private IEnumerator SpawnEffects()
+    {
+        while (true)
+        {
+            while (lastEffectSpawnPointX > player.position.x + maxSpawnDistance)
+            {
                 yield return new WaitForSeconds(1f);
             }
-            if (GameManager.Instance.Player.IsIncreasedBuffSpawnPassive) {
-                maxEffectsSpread *= 0.8f;
-            }
             Spawn(minEffectsSpread, maxEffectsSpread, ref lastEffectSpawnPointX, ConvertEffectsEnum(),
-				effectsDistribution, effectsPadding, new string[] { "obstacle", "crystal" }, effectStartSpawnDistance);
+                effectsDistribution, effectsPadding, new string[] { "obstacle", "crystal" }, effectStartSpawnDistance);
 
             yield return new WaitForSeconds(1f);
         }
     }
 
-    private System.Enum[] ConvertObstaclesEnum() {
+    private System.Enum[] ConvertObstaclesEnum()
+    {
         System.Enum[] tmpEnum = new System.Enum[obstaclesToSpawn.Length];
-        for (int i = 0; i < obstaclesToSpawn.Length; i++) {
+        for (int i = 0; i < obstaclesToSpawn.Length; i++)
+        {
             tmpEnum[i] = obstaclesToSpawn[i];
         }
         return tmpEnum;
     }
 
-    private System.Enum[] ConvertEffectsEnum() {
+    private System.Enum[] ConvertEffectsEnum()
+    {
         System.Enum[] tmpEnum = new System.Enum[effectsToSpawn.Length];
-        for (int i = 0; i < effectsToSpawn.Length; i++) {
+        for (int i = 0; i < effectsToSpawn.Length; i++)
+        {
             tmpEnum[i] = effectsToSpawn[i];
         }
         return tmpEnum;
     }
 
-    private System.Enum[] ConvertCrystalsEnum() {
+    private System.Enum[] ConvertCrystalsEnum()
+    {
         System.Enum[] tmpEnum = new System.Enum[crystalsToSpawn.Length];
-        for (int i = 0; i < crystalsToSpawn.Length; i++) {
+        for (int i = 0; i < crystalsToSpawn.Length; i++)
+        {
             tmpEnum[i] = crystalsToSpawn[i];
         }
         return tmpEnum;
     }
 
     private bool Spawn(float minSpread, float maxSpread, ref float lastSpawnPointX, System.Enum[] objectsToSpawn,
-		int[] objectsDistribution, float[] objectsPadding, string[] collisionTags, float[] startSpawnDistance) {
+        int[] objectsDistribution, float[] objectsPadding, string[] collisionTags, float[] startSpawnDistance)
+    {
         int rng = Random.Range(0, 100);
         float spread = Random.Range(minSpread, maxSpread);
         string objectToSpawnName = "";
-		float delaySpawnDistance = 0;
-        for (int i = 0; i < objectsDistribution.Length; i++) {
-			if (rng < objectsDistribution [i]) {
+        float delaySpawnDistance = 0;
+        for (int i = 0; i < objectsDistribution.Length; i++)
+        {
+            if (rng < objectsDistribution[i])
+            {
                 objectToSpawnName = ObjectTypesDataHolder.Instance.GetObjectNameForType(objectsToSpawn[i]);
-				delaySpawnDistance = startSpawnDistance [i];
-                if (objectsPadding.Length == objectsToSpawn.Length) {
+                delaySpawnDistance = startSpawnDistance[i];
+                if (objectsPadding.Length == objectsToSpawn.Length)
+                {
                     spread = spread < objectsPadding[i] ? objectsPadding[i] : spread;
                 }
                 break;
@@ -157,19 +184,23 @@ public class EnvironmentSpawner : MonoBehaviour
         SpawnableObject objectToSpawn = pool.GetObject(objectToSpawnName, false).GetComponent<SpawnableObject>();
         int sideIndicator = side == Side.UPPER ? 1 : -1;
         Vector2 spawnPosition = new Vector2(spawnPointX, sideIndicator * objectToSpawn.yPosition);
-        if (IsOverlappingWith(spawnPosition, collisionTags)) {
+        if (IsOverlappingWith(spawnPosition, collisionTags))
+        {
             Vector2 mostSuitableSpawnPos = FindSuitableSpawn(spawnPosition, maxSpread - spread, spread - minSpread, collisionTags);
             if (Mathf.Abs(spawnPosition.x - mostSuitableSpawnPos.x) > Mathf.Epsilon &&
-				spread < maxSpread && delaySpawnDistance < mostSuitableSpawnPos.x) {
+                spread < maxSpread && delaySpawnDistance < mostSuitableSpawnPos.x)
+            {
                 spawnPosition = mostSuitableSpawnPos;
             }
-            else {
+            else
+            {
                 lastSpawnPointX = spawnPosition.x;
                 return false;
             }
         }
         Quaternion rotation = Quaternion.identity;
-        if (side == Side.BOTTOM) {
+        if (side == Side.BOTTOM)
+        {
             rotation = Quaternion.Euler(0, 180, 180);
         }
         objectToSpawn.transform.rotation = rotation;
@@ -180,33 +211,42 @@ public class EnvironmentSpawner : MonoBehaviour
         //print(lastSpawnPointX);
     }
 
-    private Vector2 FindSuitableSpawn(Vector2 currentSpawnPos, float forwardShiftLength, float backwardShiftLength, string[] collisionTags) {
+    private Vector2 FindSuitableSpawn(Vector2 currentSpawnPos, float forwardShiftLength, float backwardShiftLength, string[] collisionTags)
+    {
         Vector2 result = currentSpawnPos;
         Vector2 searchVector = currentSpawnPos;
-        for (int i = 0; i < forwardShiftLength; i++) {
+        for (int i = 0; i < forwardShiftLength; i++)
+        {
             searchVector.x += i;
-            if (!IsOverlappingWith(searchVector, collisionTags)) {
+            if (!IsOverlappingWith(searchVector, collisionTags))
+            {
                 return searchVector;
             }
         }
         searchVector = currentSpawnPos;
-        for (int i = 0; i < backwardShiftLength; i++) {
+        for (int i = 0; i < backwardShiftLength; i++)
+        {
             searchVector.x -= i;
-            if (!IsOverlappingWith(searchVector, collisionTags)) {
+            if (!IsOverlappingWith(searchVector, collisionTags))
+            {
                 return searchVector;
             }
         }
         return result;
     }
 
-    private bool IsOverlappingWith(Vector2 pos, string[] overlapTags) {
+    private bool IsOverlappingWith(Vector2 pos, string[] overlapTags)
+    {
         Vector2 pointA = new Vector2(pos.x - 4, pos.y - 2);
         Vector2 pointB = new Vector2(pos.x + 4, pos.y + 2);
         Vector3 pos3D = new Vector3(pos.x, pos.y, 0);
         Collider2D[] colliders = Physics2D.OverlapAreaAll(pointA, pointB);
-        foreach (Collider2D col in colliders) {
-            foreach (string tag in overlapTags) {
-                if (col.CompareTag(tag) && pos3D != col.transform.position) {
+        foreach (Collider2D col in colliders)
+        {
+            foreach (string tag in overlapTags)
+            {
+                if (col.CompareTag(tag) && pos3D != col.transform.position)
+                {
                     return true;
                 }
             }

@@ -7,6 +7,8 @@ public class LevelManager : MonoBehaviour
     private const string EXP_KEY = "exp";
     private const string MONEY_KEY = "money";
     private const string TOTAL_MONEY_KEY = "total_money";
+    private const string SPECIAL_MONEY_KEY = "special_money";
+    private const string SPECIAL_TOTAL_MONEY_KEY = "special_total_money";
     private const string ACTIVE_SKIN_KEY = "active_skin";
     private const string SHOP_ID = "shop_id";
     private const string ACTIVE_CONSUMABLE = "active";
@@ -103,6 +105,21 @@ public class LevelManager : MonoBehaviour
     {
         PlayerPrefs.SetInt(MONEY_KEY, GetMoney() + amt);
         PlayerPrefs.SetInt(TOTAL_MONEY_KEY, GetTotalMoney() + amt);
+    }
+
+    public void AddSpecialMoney(int amt)
+    {
+        PlayerPrefs.SetInt(SPECIAL_MONEY_KEY, GetSpecialMoney() + amt);
+        PlayerPrefs.SetInt(SPECIAL_TOTAL_MONEY_KEY, GetSpecialTotalMoney() + amt);
+    }
+
+    public int GetSpecialMoney()
+    {
+        return PlayerPrefs.GetInt(SPECIAL_MONEY_KEY, 0);
+    }
+    public int GetSpecialTotalMoney()
+    {
+        return PlayerPrefs.GetInt(SPECIAL_TOTAL_MONEY_KEY, 0);
     }
 
     public int GetMoney()

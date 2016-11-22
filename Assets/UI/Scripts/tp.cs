@@ -230,25 +230,18 @@ public class tp : MonoBehaviour
 
     public void RessurectWithAds()
     {
-        if (GameManager.Instance.Player.IsNoAdsResPassive)
-        {
-            GameManager.Instance.Player.Ressurect();
-        }
-        else
-        {
-            deathpnl.SetActive(false);
+        deathpnl.SetActive(false);
 #if UNITY_ANDROID
             ShowRewardedAd();
 #endif
 #if UNITY_WSA
-            AdsManager.Instance.ShowVideo((arg) =>
-            {
-                GameManager.Instance.Player.Ressurect();
-                deathpnl.SetActive(false);
-                scoreboard.SetActive(true);
-            });
+        AdsManager.Instance.ShowVideo((arg) =>
+        {
+            GameManager.Instance.Player.Ressurect();
+            deathpnl.SetActive(false);
+            scoreboard.SetActive(true);
+        });
 #endif
-        }
     }
     public void closeRessWindow()
     {
@@ -266,8 +259,16 @@ public class tp : MonoBehaviour
         Application.LoadLevel("TreeRevorked");
     }
 
+    private bool hasSkippedAd = false;
+
     private void PlayerDie()
     {
+        if (!hasSkippedAd && GameManager.Instance.Player.IsNoAdsResPassive)
+        {
+            GameManager.Instance.Player.Ressurect();
+            hasSkippedAd = true;
+            return;
+        }
         if (!GameManager.Instance.HasRessurectedThisRun && AdsManager.Instance.IsAdReady)
         {
             deathpnl.SetActive(true);

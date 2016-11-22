@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 16033e8783692487eb4b8d7d0d7ec697
+guid: 28ef86b0b73424878af17fc9b18dd630
 PluginImporter:
   serializedVersion: 1
   iconMap: {}
@@ -14,7 +14,7 @@ PluginImporter:
       enabled: 0
       settings: {}
     Editor:
-      enabled: 1
+      enabled: 0
       settings:
         CPU: AnyCPU
         DefaultValueInitialized: true
@@ -44,13 +44,18 @@ PluginImporter:
       settings:
         CPU: AnyCPU
     WindowsStoreApps:
-      enabled: 0
+      enabled: 1
       settings:
         CPU: AnyCPU
         DontProcess: False
-        PlaceholderPath: Assets/Plugins/metro/VungleSDKProxy.winmd
+        PlaceholderPath: 
         SDK: AnySDK
         ScriptingBackend: AnyScriptingBackend
+    iOS:
+      enabled: 0
+      settings:
+        CompileFlags: 
+        FrameworkDependencies: 
   userData: 
   assetBundleName: 
   assetBundleVariant: 

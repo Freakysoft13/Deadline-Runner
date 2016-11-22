@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
 
 
     private int score;
+    private int specialCurrency;
     private Player player;
     private bool hasRessurectedThisRun = false;
 
@@ -30,7 +31,7 @@ public class GameManager : MonoBehaviour
     public int expMultiplier = 1;
     public int scoreMultiplier = 1;
     public bool upgradePassives = false;
- 
+
 
     public static GameManager Instance
     {
@@ -51,6 +52,11 @@ public class GameManager : MonoBehaviour
     }
 
     public int Score { get; set; }
+    public int SpecialCurrency
+    {
+        get { return specialCurrency; }
+        set { specialCurrency = value; }
+    }
 
     public bool HasRessurectedThisRun
     {
@@ -137,6 +143,11 @@ public class GameManager : MonoBehaviour
     public void AddCrystals(int amt)
     {
         score += amt * scoreMultiplier;
+    }
+
+    public void AddSpecialCurrency(int amt)
+    {
+        specialCurrency += amt;
     }
 
     public int GetCrystals()

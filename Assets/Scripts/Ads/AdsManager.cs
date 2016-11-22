@@ -6,10 +6,6 @@ public class AdsManager : MonoBehaviour
 {
     public int msAdsRetryCount = 1;
 
-    public string androidAppID;
-    public string iosAppID;
-    public string winAppID;
-
     public bool IsAdReady
     {
         get
@@ -77,32 +73,8 @@ public class AdsManager : MonoBehaviour
     }
     public void OnMSAdError(object obj)
     {
-        FallbackAds();
-        /*if (retryCount++ < msAdsRetryCount) {
-            RequestMSAd();
-        }
-        else {
-            FallbackAds();
-        }*/
     }
-    private void ShowVungleAd()
-    {
-        Vungle.playAd();
-    }
-
-    void FallbackAds()
-    {
-        isMSAds = false;
-        Vungle.init("com.prime31.Vungle", "vungleTest", "vungleTest");
-        Vungle.adPlayableEvent += AdPlayableEvent;
-        Vungle.onAdFinishedEvent += VungleAdFinished;
-    }
-
-    private void VungleAdFinished(AdFinishedEventArgs args)
-    {
-        OnAdCompleted(args);
-        OnAdCompleted = null;
-    }
+    
     private void AdPlayableEvent(bool flag)
     {
         displayAds = false;
@@ -122,10 +94,6 @@ public class AdsManager : MonoBehaviour
         if (isMSAds)
         {
             DisplayMsAd(null);
-        }
-        else
-        {
-            ShowVungleAd();
         }
     }
 }
