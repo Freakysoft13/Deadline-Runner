@@ -63,6 +63,9 @@ public class Player : MonoBehaviour
     private bool isNoAdsResPassive = false;
     private bool isAllPassives = false;
 
+    [SerializeField]
+    private GameObject PartclesCam;
+
     public bool CanFlip
     {
         get
