@@ -3,6 +3,7 @@
 public class ParallaxMove : MonoBehaviour
 {
     public float speedScale;
+    public float yOffset = 0;
 
     private float startSpeed = 0;
     private Player player;
