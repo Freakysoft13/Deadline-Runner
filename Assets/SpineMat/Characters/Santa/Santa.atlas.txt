@@ -1,0 +1,215 @@
+
+Santa.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Beard
+  rotate: false
+  xy: 648, 336
+  size: 144, 87
+  orig: 146, 89
+  offset: 1, 1
+  index: -1
+BodyLower
+  rotate: false
+  xy: 216, 346
+  size: 223, 144
+  orig: 225, 146
+  offset: 1, 1
+  index: -1
+BodyUpper
+  rotate: false
+  xy: 2, 8
+  size: 192, 152
+  orig: 194, 154
+  offset: 1, 1
+  index: -1
+Electro/Layer 18
+  rotate: true
+  xy: 914, 281
+  size: 106, 86
+  orig: 108, 88
+  offset: 1, 1
+  index: -1
+Electro/Layer 20
+  rotate: false
+  xy: 2, 328
+  size: 212, 162
+  orig: 214, 164
+  offset: 1, 1
+  index: -1
+Electro/Layer 22
+  rotate: false
+  xy: 824, 394
+  size: 124, 96
+  orig: 126, 98
+  offset: 1, 1
+  index: -1
+Electro/Layer 23
+  rotate: true
+  xy: 648, 425
+  size: 65, 174
+  orig: 67, 176
+  offset: 1, 1
+  index: -1
+Electro/Layer 24
+  rotate: true
+  xy: 297, 213
+  size: 65, 80
+  orig: 67, 82
+  offset: 1, 1
+  index: -1
+Eye
+  rotate: false
+  xy: 794, 406
+  size: 16, 17
+  orig: 18, 19
+  offset: 1, 1
+  index: -1
+EyeBG
+  rotate: false
+  xy: 379, 248
+  size: 32, 27
+  orig: 34, 29
+  offset: 1, 1
+  index: -1
+EyeClosed
+  rotate: true
+  xy: 261, 105
+  size: 41, 25
+  orig: 43, 27
+  offset: 1, 1
+  index: -1
+EyeHalfClosed
+  rotate: false
+  xy: 196, 2
+  size: 39, 25
+  orig: 41, 27
+  offset: 1, 1
+  index: -1
+HatBot
+  rotate: true
+  xy: 794, 275
+  size: 117, 118
+  orig: 119, 120
+  offset: 1, 1
+  index: -1
+HatTop
+  rotate: false
+  xy: 441, 354
+  size: 205, 136
+  orig: 207, 138
+  offset: 1, 1
+  index: -1
+Head
+  rotate: false
+  xy: 2, 162
+  size: 206, 164
+  orig: 208, 166
+  offset: 1, 1
+  index: -1
+LeftElbow
+  rotate: true
+  xy: 309, 280
+  size: 64, 85
+  orig: 66, 87
+  offset: 1, 1
+  index: -1
+RightElbow
+  rotate: true
+  xy: 309, 280
+  size: 64, 85
+  orig: 66, 87
+  offset: 1, 1
+  index: -1
+LeftFoot
+  rotate: false
+  xy: 210, 148
+  size: 77, 58
+  orig: 79, 60
+  offset: 1, 1
+  index: -1
+RightFoot
+  rotate: false
+  xy: 210, 148
+  size: 77, 58
+  orig: 79, 60
+  offset: 1, 1
+  index: -1
+LeftHand
+  rotate: false
+  xy: 196, 29
+  size: 57, 56
+  orig: 59, 58
+  offset: 1, 1
+  index: -1
+RightHand
+  rotate: false
+  xy: 196, 29
+  size: 57, 56
+  orig: 59, 58
+  offset: 1, 1
+  index: -1
+LeftShin
+  rotate: false
+  xy: 950, 389
+  size: 69, 101
+  orig: 71, 103
+  offset: 1, 1
+  index: -1
+RightShin
+  rotate: false
+  xy: 950, 389
+  size: 69, 101
+  orig: 71, 103
+  offset: 1, 1
+  index: -1
+LeftShoulder
+  rotate: false
+  xy: 210, 208
+  size: 85, 87
+  orig: 87, 89
+  offset: 1, 1
+  index: -1
+RightShoulder
+  rotate: false
+  xy: 210, 208
+  size: 85, 87
+  orig: 87, 89
+  offset: 1, 1
+  index: -1
+LeftThigh
+  rotate: true
+  xy: 216, 297
+  size: 47, 91
+  orig: 49, 93
+  offset: 1, 1
+  index: -1
+RightThigh
+  rotate: true
+  xy: 216, 297
+  size: 47, 91
+  orig: 49, 93
+  offset: 1, 1
+  index: -1
+LeftToe
+  rotate: true
+  xy: 396, 277
+  size: 67, 36
+  orig: 69, 38
+  offset: 1, 1
+  index: -1
+RightToe
+  rotate: true
+  xy: 396, 277
+  size: 67, 36
+  orig: 69, 38
+  offset: 1, 1
+  index: -1
+Pompon
+  rotate: false
+  xy: 196, 87
+  size: 63, 59
+  orig: 65, 61
+  offset: 1, 1
+  index: -1
