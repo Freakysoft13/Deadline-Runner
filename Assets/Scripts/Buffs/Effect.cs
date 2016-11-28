@@ -33,7 +33,7 @@ namespace Effect
         }
 
         void OnTriggerEnter2D(Collider2D other) {
-            if (other.CompareTag("Player") && (!GameManager.Instance.Player.IsDead 
+            if (other.CompareTag("Player") && (!GameManager.Instance.Player.IsDead && !GameManager.Instance.Player.IsInAfterLife
                 || (GameManager.Instance.Player.IsInAfterLife && canPickupInAfterlife))) {
                 PickUp();
             }
