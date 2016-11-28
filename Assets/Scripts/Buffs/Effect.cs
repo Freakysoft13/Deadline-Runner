@@ -11,6 +11,7 @@ namespace Effect
         public float upgradeDuration = 1.0f;
         public bool disappearOnPickup = true;
         public bool isBuff = false;
+        public bool canPickupInAfterlife = false;
 
         private float pickUpTime = 0;
         private Player player;
@@ -32,7 +33,8 @@ namespace Effect
         }
 
         void OnTriggerEnter2D(Collider2D other) {
-            if (other.CompareTag("Player") && !GameManager.Instance.Player.IsDead) {
+            if (other.CompareTag("Player") && (!GameManager.Instance.Player.IsDead 
+                || (GameManager.Instance.Player.IsInAfterLife && canPickupInAfterlife))) {
                 PickUp();
             }
         }

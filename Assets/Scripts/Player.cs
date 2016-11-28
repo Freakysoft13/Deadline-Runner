@@ -253,6 +253,11 @@ public class Player : MonoBehaviour
         get { return isDead; }
     }
 
+    public bool IsInAfterLife
+    {
+        get { return isInAfterLife; }
+    }
+
     void Start()
     {
         SetActiveSkin();
