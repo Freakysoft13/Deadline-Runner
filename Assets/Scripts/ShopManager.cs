@@ -96,6 +96,23 @@ public class ShopManager : MonoBehaviour
              blockingMask.SetActive(true);
         }
     }
+    public void BuySpecialChar(int index)
+    {
+        //Add check for owned skins.
+        if (LevelManager.Instance.GetSpecialMoney() >= charprice[index])
+        {
+            LevelManager.Instance.AddSpecialMoney(-charprice[index]);
+            LevelManager.Skin skin = (LevelManager.Skin)System.Enum.GetValues(typeof(LevelManager.Skin)).GetValue(index);
+
+            LevelManager.Instance.BuySkin(skin);
+            print(skin);
+            SkinChecker();
+        }
+        else
+        {
+            blockingMask.SetActive(true);
+        }
+    }
     public void LockedChar(int index) {
         lockmasklist[index].SetActive(true);
     }
