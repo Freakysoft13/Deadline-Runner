@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.ImageEffects;
 
 public class CameraController : MonoBehaviour
 {
@@ -17,12 +18,19 @@ public class CameraController : MonoBehaviour
 
     public float xDelta = 2.0f;
 
-    void Start() {
+    void Start()
+    {
         GetComponent<Camera>().orthographicSize = (desiredScreenWidth / Screen.width * Screen.height / 2) / currentPixelToUnits;
+        EventManager.OnAfterlifeToggled += (isEnabled) =>
+        {
+            GetComponent<Grayscale>().enabled = isEnabled;
+        };
     }
 
-    void Update() {
-        if (target) {
+    void Update()
+    {
+        if (target)
+        {
             Vector3 newPos = transform.position;
             newPos.x = target.position.x + xDelta;
             newPos.y = GameManager.Instance.Player.PlayerFlip * Mathf.Abs(newPos.y);
@@ -30,12 +38,14 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    IEnumerator Shake() {
+    IEnumerator Shake()
+    {
         float elapsed = 0.0f;
 
         Vector3 originalCamPos = Camera.main.transform.position;
 
-        while (elapsed < duration) {
+        while (elapsed < duration)
+        {
 
             elapsed += Time.deltaTime;
 

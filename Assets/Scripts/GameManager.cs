@@ -25,9 +25,6 @@ public class GameManager : MonoBehaviour
 
     public Effect.Shield shieldStub;
     public Effect.AfterLife afterLifeStub;
-    public GameObject grayscaleCamera;
-    public GameObject playerCamera;
-    public GameObject mainCamera;
     public int expMultiplier = 1;
     public int scoreMultiplier = 1;
     public bool upgradePassives = false;
@@ -163,9 +160,6 @@ public class GameManager : MonoBehaviour
 
     public void ApplyAfterLife()
     {
-        playerCamera.SetActive(true);
-        grayscaleCamera.SetActive(true);
-        mainCamera.SetActive(false);
         afterLifeStub.PickUp();
     }
 
@@ -173,9 +167,6 @@ public class GameManager : MonoBehaviour
     {
         shieldStub.PickUp();
         hasRessurectedThisRun = true;
-        mainCamera.SetActive(true);
-        playerCamera.SetActive(false);
-        grayscaleCamera.SetActive(false);
     }
 
     public void BeforePlayerResurrect()

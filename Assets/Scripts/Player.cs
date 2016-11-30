@@ -308,6 +308,7 @@ public class Player : MonoBehaviour
             speed *= 2;
         }
         SetSkin(LevelManager.Skin.GHOST);
+        EventManager.FireAfterlifeToggled(true);
     }
 
     public void AfterLifeEnd()
@@ -318,6 +319,7 @@ public class Player : MonoBehaviour
         {
             speed /= 2;
         }
+        EventManager.FireAfterlifeToggled(false);
         Die();
     }
 
