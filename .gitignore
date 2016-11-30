@@ -46,6 +46,7 @@ Assets/Plugins/Cruncher*
 Assets/2DTools*
 Assets/-tk2d.asset
 Assets/TK2DROOT/*
+Assets/Plugins/*
 Win10/*
 Win/*
 UWP/*
