@@ -64,7 +64,7 @@ public class Player : MonoBehaviour
     private bool isAllPassives = false;
 
     [SerializeField]
-    private GameObject PartclesCam;
+    private GameObject snowHolder;
 
     public bool CanFlip
     {
@@ -614,6 +614,9 @@ public class Player : MonoBehaviour
         transform.position = newPosition;
         transform.localScale = newScale;
         velocity.y = 0;
+
+        snowHolder.transform.position = new Vector2(snowHolder.transform.position.x,
+                                            snowHolder.transform.position.y + (!isFlipped() ? -2 : 2));
 
         if (!isFlipped())
         {
