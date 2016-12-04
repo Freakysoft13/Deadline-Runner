@@ -19,6 +19,7 @@ TagManager:
   - flying
   - pet
   - machine
+  - BGSpawner
   layers:
   - Default
   - TransparentFX
@@ -42,7 +43,7 @@ TagManager:
   - TreeBackGround
   - Partycles
   - ChristamsCanvas
-  - 
+  - Background
   - 
   - 
   - 
