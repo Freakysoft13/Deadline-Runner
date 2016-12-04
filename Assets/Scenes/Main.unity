@@ -3482,7 +3482,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 2
   m_RenderMode: 1
-  m_Camera: {fileID: 1875832631}
+  m_Camera: {fileID: 1371952556}
   m_PlaneDistance: 10
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -11592,7 +11592,6 @@ GameObject:
   - 20: {fileID: 1371952556}
   - 124: {fileID: 1371952555}
   - 92: {fileID: 1371952554}
-  - 81: {fileID: 1371952553}
   - 114: {fileID: 1371952558}
   - 114: {fileID: 1371952559}
   m_Layer: 0
@@ -11602,13 +11601,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1371952553
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1371952552}
-  m_Enabled: 1
 --- !u!92 &1371952554
 Behaviour:
   m_ObjectHideFlags: 0
@@ -11647,7 +11639,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4194304
+    m_Bits: 4194336
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -16139,11 +16131,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 3344328, guid: ed06462688d22e9489109a7629704e62, type: 2}
+    - target: {fileID: 3341224, guid: ed06462688d22e9489109a7629704e62, type: 2}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 3341224, guid: ed06462688d22e9489109a7629704e62, type: 2}
+    - target: {fileID: 3344328, guid: ed06462688d22e9489109a7629704e62, type: 2}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}

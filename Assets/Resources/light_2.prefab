@@ -97,7 +97,7 @@ MonoBehaviour:
   collection: {fileID: 114000012524743566, guid: f59f41ce704fdbc4e83f2724816ddbfa,
     type: 2}
   _color: {r: 1, g: 1, b: 1, a: 1}
-  _scale: {x: 1, y: 1, z: 1}
+  _scale: {x: 1.3, y: 1.3, z: 1.3}
   _spriteId: 11
   boxCollider2D: {fileID: 0}
   polygonCollider2D: []
@@ -129,4 +129,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04d32aca7a1605d41bc26c3cb28b9c1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yPosition: -4
+  yPosition: -5
