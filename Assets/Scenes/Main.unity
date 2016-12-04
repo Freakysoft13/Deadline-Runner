@@ -11298,6 +11298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  stopIfDead: 1
 --- !u!4 &1217271823
 Transform:
   m_ObjectHideFlags: 0
@@ -11593,6 +11594,7 @@ GameObject:
   - 92: {fileID: 1371952554}
   - 81: {fileID: 1371952553}
   - 114: {fileID: 1371952558}
+  - 114: {fileID: 1371952559}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -11680,6 +11682,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trackedObject: {fileID: 1217271823}
+--- !u!114 &1371952559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1371952552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8820a30db43f7e9408c979256a2c70fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  desiredScreenWidth: 1920
+  desiredScreenHeight: 1200
+  currentPixelToUnits: 100
+  duration: 3
+  magnitudeX: 0.2
+  magnitudeY: 0.2
+  xDelta: 2
 --- !u!224 &1384139375 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 22498918, guid: bd766d658abd97b4fa6b4e52a24bd7b7,

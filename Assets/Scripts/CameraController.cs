@@ -23,19 +23,22 @@ public class CameraController : MonoBehaviour
         GetComponent<Camera>().orthographicSize = (desiredScreenWidth / Screen.width * Screen.height / 2) / currentPixelToUnits;
         EventManager.OnAfterlifeToggled += (isEnabled) =>
         {
-            GetComponent<Grayscale>().enabled = isEnabled;
+            if (GetComponent<Grayscale>() != null)
+            {
+                GetComponent<Grayscale>().enabled = isEnabled;
+            }
         };
     }
 
     void Update()
     {
+        Vector3 newPos = transform.position;
         if (target)
         {
-            Vector3 newPos = transform.position;
             newPos.x = target.position.x + xDelta;
-            newPos.y = GameManager.Instance.Player.PlayerFlip * Mathf.Abs(newPos.y);
-            transform.position = newPos;
         }
+        newPos.y = GameManager.Instance.Player.PlayerFlip * Mathf.Abs(newPos.y);
+        transform.position = newPos;
     }
 
     IEnumerator Shake()
