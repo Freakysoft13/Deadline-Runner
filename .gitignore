@@ -35,18 +35,6 @@ Thumbs.db
 # ============ #
 # Protected Assets #
 # ============ #
-Assets/AllSky*
-Assets/T4*
-Assets/UnityVS
-Assets/MultiPlatformToolSuite
-Assets/JMO Assets
-Assets/Audio/abaaml-*
-Assets/Audio/Circus_Clown_Halloween_Horror*
-Assets/Plugins/Cruncher*
-Assets/2DTools*
-Assets/-tk2d.asset
-Assets/TK2DROOT/*
-Assets/Plugins/*
 Win10/*
 Win/*
 UWP/*
