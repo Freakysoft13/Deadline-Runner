@@ -68,8 +68,7 @@ public class Player : MonoBehaviour
     private bool isNoAdsResPassive = false;
     private bool isAllPassives = false;
 
-    [SerializeField]
-    private GameObject snowHolder;
+   // private GameObject snowHolder;
 
     public bool CanFlip
     {
@@ -619,10 +618,10 @@ public class Player : MonoBehaviour
         transform.position = newPosition;
         transform.localScale = newScale;
         velocity.y = 0;
-
+        /*
         snowHolder.transform.position = new Vector2(snowHolder.transform.position.x,
                                             snowHolder.transform.position.y + (!isFlipped() ? -2 : 2));
-
+        */
         if (!isFlipped())
         {
             moonPanel.localPosition = new Vector3(0, -350);

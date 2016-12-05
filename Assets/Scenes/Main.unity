@@ -9382,7 +9382,6 @@ MonoBehaviour:
   speedThreshold: 0.9
   speedTime: 0.35
   moonPanel: {fileID: 444753220}
-  snowHolder: {fileID: 0}
   car: {fileID: 548772224}
   maxSpeed: 20
   shieldEffect: {fileID: 1103177684}

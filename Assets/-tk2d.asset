@@ -386,6 +386,12 @@ MonoBehaviour:
     - mid_tree_up
     - mid_mountain 2_up
     - light2
+    - cave_right_green
+    - center_inner
+    - center_outer
+    - left
+    - left_green
+    - right
     spriteTextureGUIDs:
     - cda8fe24ca4f71c4e848118df4003dca
     - 9cf57c1639dc6db41be64efb05b342fd
@@ -399,6 +405,12 @@ MonoBehaviour:
     - 8b81537a2035b0540994728f9754aaac
     - ad60c38b12870e842af1873ce2ce3e2a
     - 9b7364089ba831e47afce5990ff9b185
+    - 6d371612f93d15348a24ad5506e971a3
+    - 83af9c77d51422d42bfe1068d799986e
+    - 59de367cce14af045a3d9a27a2cddf12
+    - 2bdfc4cb91cca0f4186bf907a0711d27
+    - cbe95677bffc729489a81e515dde9151
+    - f23294a6ca0f2e640bbed0fd3392addb
     spriteTextureTimeStamps:
     - 1480780664.80576
     - 1480780492.15673
@@ -412,6 +424,52 @@ MonoBehaviour:
     - 1480780664.33361
     - 1480780664.31958
     - 1480780492.22474
+    - 1480780490.63893
+    - 1480780490.66244
+    - 1480780490.67944
+    - 1480780490.7615
+    - 1480780490.7695
+    - 1480780490.88861
+    managedSpriteCollection: 0
+    loadable: 0
+    assetName: 
+    version: 3
+  - name: NewAtlas2
+    spriteCollectionGUID: 4301f30d8687c484d80d2b52e2cbd983
+    spriteCollectionDataGUID: db92e6ed38c1fdc42b56af2bf1d85559
+    spriteNames:
+    - cave_blue1
+    - cave_blue2
+    - cave_center
+    - cave_center2
+    - cave_green1
+    - cave_green2
+    - beyond tree left
+    - beyond tree right
+    - beyond_tree_left_green
+    - beyond_tree_right_green
+    spriteTextureGUIDs:
+    - d1806f4e74df7cf4aad0bc3e8720dab1
+    - 9269c07c19c5e6e4f96ac274ead37ab7
+    - a827a9737f728a940b8dfd8c8f1c257b
+    - 307ca604c61cf1b4da7a7d8ada3683b4
+    - ee5497ac057a82b449318255a2789df5
+    - d3ec4a9113bf8e94aab1f7e232614261
+    - 00e0528d78271674e9304bd63957cae5
+    - d7c311c8d7cf29040b533aa93232d895
+    - b4155439fc2689641828826dc944c6f8
+    - 6ea335c557f960e4889a8b46d22e26e4
+    spriteTextureTimeStamps:
+    - 1480780664.10645
+    - 1480780664.15653
+    - 1480780664.20454
+    - 1480780664.22154
+    - 1480780664.26458
+    - 1480780664.30658
+    - 1480780490.35923
+    - 1480780490.36724
+    - 1480780490.39224
+    - 1480780490.40424
     managedSpriteCollection: 0
     loadable: 0
     assetName: 
