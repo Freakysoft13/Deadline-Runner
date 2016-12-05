@@ -3,6 +3,11 @@
 public class Player : MonoBehaviour
 {
     public float speed = 5.0f;
+    public float Speed
+    {
+        set { speed = value; EventManager.FirePlayerStatsChanged(this); }
+        get { return speed; }
+    }
     public float jumpSpeed = 5.0f;
     private float doubleJumpGravityAccel = 20.0f;
     public float maxJumpHeight = 4;
@@ -305,7 +310,7 @@ public class Player : MonoBehaviour
         isInAfterLife = true;
         if (isAfterlifeBoostPassive)
         {
-            speed *= 2;
+            Speed *= 2;
         }
         SetSkin(LevelManager.Skin.GHOST);
         EventManager.FireAfterlifeToggled(true);
@@ -317,7 +322,7 @@ public class Player : MonoBehaviour
         isInAfterLife = false;
         if (isAfterlifeBoostPassive)
         {
-            speed /= 2;
+            Speed /= 2;
         }
         EventManager.FireAfterlifeToggled(false);
         Die();

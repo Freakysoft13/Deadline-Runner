@@ -131,7 +131,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 474046, guid: 0185c58700ff7554cb36182608fd3fcb, type: 2}
       propertyPath: m_RootOrder
-      value: 30
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 3301732, guid: 0185c58700ff7554cb36182608fd3fcb, type: 2}
       propertyPath: m_Mesh
@@ -3430,7 +3430,7 @@ RectTransform:
   m_Children:
   - {fileID: 444753220}
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 26
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -6391,7 +6391,7 @@ Transform:
   m_Children:
   - {fileID: 686582226}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
 --- !u!114 &461987668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9372,8 +9372,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
-  jumpSpeed: 25
-  maxJumpHeight: 4
+  jumpSpeed: 20
+  maxJumpHeight: 4.5
   headStart: 0
   headStartDistance: 200
   gravityMultiplier: 4
@@ -11253,7 +11253,7 @@ GameObject:
   - 114: {fileID: 1217271822}
   m_Layer: 0
   m_Name: Mr.Mover
-  m_TagString: Untagged
+  m_TagString: BGMover
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14092,7 +14092,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 29
+  m_RootOrder: 30
 --- !u!82 &1631558342
 AudioSource:
   m_ObjectHideFlags: 0
@@ -14480,7 +14480,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 423946, guid: 21e2458ca54601541bb6cb97e8eeb306, type: 2}
       propertyPath: m_RootOrder
-      value: 26
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 3318680, guid: 21e2458ca54601541bb6cb97e8eeb306, type: 2}
       propertyPath: m_Mesh
@@ -16012,7 +16012,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 473724, guid: ed06462688d22e9489109a7629704e62, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3341224, guid: ed06462688d22e9489109a7629704e62, type: 2}
       propertyPath: m_Mesh

@@ -13,6 +13,18 @@
         }
     }
 
+    public delegate void PlayerStatsChanged(Player player);
+
+    public static PlayerStatsChanged OnPlayerStatsChanged;
+
+    public static void FirePlayerStatsChanged(Player player)
+    {
+        if (OnPlayerStatsChanged != null)
+        {
+            OnPlayerStatsChanged(player);
+        }
+    }
+
     public delegate void PlayerResurrected();
 
     public static PlayerDied OnPlayerResurrected;

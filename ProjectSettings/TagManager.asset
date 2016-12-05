@@ -21,6 +21,7 @@ TagManager:
   - machine
   - BGSpawner
   - Background
+  - BGMover
   layers:
   - Default
   - TransparentFX

@@ -2,7 +2,7 @@
 
 public class CaveParallax : MonoBehaviour
 {
-    private Transform player;
+    private Transform mover;
     private Vector3 startPos;
     private bool shouldSavePos = true;
 
@@ -11,7 +11,7 @@ public class CaveParallax : MonoBehaviour
     public int movementSlowFactor = 2;
 
     void Start() {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        mover = GameObject.FindGameObjectWithTag("BGMover").transform;
     }
 
 
@@ -21,7 +21,7 @@ public class CaveParallax : MonoBehaviour
                 startPos = transform.localPosition;
                 shouldSavePos = false;
             }
-            transform.Translate(Vector3.right * (player.GetComponent<Player>().GetSpeed() / movementSlowFactor) * Time.deltaTime);
+            transform.Translate(Vector3.right * (mover.GetComponent<SimpleMover>().speed / movementSlowFactor) * Time.deltaTime);
         }
         else if (!shouldSavePos) {
             transform.localPosition = startPos;
@@ -30,6 +30,6 @@ public class CaveParallax : MonoBehaviour
     }
 
     private bool ShouldPerform() {
-        return Mathf.Abs(transform.position.x - player.position.x) < minDistanceToPlayer;
+        return Mathf.Abs(transform.position.x - mover.position.x) < minDistanceToPlayer;
     }
 }
