@@ -27,10 +27,9 @@ GameObject:
   - 114: {fileID: 11471058}
   - 114: {fileID: 11431972}
   - 114: {fileID: 11442086}
-  - 114: {fileID: 11401854}
   m_Layer: 22
   m_Name: TownBG
-  m_TagString: cave
+  m_TagString: Background
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -303,19 +302,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 19, y: 15}
---- !u!114 &11401854
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 139010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e9c6721d81260a4fba80e7f5b25ef2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speedScale: 0.2
-  yOffset: 0
 --- !u!114 &11426178
 MonoBehaviour:
   m_ObjectHideFlags: 1

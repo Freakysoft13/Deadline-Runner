@@ -12,11 +12,10 @@ GameObject:
   - 114: {fileID: 11415342}
   - 114: {fileID: 11416620}
   - 114: {fileID: 11497496}
-  - 114: {fileID: 11444608}
   - 50: {fileID: 5052490}
   m_Layer: 22
   m_Name: EmptyBG
-  m_TagString: cave
+  m_TagString: Background
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,19 +105,6 @@ MonoBehaviour:
   decorationSpawnChance: 50
   spawnUpperDecoration: 1
   spawnBottomDecoration: 1
---- !u!114 &11444608
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 132156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e9c6721d81260a4fba80e7f5b25ef2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speedScale: 0.2
-  yOffset: 0
 --- !u!114 &11497496
 MonoBehaviour:
   m_ObjectHideFlags: 1

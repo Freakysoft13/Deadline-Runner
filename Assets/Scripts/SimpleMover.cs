@@ -21,5 +21,6 @@ public class SimpleMover : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector2.right * speed * Time.deltaTime);
+        print("Speed = " + speed);
     }
 }

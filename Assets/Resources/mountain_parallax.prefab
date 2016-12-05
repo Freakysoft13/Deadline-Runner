@@ -16,7 +16,7 @@ GameObject:
   - 114: {fileID: 114000012906807578}
   m_Layer: 22
   m_Name: mountain_parallax
-  m_TagString: cave
+  m_TagString: Background
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

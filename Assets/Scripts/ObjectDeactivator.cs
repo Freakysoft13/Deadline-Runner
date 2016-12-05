@@ -19,6 +19,10 @@ public class ObjectDeactivator : MonoBehaviour
 
         if (!shouldByPass)
         {
+            if (other.CompareTag("Background"))
+            {
+                print("Deactivating - " + other.tag);
+            }
             other.gameObject.SetActive(false);
         }
     }

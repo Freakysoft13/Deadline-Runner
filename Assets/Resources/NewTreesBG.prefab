@@ -56,12 +56,11 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000010684249948}
   - 61: {fileID: 61000012933570604}
-  - 114: {fileID: 114000012084456896}
   - 114: {fileID: 114000013633324454}
   - 114: {fileID: 114000013402250648}
   m_Layer: 22
   m_Name: NewTreesBG
-  m_TagString: Untagged
+  m_TagString: Background
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -217,19 +216,6 @@ MonoBehaviour:
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
   renderLayer: 2
---- !u!114 &114000012084456896
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013607541972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e9c6721d81260a4fba80e7f5b25ef2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speedScale: 0.2
-  yOffset: 0
 --- !u!114 &114000013402250648
 MonoBehaviour:
   m_ObjectHideFlags: 1

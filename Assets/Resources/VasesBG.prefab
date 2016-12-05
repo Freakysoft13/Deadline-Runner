@@ -83,10 +83,9 @@ GameObject:
   - 114: {fileID: 11495092}
   - 114: {fileID: 11434106}
   - 114: {fileID: 11489480}
-  - 114: {fileID: 11473102}
   m_Layer: 22
   m_Name: VasesBG
-  m_TagString: cave
+  m_TagString: Background
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -415,19 +414,6 @@ MonoBehaviour:
   timeScale: 1
   loop: 1
   _animationName: Gorshki
---- !u!114 &11473102
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 147968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e9c6721d81260a4fba80e7f5b25ef2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speedScale: 0.2
-  yOffset: 0
 --- !u!114 &11473218
 MonoBehaviour:
   m_ObjectHideFlags: 1

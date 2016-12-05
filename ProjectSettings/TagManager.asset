@@ -20,6 +20,7 @@ TagManager:
   - pet
   - machine
   - BGSpawner
+  - Background
   layers:
   - Default
   - TransparentFX

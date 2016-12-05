@@ -358,13 +358,12 @@ GameObject:
   - 61: {fileID: 6137952}
   - 114: {fileID: 11473652}
   - 114: {fileID: 11408394}
-  - 114: {fileID: 11417410}
   - 82: {fileID: 8295732}
   - 114: {fileID: 11482918}
   - 50: {fileID: 5015106}
   m_Layer: 22
   m_Name: CaveBG
-  m_TagString: cave
+  m_TagString: Background
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1563,19 +1562,6 @@ MonoBehaviour:
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
   renderLayer: 1
---- !u!114 &11417410
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e9c6721d81260a4fba80e7f5b25ef2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speedScale: 0.2
-  yOffset: 0
 --- !u!114 &11418392
 MonoBehaviour:
   m_ObjectHideFlags: 1

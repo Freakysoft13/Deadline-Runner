@@ -46,7 +46,7 @@ public class ObjectChainSpawner : MonoBehaviour
         }
         else
         {
-            print("Chain Spawner Configuration Issue. Fallback Scenario. -AR ;) FOR " + name);
+            Debug.LogError("Chain Spawner Configuration Issue. Fallback Scenario. -AR ;) FOR " + name);
             nextObjIndex = Random.Range(0, availableObjects.Length);
         }
         nextObject = objectPool.GetObject(availableObjects[nextObjIndex]);
