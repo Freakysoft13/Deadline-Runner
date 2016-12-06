@@ -429,8 +429,6 @@ public class Player : MonoBehaviour
         car.SetActive(true);
     }
 
-    private float startSpeed;
-
     public void ToggleCar(bool flag)
     {
         isInCar = flag;
@@ -438,15 +436,9 @@ public class Player : MonoBehaviour
         {
             animationController.Ride();
             ActivateCar();
-            if (speed != 0)
-            {
-                startSpeed = speed;
-                Speed = 0;
-            }
         }
         else
         {
-            Speed = startSpeed;
             machineShieldStub.PickUp();
             if (headStart)
             {

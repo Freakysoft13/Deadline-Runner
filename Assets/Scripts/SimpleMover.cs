@@ -15,17 +15,8 @@ public class SimpleMover : MonoBehaviour
             originalSpeed = speed;
             EventManager.OnBeforePlayerDied += () => { speed = 0; };
             EventManager.OnPlayerResurrected += () => { speed = originalSpeed; };
-            EventManager.OnPlayerStatsChanged += (player) =>
-            {
-                if (player.speed < speed)
-                {
-                    speed = player.speed / 2;
-                }
-                else
-                {
-                    speed = originalSpeed;
-                }
-            };
+            EventManager.OnHeadstart += () => { speed = 0; };
+            EventManager.OnHeadstartEnd += () => { speed = originalSpeed; };
         }
     }
 

@@ -16157,7 +16157,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff09a0692ba445945a7eac057a9f3409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bypassColliders: []
+  bypassColliders:
+  - flying
 --- !u!61 &2134490680
 BoxCollider2D:
   m_ObjectHideFlags: 0
