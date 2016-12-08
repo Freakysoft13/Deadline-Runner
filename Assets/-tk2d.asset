@@ -228,35 +228,35 @@ MonoBehaviour:
     spriteCollectionGUID: 452bc4cceda344249b9bc41a0be6a457
     spriteCollectionDataGUID: d1bd67ed1b5580f4b80c89c3e43bb1af
     spriteNames:
-    - trees_dark
-    - trees_light
-    - mountain_parallax
-    - mountain_light
-    - tree_parallax
-    - background_trees
+    - gift 2
+    - 
+    - 
+    - 
+    - 
+    - 
     - shield1
     - machine1
     - crystal1
     spriteTextureGUIDs:
-    - 47a1da77ab2fadf488a3e9b41e664a13
-    - 889a8ab212564164cb1c5dd18d8d14ec
-    - 2467754d4e4bde146be5d2326cecb080
-    - 1842716b887d80345aca56362537027a
-    - 401ab8aacb94a174eae995d922b7d8cf
-    - de02aca41de936246b49bbf9e590b24a
+    - e4653103df7990f4182095d894280422
+    - 
+    - 
+    - 
+    - 
+    - 
     - c537788963de2624a9a39978e5591a97
     - 2e82d740dd9c5964f83b243ad98314ef
     - 4c20161126366704cacad7ca35669785
     spriteTextureTimeStamps:
-    - 1462190422.1021
-    - 1462190422.11667
-    - 1462190422.03602
-    - 1462190422.02902
-    - 1462190422.08406
-    - 1462190421.75242
-    - 1462190422.15867
-    - 1462190422.15067
-    - 1462190422.13566
+    - 1480780664.96082
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 1480780491.26789
+    - 1480780491.26089
+    - 1480780491.2539
     managedSpriteCollection: 0
     loadable: 0
     assetName: 

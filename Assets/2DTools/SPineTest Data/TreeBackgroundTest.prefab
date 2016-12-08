@@ -62,18 +62,18 @@ MonoBehaviour:
   forcedTextureWidth: 2048
   forcedTextureHeight: 2048
   textureCompression: 0
-  atlasWidth: 2048
-  atlasHeight: 2048
+  atlasWidth: 256
+  atlasHeight: 256
   forceSquareAtlas: 0
-  atlasWastage: 8.429813
+  atlasWastage: 58.82263
   allowMultipleAtlases: 0
   removeDuplicates: 1
   textureParams:
-  - name: trees_dark
+  - name: gift 2
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 2800000, guid: 47a1da77ab2fadf488a3e9b41e664a13, type: 3}
+    texture: {fileID: 2800000, guid: e4653103df7990f4182095d894280422, type: 3}
     materialId: 0
     anchor: 4
     anchorX: 0
@@ -82,9 +82,9 @@ MonoBehaviour:
     doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
-    dice: 1
-    diceUnitX: 128
-    diceUnitY: 128
+    dice: 0
+    diceUnitX: 64
+    diceUnitY: 64
     diceFilter: 0
     pad: 0
     extraPadding: 0
@@ -110,11 +110,11 @@ MonoBehaviour:
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
     attachPoints: []
-  - name: trees_light
+  - name: 
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 2800000, guid: 889a8ab212564164cb1c5dd18d8d14ec, type: 3}
+    texture: {fileID: 0}
     materialId: 0
     anchor: 4
     anchorX: 0
@@ -123,9 +123,9 @@ MonoBehaviour:
     doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
-    dice: 1
-    diceUnitX: 128
-    diceUnitY: 128
+    dice: 0
+    diceUnitX: 64
+    diceUnitY: 64
     diceFilter: 0
     pad: 0
     extraPadding: 0
@@ -151,11 +151,11 @@ MonoBehaviour:
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
     attachPoints: []
-  - name: mountain_parallax
+  - name: 
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 2800000, guid: 2467754d4e4bde146be5d2326cecb080, type: 3}
+    texture: {fileID: 0}
     materialId: 0
     anchor: 4
     anchorX: 0
@@ -164,9 +164,9 @@ MonoBehaviour:
     doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
-    dice: 1
-    diceUnitX: 128
-    diceUnitY: 128
+    dice: 0
+    diceUnitX: 64
+    diceUnitY: 64
     diceFilter: 0
     pad: 0
     extraPadding: 0
@@ -192,11 +192,11 @@ MonoBehaviour:
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
     attachPoints: []
-  - name: mountain_light
+  - name: 
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 2800000, guid: 1842716b887d80345aca56362537027a, type: 3}
+    texture: {fileID: 0}
     materialId: 0
     anchor: 4
     anchorX: 0
@@ -205,9 +205,9 @@ MonoBehaviour:
     doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
-    dice: 1
-    diceUnitX: 128
-    diceUnitY: 128
+    dice: 0
+    diceUnitX: 64
+    diceUnitY: 64
     diceFilter: 0
     pad: 0
     extraPadding: 0
@@ -233,11 +233,11 @@ MonoBehaviour:
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
     attachPoints: []
-  - name: tree_parallax
+  - name: 
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 2800000, guid: 401ab8aacb94a174eae995d922b7d8cf, type: 3}
+    texture: {fileID: 0}
     materialId: 0
     anchor: 4
     anchorX: 0
@@ -246,9 +246,9 @@ MonoBehaviour:
     doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
-    dice: 1
-    diceUnitX: 128
-    diceUnitY: 128
+    dice: 0
+    diceUnitX: 64
+    diceUnitY: 64
     diceFilter: 0
     pad: 0
     extraPadding: 0
@@ -274,11 +274,11 @@ MonoBehaviour:
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
     attachPoints: []
-  - name: background_trees
+  - name: 
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 2800000, guid: de02aca41de936246b49bbf9e590b24a, type: 3}
+    texture: {fileID: 0}
     materialId: 0
     anchor: 4
     anchorX: 0
@@ -287,9 +287,9 @@ MonoBehaviour:
     doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
-    dice: 1
-    diceUnitX: 128
-    diceUnitY: 128
+    dice: 0
+    diceUnitX: 64
+    diceUnitY: 64
     diceFilter: 0
     pad: 0
     extraPadding: 0
@@ -328,7 +328,7 @@ MonoBehaviour:
     doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
-    dice: 1
+    dice: 0
     diceUnitX: 128
     diceUnitY: 128
     diceFilter: 0
@@ -369,7 +369,7 @@ MonoBehaviour:
     doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
-    dice: 1
+    dice: 0
     diceUnitX: 128
     diceUnitY: 128
     diceFilter: 0
@@ -410,7 +410,7 @@ MonoBehaviour:
     doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
-    dice: 1
+    dice: 0
     diceUnitX: 128
     diceUnitY: 128
     diceFilter: 0
@@ -457,7 +457,7 @@ MonoBehaviour:
     width: 960
     height: 640
   globalScale: 1
-  globalTextureRescale: 1
+  globalTextureRescale: 0.5
   attachPointTestSprites: []
   pixelPerfectPointSampled: 0
   filterMode: 1
