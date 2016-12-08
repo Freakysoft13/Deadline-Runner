@@ -5,6 +5,7 @@ using System.Collections;
 public class ShopManager : MonoBehaviour
 {
     public Text money;
+    public Text specialCurrency;
     public ScrollRect pwUpPnl;
     public ScrollRect ConsumPnl;
     public ScrollRect SpecialPnl;
@@ -30,6 +31,7 @@ public class ShopManager : MonoBehaviour
 
     void Start() {
         money.text = LevelManager.Instance.GetMoney().ToString();
+        specialCurrency.text = LevelManager.Instance.GetSpecialMoney().ToString();
         startRightPosition = rightgm.transform.position;
         startCentrePosition = centregm.transform.position;
         startLeftPosition = leftgm.transform.position;
@@ -40,6 +42,7 @@ public class ShopManager : MonoBehaviour
     }
     void Update() {
         money.text = LevelManager.Instance.GetMoney().ToString();
+        specialCurrency.text = LevelManager.Instance.GetSpecialMoney().ToString();
     }
 
     public void PositionReset() {
