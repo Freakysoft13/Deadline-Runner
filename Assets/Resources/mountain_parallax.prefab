@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e9c6721d81260a4fba80e7f5b25ef2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedScale: 0.19
+  speedScale: 0.17
   yOffset: 2
 --- !u!114 &11490494
 MonoBehaviour:
@@ -143,4 +143,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04d32aca7a1605d41bc26c3cb28b9c1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yPosition: 2.4
+  yPosition: 2.2

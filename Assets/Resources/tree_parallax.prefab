@@ -118,8 +118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e9c6721d81260a4fba80e7f5b25ef2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedScale: 0.19
-  yOffset: 4.8
+  speedScale: 0.17
+  yOffset: 4.9
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
