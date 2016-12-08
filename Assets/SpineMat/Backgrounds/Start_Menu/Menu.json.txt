@@ -1,0 +1,890 @@
+{
+"bones": [
+	{ "name": "root" },
+	{ "name": "Ground", "parent": "root" },
+	{ "name": "Bot", "parent": "Ground", "length": 362.86, "y": -60, "rotation": -90 },
+	{ "name": "Gears", "parent": "Ground", "x": -448.41, "y": 127.93 },
+	{ "name": "Top", "parent": "Ground", "length": 288.22, "y": 68.28, "rotation": 90 },
+	{ "name": "Bot_Gerlands", "parent": "Bot", "x": 66.07, "y": 26.13, "rotation": 90 },
+	{ "name": "Bot_Light", "parent": "Bot", "x": 256.68, "y": 106.23 },
+	{ "name": "Gear_1", "parent": "Gears", "x": -58.84, "y": -45.26 },
+	{ "name": "Gear_2", "parent": "Gears", "x": 6.87, "y": -52.36 },
+	{ "name": "Gear_3", "parent": "Gears", "x": 871.94, "y": -112.46 },
+	{ "name": "Gear_4", "parent": "Gears", "x": 904.92, "y": -147.31 },
+	{ "name": "Gear_5", "parent": "Gears", "x": 958.07, "y": -134.63 },
+	{ "name": "Gear_6", "parent": "Gears", "x": 1050.93, "y": -180.19 },
+	{ "name": "Top_Garlands", "parent": "Top", "x": 127.77, "y": -33.5, "rotation": -90 },
+	{ "name": "Top_Lights", "parent": "Top", "x": 148.2, "y": 115.62, "rotation": -90 }
+],
+"slots": [
+	{ "name": "Bot", "bone": "Bot", "attachment": "Bot" },
+	{ "name": "Top", "bone": "Top", "attachment": "Top" },
+	{ "name": "Ground", "bone": "Ground", "attachment": "Ground" },
+	{ "name": "Bot_Snow", "bone": "Bot_Light", "attachment": "Bot_Snow" },
+	{ "name": "Top_Snow", "bone": "Top", "attachment": "Top_Snow" },
+	{ "name": "Gear_5", "bone": "Gear_5", "attachment": "Gear_2" },
+	{ "name": "Gear_3", "bone": "Gear_3", "attachment": "Gear_2" },
+	{ "name": "Gear_4", "bone": "Gear_4", "attachment": "Gear_2" },
+	{ "name": "Gear_6", "bone": "Gear_6", "attachment": "Gear_2" },
+	{ "name": "Gear_2", "bone": "Gear_2", "attachment": "Gear_2" },
+	{ "name": "Gear_1", "bone": "Gear_1", "attachment": "Gear_2" },
+	{ "name": "Bot_Light_1", "bone": "Bot_Light", "attachment": "Bot_Light_1" },
+	{ "name": "Bot_Light_2", "bone": "Bot_Light", "attachment": "Bot_Light_2" },
+	{ "name": "Bot_Light_3", "bone": "Bot_Light", "attachment": "Bot_Light_3" },
+	{ "name": "Bot_Light_4", "bone": "Bot_Light", "attachment": "Bot_Light_4" },
+	{ "name": "Bot_Light_5", "bone": "Bot_Light", "attachment": "Bot_Light_5" },
+	{ "name": "Bot_Light_6", "bone": "Bot_Light", "attachment": "Bot_Light_6" },
+	{ "name": "Bot_Light_7", "bone": "Bot_Light", "attachment": "Bot_Light_7" },
+	{ "name": "Bot_Light_8", "bone": "Bot_Light", "attachment": "Bot_Light_8" },
+	{ "name": "Bot_Light_9", "bone": "Bot_Light", "attachment": "Bot_Light_9" },
+	{ "name": "Bot_Light_10", "bone": "Bot_Light", "attachment": "Bot_Light_10" },
+	{ "name": "Bot_Light_11", "bone": "Bot_Light", "attachment": "Bot_Light_11" },
+	{ "name": "Bot_Light_12", "bone": "Bot_Light", "attachment": "Bot_Light_12" },
+	{ "name": "Top_Light_7", "bone": "Top_Lights", "attachment": "Top_Light_7" },
+	{ "name": "Top_Light_6", "bone": "Top_Lights", "attachment": "Top_Light_6" },
+	{ "name": "Top_Light_5", "bone": "Top_Lights", "attachment": "Top_Light_5" },
+	{ "name": "Top_Light_4", "bone": "Top_Lights", "attachment": "Top_Light_4" },
+	{ "name": "Top_Light_3", "bone": "Top_Lights", "attachment": "Top_Light_3" },
+	{ "name": "Top_Light_2", "bone": "Top_Lights", "attachment": "Top_Light_2" },
+	{ "name": "Top_Light_1", "bone": "Top_Lights", "attachment": "Top_Light_1" },
+	{ "name": "Top_Garland_34", "bone": "Top_Garlands", "attachment": "Top_Garland_34" },
+	{ "name": "Top_Garland_35", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_52", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_1", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_2", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_3", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_4", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_5", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_6", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_7", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_8", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_9", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_10", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_11", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_12", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_13", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_14", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_15", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_16", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_17", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_18", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_19", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_20", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_21", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_22", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_23", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_24", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_25", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_26", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_27", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_28", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_29", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_30", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_51", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_50", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_49", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_48", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_47", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_46", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_45", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_44", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_43", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_42", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_41", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_40", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_39", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_38", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_37", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_36", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_33", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_32", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Top_Garland_31", "bone": "Top_Garlands", "attachment": "Top_OneGarland" },
+	{ "name": "Bot_OneGarland_2", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_1", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_33", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_34", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_35", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_36", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_37", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_38", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_39", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_40", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_41", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_42", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_43", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_44", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_45", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_46", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_47", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_48", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_49", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_50", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_51", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_52", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_53", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_54", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_55", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_56", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_57", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_59", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_60", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_61", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_62", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_63", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_64", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_65", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_11", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_12", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_13", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_14", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_15", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_16", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_17", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_18", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_19", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_20", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_21", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_22", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_23", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_24", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_25", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_26", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_27", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_28", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_29", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_30", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_31", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_32", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_3", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_4", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_5", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_6", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_7", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_8", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_9", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Bot_OneGarland_10", "bone": "Bot_Gerlands", "attachment": "Bot_OneGarland" },
+	{ "name": "Snow_Glow", "bone": "Top", "attachment": "Snow_Glow" }
+],
+"skins": {
+	"default": {
+		"Bot": {
+			"Bot": { "x": 173.12, "y": -47.77, "scaleX": 1.28, "scaleY": 1.28, "rotation": 90, "width": 690, "height": 297 }
+		},
+		"Bot_Light_1": {
+			"Bot_Light_1": { "x": -157.69, "y": -181.75, "rotation": 90, "width": 669, "height": 180 }
+		},
+		"Bot_Light_10": {
+			"Bot_Light_10": { "x": -86.37, "y": 174.57, "rotation": 90, "width": 53, "height": 56 }
+		},
+		"Bot_Light_11": {
+			"Bot_Light_11": { "x": -135.09, "y": 229.29, "rotation": 90, "width": 55, "height": 40 }
+		},
+		"Bot_Light_12": {
+			"Bot_Light_12": { "x": -212.96, "y": 248.02, "rotation": 90, "width": 39, "height": 35 }
+		},
+		"Bot_Light_2": {
+			"Bot_Light_2": { "x": -57.32, "y": -371.6, "rotation": 90, "width": 26, "height": 63 }
+		},
+		"Bot_Light_3": {
+			"Bot_Light_3": { "x": -121.33, "y": -366.44, "rotation": 90, "width": 41, "height": 75 }
+		},
+		"Bot_Light_4": {
+			"Bot_Light_4": { "x": -213.8, "y": -311.55, "rotation": 90, "width": 55, "height": 73 }
+		},
+		"Bot_Light_5": {
+			"Bot_Light_5": { "x": -206.33, "y": -257.42, "rotation": 90, "width": 28, "height": 55 }
+		},
+		"Bot_Light_6": {
+			"Bot_Light_6": { "x": -216.17, "y": -182.82, "rotation": 90, "width": 56, "height": 64 }
+		},
+		"Bot_Light_7": {
+			"Bot_Light_7": { "x": 6.02, "y": 19.68, "rotation": 90, "width": 71, "height": 63 }
+		},
+		"Bot_Light_8": {
+			"Bot_Light_8": { "x": -53.73, "y": 6.24, "rotation": 90, "width": 46, "height": 72 }
+		},
+		"Bot_Light_9": {
+			"Bot_Light_9": { "x": -169.92, "y": 36, "rotation": 90, "width": 49, "height": 89 }
+		},
+		"Bot_OneGarland_1": {
+			"Bot_OneGarland": { "x": 0.58, "y": 25.15, "scaleX": 0.8, "scaleY": 0.8, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_10": {
+			"Bot_OneGarland": { "x": 37.77, "y": -218.85, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_11": {
+			"Bot_OneGarland": { "x": 44.17, "y": 45.32, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_12": {
+			"Bot_OneGarland": { "x": 41.63, "y": 18.1, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_13": {
+			"Bot_OneGarland": { "x": 39.23, "y": -7.29, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_14": {
+			"Bot_OneGarland": { "x": 39.66, "y": -35.36, "scaleX": 0.8, "scaleY": 0.8, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_15": {
+			"Bot_OneGarland": { "x": 44.74, "y": -62.72, "scaleX": 0.7, "scaleY": 0.7, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_16": {
+			"Bot_OneGarland": { "x": 66.18, "y": -74.85, "scaleX": 0.7, "scaleY": 0.7, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_17": {
+			"Bot_OneGarland": { "x": 81.98, "y": -71.33, "scaleX": 0.7, "scaleY": 0.7, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_18": {
+			"Bot_OneGarland": { "x": 97.21, "y": -70.48, "scaleX": 0.7, "scaleY": 0.7, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_19": {
+			"Bot_OneGarland": { "x": 114.98, "y": -71.75, "scaleX": 0.7, "scaleY": 0.7, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_2": {
+			"Bot_OneGarland": { "x": -0.41, "y": -0.05, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_20": {
+			"Bot_OneGarland": { "x": 128.95, "y": -71.61, "scaleX": 0.7, "scaleY": 0.7, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_21": {
+			"Bot_OneGarland": { "x": 235.04, "y": 8.33, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_22": {
+			"Bot_OneGarland": { "x": 231.09, "y": -11.11, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_23": {
+			"Bot_OneGarland": { "x": 221.97, "y": -20.54, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_24": {
+			"Bot_OneGarland": { "x": 201.6, "y": -86.5, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_25": {
+			"Bot_OneGarland": { "x": 236.87, "y": -85.59, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_26": {
+			"Bot_OneGarland": { "x": 258.76, "y": -78.3, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_27": {
+			"Bot_OneGarland": { "x": 275.17, "y": -67.96, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_28": {
+			"Bot_OneGarland": { "x": 285.2, "y": -55.8, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_29": {
+			"Bot_OneGarland": { "x": 296.76, "y": -34.82, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_3": {
+			"Bot_OneGarland": { "x": 1.95, "y": -29.93, "scaleX": 0.8, "scaleY": 0.8, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_30": {
+			"Bot_OneGarland": { "x": 302.53, "y": -15.98, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_31": {
+			"Bot_OneGarland": { "x": 303.44, "y": 6.21, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_32": {
+			"Bot_OneGarland": { "x": 301.01, "y": 26.57, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_33": {
+			"Bot_OneGarland": { "x": -78.61, "y": 48.31, "scaleX": 0.8, "scaleY": 0.8, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_34": {
+			"Bot_OneGarland": { "x": -78.42, "y": 30.36, "scaleX": 0.8, "scaleY": 0.8, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_35": {
+			"Bot_OneGarland": { "x": -81.31, "y": 12.22, "scaleX": 0.8, "scaleY": 0.8, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_36": {
+			"Bot_OneGarland": { "x": -94.63, "y": -1.09, "scaleX": 0.8, "scaleY": 0.8, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_37": {
+			"Bot_OneGarland": { "x": -102.74, "y": -15.95, "scaleX": 0.8, "scaleY": 0.8, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_38": {
+			"Bot_OneGarland": { "x": -104.28, "y": -3.02, "scaleX": 0.8, "scaleY": 0.8, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_39": {
+			"Bot_OneGarland": { "x": -118.18, "y": -0.51, "scaleX": 0.8, "scaleY": 0.8, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_4": {
+			"Bot_OneGarland": { "x": 13.34, "y": -60.65, "scaleX": 0.8, "scaleY": 0.8, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_40": {
+			"Bot_OneGarland": { "x": -123.58, "y": 14.53, "scaleX": 0.8, "scaleY": 0.8, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_41": {
+			"Bot_OneGarland": { "x": -123.39, "y": 31.9, "scaleX": 0.8, "scaleY": 0.8, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_42": {
+			"Bot_OneGarland": { "x": -124.35, "y": 47.34, "scaleX": 0.8, "scaleY": 0.8, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_43": {
+			"Bot_OneGarland": { "x": -142.81, "y": -44.08, "scaleX": 0.8, "scaleY": 0.8, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_44": {
+			"Bot_OneGarland": { "x": -155.11, "y": -35.41, "scaleX": 0.8, "scaleY": 0.8, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_45": {
+			"Bot_OneGarland": { "x": -167.13, "y": -28.42, "scaleX": 0.8, "scaleY": 0.8, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_46": {
+			"Bot_OneGarland": { "x": -181.11, "y": -21.71, "scaleX": 0.8, "scaleY": 0.8, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_47": {
+			"Bot_OneGarland": { "x": -196.21, "y": -17.24, "scaleX": 0.8, "scaleY": 0.8, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_48": {
+			"Bot_OneGarland": { "x": -212.43, "y": -14.16, "scaleX": 0.8, "scaleY": 0.8, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_49": {
+			"Bot_OneGarland": { "x": -223.61, "y": -18.91, "scaleX": 0.8, "scaleY": 0.8, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_5": {
+			"Bot_OneGarland": { "x": 20.71, "y": -85.53, "scaleX": 0.8, "scaleY": 0.8, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_50": {
+			"Bot_OneGarland": { "x": -237.59, "y": -23.11, "scaleX": 0.8, "scaleY": 0.8, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_51": {
+			"Bot_OneGarland": { "x": -249.9, "y": -31.22, "scaleX": 0.8, "scaleY": 0.8, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_52": {
+			"Bot_OneGarland": { "x": -261.92, "y": -40.44, "scaleX": 0.8, "scaleY": 0.8, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_53": {
+			"Bot_OneGarland": { "x": -268.91, "y": -102.23, "scaleX": 0.8, "scaleY": 0.8, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_54": {
+			"Bot_OneGarland": { "x": -282.89, "y": -102.51, "scaleX": 0.8, "scaleY": 0.8, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_55": {
+			"Bot_OneGarland": { "x": -301.9, "y": -115.38, "scaleX": 0.8, "scaleY": 0.8, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_56": {
+			"Bot_OneGarland": { "x": -309.73, "y": -127.4, "scaleX": 0.8, "scaleY": 0.8, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_57": {
+			"Bot_OneGarland": { "x": -314.48, "y": -140.54, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_59": {
+			"Bot_OneGarland": { "x": -346.92, "y": -27.02, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_6": {
+			"Bot_OneGarland": { "x": 31.99, "y": -114.14, "scaleX": 0.9, "scaleY": 0.9, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_60": {
+			"Bot_OneGarland": { "x": -361.74, "y": -17.79, "scaleX": 0.9, "scaleY": 0.9, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_61": {
+			"Bot_OneGarland": { "x": -376.56, "y": -8.29, "scaleX": 0.8, "scaleY": 0.8, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_62": {
+			"Bot_OneGarland": { "x": -389.14, "y": -5.77, "scaleX": 0.7, "scaleY": 0.7, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_63": {
+			"Bot_OneGarland": { "x": -401.28, "y": -3.07, "scaleX": 0.7, "scaleY": 0.7, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_64": {
+			"Bot_OneGarland": { "x": -421.31, "y": -2.98, "scaleX": 0.7, "scaleY": 0.7, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_65": {
+			"Bot_OneGarland": { "x": -437.43, "y": -11.22, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_7": {
+			"Bot_OneGarland": { "x": 38.03, "y": -137.45, "scaleX": 0.8, "scaleY": 0.8, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_8": {
+			"Bot_OneGarland": { "x": 41.2, "y": -170.01, "width": 11, "height": 13 }
+		},
+		"Bot_OneGarland_9": {
+			"Bot_OneGarland": { "x": 40.14, "y": -196.14, "width": 11, "height": 13 }
+		},
+		"Bot_Snow": {
+			"Bot_Snow": { "x": -79.68, "y": -26.4, "scaleX": 1.2, "scaleY": 1.2, "rotation": 90, "width": 945, "height": 330 }
+		},
+		"Gear_1": {
+			"Gear_2": { "scaleX": 1.6, "scaleY": 1.6, "rotation": 34.86, "width": 67, "height": 67 }
+		},
+		"Gear_2": {
+			"Gear_2": { "scaleX": 0.6, "scaleY": 0.6, "rotation": -17.22, "width": 67, "height": 67 }
+		},
+		"Gear_3": {
+			"Gear_2": { "scaleX": 0.6, "scaleY": 0.6, "width": 67, "height": 67 }
+		},
+		"Gear_4": {
+			"Gear_2": { "width": 67, "height": 67 }
+		},
+		"Gear_5": {
+			"Gear_2": { "scaleX": 0.6, "scaleY": 0.6, "width": 67, "height": 67 }
+		},
+		"Gear_6": {
+			"Gear_2": { "scaleX": 0.6, "scaleY": 0.6, "rotation": -21.68, "width": 67, "height": 67 }
+		},
+		"Ground": {
+			"Ground": { "x": 55.72, "y": 10.87, "scaleX": 1.2, "scaleY": 1.2, "width": 997, "height": 146 }
+		},
+		"Snow_Glow": {
+			"Snow_Glow": { "x": -83.41, "y": -97.22, "scaleX": 1.2, "scaleY": 1.2, "rotation": -90, "width": 936, "height": 680 }
+		},
+		"Top": {
+			"Top": { "x": 150.08, "y": 35.77, "scaleX": 1.27, "scaleY": 1.27, "rotation": -90, "width": 766, "height": 252 }
+		},
+		"Top_Garland_1": {
+			"Top_OneGarland": { "x": -519.17, "y": 19.1, "scaleX": 0.9, "scaleY": 0.9, "width": 14, "height": 15 }
+		},
+		"Top_Garland_10": {
+			"Top_OneGarland": { "x": -332.7, "y": -79.96, "scaleX": 0.8, "scaleY": 0.8, "width": 14, "height": 15 }
+		},
+		"Top_Garland_11": {
+			"Top_OneGarland": { "x": -316.88, "y": -80.52, "scaleX": 0.7, "scaleY": 0.7, "width": 14, "height": 15 }
+		},
+		"Top_Garland_12": {
+			"Top_OneGarland": { "x": -299.52, "y": -81.64, "scaleX": 0.9, "scaleY": 0.9, "width": 14, "height": 15 }
+		},
+		"Top_Garland_13": {
+			"Top_OneGarland": { "x": -291.54, "y": -40.48, "scaleX": 0.9, "scaleY": 0.9, "width": 14, "height": 15 }
+		},
+		"Top_Garland_14": {
+			"Top_OneGarland": { "x": -278.98, "y": -35.44, "scaleX": 0.8, "scaleY": 0.8, "width": 14, "height": 15 }
+		},
+		"Top_Garland_15": {
+			"Top_OneGarland": { "x": -263.86, "y": -30.4, "scaleX": 0.8, "scaleY": 0.8, "width": 14, "height": 15 }
+		},
+		"Top_Garland_16": {
+			"Top_OneGarland": { "x": -252.1, "y": -29.28, "scaleX": 0.9, "scaleY": 0.9, "width": 14, "height": 15 }
+		},
+		"Top_Garland_17": {
+			"Top_OneGarland": { "x": -215.6, "y": 31.42, "scaleX": 0.6, "scaleY": 0.6, "width": 14, "height": 15 }
+		},
+		"Top_Garland_18": {
+			"Top_OneGarland": { "x": -200.97, "y": 37.99, "scaleX": 0.7, "scaleY": 0.7, "width": 14, "height": 15 }
+		},
+		"Top_Garland_19": {
+			"Top_OneGarland": { "x": -185.35, "y": 39.97, "scaleX": 0.7, "scaleY": 0.7, "width": 14, "height": 15 }
+		},
+		"Top_Garland_2": {
+			"Top_OneGarland": { "x": -500.95, "y": 20.37, "width": 14, "height": 15 }
+		},
+		"Top_Garland_20": {
+			"Top_OneGarland": { "x": -168.11, "y": 38.98, "scaleX": 0.7, "scaleY": 0.7, "width": 14, "height": 15 }
+		},
+		"Top_Garland_21": {
+			"Top_OneGarland": { "x": -155.34, "y": 32.28, "width": 14, "height": 15 }
+		},
+		"Top_Garland_22": {
+			"Top_OneGarland": { "x": -135.13, "y": 33.65, "scaleX": 0.8, "scaleY": 0.8, "width": 14, "height": 15 }
+		},
+		"Top_Garland_23": {
+			"Top_OneGarland": { "x": -120.37, "y": 40.72, "scaleX": 0.8, "scaleY": 0.8, "width": 14, "height": 15 }
+		},
+		"Top_Garland_24": {
+			"Top_OneGarland": { "x": -105.99, "y": 43.2, "scaleX": 0.7, "scaleY": 0.7, "width": 14, "height": 15 }
+		},
+		"Top_Garland_25": {
+			"Top_OneGarland": { "x": -97.43, "y": 37.86, "scaleX": 0.5, "scaleY": 0.5, "width": 14, "height": 15 }
+		},
+		"Top_Garland_26": {
+			"Top_OneGarland": { "x": -74.49, "y": 44.19, "scaleX": 0.7, "scaleY": 0.7, "width": 14, "height": 15 }
+		},
+		"Top_Garland_27": {
+			"Top_OneGarland": { "x": -53.54, "y": 45.68, "scaleX": 0.7, "scaleY": 0.7, "width": 14, "height": 15 }
+		},
+		"Top_Garland_28": {
+			"Top_OneGarland": { "x": -40.27, "y": 42.82, "scaleX": 0.7, "scaleY": 0.7, "width": 14, "height": 15 }
+		},
+		"Top_Garland_29": {
+			"Top_OneGarland": { "x": -25.89, "y": 38.36, "scaleX": 0.7, "scaleY": 0.7, "width": 14, "height": 15 }
+		},
+		"Top_Garland_3": {
+			"Top_OneGarland": { "x": -482.42, "y": 18.67, "scaleX": 0.8, "scaleY": 0.8, "width": 14, "height": 15 }
+		},
+		"Top_Garland_30": {
+			"Top_OneGarland": { "x": -16.21, "y": 27.94, "scaleX": 0.8, "scaleY": 0.8, "width": 14, "height": 15 }
+		},
+		"Top_Garland_31": {
+			"Top_OneGarland": { "x": -0.28, "y": 0.81, "width": 14, "height": 15 }
+		},
+		"Top_Garland_32": {
+			"Top_OneGarland": { "x": 18.89, "y": 3.35, "scaleX": 0.9, "scaleY": 0.9, "width": 14, "height": 15 }
+		},
+		"Top_Garland_33": {
+			"Top_OneGarland": { "x": 42, "y": 8.93, "scaleX": 0.7, "scaleY": 0.7, "width": 14, "height": 15 }
+		},
+		"Top_Garland_34": {
+			"Top_Garland_34": { "path": "Top_OneGarland", "x": 50.44, "y": 8.17, "scaleX": 0.9, "scaleY": 0.9, "width": 14, "height": 15 }
+		},
+		"Top_Garland_35": {
+			"Top_OneGarland": { "x": 68.48, "y": 12.03, "scaleX": 0.8, "scaleY": 0.8, "width": 14, "height": 15 }
+		},
+		"Top_Garland_36": {
+			"Top_OneGarland": { "x": 83.55, "y": 12.31, "scaleX": 0.7, "scaleY": 0.7, "width": 14, "height": 15 }
+		},
+		"Top_Garland_37": {
+			"Top_OneGarland": { "x": 109.89, "y": 11.61, "scaleX": 0.8, "scaleY": 0.8, "width": 14, "height": 15 }
+		},
+		"Top_Garland_38": {
+			"Top_OneGarland": { "x": 128.33, "y": 14.99, "scaleX": 0.8, "scaleY": 0.8, "width": 14, "height": 15 }
+		},
+		"Top_Garland_39": {
+			"Top_OneGarland": { "x": 147.49, "y": 17.81, "scaleX": 0.8, "scaleY": 0.8, "width": 14, "height": 15 }
+		},
+		"Top_Garland_4": {
+			"Top_OneGarland": { "x": -465.02, "y": 12.85, "scaleX": 0.8, "scaleY": 0.8, "width": 14, "height": 15 }
+		},
+		"Top_Garland_40": {
+			"Top_OneGarland": { "x": 165.37, "y": 18.51, "scaleX": 0.7, "scaleY": 0.7, "width": 14, "height": 15 }
+		},
+		"Top_Garland_41": {
+			"Top_OneGarland": { "x": 181.99, "y": 20.2, "scaleX": 0.7, "scaleY": 0.7, "width": 14, "height": 15 }
+		},
+		"Top_Garland_42": {
+			"Top_OneGarland": { "x": 199.82, "y": 20.59, "scaleX": 0.8, "scaleY": 0.8, "width": 14, "height": 15 }
+		},
+		"Top_Garland_43": {
+			"Top_OneGarland": { "x": 215.99, "y": 24.22, "width": 14, "height": 15 }
+		},
+		"Top_Garland_44": {
+			"Top_OneGarland": { "x": 240.69, "y": 25.98, "scaleX": 0.8, "scaleY": 0.8, "width": 14, "height": 15 }
+		},
+		"Top_Garland_45": {
+			"Top_OneGarland": { "x": 262.63, "y": 28.14, "scaleX": 0.7, "scaleY": 0.7, "width": 14, "height": 15 }
+		},
+		"Top_Garland_46": {
+			"Top_OneGarland": { "x": 284, "y": 26.96, "scaleX": 0.9, "scaleY": 0.9, "width": 14, "height": 15 }
+		},
+		"Top_Garland_47": {
+			"Top_OneGarland": { "x": 304.67, "y": 30.78, "scaleX": 0.9, "scaleY": 0.9, "width": 14, "height": 15 }
+		},
+		"Top_Garland_48": {
+			"Top_OneGarland": { "x": 324.27, "y": 37.54, "scaleX": 0.8, "scaleY": 0.8, "width": 14, "height": 15 }
+		},
+		"Top_Garland_49": {
+			"Top_OneGarland": { "x": 341.71, "y": 41.66, "scaleX": 0.9, "scaleY": 0.9, "width": 14, "height": 15 }
+		},
+		"Top_Garland_5": {
+			"Top_OneGarland": { "x": -430.92, "y": -67.35, "scaleX": 0.7, "scaleY": 0.7, "width": 14, "height": 15 }
+		},
+		"Top_Garland_50": {
+			"Top_OneGarland": { "x": 357.58, "y": 45.87, "width": 14, "height": 15 }
+		},
+		"Top_Garland_51": {
+			"Top_OneGarland": { "x": 377.48, "y": 45.68, "scaleX": 0.8, "scaleY": 0.8, "width": 14, "height": 15 }
+		},
+		"Top_Garland_52": {
+			"Top_OneGarland": { "x": 381.89, "y": 27.06, "width": 14, "height": 15 }
+		},
+		"Top_Garland_6": {
+			"Top_OneGarland": { "x": -413.72, "y": -70.05, "scaleX": 0.8, "scaleY": 0.8, "width": 14, "height": 15 }
+		},
+		"Top_Garland_7": {
+			"Top_OneGarland": { "x": -397.12, "y": -72.03, "scaleX": 0.7, "scaleY": 0.7, "width": 14, "height": 15 }
+		},
+		"Top_Garland_8": {
+			"Top_OneGarland": { "x": -376.65, "y": -74.49, "scaleX": 0.7, "scaleY": 0.7, "width": 14, "height": 15 }
+		},
+		"Top_Garland_9": {
+			"Top_OneGarland": { "x": -355.24, "y": -78, "scaleX": 0.7, "scaleY": 0.7, "width": 14, "height": 15 }
+		},
+		"Top_Light_1": {
+			"Top_Light_1": { "x": -337.15, "y": -14.11, "width": 68, "height": 64 }
+		},
+		"Top_Light_2": {
+			"Top_Light_2": { "x": -241.65, "y": -28.11, "width": 59, "height": 48 }
+		},
+		"Top_Light_3": {
+			"Top_Light_3": { "x": -251.65, "y": -108.61, "width": 55, "height": 65 }
+		},
+		"Top_Light_4": {
+			"Top_Light_4": { "x": 2.34, "y": 6.38, "width": 61, "height": 59 }
+		},
+		"Top_Light_5": {
+			"Top_Light_5": { "x": 228.34, "y": -39.61, "width": 75, "height": 109 }
+		},
+		"Top_Light_6": {
+			"Top_Light_6": { "x": 407.84, "y": -47.61, "width": 52, "height": 91 }
+		},
+		"Top_Light_7": {
+			"Top_Light_7": { "x": 514.34, "y": -9.11, "width": 75, "height": 130 }
+		},
+		"Top_Snow": {
+			"Top_Snow": { "x": 92.5, "y": -70.31, "scaleX": 1.2, "scaleY": 1.217, "rotation": -90, "width": 985, "height": 385 }
+		}
+	}
+},
+"animations": {
+	"animation": {
+		"bones": {
+			"Gear_1": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 1.6666, "angle": 180 },
+					{ "time": 3.3333, "angle": 360 },
+					{ "time": 3.3666, "angle": 3.6 },
+					{ "time": 5, "angle": 180 },
+					{ "time": 6.6666, "angle": 360 },
+					{ "time": 6.7, "angle": 3.6 },
+					{ "time": 8.3333, "angle": 180 },
+					{ "time": 10, "angle": 360 }
+				]
+			},
+			"Gear_2": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.8333, "angle": 270 },
+					{ "time": 1.6666, "angle": 180 },
+					{ "time": 2.5, "angle": 90 },
+					{ "time": 3.3333, "angle": 360 },
+					{ "time": 4.1666, "angle": 270 },
+					{ "time": 5, "angle": 180 },
+					{ "time": 5.8333, "angle": 90 },
+					{ "time": 6.6666, "angle": 360 },
+					{ "time": 7.5, "angle": 270 },
+					{ "time": 8.3333, "angle": 180 },
+					{ "time": 9.1666, "angle": 90 },
+					{ "time": 10, "angle": 360 }
+				]
+			}
+		},
+		"slots": {
+			"Top_Light_1": {
+				"color": [
+					{ "time": 0, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 1.3333, "color": "ffffff00" },
+					{ "time": 3.6666, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 6, "color": "ffffffff" },
+					{ "time": 10, "color": "ffffff00" }
+				]
+			},
+			"Top_Light_2": {
+				"color": [
+					{ "time": 0, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 2.6666, "color": "ffffff00" },
+					{ "time": 5, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 6, "color": "ffffffff" },
+					{ "time": 10, "color": "ffffff00" }
+				]
+			},
+			"Top_Light_3": {
+				"color": [
+					{ "time": 0, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 3.6666, "color": "ffffff00" },
+					{ "time": 6, "color": "ffffffff" },
+					{ "time": 10, "color": "ffffff00" }
+				]
+			},
+			"Top_Light_4": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" },
+					{ "time": 1.3333, "color": "ffffff53" },
+					{ "time": 3.1666, "color": "ffffff00" },
+					{ "time": 3.2333, "color": "ffffff88" },
+					{ "time": 3.3, "color": "ffffff00" },
+					{ "time": 3.4, "color": "ffffffff" },
+					{ "time": 5.6666, "color": "ffffff25" },
+					{ "time": 6.3333, "color": "ffffffff" },
+					{ "time": 10, "color": "ffffff00" }
+				]
+			},
+			"Top_Light_5": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.2, "color": "ffffffc7" },
+					{ "time": 0.4, "color": "ffffffff" },
+					{ "time": 0.6, "color": "ffffffc7" },
+					{ "time": 0.8, "color": "ffffffff" },
+					{ "time": 1, "color": "ffffffc7" },
+					{ "time": 1.2, "color": "ffffffff" },
+					{ "time": 1.4, "color": "ffffffc7" },
+					{ "time": 1.6, "color": "ffffffff" },
+					{ "time": 1.8, "color": "ffffffc7" },
+					{ "time": 2, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffffc7" },
+					{ "time": 2.4, "color": "ffffffff" },
+					{ "time": 2.6, "color": "ffffffc7" },
+					{ "time": 2.8, "color": "ffffffff" },
+					{ "time": 3, "color": "ffffffc7" },
+					{ "time": 3.2, "color": "ffffffff" },
+					{ "time": 3.4, "color": "ffffffc7" },
+					{ "time": 3.6, "color": "ffffffff" },
+					{ "time": 3.8, "color": "ffffffc7" },
+					{ "time": 4, "color": "ffffffff" },
+					{ "time": 4.2, "color": "ffffffc7" },
+					{ "time": 4.4, "color": "ffffffff" },
+					{ "time": 4.6, "color": "ffffffc7" },
+					{ "time": 4.8, "color": "ffffffff" },
+					{ "time": 5, "color": "ffffffc7" },
+					{ "time": 5.2, "color": "ffffffff" },
+					{ "time": 5.4, "color": "ffffffc7" },
+					{ "time": 5.6, "color": "ffffffff" },
+					{ "time": 5.8, "color": "ffffffc7" },
+					{ "time": 6, "color": "ffffffff" },
+					{ "time": 6.2, "color": "ffffffc7" },
+					{ "time": 6.4, "color": "ffffffff" },
+					{ "time": 6.6, "color": "ffffffc7" },
+					{ "time": 6.8, "color": "ffffffff" },
+					{ "time": 7, "color": "ffffffc7" },
+					{ "time": 7.2, "color": "ffffffff" },
+					{ "time": 7.4, "color": "ffffffc7" },
+					{ "time": 7.6, "color": "ffffffff" },
+					{ "time": 7.8, "color": "ffffffc7" },
+					{ "time": 8, "color": "ffffffff" },
+					{ "time": 8.2, "color": "ffffffc7" },
+					{ "time": 8.4, "color": "ffffffff" },
+					{ "time": 8.6, "color": "ffffffc7" },
+					{ "time": 8.8, "color": "ffffffff" },
+					{ "time": 9, "color": "ffffffc7" },
+					{ "time": 9.2, "color": "ffffffff" },
+					{ "time": 9.4, "color": "ffffffc7", "curve": "stepped" },
+					{ "time": 9.6, "color": "ffffffc7", "curve": "stepped" },
+					{ "time": 9.8, "color": "ffffffc7" },
+					{ "time": 10, "color": "ffffffff" }
+				]
+			},
+			"Top_Light_6": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 1.2, "color": "ffffff9a" },
+					{ "time": 2.6, "color": "ffffffff" },
+					{ "time": 3.8, "color": "ffffff9a" },
+					{ "time": 5, "color": "ffffffff" },
+					{ "time": 6.2, "color": "ffffff9a" },
+					{ "time": 7.5, "color": "ffffffff" },
+					{ "time": 8.6666, "color": "ffffff9a" },
+					{ "time": 10, "color": "ffffffff" }
+				]
+			},
+			"Bot_Light_10": {
+				"color": [
+					{ "time": 0, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 1.8333, "color": "ffffff00" },
+					{ "time": 2.1666, "color": "ffffffff" },
+					{ "time": 3.6666, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 6.3333, "color": "ffffff00" },
+					{ "time": 6.6666, "color": "ffffffff" },
+					{ "time": 8.1666, "color": "ffffff00" }
+				]
+			},
+			"Bot_Light_11": {
+				"color": [
+					{ "time": 0, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 2.1666, "color": "ffffff00" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 4, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 6.6666, "color": "ffffff00" },
+					{ "time": 7, "color": "ffffffff" },
+					{ "time": 8.5, "color": "ffffff00" }
+				]
+			},
+			"Bot_Light_12": {
+				"color": [
+					{ "time": 0, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 2.5, "color": "ffffff00" },
+					{ "time": 2.8333, "color": "ffffffff" },
+					{ "time": 4.3333, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 7, "color": "ffffff00" },
+					{ "time": 7.3333, "color": "ffffffff" },
+					{ "time": 8.8333, "color": "ffffff00" }
+				]
+			},
+			"Bot_OneGarland_24": {
+				"color": [
+					{ "time": 0, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 1.6666, "color": "ffffff00" },
+					{ "time": 1.7666, "color": "ffffffff" },
+					{ "time": 2.7333, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 6.1666, "color": "ffffff00" },
+					{ "time": 6.2666, "color": "ffffffff" },
+					{ "time": 7.2333, "color": "ffffff00" }
+				]
+			},
+			"Bot_OneGarland_25": {
+				"color": [
+					{ "time": 0, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 1.8333, "color": "ffffff00" },
+					{ "time": 1.9333, "color": "ffffffff" },
+					{ "time": 2.9, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 6.3333, "color": "ffffff00" },
+					{ "time": 6.4333, "color": "ffffffff" },
+					{ "time": 7.4, "color": "ffffff00" }
+				]
+			},
+			"Bot_OneGarland_26": {
+				"color": [
+					{ "time": 0, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 2, "color": "ffffff00" },
+					{ "time": 2.1, "color": "ffffffff" },
+					{ "time": 3.0666, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 6.5, "color": "ffffff00" },
+					{ "time": 6.6, "color": "ffffffff" },
+					{ "time": 7.5666, "color": "ffffff00" }
+				]
+			},
+			"Bot_OneGarland_27": {
+				"color": [
+					{ "time": 0, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 2.1666, "color": "ffffff00" },
+					{ "time": 2.2666, "color": "ffffffff" },
+					{ "time": 3.2333, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 6.6666, "color": "ffffff00" },
+					{ "time": 6.7666, "color": "ffffffff" },
+					{ "time": 7.7333, "color": "ffffff00" }
+				]
+			},
+			"Bot_OneGarland_28": {
+				"color": [
+					{ "time": 0, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 2.3333, "color": "ffffff00" },
+					{ "time": 2.4333, "color": "ffffffff" },
+					{ "time": 3.4, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 6.8333, "color": "ffffff00" },
+					{ "time": 6.9333, "color": "ffffffff" },
+					{ "time": 7.9, "color": "ffffff00" }
+				]
+			},
+			"Bot_OneGarland_29": {
+				"color": [
+					{ "time": 0, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 2.5, "color": "ffffff00" },
+					{ "time": 2.6, "color": "ffffffff" },
+					{ "time": 3.5666, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 7, "color": "ffffff00" },
+					{ "time": 7.1, "color": "ffffffff" },
+					{ "time": 8.0666, "color": "ffffff00" }
+				]
+			},
+			"Bot_OneGarland_30": {
+				"color": [
+					{ "time": 0, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 2.6666, "color": "ffffff00" },
+					{ "time": 2.7666, "color": "ffffffff" },
+					{ "time": 3.7333, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 7.1666, "color": "ffffff00" },
+					{ "time": 7.2666, "color": "ffffffff" },
+					{ "time": 8.2333, "color": "ffffff00" }
+				]
+			},
+			"Bot_OneGarland_31": {
+				"color": [
+					{ "time": 0, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 2.8333, "color": "ffffff00" },
+					{ "time": 2.9333, "color": "ffffffff" },
+					{ "time": 3.9, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 7.3333, "color": "ffffff00" },
+					{ "time": 7.4333, "color": "ffffffff" },
+					{ "time": 8.4, "color": "ffffff00" }
+				]
+			},
+			"Bot_OneGarland_32": {
+				"color": [
+					{ "time": 0, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 3, "color": "ffffff00" },
+					{ "time": 3.1, "color": "ffffffff" },
+					{ "time": 4.0666, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 7.5, "color": "ffffff00" },
+					{ "time": 7.6, "color": "ffffffff" },
+					{ "time": 8.5666, "color": "ffffff00" }
+				]
+			}
+		}
+	}
+}
+}

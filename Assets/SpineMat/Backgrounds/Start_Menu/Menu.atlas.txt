@@ -1,0 +1,211 @@
+
+Menu2.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Bot_Light_10
+  rotate: true
+  xy: 948, 42
+  size: 51, 54
+  orig: 53, 56
+  offset: 1, 1
+  index: -1
+Bot_Light_11
+  rotate: false
+  xy: 948, 2
+  size: 53, 38
+  orig: 55, 40
+  offset: 1, 1
+  index: -1
+Bot_Light_12
+  rotate: true
+  xy: 989, 624
+  size: 37, 33
+  orig: 39, 35
+  offset: 1, 1
+  index: -1
+Bot_Light_2
+  rotate: false
+  xy: 992, 718
+  size: 24, 61
+  orig: 26, 63
+  offset: 1, 1
+  index: -1
+Bot_Light_3
+  rotate: true
+  xy: 948, 95
+  size: 39, 73
+  orig: 41, 75
+  offset: 1, 1
+  index: -1
+Bot_Light_4
+  rotate: true
+  xy: 940, 352
+  size: 53, 71
+  orig: 55, 73
+  offset: 1, 1
+  index: -1
+Bot_Light_5
+  rotate: false
+  xy: 992, 663
+  size: 26, 53
+  orig: 28, 55
+  offset: 1, 1
+  index: -1
+Bot_Light_6
+  rotate: true
+  xy: 948, 237
+  size: 54, 62
+  orig: 56, 64
+  offset: 1, 1
+  index: -1
+Bot_Light_7
+  rotate: false
+  xy: 940, 471
+  size: 69, 61
+  orig: 71, 63
+  offset: 1, 1
+  index: -1
+Bot_Light_8
+  rotate: true
+  xy: 948, 136
+  size: 44, 70
+  orig: 46, 72
+  offset: 1, 1
+  index: -1
+Bot_Light_9
+  rotate: false
+  xy: 940, 601
+  size: 47, 87
+  orig: 49, 89
+  offset: 1, 1
+  index: -1
+Bot_OneGarland
+  rotate: true
+  xy: 1003, 613
+  size: 9, 11
+  orig: 11, 13
+  offset: 1, 1
+  index: -1
+Bot_Snow
+  rotate: false
+  xy: 2, 8
+  size: 944, 330
+  orig: 945, 330
+  offset: 1, 0
+  index: -1
+Gear_2
+  rotate: false
+  xy: 940, 534
+  size: 65, 65
+  orig: 67, 67
+  offset: 1, 1
+  index: -1
+Snow_Glow
+  rotate: false
+  xy: 2, 340
+  size: 936, 678
+  orig: 936, 680
+  offset: 0, 2
+  index: -1
+Top_Light_1
+  rotate: false
+  xy: 940, 407
+  size: 66, 62
+  orig: 68, 64
+  offset: 1, 1
+  index: -1
+Top_Light_3
+  rotate: true
+  xy: 948, 182
+  size: 53, 63
+  orig: 55, 65
+  offset: 1, 1
+  index: -1
+Top_Light_4
+  rotate: false
+  xy: 948, 293
+  size: 59, 57
+  orig: 61, 59
+  offset: 1, 1
+  index: -1
+Top_Light_5
+  rotate: false
+  xy: 940, 781
+  size: 73, 107
+  orig: 75, 109
+  offset: 1, 1
+  index: -1
+Top_Light_6
+  rotate: false
+  xy: 940, 690
+  size: 50, 89
+  orig: 52, 91
+  offset: 1, 1
+  index: -1
+Top_Light_7
+  rotate: false
+  xy: 940, 890
+  size: 73, 128
+  orig: 75, 130
+  offset: 1, 1
+  index: -1
+Top_OneGarland
+  rotate: false
+  xy: 989, 609
+  size: 12, 13
+  orig: 14, 15
+  offset: 1, 1
+  index: -1
+
+Menu3.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Bot
+  rotate: false
+  xy: 2, 182
+  size: 690, 297
+  orig: 690, 297
+  offset: 0, 0
+  index: -1
+Bot_Light_1
+  rotate: false
+  xy: 2, 2
+  size: 667, 178
+  orig: 669, 180
+  offset: 1, 1
+  index: -1
+Ground
+  rotate: false
+  xy: 2, 866
+  size: 997, 146
+  orig: 997, 146
+  offset: 0, 0
+  index: -1
+Top_Light_2
+  rotate: false
+  xy: 671, 134
+  size: 57, 46
+  orig: 59, 48
+  offset: 1, 1
+  index: -1
+Top_Snow
+  rotate: false
+  xy: 2, 481
+  size: 983, 383
+  orig: 985, 385
+  offset: 0, 0
+  index: -1
+
+Menu4.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Top
+  rotate: false
+  xy: 2, 2
+  size: 766, 252
+  orig: 766, 252
+  offset: 0, 0
+  index: -1
