@@ -172,7 +172,14 @@ public class ResultPanel : MonoBehaviour
         ancesorButton.SetActive(false);
         unlockText.gameObject.SetActive(true);
         unlockText.text = isMaxLevel ? "" : unlockLoc + (LevelManager.Instance.GetLevel() + 2);
-        ancestorsImg[Mathf.Clamp(LevelManager.Instance.GetLevel(), 0, 9)].SetActive(true);
+        if (isMaxLevel)
+        {
+            ancestorsImg[LevelManager.Instance.GetItemIndex(LevelManager.Instance.GetActivePassive()) - 1].SetActive(true);
+        }
+        else
+        {
+            ancestorsImg[Mathf.Clamp(LevelManager.Instance.GetLevel(), 0, 9)].SetActive(true);
+        }
         if (LevelManager.Instance == null || GameManager.Instance == null || GameManager.Instance.Player == null) { return; }
         levelUp_txt.gameObject.SetActive(false);
         level_txt.text = LevelLoc + (1 + LevelManager.Instance.GetLevel());
@@ -193,7 +200,7 @@ public class ResultPanel : MonoBehaviour
         bestscore.text = bestscoreLoc + bestScore;
         CalcLevelProgress();
         LevelManager.Instance.AddMoney(crystalsCollected);
-        LevelManager.Instance.AddMoney(GameManager.Instance.SpecialCurrency);
+        LevelManager.Instance.AddSpecialMoney(GameManager.Instance.SpecialCurrency);
     }
 
     void Update()
@@ -234,7 +241,7 @@ public class ResultPanel : MonoBehaviour
     {
         PlayerPrefs.SetInt("already_rated", 1);
         rateUsPanel.SetActive(false);
-        #if UNITY_ANDROID
+#if UNITY_ANDROID
         Application.OpenURL("market://details?id=com.freakysoft.deadlinerunner/");
 #endif
 #if UNITY_WSA

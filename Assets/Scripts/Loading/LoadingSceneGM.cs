@@ -5,6 +5,7 @@ public class LoadingSceneGM : Singleton<LoadingSceneGM> {
 
 	public static void UnloadLoadingScene()
     {
-        GameObject.Destroy(instance.gameObject);
+        GameObject.DestroyImmediate(instance.gameObject);
+        print("hello");
     }
 }

@@ -132,7 +132,7 @@ MonoBehaviour:
   disappearOnPickup: 1
   isBuff: 0
   canPickupInAfterlife: 0
-  amt: 10
+  amt: 1
 --- !u!114 &114000010834803978
 MonoBehaviour:
   m_ObjectHideFlags: 1

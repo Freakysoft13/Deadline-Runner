@@ -16,6 +16,7 @@ public class LoadingGM : MonoBehaviour
         DontDestroyOnLoad(this);
         StartCoroutine(LoadSceneAsync("Main"));
     }
+
     public IEnumerator LoadSceneAsync(string sceneName)
     {
         //Fade
@@ -27,6 +28,6 @@ public class LoadingGM : MonoBehaviour
         yield return Application.LoadLevelAdditiveAsync(sceneName);
 
         yield return StartCoroutine(blackScreenLock.FadeOut());
-        LoadingSceneGM.UnloadLoadingScene();
+        Destroy(this.gameObject, 1);
     }
 }

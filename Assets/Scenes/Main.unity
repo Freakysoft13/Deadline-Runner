@@ -16100,7 +16100,7 @@ MonoBehaviour:
   minCrystalsSpread: 15
   maxCrystalsSpread: 25
   effectsToSpawn: 00000000030000000500000006000000
-  effectsDistribution: 1e000000410000005000000065000000
+  effectsDistribution: 0f0000001e0000002d00000065000000
   effectsPadding:
   - 0
   - 0
@@ -16157,7 +16157,7 @@ MonoBehaviour:
   minCrystalsSpread: 15
   maxCrystalsSpread: 25
   effectsToSpawn: 00000000030000000500000006000000
-  effectsDistribution: 19000000410000005000000065000000
+  effectsDistribution: 0f0000001e0000002d00000065000000
   effectsPadding:
   - 0
   - 0
