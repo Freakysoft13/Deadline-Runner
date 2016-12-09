@@ -17,7 +17,6 @@ public class tp : MonoBehaviour
     public int distance = 8;
     public Text CrystalSumm;
 
-    AudioSource audios;
     public Image audioOn_img;
     public Image audioOff_img;
 
@@ -30,7 +29,7 @@ public class tp : MonoBehaviour
     public Text levelUp_txt;
     public Text score_txt;
     public Text crystal_txt;
-    public Text windowsStandalonePause;
+    public GameObject windowsStandalonePause;
 
 
     public GameObject[] unlockedAncestors;
@@ -39,9 +38,6 @@ public class tp : MonoBehaviour
     {
         // ress_ads_btn.gameObject.GetComponent<UnityEngine.UI.Button>().interactable = true;
         //ressurected_with_ads = false;
-
-        audios = GetComponent<AudioSource>();
-
         pause_pnl.SetActive(false);
         blockingmask.SetActive(false);
         scoreboard.SetActive(true);
@@ -55,6 +51,7 @@ public class tp : MonoBehaviour
         CrystalSumm.text = LevelManager.Instance.GetMoney().ToString();
         EventManager.OnPlayerDied += PlayerDie;
         EventManager.OnPlayerResurrected += PlayerResurrect;
+        SoundCheckOnStart();
     }
 #if UNITY_ANDROID
     public void ShowRewardedAd()
@@ -98,32 +95,33 @@ public class tp : MonoBehaviour
     {
         System.GC.Collect();
         deathpnl.SetActive(false);
+#if UNITY_STANDALONE_WIN
+          windowsStandalonePause.gameObject.SetActive(true);
+#endif
+        windowsStandalonePause.gameObject.SetActive(false);
         pause_pnl.SetActive(true);
         blockingmask.SetActive(false);
         scoreboard.SetActive(true);
 
         Time.timeScale = 0;
-#if UNITY_STANDALONE_WIN
-                  windowsStandalonePause.gameObject.SetActive(true);
-#endif
-#if UNITY_ANDROID
-        windowsStandalonePause.gameObject.SetActive(false);
-#endif
+
     }
     // turn of sound_btn
     public void AudioMute()
     {
-        if (audios.mute == true)
+        if (LevelManager.Instance.GetSoundCheck() == 0)
         {
-            audios.mute = false;
-            audioOn_img.gameObject.SetActive(true);
-            audioOff_img.gameObject.SetActive(false);
-        }
-        else
-        {
-            audios.mute = true;
-            audioOff_img.gameObject.SetActive(true);
             audioOn_img.gameObject.SetActive(false);
+            audioOff_img.gameObject.SetActive(true);
+            AudioListener.pause = true;
+            LevelManager.Instance.SetSoundCkeck(+1);
+        }
+        else if (LevelManager.Instance.GetSoundCheck() == 1)
+        {
+            audioOff_img.gameObject.SetActive(false);
+            audioOn_img.gameObject.SetActive(true);
+            AudioListener.pause = false;
+            LevelManager.Instance.SetSoundCkeck(-1);
         }
     }
     // resume after pause need to be cleaned
@@ -232,7 +230,7 @@ public class tp : MonoBehaviour
     {
         deathpnl.SetActive(false);
 #if UNITY_ANDROID
-            ShowRewardedAd();
+        ShowRewardedAd();
 #endif
 #if UNITY_WSA
         AdsManager.Instance.ShowVideo((arg) =>
@@ -284,5 +282,20 @@ public class tp : MonoBehaviour
     {
         deathpnl.SetActive(false);
         scoreboard.SetActive(true);
+    }
+    void SoundCheckOnStart()
+    {
+        if (LevelManager.Instance.GetSoundCheck() == 1)
+        {
+            audioOn_img.gameObject.SetActive(false);
+            audioOff_img.gameObject.SetActive(true);
+            AudioListener.pause = true;
+        }
+        else
+        {
+            audioOn_img.gameObject.SetActive(true);
+            audioOff_img.gameObject.SetActive(false);
+            AudioListener.pause = false;
+        }
     }
 }
