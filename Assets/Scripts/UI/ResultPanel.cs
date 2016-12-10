@@ -124,6 +124,7 @@ public class ResultPanel : MonoBehaviour
         {
             var options = new ShowOptions { resultCallback = HandleShowResult };
             Advertisement.Show("rewardedVideo", options);
+            collectedCrystals.text = (collectedCryLoc + crystalsCollectedCounter*2).ToString();
         }
     }
 

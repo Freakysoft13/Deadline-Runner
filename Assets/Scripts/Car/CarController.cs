@@ -99,7 +99,7 @@ public class CarController : MonoBehaviour
                 EventManager.FireHeadstartEnd();
                 skelAnimation.state.SetAnimation(0, START, true);
                 isMoving = true;
-                EarthShaker.instance.StartShaking(0.1f, 0.1f);
+                EarthShaker.instance.StartShaking(0.03f, 0.03f);
                 break;
             case DESTROY:
                 gameObject.SetActive(false);
