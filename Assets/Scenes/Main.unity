@@ -131,7 +131,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 474046, guid: 0185c58700ff7554cb36182608fd3fcb, type: 2}
       propertyPath: m_RootOrder
-      value: 29
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 3301732, guid: 0185c58700ff7554cb36182608fd3fcb, type: 2}
       propertyPath: m_Mesh
@@ -3678,7 +3678,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22498918, guid: bd766d658abd97b4fa6b4e52a24bd7b7, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 22498918, guid: bd766d658abd97b4fa6b4e52a24bd7b7, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -10374,7 +10374,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 29
 --- !u!114 &979207496 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11464888, guid: bd766d658abd97b4fa6b4e52a24bd7b7,
@@ -10421,7 +10421,7 @@ RectTransform:
   - {fileID: 457079833}
   - {fileID: 1384139375}
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 25
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -12045,12 +12045,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  shakeTargets: []
   desiredScreenWidth: 1920
   desiredScreenHeight: 1200
   currentPixelToUnits: 100
-  duration: 3
-  magnitudeX: 0.2
-  magnitudeY: 0.2
   xDelta: 2
 --- !u!224 &1384139375 stripped
 RectTransform:
@@ -12480,12 +12478,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 692618923}
+  shakeTargets: []
   desiredScreenWidth: 1920
   desiredScreenHeight: 1200
   currentPixelToUnits: 110
-  duration: 10
-  magnitudeX: 0.1
-  magnitudeY: 0.1
   xDelta: 7
 --- !u!92 &1510180491
 Behaviour:
@@ -14927,7 +14923,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 423946, guid: 21e2458ca54601541bb6cb97e8eeb306, type: 2}
       propertyPath: m_RootOrder
-      value: 25
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 3318680, guid: 21e2458ca54601541bb6cb97e8eeb306, type: 2}
       propertyPath: m_Mesh
@@ -15598,12 +15594,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 692618923}
+  shakeTargets:
+  - {fileID: 1875832632}
+  - {fileID: 1371952557}
   desiredScreenWidth: 1920
   desiredScreenHeight: 1200
   currentPixelToUnits: 110
-  duration: 10
-  magnitudeX: 0.1
-  magnitudeY: 0.1
   xDelta: 7
 --- !u!92 &1875832628
 Behaviour:
@@ -15845,6 +15841,7 @@ GameObject:
   - 114: {fileID: 1895966798}
   - 82: {fileID: 1895966789}
   - 81: {fileID: 1895966790}
+  - 114: {fileID: 1895966791}
   m_Layer: 0
   m_Name: _GM
   m_TagString: Untagged
@@ -15908,7 +15905,7 @@ MonoBehaviour:
   - shield
   - green_crystal
   - machine_buff
-  - special_currency
+  - special_currency_holder
   backgroundCopies: 5
   floorCopies: 15
   lightCopies: 20
@@ -15952,7 +15949,7 @@ MonoBehaviour:
   - shield
   - green_crystal
   - machine_buff
-  - special_currency
+  - special_currency_holder
   effectTypes: 00000000030000000500000006000000
   shieldStub: {fileID: 799325500}
   afterLifeStub: {fileID: 174450908}
@@ -16041,6 +16038,20 @@ AudioListener:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1895966785}
   m_Enabled: 1
+--- !u!114 &1895966791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1895966785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a6b38cc846cfca40a775f5a247a392e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeTargets:
+  - {fileID: 1875832632}
+  - {fileID: 1371952557}
 --- !u!114 &1895966794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16257,7 +16268,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 473724, guid: ed06462688d22e9489109a7629704e62, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3341224, guid: ed06462688d22e9489109a7629704e62, type: 2}
       propertyPath: m_Mesh
@@ -16357,7 +16368,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
 --- !u!114 &2142498107 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11454480, guid: bd766d658abd97b4fa6b4e52a24bd7b7,

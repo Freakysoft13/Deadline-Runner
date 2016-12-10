@@ -31,7 +31,5 @@
         }
         hasSpawnedSelf = true;
         hasSpawnedNextObject = true;
-        print("Self coord " + transform.position);
-        print("Next coord " + nextObject.transform.position);
     }
 }

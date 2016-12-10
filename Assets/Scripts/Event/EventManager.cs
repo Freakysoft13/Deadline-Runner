@@ -24,7 +24,6 @@
             OnPlayerStatsChanged(player);
         }
     }
-
     public delegate void PlayerResurrected();
 
     public static PlayerDied OnPlayerResurrected;
