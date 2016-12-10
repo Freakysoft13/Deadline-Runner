@@ -2,6 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 
+using GooglePlayGames;
+using GooglePlayGames.BasicApi;
+
 public class LevelManager : MonoBehaviour
 {
     private const string EXP_KEY = "exp";
@@ -54,6 +57,11 @@ public class LevelManager : MonoBehaviour
             BuySkin(Skin.NONE);
         }
         Screen.fullScreen = true;
+        PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder()
+            // enables saving game progress.
+            .EnableSavedGames()
+            .Build();
+        PlayGamesPlatform.InitializeInstance(config);
     }
 
     public void AddExp(int amt)
@@ -388,5 +396,10 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) { Application.Quit(); }
+    }
+
+    public void SaveGame()
+    {
+
     }
 }
