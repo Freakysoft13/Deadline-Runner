@@ -96,7 +96,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedScale: 0.19
-  yOffset: 0
 --- !u!114 &11450484
 MonoBehaviour:
   m_ObjectHideFlags: 1

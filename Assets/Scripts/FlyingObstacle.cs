@@ -12,7 +12,7 @@ public class FlyingObstacle : MonoBehaviour
 
     public float startSpawnDistance = 200.0f;
     public float hardModeDistance = 1000.0f;
-    
+
     public float threshold = 2000.0f;
 
     private Player player;
@@ -69,6 +69,7 @@ public class FlyingObstacle : MonoBehaviour
         if (shouldDisableWarning() && isWarningShown)
         {
             EventManager.FireObstacleWarning(false, side);
+            EarthShaker.instance.StartShaking(0.1f, 0.1f, 1.5f); // SHAKE!
             isWarningShown = false;
         }
     }
@@ -77,7 +78,6 @@ public class FlyingObstacle : MonoBehaviour
     {
         return transform.position.x - player.transform.position.x < distanceToPlayer;
     }
-
     private bool canRespawn()
     {
         return player.transform.position.x - transform.position.x > distanceToPlayer;

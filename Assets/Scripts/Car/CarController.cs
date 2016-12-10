@@ -97,9 +97,13 @@ public class CarController : MonoBehaviour
                 GameManager.Instance.Player.ToggleMeshRenderer(false);
                 flying.Play();
                 EventManager.FireHeadstartEnd();
-                skelAnimation.state.SetAnimation(0, START, true); isMoving = true; break;
+                skelAnimation.state.SetAnimation(0, START, true);
+                isMoving = true;
+                EarthShaker.instance.StartShaking(0.1f, 0.1f);
+                break;
             case DESTROY:
                 gameObject.SetActive(false);
+                EarthShaker.instance.StopShaking();
                 break;
         }
     }
