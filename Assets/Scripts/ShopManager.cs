@@ -114,16 +114,18 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    public void ExchangeSpecialCurrency(bool everything, int amt, float exchangeCoef)
+    public int exchangeAmt = 1;
+    public int exchangeCoef = 100;
+
+    public void ExchangeSpecialCurrency()
     {
         int ownedSpecialMoney = LevelManager.Instance.GetSpecialMoney();
         int ownedMoney = LevelManager.Instance.GetMoney();
-        if (amt > ownedSpecialMoney)
+        if (exchangeAmt > ownedSpecialMoney)
         {
-            Debug.LogError("Desired amount is greater than owned amt - " + amt + ", owned - " + ownedMoney);
+            Debug.LogError("Desired amount is greater than owned amt - " + exchangeAmt + ", owned - " + ownedMoney);
             return;
         }
-        int exchangeAmt = everything ? ownedSpecialMoney : amt;
 
         LevelManager.Instance.AddMoney(Mathf.RoundToInt(exchangeAmt * exchangeCoef));
         LevelManager.Instance.AddSpecialMoney(-exchangeAmt);

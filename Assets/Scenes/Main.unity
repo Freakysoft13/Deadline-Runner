@@ -16160,7 +16160,7 @@ MonoBehaviour:
   - shield
   - green_crystal
   - machine_buff
-  - special_currency_holder
+  - special_currency
   backgroundCopies: 5
   floorCopies: 15
   lightCopies: 20
@@ -16204,7 +16204,7 @@ MonoBehaviour:
   - shield
   - green_crystal
   - machine_buff
-  - special_currency_holder
+  - special_currency
   effectTypes: 00000000030000000500000006000000
   shieldStub: {fileID: 799325500}
   afterLifeStub: {fileID: 174450908}
