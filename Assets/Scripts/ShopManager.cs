@@ -28,6 +28,7 @@ public class ShopManager : MonoBehaviour
     public GameObject[] activatedBtn;
     public GameObject[] buyBtn;
     public GameObject blockingMask;
+    public GameObject specialBlockingMask;
 
     void Start()
     {
