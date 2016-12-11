@@ -16436,7 +16436,7 @@ MonoBehaviour:
   - 0
   - 0
   minEffectsSpread: 75
-  maxEffectsSpread: 150
+  maxEffectsSpread: 125
   amount: 0.2
   interval: 5
 --- !u!1 &2009610755
