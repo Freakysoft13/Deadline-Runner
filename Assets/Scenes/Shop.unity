@@ -1208,10 +1208,10 @@ RectTransform:
   - {fileID: 1789147362}
   m_Father: {fileID: 1648827781}
   m_RootOrder: 4
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 2434, y: -412.5}
-  m_SizeDelta: {x: 512, y: 825}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &98143278
 MonoBehaviour:
@@ -2530,7 +2530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 4c9bbee7dfa1130428cbc712cf50edfc, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: 80f3d14ed6d87db4c99ce330674cc2e0, type: 2}
   initialSkinName: default
   calculateNormals: 0
   calculateTangents: 0
@@ -2556,7 +2556,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: a19937b84bd0ca840a204126073af1f8, type: 2}
+  - {fileID: 2100000, guid: 450873d08a7e645448ac201810d0cafa, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -2838,10 +2838,10 @@ RectTransform:
   - {fileID: 2075664647}
   m_Father: {fileID: 1648827781}
   m_RootOrder: 3
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1922, y: -412.5}
-  m_SizeDelta: {x: 512, y: 825}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &194191619
 MonoBehaviour:
@@ -2902,10 +2902,10 @@ RectTransform:
   - {fileID: 1968401191}
   m_Father: {fileID: 1648827781}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 386, y: -412.5}
-  m_SizeDelta: {x: 512, y: 825}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &199277511
 MonoBehaviour:
@@ -4585,7 +4585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 9757238b24daa5a458832bf1195152ae, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: 874d3378a24077f45bb702134c1249e5, type: 2}
   initialSkinName: default
   calculateNormals: 0
   calculateTangents: 0
@@ -4611,9 +4611,9 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 6b4f84d08d3179842b02aafd586dc007, type: 2}
-  - {fileID: 2100000, guid: 765e4c3c5955c444dbe4ed04651bdb33, type: 2}
-  - {fileID: 2100000, guid: 6b4f84d08d3179842b02aafd586dc007, type: 2}
+  - {fileID: 2100000, guid: 51c42b3e9fe911a49b981d3732fd8c34, type: 2}
+  - {fileID: 2100000, guid: d015e38f23d240c4bb62a7efc05bd20a, type: 2}
+  - {fileID: 2100000, guid: 51c42b3e9fe911a49b981d3732fd8c34, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -5148,10 +5148,10 @@ RectTransform:
   - {fileID: 385727688}
   m_Father: {fileID: 1648827781}
   m_RootOrder: 2
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1410, y: -412.5}
-  m_SizeDelta: {x: 512, y: 825}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &305245838
 MonoBehaviour:
@@ -6343,7 +6343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 557fbc104d3fd604a83f9e6fb3ed04ba, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: 9ba0caf4bf9af8f4f914cfac0a7c938d, type: 2}
   initialSkinName: default
   calculateNormals: 0
   calculateTangents: 0
@@ -6369,7 +6369,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 6f58fa232c1797f4caf21b13f1e33b51, type: 2}
+  - {fileID: 2100000, guid: 38be6a4687f227f4f909e90d8ae36b1a, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -9597,7 +9597,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &591520008
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12892,7 +12892,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: bc005eb4c49ddde4cb1a953963d830f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 764c8d3a9117d40469a949d8a18343d8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15732,7 +15732,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1049885008
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19397,10 +19397,10 @@ RectTransform:
   - {fileID: 1964748595}
   m_Father: {fileID: 1648827781}
   m_RootOrder: 1
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 898, y: -412.5}
-  m_SizeDelta: {x: 512, y: 825}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1249197547
 MonoBehaviour:
@@ -24182,7 +24182,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.9334502, y: 1}
   m_AnchoredPosition: {x: 248, y: -0.49998474}
-  m_SizeDelta: {x: 778.8833, y: 60}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1648827782
 MonoBehaviour:
@@ -28148,7 +28148,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1968401193}
   m_OnClick:
     m_PersistentCalls:
@@ -28170,6 +28170,17 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1431378286}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

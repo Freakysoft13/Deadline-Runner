@@ -40,7 +40,6 @@ public class ShopManager : MonoBehaviour
         index = GetSkinIndex();
         UpdateCharPos();
         SkinChecker();
-        lockmasklist[0].gameObject.SetActive(false);
     }
     void Update()
     {
@@ -148,16 +147,6 @@ public class ShopManager : MonoBehaviour
             blockingMask.SetActive(true);
         }
     }
-    public void LockedChar(int index)
-    {
-        lockmasklist[index].SetActive(true);
-    }
-
-    public void DeactivateCharMask(int index)
-    {
-        lockmasklist[index].SetActive(false);
-    }
-
 
     public void ActivateSkin(int index)
     {

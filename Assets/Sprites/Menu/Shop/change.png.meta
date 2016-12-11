@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: bc005eb4c49ddde4cb1a953963d830f7
-timeCreated: 1440686426
+guid: 764c8d3a9117d40469a949d8a18343d8
+timeCreated: 1481495657
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
@@ -23,7 +23,7 @@ TextureImporter:
   grayScaleToAlpha: 0
   generateCubemap: 0
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 8
+  cubemapConvolutionSteps: 7
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -3
@@ -52,7 +52,7 @@ TextureImporter:
     serializedVersion: 2
     sprites: []
     outline: []
-  spritePackingTag: 
+  spritePackingTag: ShopUI
   userData: 
   assetBundleName: 
   assetBundleVariant: 

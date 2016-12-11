@@ -10254,10 +10254,10 @@ MonoBehaviour:
   strangeMachineTimers: 320000003c00000046000000500000005a000000640000006e000000
   skins:
   - {fileID: 11400000, guid: 8d265289604d93b41833615a69f456fb, type: 2}
-  - {fileID: 11400000, guid: a709731e1fc31ff44a058afc831aefda, type: 2}
+  - {fileID: 11400000, guid: 1230f2abaf020d74c9ff96fbf0704f40, type: 2}
   - {fileID: 11400000, guid: 8d0688dc02dc3e9418434d77e4d832f5, type: 2}
-  - {fileID: 11400000, guid: cc39f19ae5ca9f14684bd8669ea763d7, type: 2}
-  - {fileID: 11400000, guid: d0758768a4f4bea4295df90e34703e05, type: 2}
+  - {fileID: 11400000, guid: 388b14be334895f418478a8c84de6356, type: 2}
+  - {fileID: 11400000, guid: fdd9894cd83c98441a78a1c5219ce92f, type: 2}
   - {fileID: 11400000, guid: 44db301efb6fdd4479fdb9e0a15a2396, type: 2}
   - {fileID: 0}
   - {fileID: 0}
