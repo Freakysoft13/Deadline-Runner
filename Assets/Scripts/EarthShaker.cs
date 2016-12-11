@@ -32,6 +32,7 @@ public class EarthShaker : MonoBehaviour
     public void StopShaking()
     {
         loopShake = false;
+        StartShaking(0.03f, 0.03f, 2.0f);
     }
     IEnumerator Shake(float magnitudeX, float magnitudeY, float duration)
     {
@@ -44,7 +45,7 @@ public class EarthShaker : MonoBehaviour
 
             float percentComplete = elapsed / duration;
             float damper = 1.0f - Mathf.Clamp(4.0f * percentComplete - 3.0f, 0.0f, 1.0f);
-            if(duration == 0) damper = 1;
+            if (duration == 0) damper = 1;
 
             // map value to [-1, 1]
             float x = Random.value * 2.0f - 1.0f;

@@ -69,9 +69,14 @@ public class FlyingObstacle : MonoBehaviour
         if (shouldDisableWarning() && isWarningShown)
         {
             EventManager.FireObstacleWarning(false, side);
-            EarthShaker.instance.StartShaking(0.04f, 0.04f, 2f); // SHAKE!
+            EarthShaker.instance.StartShaking(0.04f, 0.04f); // SHAKE!
             isWarningShown = false;
         }
+    }
+
+    void OnBecameInvisible()
+    {
+        EarthShaker.instance.StopShaking();
     }
 
     private bool shouldDisableWarning()
