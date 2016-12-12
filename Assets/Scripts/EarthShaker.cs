@@ -14,7 +14,8 @@ public class EarthShaker : MonoBehaviour
 
     public bool LoopShake { get { return loopShake; } set { loopShake = value; } }
 
-    void Start()
+    
+    void Awake()
     {
         instance = this;
     }
@@ -32,14 +33,14 @@ public class EarthShaker : MonoBehaviour
     public void StopShaking()
     {
         loopShake = false;
-        StartShaking(0.03f, 0.03f, 2.0f);
+        //StartShaking(0.03f, 0.03f, 0.5f);
     }
     IEnumerator Shake(float magnitudeX, float magnitudeY, float duration)
     {
         Vector3[] originalCamPos = new Vector3[shakeTargets.Length];
         float elapsed = 0.0f;
 
-        while ((duration != 0 && elapsed < duration) || loopShake || elapsed > maxShakeDuration)
+        while ((duration != 0 && elapsed < duration) || (loopShake && elapsed < maxShakeDuration))
         {
             elapsed += Time.deltaTime;
 
@@ -59,7 +60,6 @@ public class EarthShaker : MonoBehaviour
                 shakeTargets[i].position = new Vector3(x + shakeTargets[i].position.x,
                     Mathf.Clamp(y + shakeTargets[i].position.y, -2, 2), originalCamPos[i].z);
             }
-
             yield return null;
         }
         for (int i = 0; i < shakeTargets.Length; i++)

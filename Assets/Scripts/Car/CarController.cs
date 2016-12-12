@@ -100,10 +100,12 @@ public class CarController : MonoBehaviour
                 skelAnimation.state.SetAnimation(0, START, true);
                 isMoving = true;
                 EarthShaker.instance.StartShaking(0.03f, 0.03f);
+                print("Car shake start");
                 break;
             case DESTROY:
                 gameObject.SetActive(false);
                 EarthShaker.instance.StopShaking();
+                print("Car shake complete");
                 break;
         }
     }
@@ -112,7 +114,9 @@ public class CarController : MonoBehaviour
     void Update()
     {
         if (isMoving)
+        {
             transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+        }
 
         if (Mathf.Abs(transform.position.x - target.x) < Mathf.Epsilon && isMoving)
         {

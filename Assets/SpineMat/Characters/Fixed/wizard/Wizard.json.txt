@@ -1391,7 +1391,20 @@
 			},
 			"Layer 20": {
 				"color": [
-					{ "time": 0, "color": "ffffff00" }
+					{ "time": 0, "color": "ffffff00" },
+					{ "time": 0.0333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.1, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.1333, "color": "ffffffff" },
+					{ "time": 0.2333, "color": "ffffff00" },
+					{ "time": 0.2666, "color": "ffffffff" },
+					{ "time": 0.3, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.3666, "color": "ffffff00" },
+					{ "time": 0.4, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.5, "color": "ffffffff" },
+					{ "time": 0.5333, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.6, "color": "ffffff00" },
+					{ "time": 0.6333, "color": "ffffffff" },
+					{ "time": 0.7333, "color": "ffffff00" }
 				]
 			},
 			"Layer 21": {
@@ -6860,20 +6873,7 @@
 			},
 			"Layer 20": {
 				"color": [
-					{ "time": 0, "color": "ffffff00" },
-					{ "time": 0.0333, "color": "ffffffff", "curve": "stepped" },
-					{ "time": 0.1, "color": "ffffffff", "curve": "stepped" },
-					{ "time": 0.1333, "color": "ffffffff" },
-					{ "time": 0.2333, "color": "ffffff00" },
-					{ "time": 0.2666, "color": "ffffffff" },
-					{ "time": 0.3, "color": "ffffff00", "curve": "stepped" },
-					{ "time": 0.3666, "color": "ffffff00" },
-					{ "time": 0.4, "color": "ffffffff", "curve": "stepped" },
-					{ "time": 0.5, "color": "ffffffff" },
-					{ "time": 0.5333, "color": "ffffff00", "curve": "stepped" },
-					{ "time": 0.6, "color": "ffffff00" },
-					{ "time": 0.6333, "color": "ffffffff" },
-					{ "time": 0.7333, "color": "ffffff00" }
+					{ "time": 0, "color": "ffffff00" }
 				]
 			},
 			"Layer 21": {
