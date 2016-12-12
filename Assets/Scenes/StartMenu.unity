@@ -1445,7 +1445,7 @@ ParticleSystem:
   moveWithTransform: 1
   autoRandomSeed: 1
   scalingMode: 1
-  randomSeed: -2145780470
+  randomSeed: 1104957731
   InitialModule:
     serializedVersion: 2
     enabled: 1
@@ -3911,6 +3911,7 @@ GameObject:
   - 224: {fileID: 349799125}
   - 222: {fileID: 349799127}
   - 114: {fileID: 349799126}
+  - 114: {fileID: 349799128}
   m_Layer: 21
   m_Name: Title_txt
   m_TagString: Untagged
@@ -3975,6 +3976,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 349799124}
+--- !u!114 &349799128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 349799124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1137a3dd71637cb4183ce720f58b1991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _key: Christmas Event Title
 --- !u!1 &369917911
 GameObject:
   m_ObjectHideFlags: 0
@@ -5758,6 +5771,7 @@ GameObject:
   - 224: {fileID: 738661313}
   - 222: {fileID: 738661315}
   - 114: {fileID: 738661314}
+  - 114: {fileID: 738661316}
   m_Layer: 21
   m_Name: Christmas_txt
   m_TagString: Untagged
@@ -5781,7 +5795,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 73, y: -261}
-  m_SizeDelta: {x: 800, y: 45}
+  m_SizeDelta: {x: 800, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &738661314
 MonoBehaviour:
@@ -5796,7 +5810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.8039216, g: 0.81960785, b: 0.6509804, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5822,6 +5836,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 738661312}
+--- !u!114 &738661316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 738661312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1137a3dd71637cb4183ce720f58b1991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _key: Christmas Tab Description
 --- !u!1 &766599341
 GameObject:
   m_ObjectHideFlags: 0
@@ -8197,7 +8223,7 @@ GameObject:
   - 222: {fileID: 874284934}
   - 114: {fileID: 874284933}
   m_Layer: 5
-  m_Name: Back_ico (1)
+  m_Name: Back_ico
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12308,9 +12334,8 @@ GameObject:
   - 20: {fileID: 1453595190}
   - 124: {fileID: 1453595189}
   - 92: {fileID: 1453595188}
-  - 81: {fileID: 1453595187}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: KostylCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12329,13 +12354,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 566313020}
   m_RootOrder: 3
---- !u!81 &1453595187
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1453595185}
-  m_Enabled: 1
 --- !u!92 &1453595188
 Behaviour:
   m_ObjectHideFlags: 0
@@ -12374,7 +12392,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 8388608
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -16111,7 +16129,7 @@ GameObject:
   - 222: {fileID: 1780887559}
   - 114: {fileID: 1780887558}
   m_Layer: 5
-  m_Name: Back_bg_img (1)
+  m_Name: Back_bg_img
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17433,7 +17451,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2062396966}
   - 212: {fileID: 2062396965}
-  m_Layer: 13
+  m_Layer: 23
   m_Name: MenuBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17467,8 +17485,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -67229363
-  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: -18
   m_Sprite: {fileID: 21300000, guid: 8dedb356d1c61c54e9b2ed88eca3dc8a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -17743,7 +17761,7 @@ GameObject:
   - 114: {fileID: 2089700828}
   - 114: {fileID: 2089700827}
   m_Layer: 5
-  m_Name: Back_btn (1)
+  m_Name: Back_btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
