@@ -103,7 +103,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010380209482}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 02531e5bf2c875c45b93a329099688f4, type: 2}
   m_CullingMode: 0
@@ -130,7 +130,7 @@ MonoBehaviour:
   isWearingOff: 0
   upgradeDuration: 1
   disappearOnPickup: 1
-  isBuff: 0
+  isBuff: 1
   canPickupInAfterlife: 0
   amt: 1
 --- !u!114 &114000010834803978
