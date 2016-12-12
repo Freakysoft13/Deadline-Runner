@@ -123,6 +123,7 @@ public class ShopManager : MonoBehaviour
         int ownedMoney = LevelManager.Instance.GetMoney();
         if (exchangeAmt > ownedSpecialMoney)
         {
+            specialBlockingMask.SetActive(true);
             Debug.LogError("Desired amount is greater than owned amt - " + exchangeAmt + ", owned - " + ownedMoney);
             return;
         }

@@ -22102,6 +22102,9 @@ MonoBehaviour:
   - {fileID: 623588018}
   blockingMask: {fileID: 360341508}
   specialBlockingMask: {fileID: 1103275482}
+  specialExcgangeBlock: {fileID: 0}
+  exchangeAmt: 1
+  exchangeCoef: 100
 --- !u!114 &1431378290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28153,8 +28156,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1431378287}
-        m_MethodName: GetMoneyShards
+      - m_Target: {fileID: 1431378289}
+        m_MethodName: ExchangeSpecialCurrency
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -28170,17 +28173,6 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1431378286}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
