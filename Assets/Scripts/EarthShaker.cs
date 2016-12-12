@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 using System.Collections;
+using System.Collections.Generic;
 
 public class EarthShaker : MonoBehaviour
 {
@@ -14,32 +15,47 @@ public class EarthShaker : MonoBehaviour
 
     public bool LoopShake { get { return loopShake; } set { loopShake = value; } }
 
-    
+    private Dictionary<string, bool> shakerStatus = new Dictionary<string, bool>();
+
+
     void Awake()
     {
         instance = this;
     }
 
-    public void StartShaking(float magnitudeX, float magnitudeY, float duration)
+    public void StartShaking(string shakerId, float magnitudeX, float magnitudeY, float duration)
     {
-        StartCoroutine(Shake(magnitudeX, magnitudeY, duration));
+        StartCoroutine(Shake(shakerId, magnitudeX, magnitudeY, duration));
     }
-    public void StartShaking(float magnitudeX, float magnitudeY)
+    public void StartShaking(string shakerId, float magnitudeX, float magnitudeY)
     {
-        loopShake = true;
-        StartCoroutine(Shake(magnitudeX, magnitudeY, 0));
+        SetShakerStatus(shakerId, true);
+        StartCoroutine(Shake(shakerId, magnitudeX, magnitudeY, 0));
     }
 
-    public void StopShaking()
+    public void StopShaking(string shakerId)
     {
-        loopShake = false;
+        SetShakerStatus(shakerId, false);
         //StartShaking(0.03f, 0.03f, 0.5f);
     }
-    IEnumerator Shake(float magnitudeX, float magnitudeY, float duration)
+
+    private void SetShakerStatus(string shakerId, bool isRunning)
+    {
+        if (shakerStatus.ContainsKey(shakerId))
+        {
+            shakerStatus[shakerId] = isRunning;
+        }
+        else
+        {
+            shakerStatus.Add(shakerId, isRunning);
+        }
+    }
+
+    IEnumerator Shake(string shakerId, float magnitudeX, float magnitudeY, float duration)
     {
         Vector3[] originalCamPos = new Vector3[shakeTargets.Length];
         float elapsed = 0.0f;
-
+        bool loopShake = duration == 0;
         while ((duration != 0 && elapsed < duration) || (loopShake && elapsed < maxShakeDuration))
         {
             elapsed += Time.deltaTime;
@@ -60,6 +76,7 @@ public class EarthShaker : MonoBehaviour
                 shakeTargets[i].position = new Vector3(x + shakeTargets[i].position.x,
                     Mathf.Clamp(y + shakeTargets[i].position.y, -2, 2), originalCamPos[i].z);
             }
+            loopShake = shakerStatus[shakerId];
             yield return null;
         }
         for (int i = 0; i < shakeTargets.Length; i++)

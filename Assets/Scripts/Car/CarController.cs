@@ -99,13 +99,11 @@ public class CarController : MonoBehaviour
                 EventManager.FireHeadstartEnd();
                 skelAnimation.state.SetAnimation(0, START, true);
                 isMoving = true;
-                EarthShaker.instance.StartShaking(0.03f, 0.03f);
-                print("Car shake start");
+                EarthShaker.instance.StartShaking(tag, 0.03f, 0.03f);
                 break;
             case DESTROY:
                 gameObject.SetActive(false);
-                EarthShaker.instance.StopShaking();
-                print("Car shake complete");
+                EarthShaker.instance.StopShaking(tag);
                 break;
         }
     }
