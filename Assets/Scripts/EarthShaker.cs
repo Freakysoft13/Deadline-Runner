@@ -45,6 +45,10 @@ public class EarthShaker : MonoBehaviour
         {
             shakerStatus[shakerId] = isRunning;
         }
+        else
+        {
+            shakerStatus.Add(shakerId, isRunning);
+        }
     }
 
     IEnumerator Shake(string shakerId, float magnitudeX, float magnitudeY, float duration)
