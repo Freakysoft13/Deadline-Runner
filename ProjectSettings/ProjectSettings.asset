@@ -96,15 +96,15 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleIdentifier: com.freakysoft.deadlinerunner3
-  bundleVersion: 1.2.1
+  bundleIdentifier: com.freakysoft.deadlinerunner
+  bundleVersion: 2.0.0b
   preloadedAssets: []
   metroEnableIndependentInputSource: 0
   xboxOneDisableKinectGpuReservation: 0
   singlePassStereoRendering: 0
   protectGraphicsMemory: 0
-  AndroidBundleVersionCode: 28
-  AndroidMinSdkVersion: 16
+  AndroidBundleVersionCode: 29
+  AndroidMinSdkVersion: 19
   AndroidPreferredInstallLocation: 1
   aotOptions: 
   apiCompatibilityLevel: 2
@@ -174,7 +174,7 @@ PlayerSettings:
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
   AndroidKeystoreName: E:/Work/Deadline Runner/LCKEY/LCKEY.keystore
-  AndroidKeyaliasName: 
+  AndroidKeyaliasName: deadlinerunner
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
   androidEnableBanner: 1

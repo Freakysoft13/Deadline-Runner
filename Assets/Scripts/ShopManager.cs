@@ -147,7 +147,7 @@ public class ShopManager : MonoBehaviour
         }
         else
         {
-            blockingMask.SetActive(true);
+            specialBlockingMask.SetActive(true);
         }
     }
 
