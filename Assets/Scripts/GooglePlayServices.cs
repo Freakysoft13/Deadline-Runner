@@ -26,16 +26,23 @@ public class GooglePlayServices : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(this);
+            print("Dont destroy");
         }
         else
         {
             DestroyImmediate(this);
+            print("Destroy Immediate");
             return;
         }
         if (!isLoggedIn)
         {
+            print("Not logged in. Logging in ...");
             Login();
             PlayGamesPlatform.Activate();
+        }
+        else
+        {
+            print("Already logged in.");
         }
     }
 
@@ -43,6 +50,7 @@ public class GooglePlayServices : MonoBehaviour
     {
         if (isLoggedIn)
         {
+            print("Called login when user is authenticated");
             if (callback != null)
             {
                 callback();
@@ -67,7 +75,13 @@ public class GooglePlayServices : MonoBehaviour
     {
         if (isLoggedIn)
         {
+            print("Reporting score. Start");
             Social.ReportScore(score, leaderboard, null);
+            print("Reporting score. End");
+        }
+        else
+        {
+            print("Reporting score failure");
         }
     }
 
@@ -75,18 +89,28 @@ public class GooglePlayServices : MonoBehaviour
     {
         if (isLoggedIn)
         {
+            print("Reporting progress. Start");
             Social.ReportProgress(achievementID, progress, null);
+            print("Reporting progress. End");
+        }
+        else
+        {
+            print("Reporting progress failure");
         }
     }
 
     public void ShowAchievements()
     {
+        print("Show achievements. Start");
         Social.ShowAchievementsUI();
+        print("Show achievements. End");
     }
 
     public void ShowLadder()
     {
+        print("Show ladder. Start");
         Social.ShowLeaderboardUI();
+        print("Show ladder. End");
     }
 
 }
