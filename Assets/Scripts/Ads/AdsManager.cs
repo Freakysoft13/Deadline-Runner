@@ -50,10 +50,7 @@ public class AdsManager : MonoBehaviour
             DestroyImmediate(this);
         }
     }
-    void Start()
-    {
-        RequestMsAd(null);
-    }
+
     public void OnMSReady(object obj)
     {
         displayAds = true;
