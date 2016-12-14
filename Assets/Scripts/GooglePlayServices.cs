@@ -8,7 +8,6 @@ public class GooglePlayServices : MonoBehaviour
 {
 
     private bool isLoggedIn = false;
-    public string leaderboard;
 
 
     private static GooglePlayServices instance = null;
@@ -18,8 +17,10 @@ public class GooglePlayServices : MonoBehaviour
         get { return instance; }
     }
     // Use this for initialization
+
     void Awake()
     {
+        Login();
         PlayGamesPlatform.Activate();
         if (instance == null)
         {
@@ -30,11 +31,6 @@ public class GooglePlayServices : MonoBehaviour
         {
             DestroyImmediate(this);
         }
-    }
-
-    void Start()
-    {
-        Login();
     }
 
     public void Login(Action callback = null)

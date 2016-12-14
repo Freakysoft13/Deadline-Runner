@@ -1208,10 +1208,10 @@ RectTransform:
   - {fileID: 1789147362}
   m_Father: {fileID: 1648827781}
   m_RootOrder: 4
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 2434, y: -412.5}
+  m_SizeDelta: {x: 512, y: 825}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &98143278
 MonoBehaviour:
@@ -2971,10 +2971,10 @@ RectTransform:
   - {fileID: 2075664647}
   m_Father: {fileID: 1648827781}
   m_RootOrder: 3
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1922, y: -412.5}
+  m_SizeDelta: {x: 512, y: 825}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &194191619
 MonoBehaviour:
@@ -3035,10 +3035,10 @@ RectTransform:
   - {fileID: 1968401191}
   m_Father: {fileID: 1648827781}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 386, y: -412.5}
+  m_SizeDelta: {x: 512, y: 825}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &199277511
 MonoBehaviour:
@@ -5281,10 +5281,10 @@ RectTransform:
   - {fileID: 385727688}
   m_Father: {fileID: 1648827781}
   m_RootOrder: 2
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1410, y: -412.5}
+  m_SizeDelta: {x: 512, y: 825}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &305245838
 MonoBehaviour:
@@ -9868,7 +9868,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &591520008
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19737,10 +19737,10 @@ RectTransform:
   - {fileID: 1964748595}
   m_Father: {fileID: 1648827781}
   m_RootOrder: 1
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 898, y: -412.5}
+  m_SizeDelta: {x: 512, y: 825}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1249197547
 MonoBehaviour:
@@ -19847,7 +19847,6 @@ GameObject:
   - 224: {fileID: 1260232808}
   - 222: {fileID: 1260232811}
   - 114: {fileID: 1260232810}
-  - 114: {fileID: 1260232809}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -19873,18 +19872,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0.3, y: -4.25}
   m_SizeDelta: {x: 650, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1260232809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1260232807}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1137a3dd71637cb4183ce720f58b1991, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _key: Christmas Event Block Description
 --- !u!114 &1260232810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19917,7 +19904,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.2
-  m_Text: You Need to unlock Archibald to get this awesome character
+  m_Text: Unlock Archibald to get this awesome character
 --- !u!222 &1260232811
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22505,7 +22492,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  charprice: 10270000983a0000282300000100000050c3000001000000
+  charprice: 10270000983a0000282300000100000050c3000064000000
   activateBtn:
   - {fileID: 367990131}
   - {fileID: 478919421}
@@ -24611,7 +24598,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.9334502, y: 1}
   m_AnchoredPosition: {x: 248, y: -0.49998474}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 778.8832, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1648827782
 MonoBehaviour:

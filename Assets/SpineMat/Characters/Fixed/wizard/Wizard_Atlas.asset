@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6b194f808b1af6499c93410e504af42, type: 3}
   m_Name: Wizard_Atlas
   m_EditorClassIdentifier: 
-  atlasFile: {fileID: 4900000, guid: 73d8d5826c71ddc4fa4cc721da97d592, type: 3}
+  atlasFile: {fileID: 4900000, guid: 8e84ef3308f169d41b05b40209604906, type: 3}
   materials:
   - {fileID: 2100000, guid: 51c42b3e9fe911a49b981d3732fd8c34, type: 2}
   - {fileID: 2100000, guid: d015e38f23d240c4bb62a7efc05bd20a, type: 2}

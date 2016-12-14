@@ -172,7 +172,7 @@ public class ResultPanel : MonoBehaviour
         bool isMaxLevel = LevelManager.Instance.IsMaxLevel();
         lockancestors.SetActive(!isMaxLevel);
         ancesorButton.SetActive(false);
-        specialScore.text = LevelManager.Instance.GetSpecialMoney().ToString();
+        specialScore.text = GameManager.Instance.SpecialCurrency.ToString();
         unlockText.gameObject.SetActive(true);
         unlockText.text = isMaxLevel ? "" : unlockLoc + (LevelManager.Instance.GetLevel() + 2);
         if (isMaxLevel)
