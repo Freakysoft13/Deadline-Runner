@@ -9,6 +9,8 @@ public class GooglePlayServices : MonoBehaviour
 
     private bool isLoggedIn = false;
 
+    public bool IsLoggedIn { get { return isLoggedIn; } }
+
 
     private static GooglePlayServices instance = null;
 
@@ -20,8 +22,6 @@ public class GooglePlayServices : MonoBehaviour
 
     void Awake()
     {
-        Login();
-        PlayGamesPlatform.Activate();
         if (instance == null)
         {
             instance = this;
@@ -30,6 +30,12 @@ public class GooglePlayServices : MonoBehaviour
         else
         {
             DestroyImmediate(this);
+            return;
+        }
+        if (!isLoggedIn)
+        {
+            Login();
+            PlayGamesPlatform.Activate();
         }
     }
 
@@ -73,12 +79,12 @@ public class GooglePlayServices : MonoBehaviour
         }
     }
 
-    public void ShowAchievements ()
+    public void ShowAchievements()
     {
         Social.ShowAchievementsUI();
     }
-    
-    public void ShowLadder ()
+
+    public void ShowLadder()
     {
         Social.ShowLeaderboardUI();
     }
