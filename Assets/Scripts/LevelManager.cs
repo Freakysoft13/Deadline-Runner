@@ -57,11 +57,6 @@ public class LevelManager : MonoBehaviour
             BuySkin(Skin.NONE);
         }
         Screen.fullScreen = true;
-        PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder()
-            // enables saving game progress.
-            .EnableSavedGames()
-            .Build();
-        PlayGamesPlatform.InitializeInstance(config);
     }
 
     public void AddExp(int amt)
