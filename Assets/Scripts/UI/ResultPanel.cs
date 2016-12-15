@@ -212,34 +212,6 @@ public class ResultPanel : MonoBehaviour
         UpdateCounters();
     }
 
-    public void GrantAchievements()
-    {
-#if UNITY_ANDROID
-        float distanceTraveled = GameManager.Instance.Player.GetDistance();
-        float crystalsCollected = LevelManager.Instance.GetTotalMoney();
-        if (distanceTraveled > 1999)
-        {
-            GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_runner, 100.0f);
-        }
-        if (distanceTraveled > 4999)
-        {
-            GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_long_distance_runner, 100.0f);
-        }
-        if (crystalsCollected > 99)
-        {
-            GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_something_shiny, 100.0f);
-        }
-        if (crystalsCollected > 4999)
-        {
-            GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_gemology, 100.0f);
-        }
-        if (crystalsCollected > 49999)
-        {
-            GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_jeweler, 100.0f);
-        }
-#endif
-    }
-
     public void RateUs()
     {
         PlayerPrefs.SetInt("already_rated", 1);
@@ -312,14 +284,6 @@ public class ResultPanel : MonoBehaviour
             if (overhead > 0)
             {
                 CalcLevelProgress();
-            }
-            else
-            {
-                if (!hasGrantedAchievements)
-                {
-                    hasGrantedAchievements = true;
-                    GrantAchievements();
-                }
             }
 
             if (expGain.isPlaying)

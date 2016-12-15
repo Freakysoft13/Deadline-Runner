@@ -2,11 +2,9 @@
 using UnityEngine;
 using System;
 using GooglePlayGames;
-using UnityEngine.SocialPlatforms;
 
 public class GooglePlayServices : MonoBehaviour
 {
-
     private bool isLoggedIn = false;
 
     public bool IsLoggedIn { get { return isLoggedIn; } }
@@ -88,6 +86,8 @@ public class GooglePlayServices : MonoBehaviour
             print("Reporting score failure");
         }
     }
+
+
 
     public void ReportProgress(String achievementID, float progress)
     {

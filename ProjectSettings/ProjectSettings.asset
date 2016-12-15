@@ -173,7 +173,7 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: E:/Work/Deadline Runner/LCKEY/LCKEY.keystore
+  AndroidKeystoreName: D:/Dev/Deadlinekey/LCKEY.keystore
   AndroidKeyaliasName: deadlinerunner
   AndroidTVCompatibility: 0
   AndroidIsGame: 1

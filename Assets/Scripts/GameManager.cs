@@ -88,6 +88,7 @@ public class GameManager : MonoBehaviour
         new ConsumablesManager().ApplyActiveConsumables();
         new TreePassivesManager().ApplyActivePassives();
         EventManager.Reset();
+        InvokeRepeating("GrantAchievements", 1.0f, .3f);
     }
 
     void Start()
@@ -103,7 +104,6 @@ public class GameManager : MonoBehaviour
                 GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_monster_slayer, 100.0f);
             }
         };
-        Invoke("GrantAchievements", 3.0f);
 #endif
     }
 
@@ -123,6 +123,33 @@ public class GameManager : MonoBehaviour
         if (gamesPlayed > 100)
         {
             GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_fan_club, 100.0f);
+        }
+
+        float distanceTraveled = Player.GetDistance();
+        float crystalsCollected = LevelManager.Instance.GetTotalMoney();
+        if (distanceTraveled > 499)
+        {
+            GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_sprinter, 100.0f);
+        }
+        if (distanceTraveled > 1999)
+        {
+            GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_runner, 100.0f);
+        }
+        if (distanceTraveled > 4999)
+        {
+            GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_long_distance_runner, 100.0f);
+        }
+        if (crystalsCollected > 99)
+        {
+            GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_something_shiny, 100.0f);
+        }
+        if (crystalsCollected > 4999)
+        {
+            GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_gemology, 100.0f);
+        }
+        if (crystalsCollected > 49999)
+        {
+            GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_jeweler, 100.0f);
         }
 #endif
     }
