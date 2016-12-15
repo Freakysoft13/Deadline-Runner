@@ -1445,7 +1445,7 @@ ParticleSystem:
   moveWithTransform: 1
   autoRandomSeed: 1
   scalingMode: 1
-  randomSeed: 1104957731
+  randomSeed: -1695864039
   InitialModule:
     serializedVersion: 2
     enabled: 1
@@ -3430,7 +3430,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2070638436}
+      - m_Target: {fileID: 1774886834}
         m_MethodName: ShowAchievements
         m_Mode: 1
         m_Arguments:
@@ -3833,7 +3833,7 @@ GameObject:
   - 20: {fileID: 324936693}
   - 124: {fileID: 324936692}
   - 92: {fileID: 324936691}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: SpinnerCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3875,7 +3875,7 @@ Camera:
   m_GameObject: {fileID: 324936688}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 3
+  m_ClearFlags: 4
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -4184,7 +4184,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2070638436}
+      - m_Target: {fileID: 1774886834}
         m_MethodName: ShowLadder
         m_Mode: 1
         m_Arguments:
@@ -4961,7 +4961,7 @@ Camera:
   m_GameObject: {fileID: 566313015}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 3
+  m_ClearFlags: 4
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -8186,7 +8186,7 @@ Camera:
   m_GameObject: {fileID: 872972910}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 3
+  m_ClearFlags: 4
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -8887,12 +8887,12 @@ ParticleSystem:
   moveWithTransform: 1
   autoRandomSeed: 1
   scalingMode: 1
-  randomSeed: 1590143438
+  randomSeed: 2114878924
   InitialModule:
     serializedVersion: 2
     enabled: 1
     startLifetime:
-      scalar: 0.4
+      scalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -8927,7 +8927,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     startSpeed:
-      scalar: 5
+      scalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -9282,7 +9282,7 @@ ParticleSystem:
     serializedVersion: 2
     m_Type: 0
     rate:
-      scalar: 100
+      scalar: 300
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -12334,7 +12334,7 @@ GameObject:
   - 20: {fileID: 1453595190}
   - 124: {fileID: 1453595189}
   - 92: {fileID: 1453595188}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: KostylCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12388,7 +12388,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 4.7
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -14353,12 +14353,12 @@ ParticleSystem:
   moveWithTransform: 1
   autoRandomSeed: 1
   scalingMode: 1
-  randomSeed: 2080914445
+  randomSeed: -620451368
   InitialModule:
     serializedVersion: 2
     enabled: 1
     startLifetime:
-      scalar: 0.5
+      scalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -15186,7 +15186,7 @@ ParticleSystem:
   VelocityModule:
     enabled: 1
     x:
-      scalar: 10
+      scalar: 7
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -15202,7 +15202,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: -0.5
+          value: -0.71428573
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -15236,7 +15236,7 @@ ParticleSystem:
         m_RotationOrder: 0
       minMaxState: 3
     z:
-      scalar: 10
+      scalar: 7
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -16118,6 +16118,46 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1769822002}
+--- !u!1 &1774886833
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1774886835}
+  - 114: {fileID: 1774886834}
+  m_Layer: 0
+  m_Name: PlayServices
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1774886834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1774886833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcd7b30b39084f54b83e73b8d297a4c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1774886835
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1774886833}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 280, y: 165.22397, z: 90}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
 --- !u!1 &1780887556
 GameObject:
   m_ObjectHideFlags: 0
@@ -17515,7 +17555,6 @@ GameObject:
   - 114: {fileID: 2070638433}
   - 114: {fileID: 2070638434}
   - 114: {fileID: 2070638435}
-  - 114: {fileID: 2070638436}
   - 114: {fileID: 2070638437}
   m_Layer: 0
   m_Name: LevelManager
@@ -17584,17 +17623,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8afcea1fd2bf9cf4fa962c62279997b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2070638436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2070638431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcd7b30b39084f54b83e73b8d297a4c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2070638437

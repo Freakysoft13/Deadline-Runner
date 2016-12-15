@@ -22,23 +22,27 @@ public class GooglePlayServices : MonoBehaviour
 
     void Awake()
     {
-        if (instance == null && instance != this)
+        if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(this);
             print("Dont destroy");
         }
-        else
+        else if (instance != this)
         {
             DestroyImmediate(this);
             print("Destroy Immediate");
             return;
         }
+        PlayGamesPlatform.Activate();
+    }
+
+    void Start()
+    {
         if (!isLoggedIn)
         {
             print("Not logged in. Logging in ...");
             Login();
-            PlayGamesPlatform.Activate();
         }
         else
         {
