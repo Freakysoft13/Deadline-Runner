@@ -15,11 +15,6 @@ public class MenuUiController : MonoBehaviour
     public GameObject Helpboard;
 
     //timescale factor excluding freeze bug
-    void OnPreRender()
-    {
-        GL.Clear(true, true, Color.clear);
-    }
-
     void Start()
     {
 
