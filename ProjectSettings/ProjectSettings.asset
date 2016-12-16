@@ -103,7 +103,7 @@ PlayerSettings:
   xboxOneDisableKinectGpuReservation: 0
   singlePassStereoRendering: 0
   protectGraphicsMemory: 0
-  AndroidBundleVersionCode: 35
+  AndroidBundleVersionCode: 34
   AndroidMinSdkVersion: 19
   AndroidPreferredInstallLocation: 1
   aotOptions: 
@@ -173,7 +173,7 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: D:/Dev/Deadlinekey/LCKEY.keystore
+  AndroidKeystoreName: E:/Work/Deadline Runner/LCKEY/LCKEY.keystore
   AndroidKeyaliasName: deadlinerunner
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
