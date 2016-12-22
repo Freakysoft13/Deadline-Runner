@@ -233,12 +233,14 @@ public class tp : MonoBehaviour
         ShowRewardedAd();
 #endif
 #if UNITY_WSA
-        AdsManager.Instance.ShowVideo((arg) =>
+
+        AdsManager.Instance.SubscribeForAdFinishEvent((arg) =>
         {
             GameManager.Instance.Player.Ressurect();
             deathpnl.SetActive(false);
             scoreboard.SetActive(true);
-        });
+        }, this);
+        AdsManager.Instance.ShowVideo();
 #endif
     }
     public void closeRessWindow()
