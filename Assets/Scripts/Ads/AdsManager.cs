@@ -48,6 +48,10 @@ public class AdsManager : MonoBehaviour
     void Start()
     {
         Vungle.init("", "", vungleMSId);
+        Vungle.onAdFinishedEvent += (evnt) => 
+        {
+            Time.timeScale = 1;
+        };
     }
 
     public void SubscribeForAdFinishEvent(Action<object> action, MonoBehaviour subscriber)
@@ -64,6 +68,7 @@ public class AdsManager : MonoBehaviour
         if (Vungle.isAdvertAvailable())
         {
             Vungle.playAd();
+            Time.timeScale = 0;
         }
     }
 #endif
