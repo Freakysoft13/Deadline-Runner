@@ -46,8 +46,10 @@ namespace Effect
             if (disappearOnPickup) {
                 gameObject.SetActive(false);
             }
+        #if UNITY_ANDROID
             GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_i_feel_the_power, 100.0f);
             GooglePlayServices.Instance.ReportProgress(GPGIds.achievement_power_surge, 2.0f);
+        #endif
         }
 
         public override bool Equals(object obj) {

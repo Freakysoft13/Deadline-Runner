@@ -61,7 +61,6 @@ QualitySettings:
     - Web
     - iPhone
     - Android
-    - Windows Store Apps
     - Standalone
   - serializedVersion: 2
     name: Simple
@@ -90,7 +89,6 @@ QualitySettings:
     asyncUploadBufferSize: 4
     excludedTargetPlatforms:
     - Web
-    - Windows Store Apps
     - Standalone
     - iPhone
     - Android
@@ -120,7 +118,6 @@ QualitySettings:
     asyncUploadTimeSlice: 2
     asyncUploadBufferSize: 4
     excludedTargetPlatforms:
-    - Windows Store Apps
     - Web
     - iPhone
     - Android
@@ -152,7 +149,6 @@ QualitySettings:
     asyncUploadBufferSize: 4
     excludedTargetPlatforms:
     - Web
-    - Windows Store Apps
     - Android
     - iPhone
     - Standalone
@@ -182,7 +178,6 @@ QualitySettings:
     asyncUploadTimeSlice: 2
     asyncUploadBufferSize: 4
     excludedTargetPlatforms:
-    - Windows Store Apps
     - Web
     - Android
     - iPhone

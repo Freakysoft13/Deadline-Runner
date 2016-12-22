@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayServicesBridge : MonoBehaviour
 {
-
+#if UNITY_ANDROID
     public void ShowLeaderBoard()
     {
         GooglePlayServices.Instance.ShowLadder();
@@ -12,4 +12,5 @@ public class PlayServicesBridge : MonoBehaviour
     {
         GooglePlayServices.Instance.ShowAchievements();
     }
+#endif
 }
