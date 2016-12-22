@@ -18,7 +18,7 @@ public class AdsManager : MonoBehaviour
 #if UNITY_ANDROID
             return Advertisement.IsReady();
 #else
-            return isAdReady;
+            return Vungle.isAdvertAvailable();
 #endif
         }
     }
@@ -31,8 +31,6 @@ public class AdsManager : MonoBehaviour
     {
         get { return instance; }
     }
-
-    private bool isAdReady = false;
 
     void Awake()
     {
@@ -50,7 +48,6 @@ public class AdsManager : MonoBehaviour
     void Start()
     {
         Vungle.init("", "", vungleMSId);
-        isAdReady = true;
     }
 
     public void SubscribeForAdFinishEvent(Action<object> action, MonoBehaviour subscriber)
