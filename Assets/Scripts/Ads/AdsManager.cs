@@ -46,6 +46,7 @@ public class AdsManager : MonoBehaviour
             DestroyImmediate(this);
         }
     }
+#if UNITY_WSA
     void Start()
     {
         Vungle.init("", "", vungleMSId);
@@ -71,6 +72,5 @@ public class AdsManager : MonoBehaviour
             Vungle.playAd();
         }
     }
-
-
+#endif
 }
