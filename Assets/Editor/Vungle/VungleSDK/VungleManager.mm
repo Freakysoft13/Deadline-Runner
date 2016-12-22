@@ -103,12 +103,12 @@ void UnitySendMessage( const char * className, const char * methodName, const ch
 		UnityPause( false );
 	
 	BOOL completedView = [[viewInfo objectForKey:@"completedView"] boolValue];
-	BOOL didDownlaod = [[viewInfo objectForKey:@"didDownlaod"] boolValue];
+	BOOL didDownload = [[viewInfo objectForKey:@"didDownload"] boolValue];
 	
 	NSDictionary *dict = @{
 						   @"completedView": [NSNumber numberWithBool:completedView],
 						   @"playTime": [viewInfo objectForKey:@"playTime"],
-						   @"didDownload": [NSNumber numberWithBool:didDownlaod],
+						   @"didDownload": [NSNumber numberWithBool:didDownload],
 						   @"willPresentProductSheet": [NSNumber numberWithBool:willPresentProductSheet]
 						   };
 	UnitySendMessage( "VungleManager", "OnVideoView", [VungleManager jsonFromObject:dict].UTF8String );

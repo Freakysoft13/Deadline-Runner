@@ -102,7 +102,7 @@ void _vunglePlayAdEx( BOOL incentivized, int orientation, BOOL large, const char
     NSMutableDictionary *options = [NSMutableDictionary dictionary];
     [options setObject:@(incentivized) forKey:VunglePlayAdOptionKeyIncentivized];
     options[VunglePlayAdOptionKeyOrientations] = @(makeOrientation([NSNumber numberWithInteger: orientation]));
-    [options setObject:@(large) forKey:VunglePlayAdOptionKeyLargeButtons];
+//    [options setObject:@(large) forKey:VunglePlayAdOptionKeyLargeButtons];
     
     NSString *userString = GetStringParamOrNil( user );
     if( userString )
@@ -135,7 +135,7 @@ void _vunglePlayAdWithOptionsEx( char* opt ) {
         NSMutableDictionary *options = [NSMutableDictionary dictionary];
         options[VunglePlayAdOptionKeyIncentivized] = from[@"incentivized"];
         options[VunglePlayAdOptionKeyOrientations] = @(makeOrientation(from[@"orientation"]));
-        options[VunglePlayAdOptionKeyLargeButtons] = from[@"large"];
+//        options[VunglePlayAdOptionKeyLargeButtons] = from[@"large"];
         if (from[@"userTag"])
             options[VunglePlayAdOptionKeyUser]  = from[@"userTag"];
         if (from[@"alertTitle"])

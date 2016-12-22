@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.Advertisements;
 
 public class AdsManager : MonoBehaviour
 {
-    public int msAdsRetryCount = 1;
+
+    public string vungleMSId;
+
+    private List<MonoBehaviour> subscirbers = new List<MonoBehaviour>();
 
     public bool IsAdReady
     {
@@ -13,10 +18,9 @@ public class AdsManager : MonoBehaviour
 #if UNITY_ANDROID
             return Advertisement.IsReady();
 #else
-            return displayAds;
+            return false;
 #endif
         }
-        set { displayAds = value; }
     }
 
     public Action<object> OnAdCompleted;
@@ -28,15 +32,7 @@ public class AdsManager : MonoBehaviour
         get { return instance; }
     }
 
-    public delegate void AdsHandler(object arg);
-
-    public static event AdsHandler RequestMsAd;
-
-    public static event AdsHandler DisplayMsAd;
-    
-    private bool displayAds = false;
-    private bool isMSAds = false;
-    
+    private bool isAdReady = false;
 
     void Awake()
     {
@@ -50,47 +46,31 @@ public class AdsManager : MonoBehaviour
             DestroyImmediate(this);
         }
     }
-
-    public void OnMSReady(object obj)
+    void Start()
     {
-        displayAds = true;
-        isMSAds = true;
-    }
-    public void OnMSAdCompleted(object obj)
-    {
-        //RequestMsAd(null);
-        if(OnAdCompleted != null) {
-            OnAdCompleted(obj);
-            OnAdCompleted = null;
-        }
-    }
-    public void OnMSAdCancelled(object obj)
-    {
-        RequestMsAd(null);
-    }
-    public void OnMSAdError(object obj)
-    {
-    }
-    
-    private void AdPlayableEvent(bool flag)
-    {
-        displayAds = false;
-    }
-
-    public void RequestVideo()
-    {
-        if (isMSAds)
+        Vungle.init("", "", vungleMSId);
+        Vungle.adPlayableEvent += (isPlayable) =>
         {
-            RequestMsAd(null);
+            isAdReady = true;
+        };
+    }
+
+    public void SubscribeForAdFinishEvent(Action<object> action, MonoBehaviour subscriber)
+    {
+        if (!subscirbers.Contains(subscriber))
+        {
+            Vungle.onAdFinishedEvent += (evnt) => { action(evnt); };
+            subscirbers.Add(subscriber);
         }
     }
 
-    public void ShowVideo(Action<object> callback)
+    public void ShowVideo()
     {
-        OnAdCompleted = callback;
-        if (isMSAds)
+        if (Vungle.isAdvertAvailable())
         {
-            DisplayMsAd(null);
+            Vungle.playAd();
         }
     }
+
+
 }

@@ -52,7 +52,7 @@ public class VunglePostBuilder : MonoBehaviour
 			{
 				StartInfo = new ProcessStartInfo
 				{
-					FileName = "python2.6",
+					FileName = "python",
 					Arguments = args,
 					UseShellExecute = false,
 					RedirectStandardOutput = true,

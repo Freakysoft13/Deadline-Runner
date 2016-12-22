@@ -335,7 +335,8 @@ public class ResultPanel : MonoBehaviour
                 LevelManager.Instance.AddMoney(crystalsCollected);
             }
         };
-        AdsManager.Instance.ShowVideo(onAdCompleted);
+        AdsManager.Instance.SubscribeForAdFinishEvent(onAdCompleted, this);
+        AdsManager.Instance.ShowVideo();
 #endif
         //ADS
 #if UNITY_ANDROID
