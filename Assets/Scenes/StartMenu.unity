@@ -1741,7 +1741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40ae53e01187b37468f0061c492169d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  msAdsRetryCount: 1
+  vungleMSId: 56af38fa50be1c0c3400000d
 --- !u!4 &292320042
 Transform:
   m_ObjectHideFlags: 0
