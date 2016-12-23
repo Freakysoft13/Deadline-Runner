@@ -54,10 +54,7 @@ namespace Effect
             {
                 effects.Remove(effect);
             }
-            else
-            {
-                effect.ApplyEffect(player);
-            }
+            effect.ApplyEffect(player);
             effects.Add(effect);
             if (effect.isBuff)
             {
