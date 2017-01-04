@@ -2743,7 +2743,7 @@ RectTransform:
   m_GameObject: {fileID: 482010970}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 0.0061025573, y: 0.0061025573, z: 0.020341856}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1422754599}

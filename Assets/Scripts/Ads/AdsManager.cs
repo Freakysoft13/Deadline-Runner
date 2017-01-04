@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using UnityEngine;
 using UnityEngine.Advertisements;
 
@@ -51,6 +50,7 @@ public class AdsManager : MonoBehaviour
         Vungle.onAdFinishedEvent += (evnt) => 
         {
             Time.timeScale = 1;
+            AudioListener.pause = false;
         };
     }
 
@@ -69,6 +69,7 @@ public class AdsManager : MonoBehaviour
         {
             Vungle.playAd();
             Time.timeScale = 0;
+            AudioListener.pause = true;
         }
     }
 #endif

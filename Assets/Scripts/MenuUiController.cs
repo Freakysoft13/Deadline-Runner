@@ -17,8 +17,7 @@ public class MenuUiController : MonoBehaviour
     //timescale factor excluding freeze bug
     void Start()
     {
-
-#if UNITY_WSA
+ #if UNITY_WSA
         ladderObj.SetActive(false);
         windowsHelp.SetActive(true);
 

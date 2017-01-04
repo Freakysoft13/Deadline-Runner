@@ -406,7 +406,45 @@ PlayerSettings:
   metroCertificateNotAfter: 80de82425959d201
   metroApplicationDescription: LC
   wsaImages:
-    65636: 
+    65636: Assets/WindowsIcons/50.png
+    65661: Assets/WindowsIcons/63.png
+    65686: Assets/WindowsIcons/75.png
+    65736: Assets/WindowsIcons/100.png
+    65936: Assets/WindowsIcons/200.png
+    720996: Assets/WindowsIcons/150.png
+    786532: Assets/WindowsIcons/310_150.jpg
+    851984: Assets/WindowsIcons/16.png
+    852016: Assets/WindowsIcons/48.png
+    852048: Assets/WindowsIcons/24.png
+    852224: Assets/WindowsIcons/256.png
+    1376356: Assets/WindowsIcons/44.png
+    1441892: Assets/WindowsIcons/71.png
+    1507428: Assets/WindowsIcons/150.png
+    1572964: Assets/WindowsIcons/310_150.jpg
+    2031632: Assets/WindowsIcons/16.png
+    2031640: Assets/WindowsIcons/24.png
+    2031664: Assets/WindowsIcons/48.png
+    2031716: Assets/WindowsIcons/44.png
+    2031741: Assets/WindowsIcons/55.png
+    2031766: Assets/WindowsIcons/66.png
+    2031816: Assets/WindowsIcons/88.png
+    2031872: Assets/WindowsIcons/256.png
+    2032016: Assets/WindowsIcons/176.png
+    2097252: Assets/WindowsIcons/71.png
+    2097277: Assets/WindowsIcons/89.png
+    2097302: Assets/WindowsIcons/107.png
+    2097352: Assets/WindowsIcons/142.png
+    2097552: Assets/WindowsIcons/284.png
+    2162788: Assets/WindowsIcons/150.png
+    2162813: Assets/WindowsIcons/188.png
+    2162838: Assets/WindowsIcons/225.png
+    2162888: Assets/WindowsIcons/300.png
+    2163088: Assets/WindowsIcons/600.png
+    2293860: Assets/WindowsIcons/310_150.jpg
+    2293885: Assets/WindowsIcons/388_188.jpg
+    2293910: Assets/WindowsIcons/465_225.jpg
+    2293960: Assets/WindowsIcons/620_300_11.jpg
+    2294160: Assets/WindowsIcons/1240_600.jpg
   metroTileShortName: DeadlineRunne
   metroCommandLineArgsFile: 
   metroTileShowName: 0
@@ -435,7 +473,7 @@ PlayerSettings:
       Objects3D: False
       PhoneCall: False
       PicturesLibrary: False
-      PrivateNetworkClientServer: False
+      PrivateNetworkClientServer: True
       Proximity: False
       RemovableStorage: False
       SharedUserCertificates: False
